@@ -51,14 +51,12 @@ VALUES
 ("Mario Party 5", "GameCube","Party Game", True, 2003, 2003, 50,89,True),
 ("Mario Party 3", "N64","Party Game", True, 2003, 2003, 50,92,True),
 ("Mario Tennis", "GameCube","Sport", False, 2004, 2007, 15,75,True),
-*/
 
 #PS3
 ("Heavy Rain", "PS3", "Narrative", True, 2010,2016, 15,79,True),
 
 ("Red Dead Redemption", "PS3", "Action-Adventure | Open World", True, 2010,2016, 30,92,False),
 ("Red Dead Redemption 2", "PS4", "Action-Adventure | Open World", True, 2018,2018, 60,96,False),
-#PS4
 
 #PC GAMES
 ("Sid Meier's Civilization 3", "PC", "STR", True, 2001,2001,15,88,False),
@@ -97,7 +95,6 @@ VALUES
 ("Heroes of Might&Magic 5", "PC", "STR", False, 2006,2008, 25,89,True),
 ("Heroes of Might&Magic 7", "PC", "STR", False, 2015,2018, 10,85,True),
 
-#good
 ("Star Wars Battleground", "PC", "STR", True, 2001,2001, 40,90,False),
 ("Star Wars : Shadows of the Empire", "PC", "Action-Adventure | Hack&Clash", True, 1996,2002, 20,85, False),
 ("Star Wars Jedi Knight 2", "PC", "Action-Adventure | Hack&Clash", True, 2002,2003, 30,98,True),

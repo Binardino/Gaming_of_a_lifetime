@@ -118,7 +118,8 @@ VALUES
 ("SimCity 2000", "PC","RTS", False, 1994, 1995, 15, 70,False),
 ("Caesar II", "PC", "STR", False, 1995,1998, 10,80,True),
 ("Pharaoh", "PC", "STR", False, 1999,2001, 20,86,True),
-
+("Carmageddon", "PC", "Racing | Beat'em all", False, 1997,1999, 20,86,True),
+("Carmageddon 2", "PC", "Racing | Beat'em all", False, 1998,2000, 10,86,True),
 ("RollerCoaster Tycoon", "PC","RTS", False, 1999, 2000, 15, 70,False),
 ("Beyong Good & Evil", "PC","Action-Adventure | Platformer", False, 2003, 2016, 5, 62,False),
 

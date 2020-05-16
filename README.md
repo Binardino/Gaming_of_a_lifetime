@@ -1,7 +1,15 @@
 # Gaming_of_a_lifetime
 Python Pandas &amp; SQL Project - Historical Data analytics of my Gaming lifetime history
 
-##Project Overview
+## Content
+- [Project Overview](#project-overview)
+- [Hypotheses / Questions](#hypotheses-questions)
+- [Workflow](#workflow)
+- [Repo Structure](#repo-structure)
+- [Conclusion](#conclusion)
+- [Future Work](#future-work)
+
+## Project Overview
 - Creation of a dataset of my overall gaming experience.
 SQL queries to create this ad hoc dataset with the following columns :
 
@@ -23,12 +31,32 @@ CREATE TABLE my_videogames(
 Each row for one game played, with several
 cf. SQL queries for more detailed information over the dataset creation
 
-##Repo Structure
-- DB_creation_SQL_queries : SQL queries for creation of the dataset
+## Hypotheses / Questions
+- Finding key stats over my gaming lifetime : 
+    * how many hours in average have I spent per gametype/console ?
+    * which are the years I played the most ?
+    * when comparing my grades given to all of those games, am I giving comparable grades to the critics (i.e. Metacritics) & in comparison to other players (i.e. playerscore) ?
 
-##Notebook Pandas & Visualizations
-- Pandas visualizations of the Gaming lifetime dataset
-- Comparison of scores between this dataset and existing Metacritic dataset (TBD)
+## Workflow
+My workflow consisted on 3 steps - each detailed in the relevant notebook:
+**1 - Database creation**
+creating the database with SQL queries (brainstorming over the structure of the dataset, and some quality memory times to remember all those great games I played)
+Each Workflow is detailed in its respective Notebooks.
 
-##Plots_Charts_PNG
-- PNG plots from Visualization notebook
+**2 - Data visualization & analaysis**
+
+**3 - Importing Metacritic dataset**
+Importing & Cleaning the dataset, then doing comparison & datavisualizations over those 2 datasets
+
+## Repo Structure
+1. DB_creation_SQL_queries : SQL queries for creation of the dataset
+2. Notebook Pandas & Visualizations
+    * Pandas visualizations of the Gaming lifetime dataset
+    * Comparison of scores between this dataset and existing Metacritic dataset (TBD)
+
+3. Plots_Charts_PNG
+    * PNG plots from Visualization notebook
+
+## Conclusion
+
+## Future Work

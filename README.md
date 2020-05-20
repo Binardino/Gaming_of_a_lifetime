@@ -1,11 +1,15 @@
 # Gaming_of_a_lifetime
 **Historical Data analytics of my Gaming lifetime history**
+
 Python Pandas, Datavisualization &amp; SQL Project - 
 Having been a gamer all my life, the idea of this project is to list all the games I played, with several KPIs (score, hours played etc.), and visualize this gaming of a lifetime, to see some trends in my gaming behaviour.
 - which genre did I play the most ?
 - on which console ?
 - for how long ?
 It is a nice way to remember all of gaming experiences, and to make something professional Python training & visualization of all this leisure time I had playing on those fantastic games !
+
+Once the database created with SQL queries, I use various Python visualization libraries (Matplotlib, Seaborn, PyPlot, Bokeh) to visualize this gaming of a lifetime.
+Finally, I imported a Kaggle dataset encompassing scores of all the games I played (both from the Press & Players) to compare my scores given and theirs.
 
 ## Content
 - [Project Overview](#project-overview)

@@ -90,10 +90,10 @@ Importing & Cleaning the dataset, then doing comparison & datavisualizations ove
 <img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_hours_played_all_game.png"/>
 
 #hover pyplot console treemap 
-<img src="ttps://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/blob/master/Plots_Charts_PNG/console_distribution.png">
+<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/blob/master/Plots_Charts_PNG/console_distribution.png">
 
 #seaborn bargraph all genres
-<img src="ttps://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/blob/master/Plots_Charts_PNG/barplot_game_type_rainbow_version.png">
+<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/blob/master/Plots_Charts_PNG/barplot_game_type_rainbow_version.png">
 
 #seaborn distplot played year
 <img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_difference_publication.VS.played_year.png">

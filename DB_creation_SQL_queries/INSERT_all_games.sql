@@ -40,9 +40,9 @@ VALUES
 ("God of War III", "PS4", "Action|Beat'em All", False, 2015, 2020,35,92,False),
 ("Uncharted: Drake's Fortune", "PS4", "Action-Adventure|Platformer", True, 2007,2020, 10,68,True),
 ("Uncharted 2: Among Thieves", "PS4", "Action-Adventure|Platformer", True, 2009,2020, 10,87,True),
-("Uncharted 3: Drake's Deception", "PS4", "Action-Adventure|Platformer", False, 2011,2020, 10,00,True),
-("Uncharted: The Nathan Drake Collection", "PS4", "Action-Adventure|Platformer", True, 2015,2020, 30,00,True),
-("Uncharted 4: A Thief's End", "PS4", "Action-Adventure|Platformer", False, 2016,2020, 10,00,True),
+("Uncharted 3: Drake's Deception", "PS4", "Action-Adventure|Platformer", False, 2011,2020, 10,80,True),
+("Uncharted: The Nathan Drake Collection", "PS4", "Action-Adventure|Platformer", True, 2015,2020, 30,83,True),
+("Uncharted 4: A Thief's End", "PS4", "Action-Adventure|Platformer", False, 2016,2020, 10,90,True),
 ("Horizon Zero Dawn", "PS4", "Action-Adventure|Open World", False, 2017,2019, 10,91,True),
 ("Journey", "PS4", "Action-Adventure|Platformer", True, 2012,2019, 5,86,True),
 

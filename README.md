@@ -69,18 +69,37 @@ Each Workflow is detailed in its respective Notebooks.
 Importing & Cleaning the dataset, then doing comparison & datavisualizations over those 2 datasets
 
 ## Analysis
-1. Importing & cleaning dataset
+# 1. Importing & cleaning dataset
 - [x] **Import & minor wrangling**
 
-2. Visualizing gaming of a lifetime dataset
+# [2. Visualizing gaming of a lifetime dataset](#visualizing-gaming-of-a-lifetime)
 - [x] **Exploratory Data Analysis (EDA)**: Aims to appraoch the data from both a qualitative and a quantitative approach for main insights
 - [x]  **Data visualizations**: plots over KPIs (seaborn & pyplot)
 - [x] **Monthly churn rate and Cohort Analysis**: Aims to identify monthly churn rates and performance measurement through customer cohort analysis on retention rates
 
-3. Comparison of Scores with complete video game dataset
+# [3. Comparison of Scores with complete video game dataset](#comparison-of-scores)
 - [x] **Importation & Data transformation** : import & clean 16.8K rows dataset
 - [x] **Merging & EDA of two dataframes**
 - [x] **Comparison plots**
+
+# 2. Visualizing gaming of a lifetime dataset
+#displot hours played
+<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_hours_played_all_game.png"/>
+
+#hover pyplot console treemap 
+<img src="ttps://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/blob/master/Plots_Charts_PNG/console_distribution.png">
+
+#seaborn bargraph all genres
+<img src="ttps://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/blob/master/Plots_Charts_PNG/barplot_game_type_rainbow_version.png">
+
+#seaborn distplot played year
+<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_difference_publication.VS.played_year.png">
+
+# 3. Comparison of Scores with complete video game dataset
+
+#comparing metascores
+<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/Score_comparison_Metascore_VS._Perso_score.png"/>
+
 
 ## Conclusion
 

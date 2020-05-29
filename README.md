@@ -14,8 +14,9 @@ Finally, I imported a Kaggle dataset encompassing scores of all the games I play
 ## Content
 - [Project Overview](#project-overview)
 - [Hypotheses / Questions](#hypotheses-questions)
-- [Workflow](#workflow)
 - [Repo Structure](#repo-structure)
+- [Workflow](#workflow)
+- [Analysis](#analysis)
 - [Conclusion](#conclusion)
 - [Future Work](#future-work)
 
@@ -47,6 +48,15 @@ cf. SQL queries for more detailed information over the dataset creation
     * which are the years I played the most ?
     * when comparing my grades given to all of those games, am I giving comparable grades to the critics (i.e. Metacritics) & in comparison to other players (i.e. playerscore) ?
 
+## Repo Structure
+1. DB_creation_SQL_queries : SQL queries for creation of the dataset
+2. Notebook Pandas & Visualizations
+    * Pandas visualizations of the Gaming lifetime dataset
+    * Comparison of scores between this dataset and existing Metacritic dataset (TBD)
+
+3. Plots_Charts_PNG
+    * PNG plots from Visualization notebook
+
 ## Workflow
 My workflow consisted on 3 steps - each detailed in the relevant notebook:
 **1 - Database creation**
@@ -58,14 +68,19 @@ Each Workflow is detailed in its respective Notebooks.
 **3 - Importing Metacritic dataset**
 Importing & Cleaning the dataset, then doing comparison & datavisualizations over those 2 datasets
 
-## Repo Structure
-1. DB_creation_SQL_queries : SQL queries for creation of the dataset
-2. Notebook Pandas & Visualizations
-    * Pandas visualizations of the Gaming lifetime dataset
-    * Comparison of scores between this dataset and existing Metacritic dataset (TBD)
+## Analysis
+1. Importing & cleaning dataset
+- [x] **Import & minor wrangling**
 
-3. Plots_Charts_PNG
-    * PNG plots from Visualization notebook
+2. Visualizing gaming of a lifetime dataset
+- [x] **Exploratory Data Analysis (EDA)**: Aims to appraoch the data from both a qualitative and a quantitative approach for main insights
+- [x]  **Data visualizations**: plots over KPIs (seaborn & pyplot)
+- [x] **Monthly churn rate and Cohort Analysis**: Aims to identify monthly churn rates and performance measurement through customer cohort analysis on retention rates
+
+3. Comparison of Scores with complete video game dataset
+- [x] **Importation & Data transformation** : import & clean 16.8K rows dataset
+- [x] **Merging & EDA of two dataframes**
+- [x] **Comparison plots**
 
 ## Conclusion
 

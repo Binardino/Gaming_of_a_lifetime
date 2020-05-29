@@ -69,16 +69,16 @@ Each Workflow is detailed in its respective Notebooks.
 Importing & Cleaning the dataset, then doing comparison & datavisualizations over those 2 datasets
 
 ## Analysis
-1. [Data exploration](#data-exploration)
+1. [Data exploration](#1.-data-exploration)
 - [x] **Import & minor wrangling**
 - [x] **Exploratory Data Analysis (EDA)**: Aims to appraoch the data from both a qualitative and a quantitative approach for main insights
 
-[2. Visualizing gaming of a lifetime dataset](#visualizing-gaming-of-a-lifetime-dataset)
+[2. Visualizing gaming of a lifetime dataset](#2.-visualizing-gaming-of-a-lifetime-dataset)
 
 - [x]  **Data visualizations**: plots over KPIs (seaborn & pyplot)
 - [x] **Monthly churn rate and Cohort Analysis**: Aims to identify monthly churn rates and performance measurement through customer cohort analysis on retention rates
 
-[3. Comparison of Scores with complete video game dataset](#comparison-of-scores)
+[3. Comparison of Scores with complete video game dataset](#3.-comparison-of-scores)
 - [x] **Importation & Data transformation** : import & clean 16.8K rows dataset
 - [x] **Merging & EDA of two dataframes**
 - [x] **Comparison plots**

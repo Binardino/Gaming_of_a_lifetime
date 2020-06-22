@@ -1,7 +1,8 @@
 # Gaming_of_a_lifetime
 **Historical Data analytics of my Gaming lifetime history**
 
-Python Pandas, Datavisualization &amp; SQL Project - 
+Python Pandas &amp; SQL Project - EDA & Datavisualization of gaming habits
+
 Having been a gamer all my life, the idea of this project is to list all the games I played, with several KPIs (score, hours played etc.), and visualize this gaming of a lifetime, to see some trends in my gaming behaviour.
 - which genre did I play the most ?
 - on which console ?
@@ -59,8 +60,10 @@ cf. SQL queries for more detailed information over the dataset creation
 
 ## Workflow
 My workflow consisted on 3 steps - each detailed in the relevant notebook:
+
 **1 - Database creation**
-creating the database with SQL queries (brainstorming over the structure of the dataset, and some quality memory times to remember all those great games I played)
+creating the database with SQL queries (brainstorming over the structure of the dataset, and some quality memory times to remember all those great games I played).
+
 Each Workflow is detailed in its respective Notebooks.
 
 **2 - Data visualization & analaysis**
@@ -71,7 +74,7 @@ Importing & Cleaning the dataset, then doing comparison & datavisualizations ove
 ## Analysis
 1. [Data exploration](#1.-data-exploration)
 - [x] **Import & minor wrangling**
-- [x] **Exploratory Data Analysis (EDA)**: Aims to appraoch the data from both a qualitative and a quantitative approach for main insights
+- [x] **Exploratory Data Analysis (EDA)**: Aims to approach the data from both a qualitative and a quantitative standpoint for main insights
 
 [2. Visualizing gaming of a lifetime dataset](#2.-visualizing-gaming-of-a-lifetime-dataset)
 
@@ -86,9 +89,18 @@ Importing & Cleaning the dataset, then doing comparison & datavisualizations ove
 1. Data exploration
 
 2. Visualizing gaming of a lifetime dataset
+
+Main gaming habits explored :
+- Distribution of average amount of hours per game
+- Slightly right skewed distribution, with most games having between 20 & 30 of playedhours - few outliers greater than 100 hours 
+
 #displot hours played
 <img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_hours_played_all_game.png"/>
 
+
+Distribution per system
+- Microsoft & PC is the most played system
+- PlayStation & Nintendo systems have the most different system used. 
 #hover pyplot console treemap 
 <img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/console_distribution.png">
 

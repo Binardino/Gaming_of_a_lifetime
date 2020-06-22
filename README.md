@@ -94,26 +94,38 @@ Main gaming habits explored :
 - Distribution of average amount of hours per game
 - Slightly right skewed distribution, with most games having between 20 & 30 of playedhours - few outliers greater than 100 hours 
 
-#displot hours played
-<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_hours_played_all_game.png"/>
+
+<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_hours_played_all_game.png" #displot hours played/>
 
 
 Distribution per system
+Using Plotly to create dynamic Treemap of game per console, divided by brand.
+
+#Hover info
+On dynamic notebook version, displaying game type when hovering 
+
 - Microsoft & PC is the most played system
 - PlayStation & Nintendo systems have the most different system used. 
-#hover pyplot console treemap 
-<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/console_distribution.png">
 
-#seaborn bargraph all genres
-<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/barplot_game_type_rainbow_version.png">
+<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/console_distribution.png" #hover pyplot console treemap/>
 
-#seaborn distplot played year
-<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_difference_publication.VS.played_year.png">
+- Action-Adventure games assess for top games
+- PC strategic games (STR) & old-school platforms are the second most played games, regardless of the amount of time spent on each of them
+<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/barplot_game_type_rainbow_version.png" #seaborn bargraph all genres/>
+
+Quick analysis comparing the release year of a game VS. the actual year I played it.
+Overall, I have the tendency to play games 1 or 2 years after their release ; truth be told, I usually look for metacritics, scores & reviews before spending hours on a game.
+Hence the following analysis over scores and ratings comparison
+
+<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_difference_publication.VS.played_year.png" #seaborn distplot played year>
 
 3. Comparison of Scores
 comparing  with complete video game dataset
-#comparing metascores
-<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/Score_comparison_Metascore_VS._Perso_score.png"/>
+On the second notebook, using Plotly to create dynamic scatter plot to compare my personal score VS. metacritic scor (on a 100 scale)
+
+- Adding new dimension with sales per game
+Bubble-size relies on overall sales for each game - in order to measure whether good critics equal massive sales
+<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/Score_comparison_Metascore_VS._Perso_score.png" #comparing metascores/>
 
 
 ## Conclusion

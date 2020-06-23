@@ -86,10 +86,12 @@ Importing & Cleaning the dataset, then doing comparison & datavisualizations ove
 - [x] **Merging & EDA of two dataframes**
 - [x] **Comparison plots**
 
-1. Data exploration
 
-2. Visualizing gaming of a lifetime dataset
+#1. Data exploration
 
+#2. Visualizing gaming of a lifetime dataset
+
+**Amount of hours played distribution**
 Main gaming habits explored :
 - Distribution of average amount of hours per game
 - Slightly right skewed distribution, with most games having between 20 & 30 of playedhours - few outliers greater than 100 hours 
@@ -98,10 +100,12 @@ Main gaming habits explored :
 <img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_hours_played_all_game.png" alt="#displot hours played"/>
 
 
-Distribution per system
+**Distribution per system**
 Using Plotly to create dynamic Treemap of game per console, divided by brand.
 
-#Hover info
+**Platfrom & Brand distribution**
+#Hover effect plot
+
 On dynamic notebook version, displaying game type when hovering 
 
 - Microsoft & PC is the most played system
@@ -109,18 +113,21 @@ On dynamic notebook version, displaying game type when hovering
 
 <img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/console_distribution.png" alt="hover pyplot console treemap"/>
 
+**Genre distribution**
 - Action-Adventure games assess for top games
 - PC strategic games (STR) & old-school platforms are the second most played games, regardless of the amount of time spent on each of them
 <img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/barplot_game_type_rainbow_version.png"/>
 
+**Published year VS. played year**
 Quick analysis comparing the release year of a game VS. the actual year I played it.
 Overall, I have the tendency to play games 1 or 2 years after their release ; truth be told, I usually look for metacritics, scores & reviews before spending hours on a game.
 Hence the following analysis over scores and ratings comparison
 
 <img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_difference_publication.VS.played_year.png" alt="#seaborn distplot played year"/>
 
-3. Comparison of Scores
-comparing  with complete video game dataset
+#3. Comparison of Scores
+
+Comparing  with complete video game dataset
 On the second notebook, using Plotly to create dynamic scatter plot to compare my personal score VS. metacritic scor (on a 100 scale)
 
 - Adding new dimension with sales per game
@@ -129,6 +136,12 @@ Bubble-size relies on overall sales for each game - in order to measure whether 
 
 
 ## Conclusion
+Fun projects to practice SQL & DataViz
+- Comparable score ranking with metacritics' scores 
+- Mostly PC STR & platformers during early period - OpenWorld & Action Adventure in recent years
+- PlayStation is the most represented brand
 
 ## Future Work
 - using Bokeh
+- PostGreSQL version
+- analyzing global & continental sales VS. scores

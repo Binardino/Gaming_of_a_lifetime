@@ -87,9 +87,9 @@ Importing & Cleaning the dataset, then doing comparison & datavisualizations ove
 - [x] **Comparison plots**
 
 
-#1. Data exploration
+**1. Data exploration**
 
-#2. Visualizing gaming of a lifetime dataset
+**2. Visualizing gaming of a lifetime dataset**
 
 **Amount of hours played distribution**
 Main gaming habits explored :
@@ -125,8 +125,8 @@ Hence the following analysis over scores and ratings comparison
 
 <img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_difference_publication.VS.played_year.png" alt="#seaborn distplot played year"/>
 
-#3. Comparison of Scores
 
+**3. Comparison of Scores**
 Comparing  with complete video game dataset
 On the second notebook, using Plotly to create dynamic scatter plot to compare my personal score VS. metacritic scor (on a 100 scale)
 

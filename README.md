@@ -101,9 +101,11 @@ Main gaming habits explored :
 
 
 **Distribution per system**
+
 Using Plotly to create dynamic Treemap of game per console, divided by brand.
 
 **Platfrom & Brand distribution**
+
 #Hover effect plot
 
 On dynamic notebook version, displaying game type when hovering 
@@ -127,6 +129,7 @@ Hence the following analysis over scores and ratings comparison
 
 
 **3. Comparison of Scores**
+
 Comparing  with complete video game dataset
 On the second notebook, using Plotly to create dynamic scatter plot to compare my personal score VS. metacritic scor (on a 100 scale)
 

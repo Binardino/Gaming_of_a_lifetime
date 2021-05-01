@@ -42,11 +42,12 @@ game_name = "Star Wars Battlefront II";
 INSERT INTO my_videogames(game_name, console, game_type, finished, published_year, played_year, hours_played, perso_score, multiplayed) 
 VALUES
 
-("Cyberpunk 2077", "PC", "RPG|Open World", True, 2020,2020,80,99, False),
+("Cyberpunk 2077", "PC", "RPG|Open World", True, 2020,2020,120,99, False),
 ("WatchDogs Legion", "PC", "Action-Adventure|Open World", True, 2020,2020,50,95, True),
 ("Among Us", "Android", "Party game", False, 2018,2020,7,70,True),
 ("Mario Galaxy", "Switch","Platformer", False, 2008, 2020,20,94,True),
 ("Mario Sunshine", "Switch","Platformer", False, 2003, 2020,10,75,True),
+("Final Fantasy XII", "Switch","JRPG", True, 2006, 2021, 40, 93, False)
 
 #Future games to insert
 #("Assassin's Creed Valhalla", "PC", "RPG|Open World", False, 2020,2021, 5,90,False),

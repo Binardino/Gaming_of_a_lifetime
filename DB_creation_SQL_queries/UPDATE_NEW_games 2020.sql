@@ -47,7 +47,10 @@ VALUES
 ("Among Us", "Android", "Party game", False, 2018,2020,7,70,True),
 ("Mario Galaxy", "Switch","Platformer", False, 2008, 2020,20,94,True),
 ("Mario Sunshine", "Switch","Platformer", False, 2003, 2020,10,75,True),
-("Final Fantasy XII", "Switch","JRPG", True, 2006, 2021, 40, 93, False)
+("Final Fantasy XII", "Switch","JRPG", True, 2006, 2021, 40, 93, False),
+("Hades", "Switch","Action-Adventure|Hack&Clash", False, 2020, 2021, 30, 93, False),
+("New Super Mario Bros U Deluxe", "Switch","Platformer", False, 2020, 2021, 25, 90, True)
+("Hyrule Warriors : Age of Calamity", "Switch","Action-Adventure|Hack&Clash", False, 2020, 2021, 15, 90, True)
 
 #Future games to insert
 #("Assassin's Creed Valhalla", "PC", "RPG|Open World", False, 2020,2021, 5,90,False),

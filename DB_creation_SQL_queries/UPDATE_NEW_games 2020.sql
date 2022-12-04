@@ -48,15 +48,17 @@ VALUES
 ("Mario Galaxy", "Switch","Platformer", False, 2008, 2020,20,94,True),
 ("Mario Sunshine", "Switch","Platformer", False, 2003, 2020,10,75,True),
 ("Final Fantasy XII", "Switch","JRPG", True, 2006, 2021, 40, 93, False),
+
+###2021 - 2022 updates
+INSERT INTO my_videogames(game_name, console, game_type, finished, published_year, played_year, hours_played, perso_score, multiplayed) 
+VALUES
 ("Hades", "Switch","Action-Adventure|Hack&Clash", False, 2020, 2021, 30, 93, False),
-("New Super Mario Bros U Deluxe", "Switch","Platformer", False, 2020, 2021, 25, 90, True)
-("Hyrule Warriors : Age of Calamity", "Switch","Action-Adventure|Hack&Clash", False, 2020, 2021, 15, 90, True)
-
-#Future games to insert
-#("Assassin's Creed Valhalla", "PC", "RPG|Open World", False, 2020,2021, 5,90,False),
-
-#("Star Wars Jedi Fallen Order", "PC", "RPG|Action-Adventure", True, 2019,2020, XX,XX,False),
-#("Cyberpunk 2077", "PC", "RPG|Open World", False, 2020,2020,15,97, False),
+("New Super Mario Bros U Deluxe", "Switch","Platformer", False, 2020, 2021, 25, 90, True),
+("Hyrule Warriors : Age of Calamity", "Switch","Action-Adventure|Hack&Clash", False, 2020, 2021, 15, 90, True),
+("Assassin's Creed Valhalla", "PC", "RPG|Open World", False, 2020,2021, 50,92,False),
+("Demon's Souls", "PS5", "JRPG|Action-Adventure", False, 2020,2022, 20,90,False),
+("Horizon Forbidden West", "PS5", "RPG|Open World", False, 2022,2022, 50,93,False),
+("Star Wars Jedi Fallen Order", "PC", "RPG|Action-Adventure", True, 2019,2020, 25,89,False),
 
 
 /*

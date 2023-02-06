@@ -1,0 +1,19 @@
+FROM python:3.10-alpine
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip nstall --no-cache-dir -r requirements.txt
+
+COPY . . 
+
+#Expose port 5000
+EXPOSE 5000
+
+#set environment variables for streamlit
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
+#run app in Streamlit
+CMD streamlit run app.py

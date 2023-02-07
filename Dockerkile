@@ -1,10 +1,11 @@
 FROM python:3.10-alpine
 
+#set working directory to /app level
 WORKDIR /app
 
 COPY requirements.txt .
-
-RUN pip nstall --no-cache-dir -r requirements.txt
+#install packages
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . . 
 
@@ -16,4 +17,4 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
 #run app in Streamlit
-CMD streamlit run app.py
+CMD ["python", "app.py"]

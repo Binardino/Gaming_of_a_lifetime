@@ -8,18 +8,13 @@
 # This notebook aims at creating data visualization over that dataset to illustrate key trends in this lifetime of gaming
 
 # #### Importing Libraries
-
-# In[10]:
-
-
 import sys
 get_ipython().system('{sys.executable} -m pip install squarify')
 get_ipython().system('{sys.executable} -m pip install pygal')
 get_ipython().system('{sys.executable} -m pip freeze > requirements.txt')
 
 
-# In[11]:
-
+#%% import blocks
 
 from sqlalchemy import create_engine
 import pymysql
@@ -33,65 +28,38 @@ import matplotlib.ticker as ticker
 import squarify
 import pygal
 import plotly.express as px
-
-
-# In[12]:
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Set it None to display all rows in the dataframe
 # pd.set_option('display.max_rows', 100)
 pd.options.display.max_rows = 999
 
+#%% **Connecting to local SQL database**
 
-# **Connecting to local SQL database**
-
-# In[13]:
-
-
-driver   = 'mysql+pymysql:'
-user     = 'gaming_pandas'
-password = 'gamer'
-database = 'gamer_lifestory'
-ip       = '127.0.0.1'
-
-
-# In[14]:
+driver   = os.environ.get("driver")
+user     = os.environ.get("user")
+password = os.environ.get("password")
+database = os.environ.get("database")
+ip       = os.environ.get("ip")
 
 
 connection_string = f'{driver}//{user}:{password}@{ip}/{database}'
 print(connection_string)
 engine = create_engine(connection_string)
 
-
-# In[15]:
-
-
-engine = create_engine(connection_string)
-print(engine)
+#%%fetching SQL data
 pd.read_sql('SHOW TABLES;', engine)
-
-
-# In[16]:
-
 
 df_vg = pd.read_sql('SELECT * FROM my_videogames', engine, index_col='id')
 
 df_vg = df_vg.reset_index(drop=True)
 
-
-# In[17]:
-
-
 df_vg.shape
 
 
-# In[18]:
-
-
 df_vg.head(20)
-
-
-# In[19]:
 
 
 df_vg.tail(20)

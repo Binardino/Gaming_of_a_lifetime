@@ -58,62 +58,37 @@ df_vg = df_vg.reset_index(drop=True)
 
 df_vg.shape
 
-
+#%% Basic EDA
 df_vg.head(20)
 
 
 df_vg.tail(20)
 
 
-# In[20]:
-
-
 df_vg.sort_values(by='perso_score')
 
 
-# In[30]:
-
-
 df_vg.describe()
-
-
-# In[21]:
-
 
 #exporting to CSV to save local copy of DB to work remotely
 df_vg.to_csv('df_lifetime_gaming.csv', index=False)
 
 
-# In[32]:
-
-
+#%%
 #importing for cloud usage
 df_vg = pd.read_csv('df_lifetime_gaming.csv')
 
-df_vg
-
-
-# ### Data Wrangling
-
-# In[33]:
-
+#%% Data Wrangling
 
 #There are several platforms & game_type concatenated in one cell - erasing blank for future counting
 df_vg['game_type'] = df_vg['game_type'].str.replace(' | ', '')
 
 df_vg['console'] = df_vg['console'].str.replace(' | ', '')
 
-
-# In[34]:
-
-
 df_vg.head(20)
 
 
-# **Counting most played console type**
-
-# In[35]:
-
+#%% **Counting most played console type**
 
 # several game types in one cell
 # split over '|' character & value counts
@@ -122,9 +97,6 @@ pd.Series(df_vg['console'].str.split(pat='|').sum()).value_counts()
 
 # **Creating new sub df focusing on console**
 
-# In[36]:
-
-
 # Sub df to measure amount of game played on each console - for later on visualization
 df_consoles =  pd.DataFrame(pd.Series(df_vg['console'].str.split(pat='|').sum()).value_counts())
 
@@ -132,17 +104,9 @@ df_consoles.reset_index(inplace=True)
 
 df_consoles.columns = ['console', 'count']
 
-
-# In[37]:
-
-
 df_consoles
 
-
-# **Adding Brand column for each console**
-
-# In[38]:
-
+#%%**Adding Brand column for each console**
 
 # Original dataset just has info over the console used
 # adding extra info regarding the Brand of each console, to do custom visualization later on
@@ -154,11 +118,7 @@ df_consoles['brand'] = np.select(condlist, choicelist, default='Nintendo')
 
 df_consoles
 
-
-# **Counting most played game type**
-
-# In[39]:
-
+#%% **Counting most played game type**
 
 # several game types in one cell
 # split over '|' character & value counts

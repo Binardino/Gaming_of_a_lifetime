@@ -202,19 +202,12 @@ dfga = pd.Series(df_vg['game_type'].str.split(pat='|').sum()).value_counts()
 dfga
 
 
-# ### creating dict for general visualization settings 
-
-# In[46]:
-
-
+#%% ### creating dict for general visualization settings 
 # sns.set_style(style='GnBu_d')
 sns.set(style = 'whitegrid', palette='deep', rc = {'figure.figsize':(20,10)}) 
 #figsize is not a param for sns.set BUT using rc & a dict, possible to add new params
 
-
-# In[47]:
-
-
+#%% generating barchart
 ax = sns.barplot(x=dfga.index, y=dfga.values, data=dfga, 
                  palette='bright',
                  order=dfga.values, orient=45, alpha=0.9)
@@ -229,10 +222,7 @@ plt.title('Amount of game types played - all consoles combined', fontsize=15)
 plt.savefig('../Plots_Charts_PNG/barplot_game_type.png')
 plt.show()
 
-
-# In[48]:
-
-
+#%% generating TreeMap
 # plt.figure(figsize=(20,10))
 squarify.plot(sizes=dfga.values, 
               value=dfga.values, 
@@ -245,8 +235,7 @@ plt.axis('off')
 plt.savefig(('../Plots_Charts_PNG/treemap_game_type.png'))
 plt.show()
 
-
-# **Distplot to measure the distribution of hours played by game**
+#%% **Distplot to measure the distribution of hours played by game**
 # 
 # I consider a game to be a good one whenever I spend more than 15-20 hours on it.
 # Especially when I pay full price for a game, I expect it to be at least 30-40 hours long, if not I consider it a scam.
@@ -265,7 +254,7 @@ plt.savefig(('../Plots_Charts_PNG/distplot_hours_played_all_game.png'))
 plt.show()
 
 
-# **Distplot to measure how many games a year I played**
+#%%# **Distplot to measure how many games a year I played**
 # 
 # Checking below on which years have I been playing the most.
 # Being born in 1987, I played the most, as a teenager & in my late 20s up untill now ;
@@ -273,24 +262,18 @@ plt.show()
 # - during my college year, I dropped down heavily on playing (just some random PC & Wii gaming sessions here & there)
 # - starting mid-2010s, when I started my professional life, I got myself a PS3 & PS4 & catched up on all crazy games I haven't had a chance to play
 
-# In[50]:
-
-
 df_vg['played_year'].hist(bins=25)
 plt.title('Amount of games played per year',fontsize=15)
 plt.savefig(('../Plots_Charts_PNG/distplot_hours_played_all_game.png'))
 plt.show()
 
 
-# **Distplot to measure whether I played a game right when it realises**
+#%% **Distplot to measure whether I played a game right when it realises**
 # 
 # Checking below how much time is there between a game releases and me playing it.
 # In my early years, I waited several years before playing it :
 # - logically, most of early Nintendo & Sega games released in the late 80s, when I was obviously too young to buy & play them
 # - except for the gap in 2008-2013 when I seldom played, from 2014 onwards, I had the tendency of playing a game closely after its release
-
-# In[51]:
-
 
 sns.distplot(df_vg['published_year'], bins=30)
 sns.distplot(df_vg['played_year'], bins=30)
@@ -303,12 +286,8 @@ df_dfga = pd.DataFrame(dfga).reset_index=True
 df_dfga
 
 
-# **Scatter plot of amount of hours played per console**
+#%%# **Scatter plot of amount of hours played per console**
 # 
-
-# In[52]:
-
-
 # Creating sub df (df_1_console) with only 1 console per row
 # applying lambda function to replace 2 consoles by the 1st entry whenever there are 2
 
@@ -316,38 +295,25 @@ df_1_console = df_vg.copy()
 
 df_1_console['console'] = df_1_console['console'].apply(lambda x: x.split('|')[0] if x else x)
 
-
-# In[53]:
-
-
 sns.scatterplot(x='hours_played', y='perso_score', hue='console', data=df_1_console)
 # plt.title()
 plt.savefig(('../Plots_Charts_PNG/distplot_hours_played_all_game.png'))
 plt.show()
 
 
-# ### Plotly scatterplot version 
-
-# In[60]:
-
+#%%# ### Plotly scatterplot version 
 
 fig  = px.scatter(df_1_console, x='hours_played', y='perso_score', color='console')
 
-fig
-
-
-# In[54]:
-
+fig.show()
 
 ###To be Done : same scatter plot with BOKEH to make it interactive
 
 
-# **Boxplot of score per console**
+#%%**Boxplot of score per console**
 # 
 # Checking for each console the spread of score of each game
 # Overall, PlayStation game have the highest score mean, whereas older games from NES & Megadrive have the lowest score mean
-
-# In[55]:
 
 
 sns.catplot(x='console', y='perso_score', kind='boxen',height=5,aspect=3, data=df_1_console)

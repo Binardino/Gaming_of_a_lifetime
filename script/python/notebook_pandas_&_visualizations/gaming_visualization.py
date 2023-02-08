@@ -131,28 +131,18 @@ pd.Series(df_vg['game_type'].str.split(pat='|').sum()).value_counts()
 # - raw pairplot
 # - pairplot with hue on 'finished' games
 
-# In[40]:
-
-
 sns.pairplot(df_vg)
-
-
-# In[41]:
-
 
 sns.pairplot(df_vg, hue='finished')
 
 
-# **Treemap for each console amount of game played**
+#%% **Treemap for each console amount of game played**
 
 # Using PyPlot dynamic Treemap to map, for each console and related brand, how many games have been played on each platform
 # (Encompassed PNG static image below, but availabe dynamic PyPlot chart version on [linked Google Colab]().
 # Below 2 PyPlot version : 
 # - the Dynamic version (for online usage) with Hover effect - displaying information when hovering over the chart
 # - Static version with always on information (adding specific params) - version saved as PNG for local displaying
-
-# In[42]:
-
 
 fig_console = px.treemap(data_frame=df_consoles, 
                          path=['brand', 'console'], 
@@ -165,9 +155,6 @@ fig_console = px.treemap(data_frame=df_consoles,
                         )
 # fig_console.write_image('../Plots_Charts_PNG/console_distribution.png')
 fig_console.show()
-
-
-# In[107]:
 
 
 # plt.figure(figsize=(20,10))
@@ -189,19 +176,10 @@ fig_console.show()
 
 # <img src= 'https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/console_distribution.png'>
 
-# In[44]:
-
-
 # df_vg_test.head(20)
-
-
-# In[45]:
-
 
 dfga = pd.Series(df_vg['game_type'].str.split(pat='|').sum()).value_counts()
 dfga
-
-
 #%% ### creating dict for general visualization settings 
 # sns.set_style(style='GnBu_d')
 sns.set(style = 'whitegrid', palette='deep', rc = {'figure.figsize':(20,10)}) 
@@ -318,11 +296,7 @@ fig.show()
 
 sns.catplot(x='console', y='perso_score', kind='boxen',height=5,aspect=3, data=df_1_console)
 
-
-# In[79]:
-
-
-# Original dataset just has info over the console used
+#%%# Original dataset just has info over the console used
 # adding extra info regarding the Brand of each console, to do custom visualization later on
 
 condlist = [df_1_console['console'].str.startswith('PS'),df_1_console['console'].str.startswith('PC'),
@@ -333,21 +307,8 @@ df_1_console['brand'] = np.select(condlist, choicelist, default='Nintendo')
 df_1_console
 
 
-# In[105]:
-
-
 px.box(df_1_console ,x='console', y='perso_score', width=1000, height=400,
        color='brand', color_discrete_map={'Nintendo':'red', 'PlayStation':'blue', 'Microsoft':'green'})
 
 
-# In[56]:
-
-
 sns.catplot(x='console', y='hours_played', kind='boxen',height=7,aspect=3, data=df_1_console)
-
-
-# In[ ]:
-
-
-
-

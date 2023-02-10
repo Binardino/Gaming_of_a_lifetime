@@ -81,9 +81,9 @@ df_vg = pd.read_csv('df_lifetime_gaming.csv')
 #%% Data Wrangling
 
 #There are several platforms & game_type concatenated in one cell - erasing blank for future counting
-df_vg['game_type'] = df_vg['game_type'].str.replace(' | ', '')
+df_vg['game_type'] = df_vg['game_type'].str.replace(' | ', '', regex=False)
 
-df_vg['console'] = df_vg['console'].str.replace(' | ', '')
+df_vg['console'] = df_vg['console'].str.replace(' | ', '', regex=False)
 
 df_vg.head(20)
 

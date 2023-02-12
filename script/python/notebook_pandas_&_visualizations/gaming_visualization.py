@@ -144,19 +144,6 @@ sns.pairplot(df_vg, hue='finished')
 # - the Dynamic version (for online usage) with Hover effect - displaying information when hovering over the chart
 # - Static version with always on information (adding specific params) - version saved as PNG for local displaying
 
-fig_console = px.treemap(data_frame=df_consoles, 
-                         path=['brand', 'console'], 
-                         values='count', 
-                         color='brand',
-                         color_discrete_map={'PlayStation' : '#0D0BDE', 'Microsoft' :'#008D00', 'Nintendo': '#C90104' , 
-                                             'Sega':'#d787ff', 'Android':'#3DDC84'},
-                         title='Amount of game played per consoles - organized per console brand',
-                         width=1000, height=750
-                        )
-# fig_console.write_image('../Plots_Charts_PNG/console_distribution.png')
-fig_console.show()
-
-
 # plt.figure(figsize=(20,10))
 fig_console = px.treemap(data_frame=df_consoles, 
                          path=['brand', 'console'], 
@@ -188,7 +175,7 @@ sns.set(style = 'whitegrid', palette='deep', rc = {'figure.figsize':(20,10)})
 #%% generating barchart
 ax = sns.barplot(x=dfga.index, y=dfga.values, data=dfga, 
                  palette='bright',
-                 order=dfga.values, orient=45, alpha=0.9)
+                 order=dfga.values,  alpha=0.9)
 ax.set_xticklabels(dfga.index, rotation=45)
 
 for p in ax.patches:

@@ -9,6 +9,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . . 
 
+#set environment variables for SQL database
+ENV SQL_DATABASE=mydatabase \
+    SQL_USER=myuser \
+    SQL_PASSWORD=mypassword
+    
+#set up volume
+VOLUME /var/lib/mysql
+
 #Expose port 5000
 EXPOSE 5000
 

@@ -11,10 +11,11 @@ import custom_functions as cf
 df_vg = pd.read_csv('df_lifetime_gaming.csv')
 
 #%%data wranging
+df_vg = cf.str_cleaning(df_vg)
 
-#%%adding console brand
+#adding console brand
 #calling add console function to add console brand label depending on console names
-df_consoles = cf.add_console_tag
+df_consoles = cf.add_console_tag(df_vg)
 
 #%% Visualisation block
 ### creating dict for general visualization settings 

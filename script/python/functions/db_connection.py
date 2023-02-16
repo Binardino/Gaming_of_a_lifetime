@@ -1,9 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Feb 11 17:26:39 2023
+Created on Sat Feb 11 2023
 
 @author: langl
+
+script for SQL connection
 """
+
+#%%importing libraries
+from sqlalchemy import create_engine
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+#%%functions
 def sql_connection():
     driver   = os.environ.get("driver")
     user     = os.environ.get("user")

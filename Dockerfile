@@ -1,18 +1,19 @@
-FROM python:3.10-alpine
+FROM python:3.9
 
 #set working directory to /app level
 WORKDIR /app
 
 COPY requirements.txt .
 #install packages
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . . 
 
 #set environment variables for SQL database
-ENV SQL_DATABASE=mydatabase \
-    SQL_USER=myuser \
-    SQL_PASSWORD=mypassword
+ENV SQL_DATABASE=mydatabase
+ENV SQL_USER=myuser
+ENV SQL_PASSWORD=mypassword
     
 #set up volume
 VOLUME /var/lib/mysql

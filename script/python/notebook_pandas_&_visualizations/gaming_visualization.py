@@ -9,9 +9,9 @@
 
 # #### Importing Libraries
 import sys
-get_ipython().system('{sys.executable} -m pip install squarify')
-get_ipython().system('{sys.executable} -m pip install pygal')
-get_ipython().system('{sys.executable} -m pip freeze > requirements.txt')
+# get_ipython().system('{sys.executable} -m pip install squarify')
+# get_ipython().system('{sys.executable} -m pip install pygal')
+# get_ipython().system('{sys.executable} -m pip freeze > requirements.txt')
 
 
 #%% import blocks
@@ -95,7 +95,7 @@ df_vg.head(20)
 pd.Series(df_vg['console'].str.split(pat='|').sum()).value_counts()
 
 
-# **Creating new sub df focusing on console**
+#%%# **Creating new sub df focusing on console**
 
 # Sub df to measure amount of game played on each console - for later on visualization
 df_consoles =  pd.DataFrame(pd.Series(df_vg['console'].str.split(pat='|').sum()).value_counts())
@@ -274,6 +274,14 @@ fig.show()
 
 ###To be Done : same scatter plot with BOKEH to make it interactive
 
+#%% stacke bar of finish vs unfinished game grouped by game type
+df_vg['finished'] = df_vg['finished'].map({0:False, 1:True})
+
+df_finish = df_vg.groupby(['game_type','finished']).agg(finish_count=('finished','count')).reset_index()
+
+px.bar(df_finish, x='game_type', y='finish_count', color='finished')
+#100% stack bar
+px.histogram(df_finish, x='game_type', y='finish_count', color='finished', barnorm='percent')
 
 #%%**Boxplot of score per console**
 # 

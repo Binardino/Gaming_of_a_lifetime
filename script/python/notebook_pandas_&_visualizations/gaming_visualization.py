@@ -209,9 +209,6 @@ plt.show()
 # 
 # Below distplot illustrates I spent in general between 15 & 30 for most of the games I played
 
-# In[49]:
-
-
 ax = sns.distplot(df_vg['hours_played'], bins=50)
 
 plt.title('Distribution of hours played per game', fontsize=15)
@@ -294,8 +291,31 @@ px.histogram(df_finish,
 
 sns.catplot(x='console', y='perso_score', kind='boxen',height=5,aspect=3, data=df_1_console)
 
+### WIP Ideas for future viz
+
 #%% stacked bar of finish vs unfinished game grouped by game type
 
+
+#%% scatter plot showing the relationship between hours played and personal score.
+
+
+#%%heatmap showing the correlation between personal score and hours played
+
+#%% ideas from ChatGPT
+
+# A stacked bar chart that shows the number of games finished versus not finished, and split by console.
+
+# A scatter plot that shows the relationship between the year the game was published and the year it was first played, with size of the dots representing the number of hours played.
+
+# A radar chart that shows the distribution of game types across different consoles.
+
+# A violin plot that shows the distribution of personal scores for each console, with the width of the violin representing the number of games for that console.
+
+# An interactive heatmap that shows the relationship between personal score and hours played, with the color representing whether the game was multiplayed or not.
+
+# An interactive time-series plot that shows the evolution of the personal score for games played each year.
+
+# A stacked histogram that shows the distribution of hours played for finished and not finished games, split by whether they were multiplayed or not.
 
 #%%# Original dataset just has info over the console used
 # adding extra info regarding the Brand of each console, to do custom visualization later on

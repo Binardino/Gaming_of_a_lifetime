@@ -85,6 +85,8 @@ df_vg['game_type'] = df_vg['game_type'].str.replace(' | ', '', regex=False)
 
 df_vg['console'] = df_vg['console'].str.replace(' | ', '', regex=False)
 
+df_vg['finished'] = df_vg['finished'].map({0:False, 1:True})
+
 df_vg.head(20)
 
 
@@ -274,14 +276,15 @@ fig.show()
 
 ###To be Done : same scatter plot with BOKEH to make it interactive
 
-#%% stacke bar of finish vs unfinished game grouped by game type
-df_vg['finished'] = df_vg['finished'].map({0:False, 1:True})
-
+#%% stacked bar of finish vs unfinished game grouped by game type
 df_finish = df_vg.groupby(['game_type','finished']).agg(finish_count=('finished','count')).reset_index()
 
-px.bar(df_finish, x='game_type', y='finish_count', color='finished')
+# px.bar(df_finish, x='game_type', y='finish_count', color='finished',text='finish_count')
 #100% stack bar
-px.histogram(df_finish, x='game_type', y='finish_count', color='finished', barnorm='percent')
+px.histogram(df_finish, 
+             x='game_type', y='finish_count', 
+             color='finished', 
+             barnorm='percent')
 
 #%%**Boxplot of score per console**
 # 
@@ -290,6 +293,9 @@ px.histogram(df_finish, x='game_type', y='finish_count', color='finished', barno
 
 
 sns.catplot(x='console', y='perso_score', kind='boxen',height=5,aspect=3, data=df_1_console)
+
+#%% stacked bar of finish vs unfinished game grouped by game type
+
 
 #%%# Original dataset just has info over the console used
 # adding extra info regarding the Brand of each console, to do custom visualization later on

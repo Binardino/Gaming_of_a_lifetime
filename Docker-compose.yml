@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  db:
+    image : postgres
+    environment:
+      env_file: variables.env
+    volumes:
+      - db_data:/var/lib/postgres
+    restart: always
+    ports:
+      - "5000:5000"
+
+  app:
+    depends_on:
+      - db
+    images: binardino/gaming_of_a_lifetime:latest
+    ports:
+      - "8000:80"
+
+volumes: db_data: {}

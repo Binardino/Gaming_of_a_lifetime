@@ -13,6 +13,8 @@ dict_game = {}
 
 for game in game_list:
     dict_game[game] = {}
+    print(f'dict for {game} created --- input values')
     for column in column_list:
         game_value = input(f"Enter the {column} of the new game: ")
         dict_game[game][column] = game_value
+    print(f'dict for {game} completed --- GG')

@@ -7,7 +7,8 @@ column_list = ['game_name', 'console', 'game_type', 'finished','published_year',
 #game_list = list(input('input list of game:'))
 
 #input list of games
-game_list = ['zelda','gta']
+list_size = int(input('how many games to input today ?'))
+game_list =  [input('input game to insert to the videogame dg: ') for _ in range(list_size)]
 
 dict_game = {}
 

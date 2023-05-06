@@ -11,14 +11,14 @@ import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
-
+#from ..script.python.functions.data_wrangling import *
 
 #import data
-@st.cache
+@st.cache_data
 def get_data_csv(path):
     return pd.read_csv(path)
 
-@st.cache
+@st.cache_data
 def get_data_sql(query, engine):
     return pd.read_sql(query=query, con=engine)
 
@@ -31,3 +31,13 @@ st.markdown("""
 Presentation of the up-to-date data from Gaming of a lifetime project""")
 
 st.write(df_vg)
+
+#create sliders
+st.sidebar.header("select console")
+console_list = df_vg.console.unique()
+sidebar_console = st.sidebar.multiselect('Consoles available', console_list)
+
+st.sidebar.header('hours played')
+sidebar_hours = st.sidebar.slide('hours played', 
+                                 int(df_vg.hours_played.min()),
+                                  int(df_vg.hours_played.max()))

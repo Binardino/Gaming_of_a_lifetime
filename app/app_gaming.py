@@ -35,9 +35,21 @@ st.write(df_vg)
 #create sliders
 st.sidebar.header("select console")
 console_list = df_vg.console.unique()
-sidebar_console = st.sidebar.multiselect('Consoles available', console_list)
+sidebar_console = st.sidebar.multiselect('Consoles available', #label 
+                                         console_list,
+                                         console_list
+                                         ) #list
 
 st.sidebar.header('hours played')
-sidebar_hours = st.sidebar.slide('hours played', 
+sidebar_hours = st.sidebar.slider('hours played', #label 
                                  int(df_vg.hours_played.min()),
-                                  int(df_vg.hours_played.max()))
+                                  int(df_vg.hours_played.max()),
+                                  1) #step
+
+#creates masks from the sidebar selection widgets
+mask_console = df_vg['console'].isin(sidebar_console)
+mask_hours = df_vg['hours_played'].value_counts().between(sidebar_hours[0],
+                                                          sidebar_hours[1]).to_frame()
+#apply mask
+subdf_filter = df_vg[mask_console & mask_hours]
+st.write(subdf_filter)

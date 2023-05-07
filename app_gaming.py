@@ -39,6 +39,10 @@ Presentation of the up-to-date data from Gaming of a lifetime project""")
 
 st.write(df_vg)
 
+#str cleaning & add console tag
+df_vg_cl = data_wrangling.str_cleaning(df_vg)
+df_console = data_wrangling.add_console_tag(df_vg_cl)
+
 #create sliders
 st.sidebar.header("select console")
 console_list = df_vg.console.unique()
@@ -72,17 +76,6 @@ mask_hours = df_vg['hours_played'].isin(sidebar_console)
 #apply mask
 subdf_filter = df_vg[mask_console] # & mask_hours]
 st.write(subdf_filter)
-
-df_consoles =  pd.DataFrame(pd.Series(df_vg['console'].str.split(pat='|').sum()).value_counts())
-
-df_consoles.reset_index(inplace=True)
-
-df_consoles.columns = ['console', 'count']
-
-condlist = [df_consoles['console'].str.startswith('PS'),df_consoles['console'].str.startswith('PC'),
-            df_consoles['console'].str.startswith('Mega'), df_consoles['console'].str.startswith('Android')]
-choicelist = ['PlayStation', 'Microsoft', 'Sega', 'Android']
-df_consoles['brand'] = np.select(condlist, choicelist, default='Nintendo')
 
 fig_console = px.treemap(data_frame=df_consoles, 
                          path=['brand', 'console'], 

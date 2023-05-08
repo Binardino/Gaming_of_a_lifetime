@@ -30,22 +30,26 @@ def get_data_sql(query, engine):
     return pd.read_sql(query=query, con=engine)
 
 #read df
-df_vg = get_data_csv('../data/df_vg_local_csv.csv')
+df_raw = get_data_csv('data/df_vg_local_csv.csv')
 
 #display
 st.title('Gaming of a lifetime df display')
 st.markdown("""
 Presentation of the up-to-date data from Gaming of a lifetime project""")
 
-st.write(df_vg)
+st.write(df_raw)
 
 #str cleaning & add console tag
-df_vg_cl = data_wrangling.str_cleaning(df_vg)
-df_console = data_wrangling.add_console_tag(df_vg_cl)
+df = str_cleaning(df_raw)
+
+df_console_raw, console_list = create_console_list(df)
+
+#str cleaning & add console tag
+df_console = pd.DataFrame(console_list)
+add_console_tag(df_vg_cl)
 
 #create sliders
 st.sidebar.header("select console")
-console_list = df_vg.console.unique()
 sidebar_console = st.sidebar.multiselect('Consoles available', #label 
                                          console_list,
                                          console_list

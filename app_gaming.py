@@ -80,12 +80,26 @@ mask_hours = df_vg['hours_played'].isin(sidebar_console)
 subdf_filter = df_vg[mask_console] # & mask_hours]
 st.write(subdf_filter)
 
-fig_console = px.treemap(data_frame=df_consoles, 
+df_console_count = df_console.loc[df_console['console'].isin(
+                                    subdf_filter['console'])].groupby(['console', 'brand']
+                                            ).size(
+                                                ).reset_index(name='count'
+                                                              ).sort_values('count', ascending=False)
+
+st.write(df_console_count)
+
+#treemap console brand
+st.markdown("""Treemap of amount of games per console - brand & model""")
+
+fig_console = px.treemap(data_frame=df_console_count, 
                          path=['brand', 'console'], 
-                         values='count', 
+                         values='count',
                          color='brand',
-                         color_discrete_map={'PlayStation' : '#0D0BDE', 'Microsoft' :'#008D00', 'Nintendo': '#C90104' , 
-                                             'Sega':'#d787ff', 'Android':'#3DDC84'},
+                         color_discrete_map={'PlayStation' : '#0D0BDE',
+                                             'Microsoft' :'#008D00',
+                                             'Nintendo': '#C90104' , 
+                                             'Sega':'#d787ff', 
+                                             'Android':'#3DDC84'},
                          title='Amount of game played per consoles - organized per console brand',
                          width=1000, height=750
                         )

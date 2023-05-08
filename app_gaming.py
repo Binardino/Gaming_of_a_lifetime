@@ -40,13 +40,12 @@ Presentation of the up-to-date data from Gaming of a lifetime project""")
 st.write(df_raw)
 
 #str cleaning & add console tag
-df = str_cleaning(df_raw)
+df_vg = str_cleaning(df_raw)
 
-df_console_raw, console_list = create_console_list(df)
+df_console_raw, console_list = create_console_list(df_vg)
 
 #str cleaning & add console tag
-df_console = pd.DataFrame(console_list)
-add_console_tag(df_vg_cl)
+df_console = add_console_tag(df_console_raw)
 
 #create sliders
 st.sidebar.header("select console")

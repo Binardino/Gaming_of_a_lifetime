@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#%%
 """
 Created on Sat May 6 16:04:01 2023
 
@@ -21,14 +22,14 @@ from script.python.functions.data_wrangling import *
 from script.python.functions.visualisation_tools import *
 
 #import data
-@st.cache_data
+#@st.cache_data
 def get_data_csv(path):
     return pd.read_csv(path)
 
-@st.cache_data
+#st.cache_data
 def get_data_sql(query, engine):
     return pd.read_sql(query=query, con=engine)
-
+#%%
 #read df
 df_raw = get_data_csv('data/df_vg_local_csv.csv')
 
@@ -38,15 +39,15 @@ st.markdown("""
 Presentation of the up-to-date data from Gaming of a lifetime project""")
 
 st.write(df_raw)
-
+#%%
 #str cleaning & add console tag
 df_vg = str_cleaning(df_raw)
 
-df_console_raw, console_list = create_console_list(df_vg)
+df_console_raw, console_list = clean_df_list(df_vg, 'console')
 
 #str cleaning & add console tag
 df_console = add_console_tag(df_console_raw)
-
+#%%
 #create sliders
 st.sidebar.header("select console")
 sidebar_console = st.sidebar.multiselect('Consoles available', #label 
@@ -65,7 +66,7 @@ st.write(sidebar_hours)
 
 st.write(sidebar_hours[0])
 st.write(sidebar_hours[1])
-
+#%%
 #creates masks from the sidebar selection widgets
 mask_console = df_vg['console'].isin(sidebar_console)
 
@@ -87,9 +88,16 @@ df_console_count = df_console.loc[df_console['console'].isin(
                                                               ).sort_values('count', ascending=False)
 
 st.write(df_console_count)
-
+#%%
 #treemap console brand
-st.markdown("""Treemap of amount of games per console - brand & model""")
+st.subheader("""Treemap of amount of games per console - brand & model""")
+
+st.caption("""Using PyPlot dynamic Treemap to map, for each console and related brand, how many games have been played on each platform
+(Encompassed PNG static image below, but availabe dynamic PyPlot chart version on [linked Google Colab]().
+Below 2 PyPlot version : 
+- the Dynamic version (for online usage) with Hover effect - displaying information when hovering over the chart
+- Static version with always on information (adding specific params) - version saved as PNG for local displaying
+""")
 
 fig_console = px.treemap(data_frame=df_console_count, 
                          path=['brand', 'console'], 
@@ -100,8 +108,30 @@ fig_console = px.treemap(data_frame=df_console_count,
                                              'Nintendo': '#C90104' , 
                                              'Sega':'#d787ff', 
                                              'Android':'#3DDC84'},
-                         title='Amount of game played per consoles - organized per console brand',
+                         title='Amount of game played per consoles - organised per console brand',
                          width=1000, height=750
                         )
 
 st.plotly_chart(fig_console)
+
+#%%
+#treemap game type
+dfga , game_list = clean_df_list(subdf_filter, 'game_type')
+
+dfga_count = dfga.groupby('game_type').agg({'game_type':'count'}
+                                           ).rename(columns={'game_type':'count'}).reset_index()
+
+st.subheader("""Treemap of amount of games per types""")
+
+st.caption("""Using PyPlot Treemap to plot the amount of game played by types of games - classifcation on all consoles combined""")
+
+
+fig_game = px.treemap(data_frame=dfga_count,
+                      path=['game_type'],
+                      values='count',
+                      title='Count Games per types',
+                      width=1000, height=750)
+
+st.plotly_chart(fig_game)
+
+# %%

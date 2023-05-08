@@ -13,15 +13,16 @@ def str_cleaning(df):
     """cleaning str in columns to perform further analysis"""
     df['game_type'] = df['game_type'].str.replace(' / ', '', regex=False)
     df['console'] = df['console'].str.replace(' / ', '', regex=False)
+    df['finished'] = df['finished'].map({0:False, 1:True})
     
     return df
 
 #%%
-def create_console_list(df):
-    df_console_raw = pd.DataFrame(df['console'])
-    df_console_raw['console'] = df_console_raw['console'].str.split(pat='|')
-    df_console_raw = df_console_raw.explode('console').reset_index(drop=True)
-    console_list = df_console_raw['console'].unique().tolist()
+def clean_df_list(df, column):
+    df_console_raw = pd.DataFrame(df[column])
+    df_console_raw[column] = df_console_raw[column].str.split(pat='|')
+    df_console_raw = df_console_raw.explode(column).reset_index(drop=True)
+    console_list = df_console_raw[column].unique().tolist()
 
     return df_console_raw, console_list
 

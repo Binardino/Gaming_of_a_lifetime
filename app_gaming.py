@@ -155,4 +155,21 @@ st.subheader("""Catplot of hours played per console""")
 fig_cat = plt.figure(figsize=(13, 5))
 sns.catplot(x='console', y='hours_played', kind='boxen',height=7,aspect=3, data=df_1_console)
 
-# %%
+st.pyplot(fig_cat)
+#%% 
+# catplot of hours played
+st.subheader("""Distplot to measure how many games a year I played
+
+Checking below on which years have I been playing the most. Being born in 1987, I played the most, as a teenager & in my late 20s up untill now ;
+
+during mid 1990s (on Megadrive & PC mainly) up to the mid-2000s (on PS2 & PC)
+during my college year, I dropped down heavily on playing (just some random PC & Wii gaming sessions here & there)
+starting mid-2010s, when I started my professional life, I got myself a PS3 & PS4 & catched up on all crazy games I haven't had a chance to play""")
+
+fig_dis_year = plt.figure()
+df_vg['played_year'].hist(bins=25)
+plt.title('Amount of games played per year',fontsize=15)
+
+st.pyplot(fig_dis_year)
+
+#%%

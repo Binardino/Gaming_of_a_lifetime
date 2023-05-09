@@ -173,3 +173,16 @@ plt.title('Amount of games played per year',fontsize=15)
 st.pyplot(fig_dis_year)
 
 #%%
+# distplot publish year
+st.subheader("""Distplot to measure whether I played a game right when it realises
+
+Checking below how much time is there between a game releases and me playing it. In my early years, I waited several years before playing it :
+
+logically, most of early Nintendo & Sega games released in the late 80s, when I was obviously too young to buy & play them
+except for the gap in 2008-2013 when I seldom played, from 2014 onwards, I had the tendency of playing a game closely after its release""")
+
+fig_publish = sns.distplot(df_vg['published_year'], bins=30)
+sns.distplot(df_vg['played_year'], bins=30)
+plt.title('Difference between Publication Year & Year I played it')
+
+st.pyplot(fig_publish)

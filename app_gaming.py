@@ -148,5 +148,11 @@ plt.title('Distribution of hours played per game', fontsize=15)
 ax.xaxis.set_major_locator(ticker.MultipleLocator(15)) #setting xticks to 15
 
 st.pyplot(fig_distplot)
+#%% 
+# catplot of hours played
+st.subheader("""Catplot of hours played per console""")
+
+fig_cat = plt.figure(figsize=(13, 5))
+sns.catplot(x='console', y='hours_played', kind='boxen',height=7,aspect=3, data=df_1_console)
 
 # %%

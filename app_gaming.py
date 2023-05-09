@@ -133,5 +133,20 @@ fig_game = px.treemap(data_frame=dfga_count,
                       width=1000, height=750)
 
 st.plotly_chart(fig_game)
+#%% **Distplot to measure the distribution of hours played by game**
+st.subheader("""Distplot to measure the distribution of hours played by game""")
+
+st.caption("""I consider a game to be a good one whenever I spend more than 15-20 hours on it.
+Especially when I pay full price for a game, I expect it to be at least 30-40 hours long, if not I consider it a scam.
+
+Below distplot illustrates I spent in general between 15 & 30 for most of the games I played""")
+
+fig_distplot = plt.figure(figsize=(13, 5))
+ax = sns.distplot(df_vg['hours_played'], bins=50)
+
+plt.title('Distribution of hours played per game', fontsize=15)
+ax.xaxis.set_major_locator(ticker.MultipleLocator(15)) #setting xticks to 15
+
+st.pyplot(fig_distplot)
 
 # %%

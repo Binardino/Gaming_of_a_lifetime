@@ -45,8 +45,6 @@ df_vg = str_cleaning(df_raw)
 
 df_console_raw, console_list = clean_df_list(df_vg, 'console')
 
-#str cleaning & add console tag
-df_console = add_console_tag(df_console_raw)
 #%%
 #create sliders
 st.sidebar.header("select console")
@@ -61,11 +59,6 @@ sidebar_hours = st.sidebar.slider('hours played', #label
                                   int(df_vg.hours_played.max()),
                                   (int(df_vg.hours_played.min()), int(df_vg.hours_played.max())), #value
                                   1) #step
-
-st.write(sidebar_hours)
-
-st.write(sidebar_hours[0])
-st.write(sidebar_hours[1])
 #%%
 #creates masks from the sidebar selection widgets
 mask_console = df_vg['console'].isin(sidebar_console)
@@ -74,19 +67,31 @@ mask_console = df_vg['console'].isin(sidebar_console)
 mask_hours = df_vg['hours_played'].value_counts().between(sidebar_hours[0],
                                                           sidebar_hours[1]).to_frame()
 
-#mask_hours = mask_hours[mask_hours['hours_played'] == 1].index.to_list()
-mask_hours = df_vg['hours_played'].isin(sidebar_console)
+mask_hours = df_vg['hours_played'].between(sidebar_hours[0],sidebar_hours[1])
 
+st.write('sidebar_hours[0]', sidebar_hours[0])
+st.write('sidebar_hours[1]',sidebar_hours[1])
+
+#mask_hours = mask_hours[mask_hours['hours_played'] == 1].index.to_list()
+#mask_hours = mask_hours['hours_played'].index.to_list()
+st.write("mask_hours")
+st.write(mask_hours)
+#mask_hours = df_vg['hours_played'].isin(mask_hours)
+#st.write(mask_hours)
 #apply mask
-subdf_filter = df_vg[mask_console] # & mask_hours]
+subdf_filter = df_vg[mask_console & mask_hours].reset_index(drop=True)
+st.markdown("""filtered df""")
 st.write(subdf_filter)
+
+#%%
+#str cleaning & add console tag
+df_console_raw, temp_lis = clean_df_list(subdf_filter, 'console')
+df_console = add_console_tag(df_console_raw)
 
 df_console_count = df_console.loc[df_console['console'].isin(
                                     subdf_filter['console'])].groupby(['console', 'brand']
-                                            ).size(
-                                                ).reset_index(name='count'
-                                                              ).sort_values('count', ascending=False)
-
+                                            ).size().sort_values(ascending=False).reset_index(name='count')
+st.markdown("""df_console_count""")
 st.write(df_console_count)
 #%%
 #treemap console brand

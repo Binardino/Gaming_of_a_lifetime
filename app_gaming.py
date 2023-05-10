@@ -153,7 +153,7 @@ st.pyplot(fig_distplot)
 st.subheader("""Catplot of hours played per console""")
 
 fig_cat = plt.figure(figsize=(13, 5))
-sns.catplot(x='console', y='hours_played', kind='boxen',height=7,aspect=3, data=df_1_console)
+sns.catplot(x='console', y='hours_played', kind='boxen',height=7,aspect=3, data=df_vg)
 
 st.pyplot(fig_cat)
 #%% 
@@ -181,8 +181,30 @@ Checking below how much time is there between a game releases and me playing it.
 logically, most of early Nintendo & Sega games released in the late 80s, when I was obviously too young to buy & play them
 except for the gap in 2008-2013 when I seldom played, from 2014 onwards, I had the tendency of playing a game closely after its release""")
 
-fig_publish = sns.distplot(df_vg['published_year'], bins=30)
+fig_publish = plt.figure()
+
+sns.distplot(df_vg['published_year'], bins=30)
 sns.distplot(df_vg['played_year'], bins=30)
 plt.title('Difference between Publication Year & Year I played it')
 
 st.pyplot(fig_publish)
+
+#%%
+st.subheader("""Boxplot of personal scores spread per consoles
+TBW
+""")
+
+#WIP add clean console 
+df_vg['console'] = df_vg['console'].apply(lambda x: x.split('|')[0] if x else x)
+
+df_vg = add_console_tag(df_vg)
+
+fig_score_console = px.box(df_vg,
+                            x='console', y='perso_score', 
+                            width=1000, height=400,
+                            color='brand', 
+                            color_discrete_map={'Nintendo':'red', 'PlayStation':'blue', 'Microsoft':'green'}
+                            )
+
+st.plotly_chart(fig_score_console)
+# %%

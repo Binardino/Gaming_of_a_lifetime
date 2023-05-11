@@ -7,11 +7,16 @@ Created on Sat May 6 16:04:01 2023
 # Imports
 import streamlit as st
 import pandas as pd
+import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
 import os
-#from ..script.python.functions.data_wrangling import *
+import sys
+# adding Folder_2 to the system path
+sys.path.insert(1, '..')
+from ..script.python.functions import *
 
 #import data
 @st.cache_data
@@ -42,14 +47,49 @@ sidebar_console = st.sidebar.multiselect('Consoles available', #label
 
 st.sidebar.header('hours played')
 sidebar_hours = st.sidebar.slider('hours played', #label 
-                                 int(df_vg.hours_played.min()),
+                                  int(df_vg.hours_played.min()),
                                   int(df_vg.hours_played.max()),
+                                  (int(df_vg.hours_played.min()), int(df_vg.hours_played.max())), #value
                                   1) #step
+
+st.write(sidebar_hours)
+
+st.write(sidebar_hours[0])
+st.write(sidebar_hours[1])
 
 #creates masks from the sidebar selection widgets
 mask_console = df_vg['console'].isin(sidebar_console)
+
+#filter with hours in range of selected hours
 mask_hours = df_vg['hours_played'].value_counts().between(sidebar_hours[0],
                                                           sidebar_hours[1]).to_frame()
+
+#mask_hours = mask_hours[mask_hours['hours_played'] == 1].index.to_list()
+mask_hours = df_vg['hours_played'].isin(sidebar_console)
+
 #apply mask
-subdf_filter = df_vg[mask_console & mask_hours]
+subdf_filter = df_vg[mask_console] # & mask_hours]
 st.write(subdf_filter)
+
+df_consoles =  pd.DataFrame(pd.Series(df_vg['console'].str.split(pat='|').sum()).value_counts())
+
+df_consoles.reset_index(inplace=True)
+
+df_consoles.columns = ['console', 'count']
+
+condlist = [df_consoles['console'].str.startswith('PS'),df_consoles['console'].str.startswith('PC'),
+            df_consoles['console'].str.startswith('Mega'), df_consoles['console'].str.startswith('Android')]
+choicelist = ['PlayStation', 'Microsoft', 'Sega', 'Android']
+df_consoles['brand'] = np.select(condlist, choicelist, default='Nintendo')
+
+fig_console = px.treemap(data_frame=df_consoles, 
+                         path=['brand', 'console'], 
+                         values='count', 
+                         color='brand',
+                         color_discrete_map={'PlayStation' : '#0D0BDE', 'Microsoft' :'#008D00', 'Nintendo': '#C90104' , 
+                                             'Sega':'#d787ff', 'Android':'#3DDC84'},
+                         title='Amount of game played per consoles - organized per console brand',
+                         width=1000, height=750
+                        )
+
+st.plotly_chart(fig_console)

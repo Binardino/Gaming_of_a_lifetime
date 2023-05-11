@@ -147,7 +147,7 @@ Especially when I pay full price for a game, I expect it to be at least 30-40 ho
 Below distplot illustrates I spent in general between 15 & 30 for most of the games I played""")
 
 fig_distplot = plt.figure(figsize=(13, 5))
-ax = sns.distplot(df_vg['hours_played'], bins=50)
+ax = sns.distplot(subdf_filter['hours_played'], bins=50)
 
 plt.title('Distribution of hours played per game', fontsize=15)
 ax.xaxis.set_major_locator(ticker.MultipleLocator(15)) #setting xticks to 15
@@ -158,7 +158,7 @@ st.pyplot(fig_distplot)
 st.subheader("""Catplot of hours played per console""")
 
 fig_cat = plt.figure(figsize=(13, 5))
-sns.catplot(x='console', y='hours_played', kind='boxen',height=7,aspect=3, data=df_vg)
+sns.catplot(x='console', y='hours_played', kind='boxen',height=7,aspect=3, data=subdf_filter)
 
 st.pyplot(fig_cat)
 #%% 
@@ -172,7 +172,7 @@ during my college year, I dropped down heavily on playing (just some random PC &
 starting mid-2010s, when I started my professional life, I got myself a PS3 & PS4 & catched up on all crazy games I haven't had a chance to play""")
 
 fig_dis_year = plt.figure()
-df_vg['played_year'].hist(bins=25)
+subdf_filter['played_year'].hist(bins=25)
 plt.title('Amount of games played per year',fontsize=15)
 
 st.pyplot(fig_dis_year)
@@ -188,8 +188,8 @@ except for the gap in 2008-2013 when I seldom played, from 2014 onwards, I had t
 
 fig_publish = plt.figure()
 
-sns.distplot(df_vg['published_year'], bins=30)
-sns.distplot(df_vg['played_year'], bins=30)
+sns.distplot(subdf_filter['published_year'], bins=30)
+sns.distplot(subdf_filter['played_year'], bins=30)
 plt.title('Difference between Publication Year & Year I played it')
 
 st.pyplot(fig_publish)
@@ -200,9 +200,9 @@ TBW
 """)
 
 #WIP add clean console 
-df_vg['console'] = df_vg['console'].apply(lambda x: x.split('|')[0] if x else x)
+subdf_filter['console'] = subdf_filter['console'].apply(lambda x: x.split('|')[0] if x else x)
 
-df_vg = add_console_tag(df_vg)
+df_vg = add_console_tag(subdf_filter)
 
 fig_score_console = px.box(df_vg,
                             x='console', y='perso_score', 
@@ -213,3 +213,10 @@ fig_score_console = px.box(df_vg,
 
 st.plotly_chart(fig_score_console)
 # %%
+#WIP add clean console 
+fig_scatterscore = px.scatter(subdf_filter, 
+                            x='hours_played', y='perso_score', 
+                            color='console',
+                            hover_name='game_name')
+
+st.plotly_chart(fig_scatterscore)

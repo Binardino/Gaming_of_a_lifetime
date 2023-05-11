@@ -147,7 +147,7 @@ Especially when I pay full price for a game, I expect it to be at least 30-40 ho
 Below distplot illustrates I spent in general between 15 & 30 for most of the games I played""")
 
 fig_distplot = plt.figure(figsize=(13, 5))
-ax = sns.distplot(subdf_filter['hours_played'], bins=50)
+ax = sns.histplot(subdf_filter['hours_played'], kde=True , bins=50)
 
 plt.title('Distribution of hours played per game', fontsize=15)
 ax.xaxis.set_major_locator(ticker.MultipleLocator(15)) #setting xticks to 15
@@ -188,8 +188,8 @@ except for the gap in 2008-2013 when I seldom played, from 2014 onwards, I had t
 
 fig_publish = plt.figure()
 
-sns.distplot(subdf_filter['published_year'], bins=30)
-sns.distplot(subdf_filter['played_year'], bins=30)
+sns.histplot(subdf_filter['published_year'], kde=True , bins=30)
+sns.histplot(subdf_filter['played_year'], kde=True, bins=30)
 plt.title('Difference between Publication Year & Year I played it')
 
 st.pyplot(fig_publish)

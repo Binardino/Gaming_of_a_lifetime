@@ -55,7 +55,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('The Legend of Zelda: A Link to the Past','SNES','Action-Adventure',false,1991,2020,20,91,false),
 	 ('The Legend of Zelda: Twilight Princess','Wii','Action-Adventure',false,2006,2010,40,98,false),
 	 ('The Legend of Zelda: Link''s Awakening','GameBoy','Action-Adventure',true,1993,2001,20,90,false),
-	 ('The Legend of Zelda: Breath to the Wild','Switch','Action-Adventure|Open World',false,2016,2020,110,99,true),
+	 ('The Legend of Zelda: Breath to the Wild','Switch','Action-Adventure|Open World',true,2016,2020,110,99,true),
 	 ('The Legend of Zelda: Ocarina of Time','N64','Action-Adventure',false,1998,2017,20,92,false),
 	 ('Red Dead Redemption 2','PS4','Action-Adventure|Open World',true,2018,2018,60,96,false),
 	 ('Spiderman','PS4','Action|Platformer',true,2018,2020,30,90,false),

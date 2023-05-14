@@ -6,16 +6,17 @@ services:
     environment:
       env_file: variables.env
     volumes:
-      - db_data:/var/lib/postgres
+      - db_data:/var/lib/postgres/data
     restart: always
     ports:
-      - "5000:5000"
+      - "5432:5432"
 
   app:
     depends_on:
       - db
     images: binardino/gaming_of_a_lifetime:latest
+    restart: always
     ports:
-      - "8000:80"
+      - "8501:8501"
 
 volumes: db_data: {}

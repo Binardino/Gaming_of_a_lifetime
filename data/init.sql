@@ -1,3 +1,12 @@
+-- Create a user with a secure password
+CREATE USER ${POSTGRES_USER} WITH ENCRYPTED PASSWORD '${POSTGRES_PASSWORD}';
+
+-- Create a database
+CREATE DATABASE ${POSTGRES_DB};
+
+-- Grant privileges to the user on the database
+GRANT ALL PRIVILEGES ON DATABASE ${POSTGRES_DB} TO ${POSTGRES_USER};
+
 -- public.gaming_lifetime definition
 
 -- Drop table

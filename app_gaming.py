@@ -38,6 +38,12 @@ def create_slider_numeric(label, column, step):
                                   step) #step
     return slider_numeric
 
+def create_slider_multiselect(label, column):
+    slider_multiselect = st.sidebar.multiselect(label, #label 
+                                  column, #options
+                                  column) #default
+    return slider_multiselect
+
 #%%
 #read df
 df_raw = get_data_csv('db_data/df_vg_local_csv.csv')

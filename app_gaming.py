@@ -195,12 +195,13 @@ except for the gap in 2008-2013 when I seldom played, from 2014 onwards, I had t
 
 fig_publish = plt.figure()
 
-sns.histplot(subdf_filter['published_year'], kde=True , bins=30)
-sns.histplot(subdf_filter['played_year'], kde=True, bins=30)
+
+sns.histplot(subdf_filter['published_year'], kde=True , bins=30, color=['red'])
+sns.histplot(subdf_filter['played_year'], kde=True ,bins=30,  color=['blue'])
+plt.xlabel('Years')
 plt.title('Difference between Publication Year & Year I played it')
 
 st.pyplot(fig_publish)
-
 #%%
 st.subheader("""Boxplot of personal scores spread per consoles
 TBW
@@ -221,6 +222,9 @@ fig_score_console = px.box(df_vg,
 st.plotly_chart(fig_score_console)
 # %%
 #WIP add clean console 
+st.subheader("""Scatterplot of played hours per personal scores
+TBW
+""")
 fig_scatterscore = px.scatter(subdf_filter, 
                             x='hours_played', y='perso_score', 
                             color='console',

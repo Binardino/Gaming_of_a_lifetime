@@ -75,22 +75,18 @@ sidebar_perso_score = create_slider_numeric('perso score', df_vg.perso_score, 1)
 mask_console = df_vg['console'].isin(sidebar_console)
 
 #filter with hours in range of selected hours
-mask_hours = df_vg['hours_played'].value_counts().between(sidebar_hours[0],
-                                                          sidebar_hours[1]).to_frame()
-
 mask_hours = df_vg['hours_played'].between(sidebar_hours[0],sidebar_hours[1])
 
 st.write('sidebar_hours[0]', sidebar_hours[0])
 st.write('sidebar_hours[1]',sidebar_hours[1])
 
-#mask_hours = mask_hours[mask_hours['hours_played'] == 1].index.to_list()
-#mask_hours = mask_hours['hours_played'].index.to_list()
 st.write("mask_hours")
 st.write(mask_hours)
-#mask_hours = df_vg['hours_played'].isin(mask_hours)
-#st.write(mask_hours)
-#apply mask
-subdf_filter = df_vg[mask_console & mask_hours].reset_index(drop=True)
+#mask score
+mask_perso_score = df_vg['perso_score'].between(sidebar_perso_score[0],sidebar_perso_score[1])
+#apply mask to dataset
+
+subdf_filter = df_vg[mask_console & mask_hours & mask_perso_score].reset_index(drop=True)
 st.markdown("""filtered df""")
 st.write(subdf_filter)
 

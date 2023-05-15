@@ -29,9 +29,18 @@ def get_data_csv(path):
 #st.cache_data
 def get_data_sql(query, engine):
     return pd.read_sql(query=query, con=engine)
+
+def create_slider_numeric(label, column, step):
+    slider_numeric = st.sidebar.slider(label, #label 
+                                  int(column.min()),
+                                  int(column.max()),
+                                  (int(column.min()), int(column.max())), #value
+                                  step) #step
+    return slider_numeric
+
 #%%
 #read df
-df_raw = get_data_csv('data/df_vg_local_csv.csv')
+df_raw = get_data_csv('db_data/df_vg_local_csv.csv')
 
 #display
 st.title('Gaming of a lifetime df display')
@@ -48,17 +57,19 @@ df_console_raw, console_list = clean_df_list(df_vg, 'console')
 #%%
 #create sliders
 st.sidebar.header("select console")
+#sidebar console text to select
 sidebar_console = st.sidebar.multiselect('Consoles available', #label 
                                          console_list,
                                          console_list
                                          ) #list
 
 st.sidebar.header('hours played')
-sidebar_hours = st.sidebar.slider('hours played', #label 
-                                  int(df_vg.hours_played.min()),
-                                  int(df_vg.hours_played.max()),
-                                  (int(df_vg.hours_played.min()), int(df_vg.hours_played.max())), #value
-                                  1) #step
+#slider hours played to select
+sidebar_hours = create_slider_numeric('hours played', df_vg.hours_played, 1)
+
+st.sidebar.header('personal score')
+#slider personal score to select
+sidebar_perso_score = create_slider_numeric('perso score', df_vg.perso_score, 1)                        
 #%%
 #creates masks from the sidebar selection widgets
 mask_console = df_vg['console'].isin(sidebar_console)

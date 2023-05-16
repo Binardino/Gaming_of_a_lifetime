@@ -44,6 +44,22 @@ def create_slider_multiselect(label, column):
                                   column) #default
     return slider_multiselect
 
+def create_mask(df, column, slider, mapping_dict):
+    """
+    Filtering the dataset based on selection from the streamlit slider.
+    Because some values are concataned (eg. "PC|PS4" ; "JRPG|Open-Word"), the split is made to display only unique values in the slider.
+    But there is still need to back propragate the filtered values into the original dataset.
+    Input  :  
+    Output : df mask with 
+    """
+    custom_mask = pd.Series(False, index=df.index)
+
+    for value in slider:
+        selection   = mapping_dict.get(value)
+        custom_mask = custom_mask | df[column].isin(slider) | df[column].str.contains(value)
+     
+    return custom_mask 
+
 #%%
 #read df
 df_raw = get_data_csv('db_data/df_vg_local_csv.csv')

@@ -106,6 +106,11 @@ sidebar_gametype = create_slider_multiselect('Game genre', #label
 #creates masks from the sidebar selection widgets
 mask_console = create_mask(df_vg, 'console', sidebar_console, dict_console)
 
+st.write("mask_console")
+st.write(mask_console)
+#creates masks from the sidebar selection widgets
+mask_gametype = create_mask(df_vg, 'game_type', sidebar_gametype, dict_genre)
+
 #filter with hours in range of selected hours
 mask_hours = df_vg['hours_played'].between(sidebar_hours[0],sidebar_hours[1])
 
@@ -116,9 +121,13 @@ st.write("mask_hours")
 st.write(mask_hours)
 #mask score
 mask_perso_score = df_vg['perso_score'].between(sidebar_perso_score[0],sidebar_perso_score[1])
-#apply mask to dataset
 
-subdf_filter = df_vg[mask_console & mask_hours & mask_perso_score].reset_index(drop=True)
+#mask finish
+mask_finish = df_vg['finished'].isin(sidebar_finish)
+#apply mask to dataset
+subdf_filter = df_vg[mask_console & mask_hours & mask_finish
+                    & mask_perso_score & mask_gametype].reset_index(drop=True)#& mask_perso_score
+
 st.markdown("""filtered df""")
 st.write(subdf_filter)
 

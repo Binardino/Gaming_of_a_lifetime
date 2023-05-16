@@ -23,8 +23,14 @@ def clean_df_list(df, column):
     df_console_raw[column] = df_console_raw[column].str.split(pat='|')
     df_console_raw = df_console_raw.explode(column).reset_index(drop=True)
     console_list = df_console_raw[column].unique().tolist()
-
-    return df_console_raw, console_list
+    
+    # Create a mapping dictionary for individual values to concatenated values
+    mapping_dict = {}
+    for value in console_list:
+        concat_values = df[df[column].str.contains(value)][column].unique().tolist()
+        mapping_dict[value] = concat_values
+    
+    return df_console_raw, console_list, mapping_dict
 
 #%%
 def add_console_tag(df):

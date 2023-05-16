@@ -91,10 +91,20 @@ sidebar_hours = create_slider_numeric('hours played', df_vg.hours_played, 1)
 
 st.sidebar.header('personal score')
 #slider personal score to select
-sidebar_perso_score = create_slider_numeric('perso score', df_vg.perso_score, 1)                        
+sidebar_perso_score = create_slider_numeric('perso score', df_vg.perso_score, 1)
+
+#sidebar finish Boolean to select
+sidebar_finish = create_slider_multiselect('finished game', df_vg.finished.unique())    
+# st.sidebar.header("select console")
+#sidebar console text to select
+sidebar_console = create_slider_multiselect('Consoles available', #label 
+                                         console_list) #default
+#sidebar game type text to select
+sidebar_gametype = create_slider_multiselect('Game genre', #label 
+                                         genre_list) #default               
 #%%
 #creates masks from the sidebar selection widgets
-mask_console = df_vg['console'].isin(sidebar_console)
+mask_console = create_mask(df_vg, 'console', sidebar_console, dict_console)
 
 #filter with hours in range of selected hours
 mask_hours = df_vg['hours_played'].between(sidebar_hours[0],sidebar_hours[1])

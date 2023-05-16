@@ -74,7 +74,11 @@ st.write(df_raw)
 #str cleaning & add console tag
 df_vg = str_cleaning(df_raw)
 
-df_console_raw, console_list = clean_df_list(df_vg, 'console')
+df_console_raw, console_list, dict_console = clean_df_list(df_vg, 'console')
+
+df_genre_raw, genre_list, dict_genre = clean_df_list(df_vg, 'game_type')
+
+st.write(df_genre_raw)
 
 #%%
 #create sliders
@@ -133,7 +137,7 @@ st.write(subdf_filter)
 
 #%%
 #str cleaning & add console tag
-df_console_raw, temp_lis = clean_df_list(subdf_filter, 'console')
+df_console_raw, temp_lis, dict_console_temp = clean_df_list(subdf_filter, 'console')
 df_console = add_console_tag(df_console_raw)
 
 df_console_count = df_console.loc[df_console['console'].isin(
@@ -169,7 +173,7 @@ st.plotly_chart(fig_console)
 
 #%%
 #treemap game type
-dfga , game_list = clean_df_list(subdf_filter, 'game_type')
+dfga , game_list, game_list_temp = clean_df_list(subdf_filter, 'game_type')
 
 dfga_count = dfga.groupby('game_type').agg({'game_type':'count'}
                                            ).rename(columns={'game_type':'count'}).reset_index()

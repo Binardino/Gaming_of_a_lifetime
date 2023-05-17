@@ -299,4 +299,12 @@ if selection_scatterscore == 'plotly':
                                 color='console',
                                 hover_name='game_name')
 
-st.plotly_chart(fig_scatterscore)
+    st.plotly_chart(fig_scatterscore)
+
+if selection_scatterscore == 'seaborn':
+    fig_scatter = plt.figure(figsize=(13, 5))
+    
+    sns.scatterplot(x='hours_played', y='perso_score', hue='console', data=subdf_filter)
+# plt.title()
+    st.pyplot(fig_scatter)
+

@@ -218,7 +218,7 @@ elif selection_hours == 'plotly':
 st.subheader("""Catplot of hours played per console""")
 
 fig_cat = plt.figure(figsize=(13, 5))
-sns.catplot(x='console', y='hours_played', kind='boxen',height=7,aspect=3, data=subdf_filter)
+sns.boxenplot(x='console', y='hours_played', data=subdf_filter)
 
 st.pyplot(fig_cat)
 #%% 

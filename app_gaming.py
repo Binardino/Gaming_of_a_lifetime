@@ -198,13 +198,21 @@ Especially when I pay full price for a game, I expect it to be at least 30-40 ho
 
 Below distplot illustrates I spent in general between 15 & 30 for most of the games I played""")
 
-fig_distplot = plt.figure(figsize=(13, 5))
-ax = sns.histplot(subdf_filter['hours_played'], kde=True , bins=50)
+selection_hours = st.selectbox('select viz library', ['plotly', 'seaborn'],key=0)
+if selection_hours == 'seaborn':
+    fig_distplot = plt.figure(figsize=(13, 5))
+    ax = sns.histplot(subdf_filter['hours_played'], kde=True , bins=50)
 
-plt.title('Distribution of hours played per game', fontsize=15)
-ax.xaxis.set_major_locator(ticker.MultipleLocator(15)) #setting xticks to 15
+    plt.title('Distribution of hours played per game', fontsize=15)
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(15)) #setting xticks to 15
 
-st.pyplot(fig_distplot)
+    st.pyplot(fig_distplot)
+
+elif selection_hours == 'plotly':
+    fig_px_histo_hours = px.histogram(subdf_filter, x="hours_played",# y="hours_played", #color="sex",
+                    marginal="box", nbins=90,# or violin, rug
+                    hover_data=subdf_filter.columns)
+    st.plotly_chart(fig_px_histo_hours)
 #%% 
 # catplot of hours played
 st.subheader("""Catplot of hours played per console""")
@@ -223,11 +231,20 @@ during mid 1990s (on Megadrive & PC mainly) up to the mid-2000s (on PS2 & PC)
 during my college year, I dropped down heavily on playing (just some random PC & Wii gaming sessions here & there)
 starting mid-2010s, when I started my professional life, I got myself a PS3 & PS4 & catched up on all crazy games I haven't had a chance to play""")
 
-fig_dis_year = plt.figure()
-subdf_filter['played_year'].hist(bins=25)
-plt.title('Amount of games played per year',fontsize=15)
+selection_dist_year = st.selectbox('select viz library', ['plotly', 'seaborn'],key=1)
+if selection_dist_year == 'seaborn':
+    fig_dis_year = plt.figure()
+    subdf_filter['played_year'].hist(bins=25)
+    plt.title('Amount of games played per year',fontsize=15)
 
-st.pyplot(fig_dis_year)
+    st.pyplot(fig_dis_year)
+
+elif selection_dist_year == 'plotly':
+    fig_px_histo_years = px.histogram(subdf_filter, x="played_year",# y="hours_played", #color="sex",
+                    marginal="box", nbins=90,# or violin, rug
+                    hover_data=subdf_filter.columns)
+    # fig.show()
+    st.plotly_chart(fig_px_histo_years)
 
 #%%
 # distplot publish year
@@ -257,22 +274,29 @@ subdf_filter['console'] = subdf_filter['console'].apply(lambda x: x.split('|')[0
 
 df_vg = add_console_tag(subdf_filter)
 
-fig_score_console = px.box(df_vg,
-                            x='console', y='perso_score', 
-                            width=1000, height=400,
-                            color='brand', 
-                            color_discrete_map={'Nintendo':'red', 'PlayStation':'blue', 'Microsoft':'green'}
-                            )
 
-st.plotly_chart(fig_score_console)
+selection_score_console = st.selectbox('select viz library', ['plotly', 'seaborn'],key=2)
+
+if selection_score_console == 'plotly':
+    fig_score_console = px.box(df_vg,
+                                x='console', y='perso_score', 
+                                width=1000, height=400,
+                                color='brand', 
+                                color_discrete_map={'Nintendo':'red', 'PlayStation':'blue', 'Microsoft':'green'}
+                                )
+
+    st.plotly_chart(fig_score_console)
 # %%
 #WIP add clean console 
 st.subheader("""Scatterplot of played hours per personal scores
 TBW
 """)
-fig_scatterscore = px.scatter(subdf_filter, 
-                            x='hours_played', y='perso_score', 
-                            color='console',
-                            hover_name='game_name')
+selection_scatterscore = st.selectbox('select viz library', ['plotly', 'seaborn'],key=3)
+
+if selection_scatterscore == 'plotly':
+    fig_scatterscore = px.scatter(subdf_filter, 
+                                x='hours_played', y='perso_score', 
+                                color='console',
+                                hover_name='game_name')
 
 st.plotly_chart(fig_scatterscore)

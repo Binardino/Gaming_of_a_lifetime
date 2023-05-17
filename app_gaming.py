@@ -308,3 +308,14 @@ if selection_scatterscore == 'seaborn':
 # plt.title()
     st.pyplot(fig_scatter)
 
+#%%
+st.subheader("""Boxplot of score per console
+
+Checking for each console the spread of score of each game Overall, PlayStation game have the highest score mean, whereas older games from NES & Megadrive have the lowest score mean
+TBW
+""")
+fig_boxscore = plt.figure(figsize=(13, 5))
+sns.boxenplot(data=subdf_filter, x='console', y='perso_score')
+sns.stripplot(data=subdf_filter, x='console', y='perso_score')
+
+st.pyplot(fig_boxscore)

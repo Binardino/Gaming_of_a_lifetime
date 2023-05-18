@@ -239,12 +239,15 @@ Checking below how much time is there between a game releases and me playing it.
 logically, most of early Nintendo & Sega games released in the late 80s, when I was obviously too young to buy & play them
 except for the gap in 2008-2013 when I seldom played, from 2014 onwards, I had the tendency of playing a game closely after its release""")
 
-fig_publish = plt.figure()
+fig_publish = plt.figure(figsize=(10,6))
 
 
-sns.histplot(subdf_filter['published_year'], kde=True , bins=30, color=['red'])
-sns.histplot(subdf_filter['played_year'], kde=True ,bins=30,  color=['blue'])
+sns.histplot(subdf_filter['published_year'], kde=True , bins=30, 
+             color=[0,.5,0],label='published_year')
+sns.histplot(subdf_filter['played_year'], kde=True ,bins=30,  
+             color=[0,0,1],label='played_year')
 plt.xlabel('Years')
+plt.legend(loc=2) #upper left
 plt.title('Difference between Publication Year & Year I played it')
 
 st.pyplot(fig_publish)

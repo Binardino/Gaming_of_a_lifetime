@@ -5,12 +5,14 @@ FROM postgres:latest
 COPY init.sql /docker-entrypoint-initdb.d/
 
 # Set environment variables
-ENV POSTGRES_USER=myuser
-ENV POSTGRES_PASSWORD=mypassword
-ENV POSTGRES_DB=mydatabase
+ENV POSTGRES_USER=${POSTGRES_USER}
+ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+ENV POSTGRES_DB=${POSTGRES_DB}
+ENV POSTGRES_HOST=${POSTGRES_HOST}
+ENV POSTGRES_PORT=${POSTGRES_PORT}
 
 # Mount a volume for persistent data
-VOLUME /var/lib/postgresql/data
+#VOLUME /var/lib/postgresql/data
 
 # Expose the PostgreSQL port
-EXPOSE 5432
+EXPOSE ${POSTGRES_PORT}

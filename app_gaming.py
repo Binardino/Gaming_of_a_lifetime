@@ -67,9 +67,8 @@ df_raw = get_data_csv('db_data/df_vg_local_csv.csv')
 #display
 st.title('Gaming of a lifetime df display')
 st.markdown("""
-Presentation of the up-to-date data from Gaming of a lifetime project""")
-
-st.write(df_raw)
+Presentation of the up-to-date data from Gaming of a lifetime project
+Update with applied filters""")
 #%%
 #str cleaning & add console tag
 df_vg = str_cleaning(df_raw)
@@ -77,17 +76,12 @@ df_vg = str_cleaning(df_raw)
 df_console_raw, console_list, dict_console = clean_df_list(df_vg, 'console')
 
 df_genre_raw, genre_list, dict_genre = clean_df_list(df_vg, 'game_type')
-
-st.write(df_genre_raw)
-
 #%%
 #create sliders
 st.sidebar.header("select console")
 #sidebar console text to select
-sidebar_console = st.sidebar.multiselect('Consoles available', #label 
-                                         console_list,
-                                         console_list
-                                         ) #list
+sidebar_console = create_slider_multiselect('Consoles available', #label 
+                                         console_list) #default
 
 st.sidebar.header('hours played')
 #slider hours played to select
@@ -99,10 +93,7 @@ sidebar_perso_score = create_slider_numeric('perso score', df_vg.perso_score, 1)
 
 #sidebar finish Boolean to select
 sidebar_finish = create_slider_multiselect('finished game', df_vg.finished.unique())    
-# st.sidebar.header("select console")
-#sidebar console text to select
-sidebar_console = create_slider_multiselect('Consoles available', #label 
-                                         console_list) #default
+
 #sidebar game type text to select
 sidebar_gametype = create_slider_multiselect('Game genre', #label 
                                          genre_list) #default               
@@ -110,19 +101,14 @@ sidebar_gametype = create_slider_multiselect('Game genre', #label
 #creates masks from the sidebar selection widgets
 mask_console = create_mask(df_vg, 'console', sidebar_console, dict_console)
 
-st.write("mask_console")
-st.write(mask_console)
+# st.write("mask_console")
+# st.write(mask_console)
 #creates masks from the sidebar selection widgets
 mask_gametype = create_mask(df_vg, 'game_type', sidebar_gametype, dict_genre)
 
 #filter with hours in range of selected hours
 mask_hours = df_vg['hours_played'].between(sidebar_hours[0],sidebar_hours[1])
 
-st.write('sidebar_hours[0]', sidebar_hours[0])
-st.write('sidebar_hours[1]',sidebar_hours[1])
-
-st.write("mask_hours")
-st.write(mask_hours)
 #mask score
 mask_perso_score = df_vg['perso_score'].between(sidebar_perso_score[0],sidebar_perso_score[1])
 
@@ -143,8 +129,6 @@ df_console = add_console_tag(df_console_raw)
 df_console_count = df_console.loc[df_console['console'].isin(
                                     subdf_filter['console'])].groupby(['console', 'brand']
                                             ).size().sort_values(ascending=False).reset_index(name='count')
-st.markdown("""df_console_count""")
-st.write(df_console_count)
 #%%
 #treemap console brand
 st.subheader("""Treemap of amount of games per console - brand & model""")

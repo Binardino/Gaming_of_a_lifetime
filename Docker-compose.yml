@@ -27,20 +27,13 @@ services:
     ports:
       - "${POSTGRES_PORT}:${POSTGRES_PORT}"
 
-  # app:
-  #   depends_on:
-  #     - db
-  #   images: binardino/gaming_of_a_lifetime:latest
-  #   restart: always
-  #   ports:
-  #     - "${STAPP_PORT}:${STAPP_PORT}"
-  python_script:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  app:
     depends_on:
       - db
-    command: python /script/testdb.py
+    images: binardino/gaming_of_a_lifetime:latest
+    restart: always
+    ports:
+      - "${STAPP_PORT}:${STAPP_PORT}"
 
 volumes:
   db_data_gaming:

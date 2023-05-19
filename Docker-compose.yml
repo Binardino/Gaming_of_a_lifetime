@@ -2,7 +2,7 @@ version: "3"
 
 services:
   db:
-    image : postgres
+    image: postgres
     environment:
       # env_file: dbcredentials.env
       - POSTGRES_USER=${POSTGRES_USER}
@@ -27,13 +27,20 @@ services:
     ports:
       - "${POSTGRES_PORT}:${POSTGRES_PORT}"
 
-  app:
+  # app:
+  #   depends_on:
+  #     - db
+  #   images: binardino/gaming_of_a_lifetime:latest
+  #   restart: always
+  #   ports:
+  #     - "${STAPP_PORT}:${STAPP_PORT}"
+  python_script:
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - db
-    images: binardino/gaming_of_a_lifetime:latest
-    restart: always
-    ports:
-      - "8501:8501"
+    command: python /script/testdb.py
 
 volumes:
   db_data_gaming:

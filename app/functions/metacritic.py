@@ -13,7 +13,7 @@ def import_metacritic(df):
     return df_join
 
 # Define a function to find the best match for a given game name
-def fuzzymatch_metacritic(game_name):
+def fuzzymatch_metacritic(game_name, df_vg):
     # Initialize variables to store the best match and its similarity score
     best_match = None
     best_similarity = 0

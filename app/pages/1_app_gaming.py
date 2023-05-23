@@ -19,28 +19,18 @@ import sys
 sys.path.append("..")
 dir_path = os.path.dirname(os.path.realpath(__file__))
 os.chdir(dir_path)
-# adding Folder_2 to the system path
-#sys.path.insert(1, '../script/python/functions')
-from script.python.functions.data_wrangling import *
-#from script.python.functions.db_connection import *
-from script.python.functions.visualisation_tools import *
-# %%
-# os.getcwd()
-# os.chdir('C://')
+from functions.data_wrangling import *
+from functions.db_connection import *
+from functions.visualisation_tools import *
 
-# print(os.getcwd())
-
-# dir_path = os.path.dirname(os.path.realpath(__file__))
-# print(dir_path)
-# os.chdir(dir_path)
-# print("new path", os.getcwd())
+st.set_page_config(page_title="Gaming EDA presentation")
 #%%
 #import data
-@st.cache_data
+# @st.cache_data
 def get_data_csv(path):
     return pd.read_csv(path)
 
-@st.cache_data
+# @st.cache_data
 def get_data_sql(query, engine):
     return pd.read_sql(query=query, con=engine)
 
@@ -77,7 +67,7 @@ def create_mask(df, column, slider, mapping_dict):
 #%%
 #read df
 # df_raw = get_data_csv('../db_data/df_vg_local_csv.csv')
-df_raw = get_data_csv('df_vg_local_csv.csv')
+df_raw = get_data_csv('../df_vg_local_csv.csv')
 
 #display
 st.title('Gaming of a lifetime df display')

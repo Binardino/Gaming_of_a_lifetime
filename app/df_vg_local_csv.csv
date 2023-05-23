@@ -1,0 +1,233 @@
+game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed
+Final Fantasy VI,SNES,JRPG,0,1994,2019,10,79,0
+Final Fantasy VII,PS1,JRPG,1,1997,2018,80,99,0
+Final Fantasy VIII,PS1,JRPG,1,1998,2000,70,95,0
+Final Fantasy IX,PS1,JRPG,1,2000,2019,70,95,0
+Final Fantasy X,PS2,JRPG,1,2000,2003,200,99,0
+Final Fantasy X-2,PS2,JRPG,1,2004,2004,50,86,0
+Final Fantasy XV,PS4,JRPG|Open World,1,2015,2017,80,95,0
+Final Fantasy VII Remake,PS4,JRPG,1,2020,2020,50,99,0
+The Witcher 3: Wild Hunt,PS4|PC,RPG|Open World,1,2015,2018,300,100,0
+The Witcher 2: Assassins of Kings,PC,RPG|Open World,0,2011,2018,15,85,0
+The Witcher,PC,RPG|Open World,0,2008,2018,15,85,0
+Grand Theft Auto,PC,Open World|Action-Adventure,1,1997,1998,20,88,1
+Grand Theft Auto: Vice City,PS2,Open World|Action-Adventure,1,2002,2003,100,93,1
+Grand Theft Auto: San Andreas,PS2,Open World|Action-Adventure,1,2004,2005,200,99,1
+Grand Theft Auto IV,PS3,Open World|Action-Adventure,1,2008,2016,35,94,0
+Grand Theft Auto V,PS3|PC,Open World|Action-Adventure,1,2013,2014,210,100,1
+Kingdom Hearts,PS2,Action|JRPG,1,2002,2008,30,90,0
+Kingdom Hearts II,PS2,Action|JRPG,1,2005,2009,50,98,0
+Kingdom Hearts III,PS4,Action|JRPG,1,2019,2019,40,95,1
+Kingdom Hearts: Birth by Sleep,PSP,Action|JRPG,1,2010,2017,35,92,0
+The Legend of Zelda: The Wind Waker,GameCube,Action-Adventure,0,2002,2008,35,91,0
+The Legend of Zelda: A Link to the Past,SNES,Action-Adventure,0,1991,2020,20,91,0
+The Legend of Zelda: Twilight Princess,Wii,Action-Adventure,0,2006,2010,40,98,0
+The Legend of Zelda: Link's Awakening,GameBoy,Action-Adventure,1,1993,2001,20,90,0
+The Legend of Zelda: Breath to the Wild,Switch,Action-Adventure|Open World,1,2016,2020,110,99,1
+The Legend of Zelda: Ocarina of Time,N64,Action-Adventure,0,1998,2017,20,92,0
+Red Dead Redemption 2,PS4,Action-Adventure|Open World,1,2018,2018,60,96,0
+Spiderman,PS4,Action|Platformer,1,2018,2020,30,90,0
+God of War IV,PS4,Action|Beat'em All,0,2018,2020,75,99,0
+God of War III,PS4,Action|Beat'em All,0,2015,2020,35,92,0
+Uncharted: Drake's Fortune,PS4,Action-Adventure|Platformer,1,2007,2020,10,68,1
+Uncharted 2: Among Thieves,PS4,Action-Adventure|Platformer,1,2009,2020,10,87,1
+Uncharted 3: Drake's Deception,PS4,Action-Adventure|Platformer,0,2011,2020,10,80,1
+Uncharted: The Nathan Drake Collection,PS4,Action-Adventure|Platformer,1,2015,2020,30,83,1
+Uncharted 4: A Thief's End,PS4,Action-Adventure|Platformer,0,2016,2020,10,90,1
+Horizon Zero Dawn,PS4,Action-Adventure|Open World,0,2017,2019,10,91,1
+Journey,PS4,Action-Adventure|Platformer,1,2012,2019,5,86,1
+Heavy Rain,PS3,Narrative,1,2010,2016,15,79,1
+Red Dead Redemption,PS3,Action-Adventure|Open World,1,2010,2016,30,92,0
+The Last of Us,PS3,Action-Adventure,0,2011,2016,30,92,0
+Okami,PS3,Action-Adventure,1,2006,2016,30,94,0
+God of War: Ghost of Sparta,PSP,Action|Beat'em All,1,2010,2020,6,81,0
+Assassin's Creed II,PS3,Action-Adventure|Open World,1,2012,2015,35,93,1
+Assassin's Creed III,PS3,Action-Adventure|Open World,1,2014,2015,35,93,1
+Assassin's Creed IV: Black Flag,PS3,Action-Adventure,1,2013,2016,35,94,1
+Assassin's Creed: Unity,PC,Action-Adventure|Open World,0,2014,2018,40,93,1
+Assassin's Creed Origins,PS4,RPG|Open World,1,2017,2017,70,96,1
+Assassin's Creed Odyssey,PC,RPG|Open World,1,2018,2018,100,97,1
+Watch Dogs,PS3,Open World|Action-Adventure,1,2013,2015,30,85,0
+Watch Dogs 2,PC,Open World|Action-Adventure,1,2016,2016,50,89,0
+Sid Meier's Civilization III,PC,STR,1,2001,2001,15,88,0
+Sid Meier's Civilization V,PC,STR,1,2010,2014,150,97,1
+Sid Meier's Civilization: Beyond Earth,PC,STR,1,2014,2014,15,78,0
+Sid Meier's Civilization VI,PC,STR,1,2016,2016,300,100,1
+Command & Conquer,PC,STR,1,1996,1998,30,89,1
+Command & Conquer: Tiberian Sun,PC,STR,1,1999,1999,50,92,1
+Command & Conquer 3: Tiberium Wars,PC,STR,1,2007,2007,60,92,1
+Command & Conquer: Red Alert,PC,STR,1,1996,1998,40,89,1
+Command & Conquer: Red Alert 2,PC,STR,1,2000,2001,60,90,1
+Command & Conquer: Red Alert Yuri,PC,STR,1,2001,2001,20,91,1
+Command & Conquer: Red Alert 3,PC,STR,1,2008,2018,10,75,1
+Command & Conquer: Generals,PC,STR,1,2003,2005,15,77,1
+Stronghold,PC,STR,1,2003,2003,10,73,1
+Nox,PC,RPG|Hack&Clash,1,2008,2018,10,75,1
+Diablo,PS1|PC,RPG|Hack&Clash,1,1997,1998,40,92,1
+Diablo II,PC,RPG|Hack&Clash,1,2000,2005,25,89,1
+Diablo III,PS3|PC,RPG|Hack&Clash,1,2012,2015,35,93,1
+StarCraft,PC,STR,1,1998,1998,150,92,1
+StarCraft Brood War,PC,STR,1,1998,1998,20,92,0
+StarCraft II: Wings of Liberty,PC,STR,1,2010,2010,150,95,1
+StarCraft II: Heart of the Swarm,PC,STR,1,2013,2013,50,94,1
+StarCraft II: Legacy of the Void,PC,STR,1,2015,2015,70,96,1
+Warcraft II: Tides of Darkness,PC,STR,1,1995,1996,20,85,1
+Warcraft III: Reign of Chaos,PC,STR,1,2002,2002,100,95,1
+Warcraft III: The Frozen Throne,PC,STR,1,2003,2003,30,93,1
+Heroes of Might and Magic II: The Succession Wars,PC,STR,1,1996,1998,30,88,1
+Heroes of Might & Magic III,PC,STR,1,1999,2000,60,94,1
+Heroes of Might & Magic IV,PC,STR,1,2002,2002,45,94,1
+Heroes of Might & Magic V,PC,STR,0,2006,2008,25,89,1
+Heroes of Might & Magic VII,PC,STR,0,2015,2018,10,85,1
+Age of Empire II,PC,STR,0,2000,2003,30,88,1
+Life is Strange,PC,Narrative,1,2008,2018,10,79,1
+Worms,PC,STR|Shoot'em All,0,1995,1996,30,80,1
+Worms 2,PC,STR|Shoot'em All,0,1997,1997,30,82,1
+Worms Armageddon,PC,STR|Shoot'em All,0,1999,2000,40,87,1
+Worms: W.M.D,PS4,STR|Shoot'em All,0,2016,2018,20,87,1
+Theme Hospital,PC,STR,0,1997,2000,10,80,1
+Dungeon Keeper,PC,STR,0,1997,2000,10,80,1
+The Sims,PC,STR,1,2000,2000,50,90,1
+The Sims 2,PC,STR,1,2000,2005,30,88,0
+Baldur's Gate,PC,Action-Adventure|RPG,1,1998,2000,40,90,0
+Baldur's Gate II: Shadows of Amn,PC,Action-Adventure|RPG,1,2000,2001,50,92,0
+Drakan: Order of the Flame,PC,Action-Adventure,1,1999,2000,25,89,0
+Heart of Darkness,PC,Action-Adventure|Platformer,1,1998,2001,15,77,0
+Heroes of the Storm,PC,MOBA,0,2016,2016,90,93,1
+Grim Fandango,PC,Point&Click,1,2008,2018,20,80,1
+The Curse of Monkey Island,PC,Point&Click,1,1997,2018,10,75,1
+Escape From Monkey Island,PC,Point&Click,1,2004,2004,30,85,1
+The Secrets of Monkey Island,PC,Point&Click,0,1990,2018,2,87,1
+Myst,PC,Point&Click,1,1993,1993,25,86,1
+Versailles,PC,Point&Click,0,1996,1996,10,73,1
+Goblins,PC,Point&Click,0,1991,1993,10,73,1
+Goblins 2,PC,Point&Click,0,1992,1994,10,75,1
+Oddworld: Abe's Oddysee,PC,Action-Adventure|Platformer,1,1997,1999,25,85,1
+Oddworld: Abe's Exoddus,PC,Action-Adventure|Platformer,1,1998,2000,10,86,1
+Lemmings,PC,STR,0,1991,1993,15,72,1
+MegaBomberMan,PC,Party Game,0,1993,1999,15,72,1
+SimCity 2000,PC,STR,0,1994,1995,15,70,0
+Caesar II,PC,STR,0,1995,1998,10,80,1
+Pharaoh,PC,STR,0,1999,2001,20,86,1
+Carmageddon,PC,Racing|Beat'em All,0,1997,1999,20,86,1
+Carmageddon II: Carpocalypse Now,PC,Racing|Beat'em All,0,1998,2000,10,86,1
+RollerCoaster Tycoon,PC,STR,0,1999,2000,15,70,0
+Beyond Good & Evil,PC,Action-Adventure|Platformer,0,2003,2016,5,62,0
+Star Wars: Galactic Battlegrounds,PC,STR,1,2001,2001,40,90,0
+Star Wars: Shadows of the Empire,PC,Action-Adventure|Hack&Clash,1,1996,2002,20,85,0
+Star Wars Jedi Knight II: Jedi Outcast,PC,Action-Adventure|Hack&Clash,1,2002,2003,30,98,1
+Star Wars Jedi Knight: Jedi Academy,PC,Action-Adventure|Hack&Clash,1,2003,2003,30,97,1
+Star Wars: The Old Republic,PC,Action-Adventure|RPG,1,2011,2012,50,92,1
+Star Wars: Knights of The Old Republic,PC,Action-Adventure|RPG,1,2003,2012,25,91,0
+Star Wars Episode I Racer,PC,Racing,1,2001,2001,30,75,0
+Star Wars: StarFighter,PC,Space Shooter,1,2001,2001,20,80,0
+Star Wars: Jedi StarFighter,PS2,Space Shooter,1,2001,2001,20,80,0
+Star Wars Battlefront (2015),PC,FPS|Space Shooter,1,2015,2015,20,80,1
+Star Wars Battlefront II,PS4|PC,FPS|Space Shooter,1,2017,2017,50,90,1
+Star Wars: Bounty Hunter,PS2,Action-Adventure,1,2002,2002,30,70,1
+Star Wars: The Force Unleashed,PS3,Hack&Clash,1,2008,2016,15,75,0
+Star Wars: The Force Unleashed II,PS3,Hack&Clash,1,2008,2016,15,75,0
+LEGO Star Wars: The Complete Saga,PS3,Hack&Clash,1,2007,2016,10,75,0
+Star Wars Rogue Leader: Rogue Squadron II,GameCube,Gunfight,1,2001,2003,50,94,1
+Star Wars: Rogue Squadron,PC,Gunfight,1,1998,2003,20,93,1
+Little Big Adventure,PC,Action-Adventure|Platformer,1,1994,1999,20,85,1
+Little Big Adventure 2,PC,Action-Adventure|Platformer,1,1997,2000,50,97,1
+Tomb Raider,PS1,Action|Platformer,1,1997,1997,15,85,1
+Tomb Raider II,PC,Action|Platformer,1,1997,1998,10,86,1
+Tomb Raider III: Adventures of Lara Croft,PC,Action|Platformer,1,1998,1998,10,86,1
+Tomb Raider (2013),PS3,Action|Platformer,1,2013,2013,30,92,1
+Rise of the Tomb Raider,PS4,Action|Platformer,0,2015,2015,10,75,1
+Crash Bandicoot,PS1,Action|Platformer,0,1996,1996,10,79,1
+Crash Nitro Kart,PS2,Racing,0,2003,2003,15,72,1
+Metal Gear Solid,PS1,Action|Infiltration,0,1998,2016,5,80,0
+Splinter Cell,PS2,Action|Infiltration,0,2002,2002,15,82,0
+WipeOut 2097,PS1,Racing,0,1996,1996,15,82,1
+Driver,PC,Racing,0,1999,2000,15,72,1
+Chrono Trigger,PS1,JRPG,0,1995,2015,5,75,0
+Fighting Force,PS1,Beat'em All,1,1997,1997,20,79,1
+Tekken,PS1,Versus Fighting,0,1995,1997,20,79,1
+Resident Evil 2,PS1,Survival horror,0,1998,1998,10,80,1
+Sonic the Hedgehog,Megadrive,Platformer,1,1991,1996,40,85,1
+Sonic the Hedgehog 2,Megadrive,Platformer,1,1992,1996,50,88,1
+Sonic the Hedgehog 3,Megadrive,Platformer,1,1994,1996,40,88,1
+Sonic & Knuckles,Megadrive,Platformer,1,1994,1996,20,80,1
+Sonic 3 & Knuckles,Megadrive,Platformer,1,1994,1996,60,94,1
+ToeJam&Earl,Megadrive,Action-Adventure|Platformer,0,1991,1996,10,75,1
+Streets of Rage 3,Megadrive,Beat'em All,1,1992,1996,15,70,0
+Golden Axe,Megadrive,Beat'em All,0,1989,1993,15,70,0
+Mighty Morphin Power Rangers,Megadrive,Beat'em All,0,1994,1994,15,60,1
+Sonic 3D: Flickies' Island,Megadrive,Platformer,1,1996,1996,30,79,0
+Sonic Pinball,Megadrive,Platformer,1,1996,1996,30,79,1
+Jungle Strike,Megadrive,Action-Adventure|Beat'em All,0,1993,1996,30,79,0
+EarthWorm Jim,Megadrive,Action-Adventure|Platformer,0,1994,1995,15,78,1
+Aladdin,Megadrive,Action-Adventure|Platformer,1,1993,1994,25,89,1
+Disney's The Lion King,Megadrive,Action-Adventure|Platformer,0,1994,1994,15,80,1
+Dr Robotnik,Megadrive,STR,1,1993,1993,30,89,1
+Micromachines,Megadrive,Racing,0,1994,1994,15,80,1
+Tintin in Tibet,Megadrive,Platformer,0,1995,1996,10,71,1
+Tales of Symphonia,GameCube,JRPG,1,2003,2008,30,85,0
+Ristar,Megadrive,Action-Adventure|Platformer,0,1995,1996,20,80,0
+AAAHH!!! Real Monsters,Megadrive,Action-Adventure|Platformer,0,1995,1996,15,68,0
+Jurassic Park,Megadrive,Action-Adventure|Platformer,0,1994,1996,5,62,1
+The Lost World: Jurassic Park,PS1,Action-Adventure|Platformer,0,1995,1996,5,62,1
+M.U.S.H.A,Megadrive,Gunfight|Space Shooter,0,1990,1995,10,65,1
+Street Fighter 2,Megadrive,Versus Fighting,0,1991,1995,20,67,1
+Dragon Ball Z,Megadrive,Versus Fighting,0,1994,1996,10,68,1
+Mortal Kombat,Megadrive,Versus Fighting,0,1992,1994,10,67,1
+SSX,PS2,Sport,0,2000,2001,10,88,1
+SSX Tricky,PS2,Sport,1,2001,2002,30,92,1
+SSX 3,PS2,Sport,1,2003,2003,50,96,1
+SSX On Tour,PS2,Sport,1,2005,2005,50,95,1
+The Lord of the Rings: The Two Towers,PS2,Action-Adventure|Beat'em All,1,2002,2002,30,90,1
+The Lord of the Rings: The Return of the King,PS2,Action-Adventure|Beat'em All,1,2003,2003,35,90,1
+The Lord of the Rings: The Battle for Middle-earth,PC,STR,0,2003,2003,35,85,1
+God of War,PS2,Beat'em All|Action-Adventure,1,2005,2020,10,86,0
+God of War II: Divine Retribution,PS2,Beat'em All|Action-Adventure,1,2007,2020,10,90,0
+FIFA: Road to World Cup 98,PS1,Sport,0,1998,1998,15,85,1
+FIFA 2000,PC,Sport,0,2000,2000,20,75,0
+FIFA 15,PS3,Sport,0,2014,2015,20,80,1
+FIFA 16,PS4,Sport,0,2015,2016,20,80,1
+PES5,PS2,Sport,0,2005,2005,20,75,1
+Super Mario Bros.,NES,Platformer,1,1985,1993,20,82,1
+Super Mario Bros. 2,NES,Platformer,1,1988,1995,15,83,1
+Super Mario Bros. 3,NES,Platformer,1,1988,1995,20,90,1
+New Super Mario Bros. Wii,Wii,Platformer,1,2008,2010,20,90,1
+Super Mario Land,GameBoy,Platformer,1,1989,1993,5,65,1
+Mario Kart: Double Dash,GameCube,Racing,1,2003,2003,30,90,1
+Super Mario Kart,SNES,Racing,0,1992,2000,5,80,1
+Mario Kart Wii,Wii,Racing,0,2008,2008,30,90,1
+Mario Kart Deluxe,Switch,Racing,0,2017,2020,5,90,1
+Mario Kart 64,N64,Racing,0,1996,2001,10,85,1
+Super Mario 64,N64,Racing,0,1996,1996,15,92,1
+Super Smash Bros. Melee,GameCube,Versus Fighting,1,2002,2002,30,92,1
+Mario Party 5,GameCube,Party Game,1,2003,2003,50,89,1
+Mario Party 3,N64,Party Game,1,2003,2003,50,92,1
+Mario Tennis,GameCube,Sport,0,2004,2007,15,75,1
+Paper Mario,GameCube,Action-Adventure|Platformer,0,2000,2009,10,80,1
+Mario RPG,SNES,JRPG,0,1996,2000,15,82,0
+Golden Eye,N64,FPS,0,1997,1998,40,92,1
+Perfect Dark,N64,FPS,0,2000,2000,5,80,1
+Rayman 2: The Great Escape,N64,Action-Adventure|Platformer,0,1999,2000,20,88,1
+Rayman,GBA,Action-Adventure|Platformer,1,2000,2000,25,89,1
+Rayman Origins,Wii,Action-Adventure|Platformer,0,2011,2011,20,89,1
+Batman Returns,NES,Action-Adventure|Beat'em All,0,1989,1993,10,40,1
+Pokemon Yellow: Special Pikachu Edition,GameBoy,Action-Adventure|JRPG,1,1997,1998,40,92,1
+Pokemon Gold/Pokemon Silver,GameBoy,Action-Adventure|JRPG,1,1999,1999,40,95,1
+Wii Sports,Wii,Sport,0,2006,2006,5,80,1
+Pokemon Pinball,GBA,Puzzle,0,1999,2000,10,78,1
+Monument Valley,Android,Puzzle,1,2014,2018,3,81,1
+Monument Valley 2,Android,Puzzle,1,2017,2020,3,81,1
+Polytopia,Android,STR,0,2016,2017,2,78,0
+Cyberpunk 2077,PC,RPG|Open World,1,2020,2020,120,99,0
+WatchDogs Legion,PC,Action-Adventure|Open World,1,2020,2020,50,95,1
+Among Us,Android,Party game,0,2018,2020,7,70,1
+Mario Galaxy,Switch,Platformer,0,2008,2020,20,94,1
+Mario Sunshine,Switch,Platformer,0,2003,2020,10,75,1
+Final Fantasy XII,Switch,JRPG,1,2006,2021,40,93,0
+Hades,Switch,Action-Adventure|Hack&Clash,0,2020,2021,30,93,0
+New Super Mario Bros U Deluxe,Switch,Platformer,0,2020,2021,25,90,1
+Hyrule Warriors : Age of Calamity,Switch,Action-Adventure|Hack&Clash,0,2020,2021,15,90,1
+Assassin's Creed Valhalla,PC,RPG|Open World,0,2020,2021,50,92,0
+Demon's Souls,PS5,JRPG|Action-Adventure,0,2020,2022,20,90,0
+Horizon Forbidden West,PS5,RPG|Open World,0,2022,2022,50,93,0
+Star Wars Jedi Fallen Order,PC,RPG|Action-Adventure,1,2019,2020,25,89,0

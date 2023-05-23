@@ -10,10 +10,12 @@ import os
 import sys
 # adding Folder_2 to the system path
 #sys.path.insert(1, '../script/python/functions')
-from .script.python.functions.data_wrangling import *
-from .script.python.functions.metacritic import *
-from .script.python.functions.visualisation_tools import *
+from functions.data_wrangling import *
+from functions.metacritic import *
+from functions.visualisation_tools import *
 
+
+st.set_page_config(page_title="page2")
 #%% import data
 #@st.cache_data
 def get_data_csv(path):
@@ -23,9 +25,10 @@ def get_data_csv(path):
 def get_data_sql(query, engine):
     return pd.read_sql(query=query, con=engine)
 
-df_vg = get_data_csv('./db_data/df_vg_local_csv.csv')
+df_vg = get_data_csv('../df_vg_local_csv.csv')
 
-df_meta = get_data_csv('./db_data/metacritic_6900_games_22_Dec_2016_updated.csv')
+df_meta = get_data_csv('../../db_data/csv/metacritic_6900_games_22_Dec_2016_updated.csv')
+st.write(df_vg)
+df_meta['fuzz'] = fuzzymatch_metacritic(df_vg['game_name'], df_vg)
 
-df_meta['fuzz'] = fuzzymatch_metacritic(df_vg['game_name'])
-
+st.write(df_meta)

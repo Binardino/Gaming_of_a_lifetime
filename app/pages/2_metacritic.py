@@ -29,6 +29,6 @@ df_vg = get_data_csv('../df_vg_local_csv.csv')
 
 df_meta = get_data_csv('../../db_data/csv/metacritic_6900_games_22_Dec_2016_updated.csv')
 st.write(df_vg)
-df_meta['fuzz'] = fuzzymatch_metacritic(df_vg['game_name'], df_vg)
+df_meta['Name'].fillna('NaN', inplace=True)
 
 st.write(df_meta)

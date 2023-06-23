@@ -13,15 +13,15 @@ def import_metacritic(df):
     return df_join
 
 # Define a function to find the best match for a given game name
-def fuzzymatch_metacritic(game_name, df_vg):
+def fuzzymatch_metacritic(row, game_column):
     # Initialize variables to store the best match and its similarity score
     best_match = None
     best_similarity = 0
     
     # Iterate over the game names in df_vg
-    for name in df_vg['game_name']:
+    for name in game_column:
         # Compute the similarity score between the game names
-        similarity = difflib.SequenceMatcher(None, game_name, name).ratio()
+        similarity = difflib.SequenceMatcher(None, row, name).ratio()
         
         # Update the best match if the similarity score is higher than the previous best
         if similarity > best_similarity:

@@ -42,4 +42,37 @@ class metacritic_data_fetcher:
         game_release_date = row.select_one('.clamp-details').text.strip() if row.select_one('.clamp-details') else None
         game_summary = row.select_one('.summary').text.strip() if row.select_one('.summary') else None
         
+        # unable to directly fetch date from HTML beacons
+        # need to extract date using regex
+        date_regex = r"([A-Za-z]+ \d{1,2}, \d{4})"
+        if game_release_date:
+            match = re.search(date_regex, game_release_date)
+            release_date = match.group(1) if match else ""
+            game_release_date = pd.to_datetime(release_date).date()
+        
+        # unable to directly fetch user_score from HTML beacons
+        # need to extract user_score using regex
+        userscore_regex = r"(?<=User Score:\n\n)\S+"
+        if game_user_score:
+            match = re.search(userscore_regex, game_user_score)
+            game_user_score = match.group() if match else ""
+        
+
+        # Create a dictionary entry for the game
+        game_dict[game_title] = {
+            'Game Title': game_title,
+            'Platform': game_platform,
+            'Release Date': game_release_date,
+            'Metascore': game_score,
+            'user score': game_user_score
+        }
+        
+        print("Title:", game_title)
+        print("Gamescore:", game_score)
+        print("Platform:", game_platform)
+        print("Release Date:", game_release_date)
+        print("Summary:", game_summary)
+        print()
+ 
+    return game
     

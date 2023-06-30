@@ -30,52 +30,70 @@ class metacritic_data_fetcher:
     def create metacritic_dict(console_list):
     console_dict = {}
     for console in console_list:
-        #fetch data from tableclam html element
-        game_rows = soup.select('tableclam-list tr')
+        page = 0
+        has_next_page = True
+        while has_next_page:
+            print(f"----------------- querying {console} -----  page {page}")
+            url = f'https://www.metacritic.com/browse/games/release-date/available/{console}/metascore?page={page}'
+            headers = create_headers()
+            response = requests.get(url, headers=headers)
 
-        game_dict = {}
+            if response.status_code == 200:
 
-        # Iterate over each game row from soup element and extract the required information
-        for row in game_rows:
-            game_title = row.select_one('.title').text.strip() if row.select_one('.title') else None
-            game_score = row.select_one('.metascore_w').text.strip() if row.select_one('.metascore_w') else None
-            game_user_score = row.select_one('.clamp-userscore').text.strip() if row.select_one('.clamp-userscore') else None
-            game_platform = row.select_one('.platform .data').text.strip() if row.select_one('.platform .data') else None
-            game_release_date = row.select_one('.clamp-details').text.strip() if row.select_one('.clamp-details') else None
-            game_summary = row.select_one('.summary').text.strip() if row.select_one('.summary') else None
-            
-            # unable to directly fetch date from HTML beacons
-            # need to extract date using regex
-            date_regex = r"([A-Za-z]+ \d{1,2}, \d{4})"
-            if game_release_date:
-                match = re.search(date_regex, game_release_date)
-                release_date = match.group(1) if match else ""
-                game_release_date = pd.to_datetime(release_date).date()
-            
-            # unable to directly fetch user_score from HTML beacons
-            # need to extract user_score using regex
-            userscore_regex = r"(?<=User Score:\n\n)\S+"
-            if game_user_score:
-                match = re.search(userscore_regex, game_user_score)
-                game_user_score = match.group() if match else ""
-            
 
-            # Create a dictionary entry for the game
-            game_dict[game_title] = {
-                'Game Title': game_title,
-                'Platform': game_platform,
-                'Release Date': game_release_date,
-                'Metascore': game_score,
-                'user score': game_user_score
-            }
+                #fetch data from tableclam html element
+                game_rows = soup.select('tableclam-list tr')
+
+                game_dict = {}
+
+                # Iterate over each game row from soup element and extract the required information
+                for row in game_rows:
+                    game_title = row.select_one('.title').text.strip() if row.select_one('.title') else None
+                    game_score = row.select_one('.metascore_w').text.strip() if row.select_one('.metascore_w') else None
+                    game_user_score = row.select_one('.clamp-userscore').text.strip() if row.select_one('.clamp-userscore') else None
+                    game_platform = row.select_one('.platform .data').text.strip() if row.select_one('.platform .data') else None
+                    game_release_date = row.select_one('.clamp-details').text.strip() if row.select_one('.clamp-details') else None
+                    game_summary = row.select_one('.summary').text.strip() if row.select_one('.summary') else None
+                    
+                    # unable to directly fetch date from HTML beacons
+                    # need to extract date using regex
+                    date_regex = r"([A-Za-z]+ \d{1,2}, \d{4})"
+                    if game_release_date:
+                        match = re.search(date_regex, game_release_date)
+                        release_date = match.group(1) if match else ""
+                        game_release_date = pd.to_datetime(release_date).date()
+                    
+                    # unable to directly fetch user_score from HTML beacons
+                    # need to extract user_score using regex
+                    userscore_regex = r"(?<=User Score:\n\n)\S+"
+                    if game_user_score:
+                        match = re.search(userscore_regex, game_user_score)
+                        game_user_score = match.group() if match else ""
+                    
+
+                    # Create a dictionary entry for the game
+                    game_dict[game_title] = {
+                        'Game Title': game_title,
+                        'Platform': game_platform,
+                        'Release Date': game_release_date,
+                        'Metascore': game_score,
+                        'user score': game_user_score
+                    }
+                    
+                    print("Title:", game_title)
+                    print("Gamescore:", game_score)
+                    print("Platform:", game_platform)
+                    print("Release Date:", game_release_date)
+                    print("Summary:", game_summary)
             
-            print("Title:", game_title)
-            print("Gamescore:", game_score)
-            print("Platform:", game_platform)
-            print("Release Date:", game_release_date)
-            print("Summary:", game_summary)
-    
-    console_dict[console] = game_dict
+                #check if next page exist
+                next_item = soup.select_one('span.flipper.next')
+                if next_item.next_element.get('href'):
+                    print(next_item.next_element)
+                    page +=1
+                else:
+                    console_dict[console] = game_dict
+                    has_next_page = False
 
     return console_dict
         

@@ -40,14 +40,12 @@ class metacritic_data_fetcher:
                 print(url)
                 headers = HTMLRequests_metacritic.create_headers()
                 response = requests.get(url, headers=headers)
-                print(response.text)
                 print(response.status_code)
                 if response.status_code == 200:
                     soup = BeautifulSoup(response.text, 'html.parser')
                     #fetch data from tableclam html element
                     game_rows = soup.select('table.clamp-list tr')
-                    print(game_rows)
-    
+
                     # Iterate over each game row from soup element and extract the required information
                     for row in game_rows:
                         game_title = row.select_one("a.title h3").text.strip() if row.select_one('.title') else None
@@ -75,28 +73,31 @@ class metacritic_data_fetcher:
     
                         # Create a dictionary entry for the game
                         game_dict[game_title] = {
-                            'Game Title': game_title,
-                            'Platform': game_platform,
-                            'Release Date': game_release_date,
-                            'Metascore': game_score,
-                            'user score': game_user_score
+                            'game_title'        : game_title,
+                            'game_platform'     : game_platform,
+                            'game_release_date' : game_release_date,
+                            'metascore'         : game_score,
+                            'user _score'       : game_user_score,
+                            'game_summary'      : game_summary
                         }
                         
-                        print("Title:", game_title)
-                        print("Gamescore:", game_score)
-                        print("Platform:", game_platform)
-                        print("Release Date:", game_release_date)
-                        print("Summary:", game_summary)
+                        print("Title:",         game_title)
+                        print("Gamescore:",     game_score)
+                        print("Platform:",      game_platform)
+                        print("Release Date:",  game_release_date)
+                        #print("Summary:",      game_summary)
                 
                     #check if next page exist
                     next_item = soup.select_one('span.flipper.next')
                     if next_item.next_element.get('href'):
                         print(next_item.next_element)
                         page +=1
+                        time.sleep(1)
                     else:
                         console_dict[console] = game_dict
                         has_next_page = False
     
         return console_dict
-        
-test_dict = metacritic_data_fetcher.create_metacritic_dict(['ps5', 'switch'])
+
+if __name__ == "__main__":        
+    test_dict = metacritic_data_fetcher.create_metacritic_dict(['ps5', 'switch'])

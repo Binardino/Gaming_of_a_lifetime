@@ -52,7 +52,28 @@ class HLTBRequests_post:
         return payload
     
     
-    def get_hltb_game_data(game_list):
-    url = 'https://howlongtobeat.com/api/search'
-    
-    
+    def get_hltb_game_data(df):
+        url = 'https://howlongtobeat.com/api/search'
+        
+        
+        game_list = df['game_name'].sample(10)
+        
+        game_dict = {}
+        for game_name in game_list:
+        #game_name = 'Horizon Forbidden West'
+            
+            headers = HLTBRequests_post.create_headers()
+            print(headers)
+            
+            payload = HLTBRequests_post.create_payloads(game_name)
+            print(payload)
+            r = requests.post(url, headers=headers, data=payload)
+            
+            print(r.status_code)
+        
+            game_temp = json.loads(r.text)
+            
+            game_dict[game_name] = game_temp
+            
+        return game_dict
+

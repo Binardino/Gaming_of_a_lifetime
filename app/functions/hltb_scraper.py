@@ -77,3 +77,47 @@ class HLTBRequests_post:
             
         return game_dict
 
+    
+#%% import data
+#@st.cache_data
+def get_data_csv(path):
+    return pd.read_csv(path)
+
+#st.cache_data
+def get_data_sql(query, engine):
+    return pd.read_sql(query=query, con=engine)
+
+df_vg = get_data_csv('../db_data/csv/df_vg_local_csv.csv')
+
+df = df_vg
+
+dico_yoyo = HLTBRequests_post.get_hltb_game_data(df_vg)
+
+class JSON_parser():
+    def JSON_to_df(game_dict):
+    
+    dicohours = {}
+    
+    for key, value in game_dict.items():
+        #print(value)
+        game_name = key
+        
+        #get value from sub dict data
+        data_list = value['data']
+        
+        for subgame_dict in data_list:
+            #dict_parser
+            #all times from API are in seconds
+            comp_100 = #
+            comp_all = #completionist 100%
+            comp_main = #complishing main story
+            comp_plus = #main story + side quests
+            game_name = game_name
+            platform = profileplatform
+            
+        
+        dicohours[game_name]
+        
+        
+        print(value['data'])
+

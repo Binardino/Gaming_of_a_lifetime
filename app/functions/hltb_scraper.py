@@ -1,7 +1,7 @@
 import requests
 from fake_useragent import UserAgent
 import json
-
+import pandas as pd
 
 class HLTBRequests_post:
     def create_headers():
@@ -9,7 +9,8 @@ class HLTBRequests_post:
         headers = {'Accept-Language': 'en-US,en;q=0.8',
                    'Upgrade-Insecure-Requests': '1',
                    'content-type': 'application/json',
-                   'User-Agent': ua.random.strip()
+                   'User-Agent': ua.random.strip(),
+                    'referer': url
             }
         return headers
 

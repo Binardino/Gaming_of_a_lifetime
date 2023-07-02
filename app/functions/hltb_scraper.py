@@ -50,14 +50,8 @@ class HLTBRequests_post:
         
         return payload
     
+    
     def get_hltb_game_data(game_list):
     url = 'https://howlongtobeat.com/api/search'
     
     
-    game_list = df_vg['game_name'].sample(10)
-    
-    game_dict = {}
-    for game_name in game_list:
-    #game_name = 'Horizon Forbidden West'
-        
-        headers = create_headers()

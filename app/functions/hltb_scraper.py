@@ -14,8 +14,39 @@ class HLTBRequests_post:
             }
         return headers
 
-    def create_payloads(game_name):
+    def create_payloads(game_name, platform, search_modifier=''):
+        """
+
+        Parameters
+        ----------
+        game_name : TYPE
+            DESCRIPTION.
+        search_modifier : str
+            How Long To Beat search bar allows you to input variable for game
+                #NONE - fetch all data 
+                    NONE = "" - 
+                # ISOLATE_DLC shows only DLC in the search result
+                    ISOLATE_DLC = "only_dlc"
+                # HIDE_DLC hide DLCs in the search result
+                    HIDE_DLC = "hide_dlc"
+            DESCRIPTION. The default is ''
+
+        Returns
+        -------
+        payload : TYPE
+            DESCRIPTION.
+        payload to input in the How Long To Beat API call
+
+        """
+        #console mapper to match API naming
+        console_mapper = { 'PS1':'PlayStation' ,'PS2':'PlayStation 2', 'PS3':'PlayStation 3','PS4':'PlayStation 4', 'PS3':'PlayStation 5',
+                          'Switch':'Nintendo Switch','GameCube':'Nintendo GameCube', 'N64':'Nintendo 64', 'SNES': 'Super Nintendo', 'NES':'NES','GameBoy':'GameBoy','GBA': 'Game Boy Advance',                          
+                          'Megadrive': 'Sega Mega Drive/Genesis',
+                          'Android':'Mobile', 'PC':'PC'}
         
+        platform = console_mapper[platform]
+        
+        #payload creation
         payload_raw = {
                     'searchType': "games",
                     'searchTerms': game_name.split(),
@@ -24,7 +55,7 @@ class HLTBRequests_post:
                     'searchOptions': {
                         'games': {
                             'userId': 0,
-                            'platform': "",
+                            'platform': platform,
                             'sortCategory': "popular",
                             'rangeCategory': "main",
                             'rangeTime': {

@@ -96,28 +96,50 @@ dico_yoyo = HLTBRequests_post.get_hltb_game_data(df_vg)
 class JSON_parser():
     def JSON_to_df(game_dict):
     
-    dicohours = {}
-    
-    for key, value in game_dict.items():
-        #print(value)
-        game_name = key
+        dicohours = {}
         
-        #get value from sub dict data
-        data_list = value['data']
-        
-        for subgame_dict in data_list:
-            #dict_parser
-            #all times from API are in seconds
-            comp_100 = #
-            comp_all = #completionist 100%
-            comp_main = #complishing main story
-            comp_plus = #main story + side quests
-            game_name = game_name
-            platform = profileplatform
+        for key, value in dico_yoyo.items():
+            #print(value)
+            game_name = key
             
-        
-        dicohours[game_name]
-        
-        
-        print(value['data'])
+            #get value from sub dict data
+            data_list = value['data']
+            
+            gamea = {}
+            
+            for item in data_list:
+                gamea[item[game_name]] = item
+                
+                #subgame = item[]
+                
+            
+            for subgame_dict in data_list:
+                #dict_parser
+                #all times from API are in seconds
+                game_name  = subgame_dict[game_name] game_name #game_name
+                comp_100   = subgame_dict[comp_100] #
+                comp_all   = subgame_dict[comp_all] #completionist 100%
+                comp_main  = subgame_dict[comp_main] #complishing main story
+                comp_plus  = subgame_dict[comp_plus] #main story + side quests
+                platform   = subgame_dict[profile_platform] profileplatform
+                developer  = subgame_dict[profile_dev] profileplatform
+                release    = subgame_dict[release]
+                
+            
+            dicohours[game_name]
+            
+            
+            for version in subgame_dict:
+                best_match = None
+                best_similarity = 0
+                similarity = fuzzymatch_metacritic(df_vg, version)
+                if similarity > best_similarity:
+                    best_similarity = similarity
+                    best_match = version
+                    
+            if best_match is not None:
+                print("Best Match - Game Name:", best_match.game_name)
+                # Print other attributes of the best match if needed
+            
+            print(value['data'])
 

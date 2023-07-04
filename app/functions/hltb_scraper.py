@@ -75,7 +75,7 @@ class HLTBRequests_post:
                                 'flow': "",
                                 'genre': ""
                             },
-                            'modifier': '',
+                            'modifier': search_modifier,
                         },
                         'users': {
                             'sortCategory': "postcount"

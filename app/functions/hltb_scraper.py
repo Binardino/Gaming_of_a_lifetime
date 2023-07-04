@@ -2,6 +2,14 @@ import requests
 from fake_useragent import UserAgent
 import json
 import pandas as pd
+import sys
+import os
+#set path for dynamic function import
+sys.path.append("..")
+dir_path = os.path.dirname(os.path.realpath(__file__))
+os.chdir(dir_path)
+from app.functions.metacritic_scraper import *
+
 
 class HLTBRequests_post:
     def create_headers():

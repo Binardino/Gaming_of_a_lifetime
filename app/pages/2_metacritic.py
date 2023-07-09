@@ -9,11 +9,12 @@ import plotly.express as px
 import os
 import sys
 # adding Folder_2 to the system path
-#sys.path.insert(1, '../script/python/functions')
-from functions.data_wrangling import *
-from functions.metacritic import *
-from functions.visualisation_tools import *
-
+sys.path.append("..")
+dir_path = os.path.dirname(os.path.realpath(__file__))
+os.chdir(dir_path)
+from app.functions.data_wrangling import *
+from app.functions.metacritic_wrangling import *
+from app.functions.visualisation_tools import *
 
 st.set_page_config(page_title="page2")
 #%% import data

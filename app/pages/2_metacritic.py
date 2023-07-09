@@ -53,3 +53,7 @@ df_vg['fuzz'] = df_vg['game_name'].apply(lambda x : fuzzymatch_metacritic(x, df_
 
 # st.write(df_meta)
 st.write(df_vg)
+
+df_merge = pd.merge(df_vg, df_meta, how='inner', left_on='fuzz', right_on='Name')
+
+st.write(df_merge)

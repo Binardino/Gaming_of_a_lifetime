@@ -12,7 +12,7 @@ from app.functions.metacritic_scraper import *
 
 
 class HLTBRequests_post:
-    def create_headers():
+    def create_headers(url):
         ua = UserAgent()
         headers = {'Accept-Language': 'en-US,en;q=0.8',
                    'Upgrade-Insecure-Requests': '1',
@@ -47,7 +47,7 @@ class HLTBRequests_post:
 
         """
         #console mapper to match API naming
-        console_mapper = { 'PS1':'PlayStation' ,'PS2':'PlayStation 2', 'PS3':'PlayStation 3','PS4':'PlayStation 4', 'PS3':'PlayStation 5',
+        console_mapper = { 'PS1':'PlayStation' ,'PS2':'PlayStation 2', 'PS3':'PlayStation 3','PS4':'PlayStation 4', 'PS5':'PlayStation 5',
                           'Switch':'Nintendo Switch','GameCube':'Nintendo GameCube', 'N64':'Nintendo 64', 'SNES': 'Super Nintendo', 'NES':'NES','GameBoy':'GameBoy','GBA': 'Game Boy Advance',                          
                           'Megadrive': 'Sega Mega Drive/Genesis',
                           'Android':'Mobile', 'PC':'PC'}

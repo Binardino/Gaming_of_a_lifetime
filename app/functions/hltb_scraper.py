@@ -130,40 +130,45 @@ df_vg = get_data_csv('../db_data/csv/df_vg_local_csv.csv')
 
 df = df_vg
 
-dico_yoyo = HLTBRequests_post.get_hltb_game_data(df_vg)
-
+dico_yoyo = HLTBRequests_post.get_hltb_game_data(df_vg, 'hide_dlc')
+#%%
 class JSON_parser():
     def JSON_to_df(game_dict):
     
         dicohours = {}
-        
+                    
+        gamea = {}
+            
         for key, value in dico_yoyo.items():
-            #print(value)
-            game_name = key
+            print("key is", key)
+            #key_game_name = key
             
             #get value from sub dict data
             data_list = value['data']
-            
-            gamea = {}
-            
-            for item in data_list:
-                gamea[item[game_name]] = item
                 
-                #subgame = item[]
-                
-            
             for subgame_dict in data_list:
                 #dict_parser
                 #all times from API are in seconds
-                game_name  = subgame_dict[game_name] game_name #game_name
-                comp_100   = subgame_dict[comp_100] #
-                comp_all   = subgame_dict[comp_all] #completionist 100%
-                comp_main  = subgame_dict[comp_main] #complishing main story
-                comp_plus  = subgame_dict[comp_plus] #main story + side quests
-                platform   = subgame_dict[profile_platform] profileplatform
-                developer  = subgame_dict[profile_dev] profileplatform
-                release    = subgame_dict[release]
-                
+                game_name  = subgame_dict['game_name']  #game_name
+                comp_100   = subgame_dict['comp_100'] #
+                comp_all   = subgame_dict['comp_all'] #completionist 100%
+                comp_main  = subgame_dict['comp_main'] #complishing main story
+                comp_plus  = subgame_dict['comp_plus'] #main story + side quests
+                platform   = subgame_dict['profile_platform'] 
+                developer  = subgame_dict['profile_dev'] 
+                if 'release' in subgame_dict:
+                    release    = subgame_dict['release']
+           
+                gamea[key] = {'game_name' : game_name,
+                                 'comp_100'   : comp_100,
+                                 'comp_all'   : comp_all,
+                                 'comp_main'  : comp_main,
+                                 'comp_plus'  : comp_plus,
+                                 'platform'   : platform,
+                                 'developer'  : developer
+                    }
+                  
+           
             
             dicohours[game_name]
             

@@ -118,25 +118,29 @@ class HLTBRequests_post:
         """
         url = 'https://howlongtobeat.com/api/search'
         
-        
-        game_list = df['game_name'].sample(10)
-        
+#        df['console'] = df['console'].str.replace(' / ', '', regex=False)
+        df['console'] = df['console'].apply(lambda x : x.split('|')[0])
+        # df['console2'] = df['console'].str.split(pat='|')
+        #df['console'] = df['console'].apply(lambda x : console_mapper[x])
+        #df['console'] = df['console'].replace(console_mapper)
+
         game_dict = {}
-        for game_name in game_list:
-        #game_name = 'Horizon Forbidden West'
-            
-            headers = HLTBRequests_post.create_headers()
+        #for each game in df vg, do API call and fetch HLTB data
+        for idx, game in df.iterrows():
+            print(f"\n ####### \n ------------------ \n calling game : {game['game_name']}\n ------------------  \n ####### ")
+            #custom header per call
+            headers = HLTBRequests_post.create_headers(url)
             print(headers)
-            
-            payload = HLTBRequests_post.create_payloads(game_name)
+            #call API on game name + console
+            #wip need to check missing data
+            payload = HLTBRequests_post.create_payloads(game['game_name'], game['console'], search_modifier)
             print(payload)
             r = requests.post(url, headers=headers, data=payload)
-            
             print(r.status_code)
         
             game_temp = json.loads(r.text)
-            
-            game_dict[game_name] = game_temp
+            #add API response to return game_dict 
+            game_dict[game['game_name']] = game_temp
             
         return game_dict
 

@@ -169,7 +169,7 @@ class JSON_parser():
 
         Returns
         -------
-        df_htlb : dataframe - dict transformed in raw df - ready for transformation
+        df_hltb : dataframe - dict transformed in raw df - ready for transformation
 
         """  
         dict_temp_htlb = {} 
@@ -183,12 +183,14 @@ class JSON_parser():
                 #dict_parser
                 # NB : all raw duration from API response are in seconds
                 game_name  = subgame_dict['game_name']  #game_name
-                comp_100   = subgame_dict['comp_100'] #
-                comp_all   = subgame_dict['comp_all'] #completionist 100%
+                game_id    = subgame_dict['game_id']  #game_name
+                comp_100   = subgame_dict['comp_100'] #completionist 100%
+                comp_all   = subgame_dict['comp_all'] #completing "All Styles" for HLTB
                 comp_main  = subgame_dict['comp_main'] #complishing main story
                 comp_plus  = subgame_dict['comp_plus'] #main story + side quests
                 platform   = subgame_dict['profile_platform'] 
-                developer  = subgame_dict['profile_dev'] 
+                developer  = subgame_dict['profile_dev']
+                score      = subgame_dict['review_score']
                 if 'release' in subgame_dict:
                     release    = subgame_dict['release'] #add release data if exists - missing in some dict
            
@@ -201,8 +203,16 @@ class JSON_parser():
                                       'developer'  : developer
                                      }
                   
-        df_htlb = pd.DataFrame.from_dict(dict_temp_htlb, orient='index')
+        df_hltb = pd.DataFrame.from_dict(dict_temp_htlb, orient='index')
             
+        return df_hltb
+    
+    
+    def df_cleanser(df):
+        
+        
+        return df_clean
+
             # for version in subgame_dict:
             #     best_match = None
             #     best_similarity = 0

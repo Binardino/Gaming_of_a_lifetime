@@ -162,21 +162,26 @@ dico_yoyo = HLTBRequests_post.get_hltb_game_data(df_vg, 'hide_dlc')
 #%%
 class JSON_parser():
     def JSON_to_df(game_dict):
-    
-        dicohours = {}
-                    
-        gamea = {}
-            
+        """
+        Parameters
+        ----------
+        game_dict : dict - raw data from HLTB API response
+
+        Returns
+        -------
+        df_htlb : dataframe - dict transformed in raw df - ready for transformation
+
+        """  
+        dict_temp_htlb = {} 
+        #iteration through each game name (ie. key) & game dic data (value)
         for key, value in dico_yoyo.items():
-            print("key is", key)
-            #key_game_name = key
-            
+            print("key is", key, "\n ------------------  \n")
+
             #get value from sub dict data
-            data_list = value['data']
-                
+            data_list = value['data']                
             for subgame_dict in data_list:
                 #dict_parser
-                #all times from API are in seconds
+                # NB : all raw duration from API response are in seconds
                 game_name  = subgame_dict['game_name']  #game_name
                 comp_100   = subgame_dict['comp_100'] #
                 comp_all   = subgame_dict['comp_all'] #completionist 100%
@@ -185,33 +190,34 @@ class JSON_parser():
                 platform   = subgame_dict['profile_platform'] 
                 developer  = subgame_dict['profile_dev'] 
                 if 'release' in subgame_dict:
-                    release    = subgame_dict['release']
+                    release    = subgame_dict['release'] #add release data if exists - missing in some dict
            
-                gamea[key] = {'game_name' : game_name,
-                                 'comp_100'   : comp_100,
-                                 'comp_all'   : comp_all,
-                                 'comp_main'  : comp_main,
-                                 'comp_plus'  : comp_plus,
-                                 'platform'   : platform,
-                                 'developer'  : developer
-                    }
+                dict_temp_htlb[key] = {'game_name' : game_name,
+                                      'comp_100'   : comp_100,
+                                      'comp_all'   : comp_all,
+                                      'comp_main'  : comp_main,
+                                      'comp_plus'  : comp_plus,
+                                      'platform'   : platform,
+                                      'developer'  : developer
+                                     }
                   
-           
+        df_htlb = pd.DataFrame.from_dict(dict_temp_htlb, orient='index')
             
-            dicohours[game_name]
-            
-            
-            for version in subgame_dict:
-                best_match = None
-                best_similarity = 0
-                similarity = fuzzymatch_metacritic(df_vg, version)
-                if similarity > best_similarity:
-                    best_similarity = similarity
-                    best_match = version
+            # for version in subgame_dict:
+            #     best_match = None
+            #     best_similarity = 0
+            #     similarity = fuzzymatch_metacritic(df_vg, version)
+            #     if similarity > best_similarity:
+            #         best_similarity = similarity
+            #         best_match = version
                     
-            if best_match is not None:
-                print("Best Match - Game Name:", best_match.game_name)
-                # Print other attributes of the best match if needed
+            # if best_match is not None:
+            #     print("Best Match - Game Name:", best_match.game_name)
+            #     # Print other attributes of the best match if needed
+            
+      #      print(value['data'])
+            
+        return df_htlb
             
             print(value['data'])
 

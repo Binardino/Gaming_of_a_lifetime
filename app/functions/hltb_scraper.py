@@ -13,6 +13,17 @@ from app.functions.metacritic_scraper import *
 
 class HLTBRequests_post:
     def create_headers(url):
+        """
+
+        Parameters
+        ----------
+        url : URL of endpoint to call
+
+        Returns
+        -------
+        headers : dict with headers required for HLTB requests call - set up JSON content, language, & user agent
+
+        """
         ua = UserAgent()
         headers = {'Accept-Language': 'en-US,en;q=0.8',
                    'Upgrade-Insecure-Requests': '1',
@@ -48,7 +59,7 @@ class HLTBRequests_post:
         """
         #console mapper to match API naming
         console_mapper = { 'PS1':'PlayStation' ,'PS2':'PlayStation 2', 'PS3':'PlayStation 3','PS4':'PlayStation 4', 'PS5':'PlayStation 5',
-                          'Switch':'Nintendo Switch','GameCube':'Nintendo GameCube', 'N64':'Nintendo 64', 'SNES': 'Super Nintendo', 'NES':'NES','GameBoy':'GameBoy','GBA': 'Game Boy Advance',                          
+                          'Switch':'Nintendo Switch','GameCube':'Nintendo GameCube', 'N64':'Nintendo 64', 'SNES': 'Super Nintendo', 'NES':'NES','GameBoy':'GameBoy','GBA': 'Game Boy Advance', 'Wii':'Wii',                          
                           'Megadrive': 'Sega Mega Drive/Genesis',
                           'Android':'Mobile', 'PC':'PC'}
         
@@ -91,7 +102,20 @@ class HLTBRequests_post:
         return payload
     
     
-    def get_hltb_game_data(df):
+    def get_hltb_game_data2(df, search_modifier):
+        """
+
+        Parameters
+        ----------
+        df : DataFrame of list of videogames
+        
+        search_modifier : param for HLTB API : choice to include or exclude game's DLC data
+
+        Returns
+        -------
+        game_dict : dict of games with all raw HLTB data for matched data from input df
+
+        """
         url = 'https://howlongtobeat.com/api/search'
         
         

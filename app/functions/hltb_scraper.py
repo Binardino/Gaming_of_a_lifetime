@@ -209,7 +209,28 @@ class JSON_parser():
     
     
     def df_cleanser(df):
+        """
+        Func to clean raw data from HLTB call.
+        Apply all required cleansing to raw df :
+            - all duration are in seconds and need to be converted in hours
+
+        Parameters
+        ----------
+        df :  dataframe - raw df from HLTB call
+
+        Returns
+        -------
+        df_clean :  df cleansed - ready to be use for Final Gaming_App
         
+        """
+        
+        df_clean = df.copy()
+        
+        #list of time columns in seconds
+        second_col = ['comp_100', 'comp_all', 'comp_main', 'comp_plus']
+        
+        for col in second_col:
+            df_clean[col] = df_clean[col] /3600
         
         return df_clean
 

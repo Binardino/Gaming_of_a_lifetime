@@ -102,7 +102,7 @@ class HLTBRequests_post:
         return payload
     
     
-    def get_hltb_game_data2(df, search_modifier):
+    def get_hltb_game_data(df, search_modifier):
         """
 
         Parameters
@@ -117,6 +117,7 @@ class HLTBRequests_post:
 
         """
         url = 'https://howlongtobeat.com/api/search'
+        df = df_vg.sample(3)
         
 #        df['console'] = df['console'].str.replace(' / ', '', regex=False)
         df['console'] = df['console'].apply(lambda x : x.split('|')[0])
@@ -144,21 +145,6 @@ class HLTBRequests_post:
             
         return game_dict
 
-    
-#%% import data
-#@st.cache_data
-def get_data_csv(path):
-    return pd.read_csv(path)
-
-#st.cache_data
-def get_data_sql(query, engine):
-    return pd.read_sql(query=query, con=engine)
-
-df_vg = get_data_csv('../db_data/csv/df_vg_local_csv.csv')
-
-df = df_vg
-
-dico_yoyo = HLTBRequests_post.get_hltb_game_data(df_vg, 'hide_dlc')
 #%%
 class JSON_parser():
     def JSON_to_df(game_dict):
@@ -174,7 +160,7 @@ class JSON_parser():
         """  
         dict_temp_htlb = {} 
         #iteration through each game name (ie. key) & game dic data (value)
-        for key, value in dico_yoyo.items():
+        for key, value in game_dict.items():
             print("key is", key, "\n ------------------  \n")
 
             #get value from sub dict data
@@ -233,22 +219,3 @@ class JSON_parser():
             df_clean[col] = df_clean[col] /3600
         
         return df_clean
-
-            # for version in subgame_dict:
-            #     best_match = None
-            #     best_similarity = 0
-            #     similarity = fuzzymatch_metacritic(df_vg, version)
-            #     if similarity > best_similarity:
-            #         best_similarity = similarity
-            #         best_match = version
-                    
-            # if best_match is not None:
-            #     print("Best Match - Game Name:", best_match.game_name)
-            #     # Print other attributes of the best match if needed
-            
-      #      print(value['data'])
-            
-        return df_htlb
-            
-            print(value['data'])
-

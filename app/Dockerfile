@@ -1,5 +1,12 @@
 FROM python:3.10
 
+# Update Linux and upgrade pip in one layer
+RUN apt-get update && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    pip install --upgrade pip
+
+
 #set working directory to /app level
 WORKDIR /app
 
@@ -7,9 +14,7 @@ WORKDIR /app
 COPY . . 
 
 #install packages
-RUN pip install --upgrade pip
-# RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 #Expose port 8501
 EXPOSE 8501

@@ -2,14 +2,18 @@ version: "3"
 
 services:
   db:
-    image: postgres
-    environment:
+    image: postgres:14-alpine
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+      
+    env_file: .env
+    #environment:
       # env_file: dbcredentials.env
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_HOST=${POSTGRES_HOST}
-      - POSTGRES_PORT=${POSTGRES_PORT}
+      #- POSTGRES_USER=${POSTGRES_USER}
+      ##- POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      #- POSTGRES_DB=${POSTGRES_DB}
+      #- POSTGRES_HOST=${POSTGRES_HOST}
+      #- POSTGRES_PORT=${POSTGRES_PORT}
     build:
       context: .
       args:
@@ -19,21 +23,21 @@ services:
       - POSTGRES_HOST=${POSTGRES_HOST}
       - POSTGRES_PORT=${POSTGRES_PORT}
       - POSTGRES_TABLE=${POSTGRES_TABLE}
-    volumes:
-      - db_data_gaming:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-
+#    volumes:
+ #     - db_data_gaming:/var/lib/postgresql/data
+  #    - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: always
-    ports:
-      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
 
   app:
     depends_on:
       - db
-    images: binardino/gaming_of_a_lifetime:latest
+    build:
+      context : ./app
+      dockerfile: Dockerfile
+    #image: binardino/gaming_of_a_lifetime:latest
     restart: always
     ports:
       - "${STAPP_PORT}:${STAPP_PORT}"
 
-volumes:
-  db_data_gaming:
+#volumes:
+#  db_data_gaming:

@@ -1,10 +1,9 @@
-FROM python:3.9
+FROM python:3.10
 
 #set working directory to /app level
 WORKDIR /app
 
 # COPY requirements.txt .
-
 COPY . . 
 
 #install packages
@@ -23,4 +22,4 @@ ENV LANG=C.UTF-8
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
 #run app in Streamlit
-ENTRYPOINT ["streamlit", "run", "app/app_gaming.py", "--server.port=8501", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "home_page.py", "--server.port=8501", "--server.address=0.0.0.0"]

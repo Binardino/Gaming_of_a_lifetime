@@ -46,10 +46,10 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('The Legend of Zelda: A Link to the Past','SNES','Action-Adventure',false,1991,2020,20,91,false),
 	 ('The Legend of Zelda: Twilight Princess','Wii','Action-Adventure',false,2006,2010,40,98,false),
 	 ('The Legend of Zelda: Link''s Awakening','GameBoy','Action-Adventure',true,1993,2001,20,90,false),
-	 ('The Legend of Zelda: Breath to the Wild','Switch','Action-Adventure|Open World',true,2016,2020,110,99,true),
+	 ('The Legend of Zelda: Breath of the Wild','Switch','Action-Adventure|Open World',true,2016,2020,110,99,true),
 	 ('The Legend of Zelda: Ocarina of Time','N64','Action-Adventure',false,1998,2017,20,92,false),
 	 ('Red Dead Redemption 2','PS4','Action-Adventure|Open World',true,2018,2018,60,96,false),
-	 ('Spiderman','PS4','Action|Platformer',true,2018,2020,30,90,false),
+	 ('Marvel''s Spider-Man','PS4','Action|Platformer',true,2018,2020,30,90,false),
 	 ('God of War IV','PS4','Action|Beat''em All',false,2018,2020,75,99,false),
 	 ('God of War III','PS4','Action|Beat''em All',false,2015,2020,35,92,false);
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
@@ -88,7 +88,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
 	 ('Command & Conquer: Red Alert 3','PC','STR',true,2008,2018,10,75,true),
 	 ('Command & Conquer: Generals','PC','STR',true,2003,2005,15,77,true),
-	 ('Stronghold','PC','STR',true,2003,2003,10,73,true),
+	 ('Stronghold','PC','STR',false,2003,2003,10,73,true),
 	 ('Nox','PC','RPG|Hack&Clash',true,2008,2018,10,75,true),
 	 ('Diablo','PS1|PC','RPG|Hack&Clash',true,1997,1998,40,92,true),
 	 ('Diablo II','PC','RPG|Hack&Clash',true,2000,2005,25,89,true),
@@ -103,17 +103,17 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Warcraft III: Reign of Chaos','PC','STR',true,2002,2002,100,95,true),
 	 ('Warcraft III: The Frozen Throne','PC','STR',true,2003,2003,30,93,true),
 	 ('Heroes of Might and Magic II: The Succession Wars','PC','STR',true,1996,1998,30,88,true),
-	 ('Heroes of Might & Magic III','PC','STR',true,1999,2000,60,94,true),
-	 ('Heroes of Might & Magic IV','PC','STR',true,2002,2002,45,94,true),
-	 ('Heroes of Might & Magic V','PC','STR',false,2006,2008,25,89,true),
-	 ('Heroes of Might & Magic VII','PC','STR',false,2015,2018,10,85,true);
+	 ('Heroes of Might and Magic III','PC','STR',true,1999,2000,60,94,true),
+	 ('Heroes of Might and Magic IV','PC','STR',true,2002,2002,45,94,true),
+	 ('Heroes of Might and Magic V','PC','STR',false,2006,2008,25,89,true),
+	 ('Heroes of Might and Magic VII','PC','STR',false,2015,2018,10,85,true);
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
 	 ('Age of Empire II','PC','STR',false,2000,2003,30,88,true),
 	 ('Life is Strange','PC','Narrative',true,2008,2018,10,79,true),
 	 ('Worms','PC','STR|Shoot''em All',false,1995,1996,30,80,true),
 	 ('Worms 2','PC','STR|Shoot''em All',false,1997,1997,30,82,true),
 	 ('Worms Armageddon','PC','STR|Shoot''em All',false,1999,2000,40,87,true),
-	 ('Worms: W.M.D','PS4','STR|Shoot''em All',false,2016,2018,20,87,true),
+	 ('Worms W.M.D','PS4','STR|Shoot''em All',false,2016,2018,20,87,true),
 	 ('Theme Hospital','PC','STR',false,1997,2000,10,80,true),
 	 ('Dungeon Keeper','PC','STR',false,1997,2000,10,80,true),
 	 ('The Sims','PC','STR',true,2000,2000,50,90,true),
@@ -127,7 +127,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Grim Fandango','PC','Point&Click',true,2008,2018,20,80,true),
 	 ('The Curse of Monkey Island','PC','Point&Click',true,1997,2018,10,75,true),
 	 ('Escape From Monkey Island','PC','Point&Click',true,2004,2004,30,85,true),
-	 ('The Secrets of Monkey Island','PC','Point&Click',false,1990,2018,2,87,true),
+	 ('The Secret of Monkey Island','PC','Point&Click',false,1990,2018,2,87,true),
 	 ('Myst','PC','Point&Click',true,1993,1993,25,86,true);
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
 	 ('Versailles','PC','Point&Click',false,1996,1996,10,73,true),
@@ -155,13 +155,13 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Star Wars Episode I Racer','PC','Racing',true,2001,2001,30,75,false),
 	 ('Star Wars: StarFighter','PC','Space Shooter',true,2001,2001,20,80,false),
 	 ('Star Wars: Jedi StarFighter','PS2','Space Shooter',true,2001,2001,20,80,false),
-	 ('Star Wars Battlefront (2015)','PC','FPS|Space Shooter',true,2015,2015,20,80,true),
-	 ('Star Wars Battlefront II','PS4|PC','FPS|Space Shooter',true,2017,2017,50,90,true),
+	 ('Star Wars: Battlefront (2015)','PC','FPS|Space Shooter',true,2015,2015,20,80,true),
+	 ('Star Wars: Battlefront II (2017)','PS4|PC','FPS|Space Shooter',true,2017,2017,50,90,true),
 	 ('Star Wars: Bounty Hunter','PS2','Action-Adventure',true,2002,2002,30,70,true),
 	 ('Star Wars: The Force Unleashed','PS3','Hack&Clash',true,2008,2016,15,75,false),
 	 ('Star Wars: The Force Unleashed II','PS3','Hack&Clash',true,2008,2016,15,75,false),
 	 ('LEGO Star Wars: The Complete Saga','PS3','Hack&Clash',true,2007,2016,10,75,false),
-	 ('Star Wars Rogue Leader: Rogue Squadron II','GameCube','Gunfight',true,2001,2003,50,94,true);
+	 ('Star Wars Rogue Squadron II: Rogue Leader','GameCube','Gunfight',true,2001,2003,50,94,true);
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
 	 ('Star Wars: Rogue Squadron','PC','Gunfight',true,1998,2003,20,93,true),
 	 ('Little Big Adventure','PC','Action-Adventure|Platformer',true,1994,1999,20,85,true),
@@ -262,7 +262,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Polytopia','Android','STR',false,2016,2017,2,78,false),
 	 ('Cyberpunk 2077','PC','RPG|Open World',true,2020,2020,120,99,false);
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
-	 ('WatchDogs Legion','PC','Action-Adventure|Open World',true,2020,2020,50,95,true),
+	 ('Watch Dogs Legion','PC','Action-Adventure|Open World',true,2020,2020,50,95,true),
 	 ('Among Us','Android','Party game',false,2018,2020,7,70,true),
 	 ('Mario Galaxy','Switch','Platformer',false,2008,2020,20,94,true),
 	 ('Mario Sunshine','Switch','Platformer',false,2003,2020,10,75,true),

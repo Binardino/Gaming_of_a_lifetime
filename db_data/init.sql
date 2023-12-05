@@ -275,3 +275,14 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
 	 ('Horizon Forbidden West','PS5','RPG|Open World',false,2022,2022,50,93,false),
 	 ('Star Wars Jedi Fallen Order','PC','RPG|Action-Adventure',true,2019,2020,25,89,false);
+
+-- create how long to beat table
+CREATE TABLE IF NOT EXISTS public.how_long_to_beat (
+								game_name VARCHAR(255),
+								comp_100 VARCHAR(255),
+								comp_all FLOAT,
+								comp_main FLOAT,
+								comp_plus FLOAT,
+								platform VARCHAR(255),
+								developer VARCHAR(255)
+							);

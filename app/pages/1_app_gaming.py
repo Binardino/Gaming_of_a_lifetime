@@ -15,6 +15,7 @@ import seaborn as sns
 import plotly.express as px
 import os
 import sys
+import sqlalchemy
 #set path for dynamic function import
 sys.path.append("..")
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -22,18 +23,11 @@ os.chdir(dir_path)
 from functions.data_wrangling import *
 from functions.db_connection import *
 from functions.visualisation_tools import *
+from functions.db_connection import *
 
 st.set_page_config(page_title="Gaming EDA presentation")
 #%%
 #import data
-# @st.cache_data
-def get_data_csv(path):
-    return pd.read_csv(path)
-
-# @st.cache_data
-def get_data_sql(query, engine):
-    return pd.read_sql(query=query, con=engine)
-
 def create_slider_numeric(label, column, step):
     slider_numeric = st.sidebar.slider(label, #label 
                                   int(column.min()),
@@ -67,8 +61,26 @@ def create_mask(df, column, slider, mapping_dict):
 #%%
 #read df
 # df_raw = get_data_csv('../db_data/df_vg_local_csv.csv')
-df_raw = get_data_csv('../df_vg_local_csv.csv')
+#df_raw = get_data_csv('../df_vg_local_csv.csv')
+driver   = 'postgresql+psycopg2:'
+#ip = '127.0.0.1'
+user     = os.environ.get("POSTGRES_USER")
+password = os.environ.get("POSTGRES_PASSWORD")
+table    = os.environ.get("POSTGRES_TABLE")
+database = os.environ.get("POSTGRES_DB")
+#host     = os.environ.get("POSTGRES_HOST")
+port     = os.environ.get("CONTAINER_PORT")
+host     = 'db'
 
+#connection_string = f'{driver}//{user}:{password}@{host}:{port}/{database}'
+connection_string = f'{driver}//{user}:{password}@{host}:5432/{database}'
+print("connection_string is :", connection_string)
+
+engine = sqlalchemy.create_engine(connection_string)
+query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
+print(pd.read_sql(sql=query, con=engine.connect(), index_col='id'))
+
+df_raw = get_data_sql(sql=query, engine=engine.connect())
 #display
 st.title('Gaming of a lifetime df display')
 st.markdown("""

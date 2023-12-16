@@ -277,12 +277,48 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Star Wars Jedi Fallen Order','PC','RPG|Action-Adventure',true,2019,2020,25,89,false);
 
 -- create how long to beat table
-CREATE TABLE IF NOT EXISTS public.how_long_to_beat (
-								game_name VARCHAR(255),
-								comp_100 VARCHAR(255),
-								comp_all FLOAT,
-								comp_main FLOAT,
-								comp_plus FLOAT,
-								platform VARCHAR(255),
-								developer VARCHAR(255)
-							);
+CREATE TABLE IF NOT EXISTS  public.how_long_to_beat (
+    id SERIAL PRIMARY KEY,
+    game_name VARCHAR(255),
+    console VARCHAR(50),
+    game_type VARCHAR(50),
+    finished BOOLEAN,
+    published_year INTEGER,
+    played_year INTEGER,
+    hours_played INTEGER,
+    perso_score INTEGER,
+    multiplayed BOOLEAN,
+    comp_100 NUMERIC,
+    comp_all NUMERIC,
+    comp_main NUMERIC,
+    comp_plus NUMERIC,
+    platform VARCHAR(255),
+    developer VARCHAR(255)
+);
+
+-- Populate the table with HLTB CSV data
+COPY how_long_to_beat FROM '/docker-entrypoint-initdb.d/csv_file/hltb_scrap.csv' DELIMITER ',' CSV HEADER;
+
+-- create metacritic table
+CREATE TABLE IF NOT EXISTS  public.metacritic (
+	id SERIAL PRIMARY KEY,
+	game_name VARCHAR(255),
+	platform VARCHAR(255),
+	year_of_release INT,
+	genre VARCHAR(255),
+	publisher VARCHAR(255),
+	na_sales VARCHAR(20),
+	eu_sales VARCHAR(20),
+	jp_sales VARCHAR(20),
+	other_sales VARCHAR(20),
+	global_sales VARCHAR(20),
+	critic_score VARCHAR(20),
+	critic_count VARCHAR(20),
+	user_score VARCHAR(20),
+	user_count VARCHAR(20),
+	developer VARCHAR(255),
+	rating VARCHAR(20)
+);
+
+-- Populate the table with HLTB CSV data
+COPY metacritic FROM '/docker-entrypoint-initdb.d/csv_file/metacritic_clean.csv' DELIMITER ',' CSV HEADER;

@@ -3,25 +3,28 @@ version: "3"
 services:
   db:
     image: postgres:14-alpine
+    container_name: gaming_db
     restart: always
     build:
       context: ./db_data
-    env_file: .env
     environment:
-      - POSTGRES_DB=${POSTGRES_DB}
-      #- POSTGRES_HOST=${POSTGRES_HOST}
-      - POSTGRES_PORT=${POSTGRES_PORT}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
     volumes:
-      - ./db_data/init.sql:/docker-entrypoint-initdb.d/init.sql          
+      - ./db_data/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db_data/csv/hltb_scrap.csv:/docker-entrypoint-initdb.d/csv_file/hltb_scrap.csv
+      - ./db_data/csv/metacritic_clean.csv:/docker-entrypoint-initdb.d/csv_file/metacritic_clean.csv
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT}:5432"
 
   app:
     depends_on:
       - db
     env_file: .env
+    container_name: py_gaming_app
     build:
       context : ./app
       dockerfile: Dockerfile

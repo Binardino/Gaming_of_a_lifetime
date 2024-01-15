@@ -69,11 +69,11 @@ password = os.environ.get("POSTGRES_PASSWORD")
 table    = os.environ.get("POSTGRES_TABLE")
 database = os.environ.get("POSTGRES_DB")
 #host     = os.environ.get("POSTGRES_HOST")
-port     = os.environ.get("CONTAINER_PORT")
+port     = os.environ.get("POSTGRES_PORT")
 host     = 'db'
 
 #connection_string = f'{driver}//{user}:{password}@{host}:{port}/{database}'
-connection_string = f'{driver}//{user}:{password}@{host}:5432/{database}'
+connection_string = f'{driver}//{user}:{password}@{host}:{port}/{database}'
 print("connection_string is :", connection_string)
 
 engine = sqlalchemy.create_engine(connection_string)
@@ -249,9 +249,9 @@ elif selection_dist_year == 'plotly':
 
 #%%
 # distplot publish year
-st.subheader("""Distplot to measure whether I played a game right when it realises
+st.subheader("""Distplot to measure whether I played a game right when it got released
 
-Checking below how much time is there between a game releases and me playing it. In my early years, I waited several years before playing it :
+Checking below how much time is there between a game release and me playing it. In my early years, I waited several years before playing it :
 
 logically, most of early Nintendo & Sega games released in the late 80s, when I was obviously too young to buy & play them
 except for the gap in 2008-2013 when I seldom played, from 2014 onwards, I had the tendency of playing a game closely after its release""")

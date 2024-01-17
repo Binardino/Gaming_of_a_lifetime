@@ -24,6 +24,7 @@ from functions.data_wrangling import *
 from functions.db_connection import *
 from functions.visualisation_tools import *
 from functions.db_connection import *
+import functions.db_connection as db_co
 
 st.set_page_config(page_title="Gaming EDA presentation")
 #%%
@@ -60,23 +61,7 @@ def create_mask(df, column, slider, mapping_dict):
 
 #%%
 #read df
-# df_raw = get_data_csv('../db_data/df_vg_local_csv.csv')
-#df_raw = get_data_csv('../df_vg_local_csv.csv')
-driver   = 'postgresql+psycopg2:'
-#ip = '127.0.0.1'
-user     = os.environ.get("POSTGRES_USER")
-password = os.environ.get("POSTGRES_PASSWORD")
-table    = os.environ.get("POSTGRES_TABLE")
-database = os.environ.get("POSTGRES_DB")
-#host     = os.environ.get("POSTGRES_HOST")
-port     = os.environ.get("POSTGRES_PORT")
-host     = 'db'
-
-#connection_string = f'{driver}//{user}:{password}@{host}:{port}/{database}'
-connection_string = f'{driver}//{user}:{password}@{host}:{port}/{database}'
-print("connection_string is :", connection_string)
-
-engine = sqlalchemy.create_engine(connection_string)
+engine = db_co.sql_connection()
 query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
 print(pd.read_sql(sql=query, con=engine.connect(), index_col='id'))
 
@@ -89,16 +74,16 @@ Update with applied filters""")
 #%%
 #str cleaning & add console tag
 df_vg = str_cleaning(df_raw)
-
+#generate df, console list & dictionary 
 df_console_raw, console_list, dict_console = clean_df_list(df_vg, 'console')
-
+#generate df, gametype list & dictionary
 df_genre_raw, genre_list, dict_genre = clean_df_list(df_vg, 'game_type')
 #%%
 #create sliders
 st.sidebar.header("select console")
 #sidebar console text to select
 sidebar_console = create_slider_multiselect('Consoles available', #label 
-                                         console_list) #default
+                                            console_list)         #default
 
 st.sidebar.header('hours played')
 #slider hours played to select
@@ -113,7 +98,7 @@ sidebar_finish = create_slider_multiselect('finished game', df_vg.finished.uniqu
 
 #sidebar game type text to select
 sidebar_gametype = create_slider_multiselect('Game genre', #label 
-                                         genre_list) #default               
+                                             genre_list)   #default               
 #%%
 #creates masks from the sidebar selection widgets
 mask_console = create_mask(df_vg, 'console', sidebar_console, dict_console)
@@ -131,16 +116,20 @@ mask_perso_score = df_vg['perso_score'].between(sidebar_perso_score[0],sidebar_p
 
 #mask finish
 mask_finish = df_vg['finished'].isin(sidebar_finish)
-#apply mask to dataset
-subdf_filter = df_vg[mask_console & mask_hours & mask_finish
-                    & mask_perso_score & mask_gametype].reset_index(drop=True)#& mask_perso_score
+
+#apply list of masks to dataset
+subdf_filter = df_vg[mask_console 
+                     & mask_hours 
+                     & mask_finish
+                     & mask_perso_score 
+                     & mask_gametype
+                    ].reset_index(drop=True)#& mask_perso_score
 
 st.markdown("""filtered df""")
 st.write(subdf_filter)
-
 #%%
 #str cleaning & add console tag
-df_console_raw, temp_lis, dict_console_temp = clean_df_list(subdf_filter, 'console')
+#df_console_raw, temp_lis, dict_console_temp = clean_df_list(subdf_filter, 'console')
 df_console = add_console_tag(df_console_raw)
 
 df_console_count = df_console.loc[df_console['console'].isin(
@@ -202,7 +191,9 @@ Below distplot illustrates I spent in general between 15 & 30 for most of the ga
 selection_hours = st.selectbox('select viz library', ['plotly', 'seaborn'],key=0)
 if selection_hours == 'seaborn':
     fig_distplot = plt.figure(figsize=(13, 5))
-    ax = sns.histplot(subdf_filter['hours_played'], kde=True , bins=50)
+    ax = sns.histplot(subdf_filter['hours_played'], 
+                      kde=True , 
+                      bins=50)
 
     plt.title('Distribution of hours played per game', fontsize=15)
     ax.xaxis.set_major_locator(ticker.MultipleLocator(15)) #setting xticks to 15
@@ -211,8 +202,8 @@ if selection_hours == 'seaborn':
 
 elif selection_hours == 'plotly':
     fig_px_histo_hours = px.histogram(subdf_filter, x="hours_played",# y="hours_played", #color="sex",
-                    marginal="box", nbins=90,# or violin, rug
-                    hover_data=subdf_filter.columns)
+                                      marginal="box", nbins=90,# or violin, rug
+                                      hover_data=subdf_filter.columns)
     st.plotly_chart(fig_px_histo_hours)
 #%% 
 # catplot of hours played
@@ -242,9 +233,9 @@ if selection_dist_year == 'seaborn':
 
 elif selection_dist_year == 'plotly':
     fig_px_histo_years = px.histogram(subdf_filter, x="played_year",# y="hours_played", #color="sex",
-                    marginal="box", nbins=90,# or violin, rug
-                    hover_data=subdf_filter.columns)
-    # fig.show()
+                                      marginal="box", nbins=90,# or violin, rug
+                                      hover_data=subdf_filter.columns)
+    
     st.plotly_chart(fig_px_histo_years)
 
 #%%
@@ -258,11 +249,18 @@ except for the gap in 2008-2013 when I seldom played, from 2014 onwards, I had t
 
 fig_publish = plt.figure(figsize=(10,6))
 
+sns.histplot(subdf_filter['published_year'], 
+             kde=True , 
+             bins=30, 
+             color=[0,.5,0],
+             label='published_year')
 
-sns.histplot(subdf_filter['published_year'], kde=True , bins=30, 
-             color=[0,.5,0],label='published_year')
-sns.histplot(subdf_filter['played_year'], kde=True ,bins=30,  
-             color=[0,0,1],label='played_year')
+sns.histplot(subdf_filter['played_year'], 
+             kde=True,
+             bins=30,  
+             color=[0,0,1],
+             label='played_year')
+
 plt.xlabel('Years')
 plt.legend(loc=2) #upper left
 plt.title('Difference between Publication Year & Year I played it')
@@ -277,7 +275,6 @@ TBW
 subdf_filter['console'] = subdf_filter['console'].apply(lambda x: x.split('|')[0] if x else x)
 
 df_vg = add_console_tag(subdf_filter)
-
 
 selection_score_console = st.selectbox('select viz library', ['plotly', 'seaborn'],key=2)
 

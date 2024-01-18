@@ -1,0 +1,206 @@
+id,game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed,comp_100,comp_all,comp_main,comp_plus,platform,developer
+0,Final Fantasy VI,SNES,JRPG,0,1994,2019,10,79,0,61.38,41.25,34.29,40.76,"Game Boy Advance, Mobile, Nintendo Switch, PC, PlayStation, PlayStation 4, Super Nintendo",Square
+1,Final Fantasy VII,PS1,JRPG,1,1997,2018,80,99,0,79.22,52.22,39.88,53.68,"Nintendo Switch, PC, PlayStation, PlayStation 4, Xbox One",Square
+2,Final Fantasy VIII,PS1,JRPG,1,1998,2000,70,95,0,79.22,52.22,39.88,53.68,"Nintendo Switch, PC, PlayStation, PlayStation 4, Xbox One",Square
+3,Final Fantasy IX,PS1,JRPG,1,2000,2019,70,95,0,30.15,23.99,21.27,24.64,"Game Boy Advance, Mobile, Nintendo Switch, PC, PlayStation, PlayStation 4, PlayStation Portable, Super Nintendo, WonderSwan",Square
+4,Final Fantasy X,PS2,JRPG,1,2000,2003,200,99,0,106.3,61.5,49.2,60.91,"Emulated, PlayStation 2",Square Enix
+5,Final Fantasy X-2,PS2,JRPG,1,2004,2004,50,86,0,21.65,16.59,13.08,17.23,"Nintendo Switch, PC, PlayStation 2, PlayStation 3, PlayStation 4, PlayStation Vita, Xbox One",Square Enix
+6,Final Fantasy XV,PS4,JRPG|Open World,1,2015,2017,80,95,0,11.27,6.53,2.5,5.42,"PlayStation 4, PlayStation VR",Square Enix
+7,Final Fantasy VII Remake,PS4,JRPG,1,2020,2020,50,99,0,86.15,42.54,32.94,41.59,"PC, PlayStation 4, PlayStation 5",Square Enix
+8,The Witcher 3: Wild Hunt,PS4,RPG|Open World,1,2015,2018,300,100,0,188.16,131.84,55.95,125.78,"Nintendo Switch, PC, PlayStation 4, PlayStation 5, Xbox One, Xbox Series X/S",CD Projekt RED
+9,The Witcher 2: Assassins of Kings,PC,RPG|Open World,0,2011,2018,15,85,0,55.85,32.91,24.08,34.18,"Linux, Mac, PC, Xbox 360",CD Projekt RED STUDIO
+10,The Witcher,PC,RPG|Open World,0,2008,2018,15,85,0,32.14,12.34,5.14,10.42,PC,"CD Projekt RED, Can Explode"
+11,Grand Theft Auto,PC,Open World|Action-Adventure,1,1997,1998,20,88,1,0,7.97,7.97,0,"PC, PlayStation 2",Barcode Studia
+12,Grand Theft Auto: Vice City,PS2,Open World|Action-Adventure,1,2002,2003,100,93,1,40.98,19.97,15.5,25.08,"Mobile, PlayStation 2, PlayStation 4, PlayStation Portable","Rockstar Leeds, Rockstar North"
+13,Grand Theft Auto: San Andreas,PS2,Open World|Action-Adventure,1,2004,2005,200,99,1,76.25,41.92,30.43,45.45,"Mobile, Nintendo Switch, PC, PlayStation 2, PlayStation 3, PlayStation 4, Xbox, Xbox 360",Rockstar North
+14,Grand Theft Auto IV,PS3,Open World|Action-Adventure,1,2008,2016,35,94,0,102.63,49.5,33.15,53.46,"PC, PlayStation 3, Xbox 360",Rockstar North
+15,Grand Theft Auto V,PS3,Open World|Action-Adventure,1,2013,2014,210,100,1,74.24,34.4,27.39,40.74,"PC, PlayStation 3, Xbox 360","Rockstar North, Rockstar Toronto (PC)"
+16,Kingdom Hearts,PS2,Action|JRPG,1,2002,2008,30,90,0,68.4,38.07,29.62,40.04,"PC, PlayStation 2, PlayStation 3, PlayStation 4, Xbox One",Square Enix
+17,Kingdom Hearts II,PS2,Action|JRPG,1,2005,2009,50,98,0,68.4,38.07,29.62,40.04,"PC, PlayStation 2, PlayStation 3, PlayStation 4, Xbox One",Square Enix
+18,Kingdom Hearts III,PS4,Action|JRPG,1,2019,2019,40,95,1,63.9,37.38,28.92,39.78,"PC, PlayStation 4, Xbox One",Square Enix 1st Production Department
+20,The Legend of Zelda: The Wind Waker,GameCube,Action-Adventure,0,2002,2008,35,91,0,59.64,34.14,28.98,34.86,"Nintendo GameCube, Wii U",Nintendo EAD
+21,The Legend of Zelda: A Link to the Past,SNES,Action-Adventure,0,1991,2020,20,91,0,0,6.07,4.67,8.78,Super Nintendo,
+22,The Legend of Zelda: Twilight Princess,Wii,Action-Adventure,0,2006,2010,40,98,0,55.75,43.66,37.32,45.52,"Nintendo GameCube, Wii",Nintendo EAD
+25,The Legend of Zelda: Tears of the Kingdom,Switch,Action-Adventure|Open World,0,2023,2023,22,100,1,236.58,109.62,58.97,114.57,Nintendo Switch,Nintendo EPD
+26,The Legend of Zelda: Ocarina of Time,N64,Action-Adventure,0,1998,2017,20,92,0,34.6,25.81,19.98,27.85,"Nintendo 3DS, Nintendo 64, Nintendo GameCube",Nintendo
+27,Red Dead Redemption 2,PS4,Action-Adventure|Open World,1,2018,2018,60,96,0,182.03,77.16,50.23,81.59,"Google Stadia, PC, PlayStation 4, Xbox One",Rockstar Studios
+30,God of War III,PS4,Action|Beat'em All,0,2015,2020,35,92,0,17.65,10.6,9.95,10.92,"PlayStation 3, PlayStation 4",Santa Monica Studio
+31,Uncharted: Drake's Fortune,PS4,Action-Adventure|Platformer,1,2007,2020,10,68,1,0,0,0,0,PlayStation 4,Sony Computer Entertainment America
+32,Uncharted 2: Among Thieves,PS4,Action-Adventure|Platformer,1,2009,2020,10,87,1,21.52,11.41,10.46,12.31,"PlayStation 3, PlayStation 4",Naughty Dog
+33,Uncharted 3: Drake's Deception,PS4,Action-Adventure|Platformer,0,2011,2020,10,80,1,19.97,9.85,9.09,10.62,"PlayStation 3, PlayStation 4",Naughty Dog
+34,Uncharted: The Nathan Drake Collection,PS4,Action-Adventure|Platformer,1,2015,2020,30,83,1,64.05,30.53,27.32,32.35,PlayStation 4,Bluepoint Games
+35,Uncharted 4: A Thief's End,PS4,Action-Adventure|Platformer,0,2016,2020,10,90,1,31.27,16.36,15.1,17.76,"PC, PlayStation 4, PlayStation 5",Naughty Dog
+36,Horizon Zero Dawn,PS4,Action-Adventure|Open World,0,2017,2019,10,91,1,76.31,54.75,29.74,52.5,"PC, PlayStation 4",Guerrilla Games
+37,Journey,PS4,Action-Adventure|Platformer,1,2012,2019,5,86,1,1.15,1.11,1.08,0,"Nintendo Switch, PC, PlayStation 4, PlayStation 5, Xbox One, Xbox Series X/S",EpiXR Games
+38,Heavy Rain,PS3,Narrative,1,2010,2016,15,79,1,21.98,10.84,9.98,12.09,"PC, PlayStation 3, PlayStation 4",Quantic Dream
+39,Red Dead Redemption,PS3,Action-Adventure|Open World,1,2010,2016,30,92,0,49.34,30.16,22.81,31.23,"PlayStation 3, Xbox 360, Xbox One",Rockstar San Diego
+40,The Last of Us,PS3,Action-Adventure,0,2011,2016,30,92,0,22.32,16.31,15.25,17.43,PlayStation 3,Naughty Dog
+41,Okami,PS3,Action-Adventure,1,2006,2016,30,94,0,1.1,0.68,0.65,0.8,"Amiga, Amstrad CPC, Apple II, Arcade, Atari 2600, Atari 7800, Atari ST, BBC Micro, Commodore 64, Intellivision, MSX, NEC PC-88, NES, PC, PlayStation 2, PlayStation 3, Wii, Xbox 360, ZX Spectrum",Capcom
+43,Assassin's Creed II,PS3,Action-Adventure|Open World,1,2012,2015,35,93,1,15.98,10.66,7.96,11.25,"Nintendo Switch, PC, PlayStation 3, PlayStation 4, PlayStation Vita, Xbox 360, Xbox One",Ubisoft Sofia
+44,Assassin's Creed III,PS3,Action-Adventure|Open World,1,2014,2015,35,93,1,15.98,10.66,7.96,11.25,"Nintendo Switch, PC, PlayStation 3, PlayStation 4, PlayStation Vita, Xbox 360, Xbox One",Ubisoft Sofia
+45,Assassin's Creed IV: Black Flag,PS3,Action-Adventure,1,2013,2016,35,94,1,60.56,39.06,23.38,40.94,"Google Stadia, Nintendo Switch, PC, PlayStation 3, PlayStation 4, Wii U, Xbox 360, Xbox One",Ubisoft Montreal
+46,Assassin's Creed: Unity,PC,Action-Adventure|Open World,0,2014,2018,40,93,1,78.92,31.56,17.18,34.89,"Google Stadia, PC, PlayStation 4, Xbox One",Ubisoft Montreal
+47,Assassin's Creed Origins,PS4,RPG|Open World,1,2017,2017,70,96,1,84.34,56.43,30.06,52.33,"Google Stadia, PC, PlayStation 4, Xbox One",Ubisoft Montreal
+48,Assassin's Creed Odyssey,PC,RPG|Open World,1,2018,2018,100,97,1,27.8,23.78,14.83,22.43,"Google Stadia, PC, PlayStation 4, Xbox One",Ubisoft Quebec
+49,Watch Dogs,PS3,Open World|Action-Adventure,1,2013,2015,30,85,0,61.51,28.06,19.44,33.35,"Google Stadia, PC, PlayStation 3, PlayStation 4, Wii U, Xbox 360, Xbox One",Ubisoft Montreal
+50,Watch Dogs 2,PC,Open World|Action-Adventure,1,2016,2016,50,89,0,46.12,29.66,19.18,31.6,"Google Stadia, PC, PlayStation 4, Xbox One",Ubisoft Montreal
+51,Sid Meier's Civilization III,PC,STR,1,2001,2001,15,88,0,0,0,0,0,PC,"BreakAway Games, Firaxis"
+52,Sid Meier's Civilization V,PC,STR,1,2010,2014,150,97,1,0,45.05,28,62.1,PC,MicroProse
+53,Sid Meier's Civilization: Beyond Earth,PC,STR,1,2014,2014,15,78,0,75.39,31.84,16.83,45.66,PC,Firaxis Games
+54,Sid Meier's Civilization VI,PC,STR,1,2016,2016,300,100,1,0,45.05,28,62.1,PC,MicroProse
+55,Command & Conquer,PC,STR,1,1996,1998,30,89,1,10.38,9.86,9.69,10.13,PC,Westwood Studios
+56,Command & Conquer: Tiberian Sun,PC,STR,1,1999,1999,50,92,1,0,13.99,13.4,17.67,PC,Westwood
+57,Command & Conquer 3: Tiberium Wars,PC,STR,1,2007,2007,60,92,1,36,24.47,23.32,25.74,"PC, Xbox 360","EA Los Angeles, TransGaming"
+58,Command & Conquer: Red Alert,PC,STR,1,1996,1998,40,89,1,18.21,9.47,8.13,0,PC,Intelligent Games
+59,Command & Conquer: Red Alert 2,PC,STR,1,2000,2001,60,90,1,34.25,18.8,14.95,22.4,PC,Westwood Pacific
+61,Command & Conquer: Red Alert 3,PC,STR,1,2008,2018,10,75,1,36.97,12.05,9.97,19.47,PC,EA Los Angeles
+62,Command & Conquer: Generals,PC,STR,1,2003,2005,15,77,1,0,0,0,0,PC,SWR Productions
+63,Stronghold,PC,STR,1,2003,2003,10,73,1,0,12.3,12.3,0,PC,Stormfront Studios
+64,Nox,PC,RPG|Hack&Clash,1,2008,2018,10,75,1,0,0,0,0,PC,Visual Outbreak
+65,Diablo,PS1,RPG|Hack&Clash,1,1997,1998,40,92,1,28.87,16.66,13.72,17.43,"Emulated, PC, PlayStation","Blizzard North, Climax Group (Playstation)"
+66,Diablo II,PC,RPG|Hack&Clash,1,2000,2005,25,89,1,142.68,36.6,18.52,37.8,"PC, PlayStation 3, PlayStation 4, Xbox 360, Xbox One",Blizzard Entertainment
+67,Diablo III,PS3,RPG|Hack&Clash,1,2012,2015,35,93,1,142.68,36.6,18.52,37.8,"PC, PlayStation 3, PlayStation 4, Xbox 360, Xbox One",Blizzard Entertainment
+68,StarCraft,PC,STR,1,1998,1998,150,92,1,0,23.92,0,23.92,PC,
+69,StarCraft Brood War,PC,STR,1,1998,1998,20,92,0,30.84,23.36,20.21,25.43,PC,"Saffire, Blizzard Entertainment"
+70,StarCraft II: Wings of Liberty,PC,STR,1,2010,2010,150,95,1,50.71,21.36,17.79,21.63,PC,Blizzard Entertainment
+72,StarCraft II: Legacy of the Void,PC,STR,1,2015,2015,70,96,1,31.96,17.08,13.51,19.31,PC,Blizzard Entertainment
+73,Warcraft II: Tides of Darkness,PC,STR,1,1995,1996,20,85,1,36.29,25.13,20.68,26.09,"PC, PlayStation",Blizzard Entertainment
+74,Warcraft III: Reign of Chaos,PC,STR,1,2002,2002,100,95,1,33.76,25.36,21.58,27.55,PC,Blizzard Entertainment
+75,Warcraft III: The Frozen Throne,PC,STR,1,2003,2003,30,93,1,37.21,25.06,18.03,28.85,PC,Blizzard Entertainment
+78,Heroes of Might & Magic IV,PC,STR,1,2002,2002,45,94,1,24.34,21.1,0,18.25,"Nintendo Switch, PC, PlayStation 4","Dotemu, Capybara Games"
+79,Heroes of Might & Magic V,PC,STR,0,2006,2008,25,89,1,0,18.89,17.37,21.65,PC,"Black Hole Entertainment, Limbic Entertainment, Virtuos"
+81,Age of Empire II,PC,STR,0,2000,2003,30,88,1,27.67,9.79,8.04,10.71,PC,"Ensemble Studios (Original), Macsoft (Ported Game & Updates), Robot Entertainment (Updates)"
+82,Life is Strange,PC,Narrative,1,2008,2018,10,79,1,24.9,23.14,20.7,23.15,"Google Stadia, PC, PlayStation 4, PlayStation 5, Xbox One, Xbox Series X/S",Deck Nine
+83,Worms,PC,STR|Shoot'em All,0,1995,1996,30,80,1,1.3,1.3,0,0,PC,For Kids
+84,Worms 2,PC,STR|Shoot'em All,0,1997,1997,30,82,1,15,12.58,11.25,15,"Mobile, PC, PlayStation 3, Xbox 360",Team 17
+85,Worms Armageddon,PC,STR|Shoot'em All,0,1999,2000,40,87,1,15,12.58,11.25,15,"Mobile, PC, PlayStation 3, Xbox 360",Team 17
+87,Theme Hospital,PC,STR,0,1997,2000,10,80,1,39.09,30.35,24.49,29.95,"PC, PlayStation",Bullfrog Productions
+88,Dungeon Keeper,PC,STR,0,1997,2000,10,80,1,21.09,18.44,18.11,18.21,PC,Bullfrog Productions
+89,The Sims,PC,STR,1,2000,2000,50,90,1,0,4,0,4,PC,Electronic Arts
+90,The Sims 2,PC,STR,1,2000,2005,30,88,0,0,39,0,39,PC,Maxis
+91,Baldur's Gate,PC,Action-Adventure|RPG,1,1998,2000,40,90,0,133.69,86.39,0,72.98,PC,
+92,Baldur's Gate II: Shadows of Amn,PC,Action-Adventure|RPG,1,2000,2001,50,92,0,140.43,90.89,67.7,88.1,PC,BioWare
+93,Drakan: Order of the Flame,PC,Action-Adventure,1,1999,2000,25,89,0,14,12.1,11.99,12.69,PC,Surreal Software
+94,Heart of Darkness,PC,Action-Adventure|Platformer,1,1998,2001,15,77,0,0,17.5,0,17.5,PC,BigWednesday
+95,Heroes of the Storm,PC,MOBA,0,2016,2016,90,93,1,58.33,33.55,24,29.36,PC,Blizzard Entertainment
+96,Grim Fandango,PC,Point&Click,1,2008,2018,20,80,1,12.06,11.27,10.87,11.55,"Mobile, Nintendo Switch, PC, PlayStation 4, PlayStation Vita, Xbox One",LucasArts
+97,The Curse of Monkey Island,PC,Point&Click,1,1997,2018,10,75,1,9.95,8.47,7.86,9.41,"Mac, PC",LucasArts
+98,Escape From Monkey Island,PC,Point&Click,1,2004,2004,30,85,1,12.33,10.59,10.4,10.72,"Mac, PC, PlayStation 2",LucasArts
+100,Myst,PC,Point&Click,1,1993,1993,25,86,1,82.86,56.87,42.26,57.66,"Nintendo Switch, PC, PlayStation 4",Koei Tecmo Games
+101,Versailles,PC,Point&Click,0,1996,1996,10,73,1,0,3.47,3.47,0,PC,Cryo Interactive
+102,Goblins,PC,Point&Click,0,1991,1993,10,73,1,0,0,0,0,PC,Lost Goblin
+104,Oddworld: Abe's Oddysee,PC,Action-Adventure|Platformer,1,1997,1999,25,85,1,10.86,8.65,7.38,9.18,"Mobile, Nintendo Switch, PC, PlayStation 3, PlayStation 4, PlayStation Vita, Wii U, Xbox One",Just Add Water
+105,Oddworld: Abe's Exoddus,PC,Action-Adventure|Platformer,1,1998,2000,10,86,1,15.46,15.15,14.72,15.06,"PC, PlayStation","Oddworld Inhabitants, Digital Dialect (PC port)"
+106,Lemmings,PC,STR,0,1991,1993,15,72,1,0,0,0,0,"Amiga, Atari ST, Game Boy Color, PC",Presage Software
+108,SimCity 2000,PC,STR,0,1994,1995,15,70,0,32.5,30.83,0,30,PC,Maxis Software
+109,Caesar II,PC,STR,0,1995,1998,10,80,1,82.5,47.78,36.69,55.1,PC,Impressions Games
+110,Pharaoh,PC,STR,0,1999,2001,20,86,1,0,0,0,0,PC,4 Fun Studio
+111,Carmageddon,PC,Racing|Beat'em All,0,1997,1999,20,86,1,0,18.96,18.1,21.58,PC,Stainless Games
+112,Carmageddon II: Carpocalypse Now,PC,Racing|Beat'em All,0,1998,2000,10,86,1,28.54,15.25,12.39,14.9,"Game Boy Color, PC, PlayStation",Stainless Games
+113,RollerCoaster Tycoon,PC,STR,0,1999,2000,15,70,0,0,0,0,0,PC,Nvizzio Creations
+114,Beyond Good & Evil,PC,Action-Adventure|Platformer,0,2003,2016,5,62,0,13.13,11.87,10.74,12.17,"Nintendo GameCube, PC, PlayStation 2, PlayStation 3, Xbox, Xbox 360",Ubisoft
+115,Star Wars: Galactic Battlegrounds,PC,STR,1,2001,2001,40,90,0,45.64,43.68,38.96,42.27,PC,Ensemble Studios
+116,Star Wars: Shadows of the Empire,PC,Action-Adventure|Hack&Clash,1,1996,2002,20,85,0,12.58,6.5,5.14,7.71,"Nintendo 64, PC","Nintendo (N64), LucasArts (PC)"
+117,Star Wars Jedi Knight II: Jedi Outcast,PC,Action-Adventure|Hack&Clash,1,2002,2003,30,98,1,17.92,14.41,12.54,16.46,"PC, Nintendo GameCube, Nintendo Switch, PlayStation 4, Xbox","Raven Software, Vicarious Visions"
+118,Star Wars Jedi Knight: Jedi Academy,PC,Action-Adventure|Hack&Clash,1,2003,2003,30,97,1,13.94,10.56,10.07,11.31,"PC, Nintendo Switch, PlayStation 4, Xbox, Xbox One","Raven Software, Vicarious Visions (Xbox)"
+119,Star Wars: The Old Republic,PC,Action-Adventure|RPG,1,2011,2012,50,92,1,0,0,0,0,"PC, PlayStation 5",Aspyr
+120,Star Wars: Knights of The Old Republic,PC,Action-Adventure|RPG,1,2003,2012,25,91,0,0,0,0,0,"PC, PlayStation 5",Aspyr
+121,Star Wars Episode I Racer,PC,Racing,1,2001,2001,30,75,0,7.33,5.66,5.17,5.57,"Dreamcast, Game Boy Color, Nintendo 64, Nintendo Switch, PC, PlayStation, PlayStation 4, Xbox One",LucasArts
+122,Star Wars: StarFighter,PC,Space Shooter,1,2001,2001,20,80,0,7.87,4.71,4.3,5.96,"PC, PlayStation 2, Xbox",LucasArts
+123,Star Wars: Jedi StarFighter,PS2,Space Shooter,1,2001,2001,20,80,0,9.09,6.39,5.66,7.36,"PlayStation 2, PlayStation 4, Xbox, Xbox One",LucasArts
+125,Star Wars Battlefront II,PS4,FPS|Space Shooter,1,2017,2017,50,90,1,59.63,8.63,6.22,9.51,"PC, PlayStation 4, Xbox One",EA DICE
+126,Star Wars: Bounty Hunter,PS2,Action-Adventure,1,2002,2002,30,70,1,12.58,8.44,7.27,10.4,"Nintendo GameCube, PlayStation 2, PlayStation 4",LucasArts
+127,Star Wars: The Force Unleashed,PS3,Hack&Clash,1,2008,2016,15,75,0,11.83,5.84,5.21,7.22,"Nintendo DS, PC, PlayStation 3, PlayStation Portable, Wii, Xbox 360, Xbox One",LucasArts
+128,Star Wars: The Force Unleashed II,PS3,Hack&Clash,1,2008,2016,15,75,0,11.83,5.84,5.21,7.22,"Nintendo DS, PC, PlayStation 3, PlayStation Portable, Wii, Xbox 360, Xbox One",LucasArts
+129,LEGO Star Wars: The Complete Saga,PS3,Hack&Clash,1,2007,2016,10,75,0,40.55,24.92,13.32,23.35,"Mobile, Nintendo DS, PC, PlayStation 3, Wii, Xbox 360",Traveller's Tales
+131,Star Wars: Rogue Squadron,PC,Gunfight,1,1998,2003,20,93,1,11.55,9.14,8.26,9.86,"Nintendo 64, PC","Factor 5, LucasArts"
+132,Little Big Adventure,PC,Action-Adventure|Platformer,1,1994,1999,20,85,1,7.72,5.75,4.62,5.76,"PC, PlayStation 2",Magenta Software
+133,Little Big Adventure 2,PC,Action-Adventure|Platformer,1,1997,2000,50,97,1,17.51,17.25,15.58,17.38,PC,Adeline Software International
+134,Tomb Raider,PS1,Action|Platformer,1,1997,1997,15,85,1,5.16,4.57,3.87,5.09,"PC, PlayStation",Core Design
+135,Tomb Raider II,PC,Action|Platformer,1,1997,1998,10,86,1,6.95,5.53,3.95,5.42,PC,Core Design
+136,Tomb Raider III: Adventures of Lara Croft,PC,Action|Platformer,1,1998,1998,10,86,1,24.64,21.54,20.14,22.33,"PC, PlayStation",Core Design
+138,Rise of the Tomb Raider,PS4,Action|Platformer,0,2015,2015,10,75,1,39.14,22.95,14.58,23.56,"Google Stadia, PC, PlayStation 4, Xbox One","Crystal Dynamics, Eidos-Montréal, Feral Interactive"
+139,Crash Bandicoot,PS1,Action|Platformer,0,1996,1996,10,79,1,10.99,9.72,7.9,10.59,"Nintendo GameCube, PlayStation, PlayStation 2, PlayStation Portable, Xbox",Radical Entertainment
+140,Crash Nitro Kart,PS2,Racing,0,2003,2003,15,72,1,10.95,7.28,6.12,7.48,"Game Boy Advance, N-Gage, Nintendo GameCube, PlayStation, PlayStation 2, Xbox",Vicarious Visions
+141,Metal Gear Solid,PS1,Action|Infiltration,0,1998,2016,5,80,0,18.93,11.31,8.82,13.05,"PC, PlayStation",Digital Dialect
+142,Splinter Cell,PS2,Action|Infiltration,0,2002,2002,15,82,0,14.82,11.19,10.32,12.58,"Game Boy Advance, Nintendo GameCube, PC, PlayStation 2, PlayStation 3, Xbox, Xbox 360",Ubisoft Shanghai
+143,WipeOut 2097,PS1,Racing,0,1996,1996,15,82,1,5.78,3.69,2,4,"Mac, PC, PlayStation, Sega Saturn",Psygnosis
+144,Driver,PC,Racing,0,1999,2000,15,72,1,0,0,0,0,PC,Casualgames.nu
+145,Chrono Trigger,PS1,JRPG,0,1995,2015,5,75,0,42.27,26.31,23.15,26.48,"Mobile, Nintendo DS, PC, PlayStation, Super Nintendo",Square
+146,Fighting Force,PS1,Beat'em All,1,1997,1997,20,79,1,0,6.06,6.06,0,"Dreamcast, PlayStation",Core Design
+147,Tekken,PS1,Versus Fighting,0,1995,1997,20,79,1,12.93,5.25,1.6,10.56,"Arcade, PlayStation, PlayStation 2, PlayStation 3",Namco
+148,Resident Evil 2,PS1,Survival horror,0,1998,1998,10,80,1,15.45,7.6,6.14,9.25,"Dreamcast, Nintendo 64, Nintendo GameCube, PC, PlayStation, Tiger Handheld",Capcom
+149,Sonic the Hedgehog,Megadrive,Platformer,1,1991,1996,40,85,1,1.03,0.87,0.84,0,"PC, Sega Mega Drive/Genesis",ExecByte
+150,Sonic the Hedgehog 2,Megadrive,Platformer,1,1992,1996,50,88,1,1.94,1.64,1.52,1.83,Sega Mega Drive/Genesis,Sonic Team
+151,Sonic the Hedgehog 3,Megadrive,Platformer,1,1994,1996,40,88,1,7.31,4.83,4.24,4.71,"PC, Sega Mega Drive/Genesis","Sonic Team, Sega Technical Institute"
+152,Sonic & Knuckles,Megadrive,Platformer,1,1994,1996,20,80,1,7.31,4.83,4.24,4.71,"PC, Sega Mega Drive/Genesis","Sonic Team, Sega Technical Institute"
+153,Sonic 3 & Knuckles,Megadrive,Platformer,1,1994,1996,60,94,1,7.31,4.83,4.24,4.71,"PC, Sega Mega Drive/Genesis","Sonic Team, Sega Technical Institute"
+155,Streets of Rage 3,Megadrive,Beat'em All,1,1992,1996,15,70,0,2.44,1.78,1.66,2.23,"Nintendo 3DS, Nintendo Switch, PC, PlayStation 3, PlayStation 4, Sega Game Gear, Sega Master System, Sega Mega Drive/Genesis, Wii, Xbox 360, Xbox One","Sega AM7, MNM Software"
+156,Golden Axe,Megadrive,Beat'em All,0,1989,1993,15,70,0,4.17,1.69,1.58,1.88,"Arcade, Emulated, Nintendo Switch, PC, PlayStation 3, PlayStation 4, Sega Mega Drive/Genesis, Xbox 360",Sega
+157,Mighty Morphin Power Rangers,Megadrive,Beat'em All,0,1994,1994,15,60,1,1.25,1.03,1.03,1.11,"Game Boy, Sega Game Gear, Sega Mega Drive/Genesis, Super Nintendo",Banpresto
+159,Sonic Pinball,Megadrive,Platformer,1,1996,1996,30,79,1,3.07,2.58,2.48,2.95,"Sega Game Gear, Sega Master System, Sega Mega Drive/Genesis","Polygames, Sega Technical Institute, Sega interActive"
+160,Jungle Strike,Megadrive,Action-Adventure|Beat'em All,0,1993,1996,30,79,0,8.48,7.62,6.42,7.56,"Amiga, Amiga CD32, Game Boy, PC, Sega Game Gear, Sega Mega Drive/Genesis, Super Nintendo",Electronic Arts
+161,EarthWorm Jim,Megadrive,Action-Adventure|Platformer,0,1994,1995,15,78,1,4.5,3.24,2.95,3.49,"Game Boy Advance, Mac, PC, PlayStation, Sega Mega Drive/Genesis, Sega Saturn, Super Nintendo","Shiny Entertainment, Screaming Pink"
+162,Aladdin,Megadrive,Action-Adventure|Platformer,1,1993,1994,25,89,1,3.08,2.04,1.79,2.44,"Amiga, Game Boy, Game Boy Advance, Game Boy Color, Mac, NES, Nintendo Switch, PC, PlayStation 4, Sega Mega Drive/Genesis, Super Nintendo, Xbox One","Virgin Games USA, Disney Software"
+163,Disney's The Lion King,Megadrive,Action-Adventure|Platformer,0,1994,1994,15,80,1,2.86,2.19,2.15,2.53,"Game Boy, Nintendo Switch, PC, PlayStation 4, Sega Game Gear, Sega Master System, Sega Mega Drive/Genesis, Super Nintendo, Xbox One","Westwood Studios, Virgin Interactive, Dark Technologies"
+164,Dr Robotnik,Megadrive,STR,1,1993,1993,30,89,1,4.73,2.16,1.89,4.1,"Sega Game Gear, Sega Master System, Sega Mega Drive/Genesis","Compile, Sega Technical Institute"
+166,Tintin in Tibet,Megadrive,Platformer,0,1995,1996,10,71,1,6.25,4.33,3.8,0,"Game Boy, Game Boy Color, Sega Game Gear, Sega Mega Drive/Genesis, Super Nintendo",Infogrames
+167,Tales of Symphonia,GameCube,JRPG,1,2003,2008,30,85,0,194.02,60.31,46.76,63.84,"Nintendo GameCube, Nintendo Switch, PC, PlayStation 2, PlayStation 3, PlayStation 4, Xbox One",Namco Tales Studio
+168,Ristar,Megadrive,Action-Adventure|Platformer,0,1995,1996,20,80,0,3.79,2.7,2.59,3.13,"Mobile, PC, Sega Game Gear, Sega Mega Drive/Genesis",Sonic Team
+169,AAAHH!!! Real Monsters,Megadrive,Action-Adventure|Platformer,0,1995,1996,15,68,0,8,3.34,2.61,0,"Sega Mega Drive/Genesis, Super Nintendo",Realtime Associates
+170,Jurassic Park,Megadrive,Action-Adventure|Platformer,0,1994,1996,5,62,1,4.5,2.53,2.32,0,Sega Mega Drive/Genesis,BlueSky Software
+171,The Lost World: Jurassic Park,PS1,Action-Adventure|Platformer,0,1995,1996,5,62,1,18.77,10.29,8,9.52,"PlayStation, Sega Saturn",Dreamworks Interactive
+172,M.U.S.H.A,Megadrive,Gunfight|Space Shooter,0,1990,1995,10,65,1,8,1.35,1.27,0,Sega Mega Drive/Genesis,Compile
+174,Dragon Ball Z,Megadrive,Versus Fighting,0,1994,1996,10,68,1,0,4.47,4.47,0,Sega Mega Drive/Genesis,Bandai
+175,Mortal Kombat,Megadrive,Versus Fighting,0,1992,1994,10,67,1,24.46,3.8,1.88,9.11,"Arcade, Game Boy, PC, PlayStation, Sega Game Gear, Sega Master System, Sega Mega Drive/Genesis, Super Nintendo, Tiger Handheld",Various
+176,SSX,PS2,Sport,0,2000,2001,10,88,1,0,20.07,0,20.07,"Nintendo GameCube, PlayStation 2, PlayStation Portable, Xbox","EA Canada, EA Montreal"
+177,SSX Tricky,PS2,Sport,1,2001,2002,30,92,1,43.83,15.99,11.33,21.35,"Game Boy Advance, Nintendo GameCube, PlayStation 2, Xbox",EA Canada
+178,SSX 3,PS2,Sport,1,2003,2003,50,96,1,51.26,23.78,16.69,24.89,"Game Boy Advance, Gizmondo, Nintendo GameCube, PlayStation 2, Xbox",EA Canada
+179,SSX On Tour,PS2,Sport,1,2005,2005,50,95,1,0,20.07,0,20.07,"Nintendo GameCube, PlayStation 2, PlayStation Portable, Xbox","EA Canada, EA Montreal"
+180,The Lord of the Rings: The Two Towers,PS2,Action-Adventure|Beat'em All,1,2002,2002,30,90,1,13.54,7.46,6.02,8.5,"Game Boy Advance, Nintendo GameCube, PlayStation 2, Xbox","Stormfront Studios, Hypnos Entertainment"
+181,The Lord of the Rings: The Return of the King,PS2,Action-Adventure|Beat'em All,1,2003,2003,35,90,1,20.02,11.02,8.59,13.18,"Game Boy Advance, Nintendo GameCube, PC, PlayStation 2, Xbox",EA Redwood Shores
+182,The Lord of the Rings: The Battle for Middle-earth,PC,STR,0,2003,2003,35,85,1,16.63,11.74,9.58,13.37,PC,EA Los Angeles
+183,God of War,PS2,Beat'em All|Action-Adventure,1,2005,2020,10,86,0,14.4,12.25,11.9,13.07,"PlayStation 2, PlayStation 3, PlayStation Vita",SCE Studios Santa Monica
+185,FIFA: Road to World Cup 98,PS1,Sport,0,1998,1998,15,85,1,81.6,40.13,22.04,36,"Game Boy, Nintendo 64, PC, PlayStation, Sega Mega Drive/Genesis, Sega Saturn, Super Nintendo",Various
+186,FIFA 2000,PC,Sport,0,2000,2000,20,75,0,85.55,69.33,8.5,59.36,"Game Boy Color, PC, PlayStation",EA Canada
+187,FIFA 15,PS3,Sport,0,2014,2015,20,80,1,256.24,108.83,61.14,134.42,"Nintendo 3DS, PC, PlayStation 3, PlayStation 4, PlayStation Vita, Wii, Xbox 360, Xbox One",EA Canada
+188,FIFA 16,PS4,Sport,0,2015,2016,20,80,1,300.14,90.48,52.99,121.36,"PC, PlayStation 3, PlayStation 4, Xbox 360, Xbox One",EA Canada
+190,Super Mario Bros.,NES,Platformer,1,1985,1993,20,82,1,9.19,8.75,4.25,0,NES,
+191,Super Mario Bros. 2,NES,Platformer,1,1988,1995,15,83,1,5.1,3.35,2.93,3.3,"NES, Super Nintendo",Nintendo EAD
+192,Super Mario Bros. 3,NES,Platformer,1,1988,1995,20,90,1,9.19,8.75,4.25,0,NES,
+193,New Super Mario Bros. Wii,Wii,Platformer,1,2008,2010,20,90,1,15.92,11.71,6.21,11.18,Wii,The Newer Team!
+195,Mario Kart: Double Dash,GameCube,Racing,1,2003,2003,30,90,1,23.55,12.22,5.75,12.51,"Emulated, Nintendo GameCube, Wii",Nintendo EAD
+196,Super Mario Kart,SNES,Racing,0,1992,2000,5,80,1,15.07,4.56,2.39,8.15,"Emulated, Nintendo Switch, Super Nintendo, Wii, Wii U",Nintendo EAD
+197,Mario Kart Wii,Wii,Racing,0,2008,2008,30,90,1,24.56,12.53,5.58,14.54,Wii,Nintendo EAD
+198,Mario Kart Deluxe,Switch,Racing,0,2017,2020,5,90,1,52.18,21.6,6.2,22.09,Nintendo Switch,Nintendo
+199,Mario Kart 64,N64,Racing,0,1996,2001,10,85,1,18.89,7.88,4.81,11.37,Nintendo 64,Nintendo EAD
+200,Super Mario 64,N64,Racing,0,1996,1996,15,92,1,0,3.23,3.23,0,Nintendo 64,frauber
+201,Super Smash Bros. Melee,GameCube,Versus Fighting,1,2002,2002,30,92,1,155.99,52.85,9.94,53.79,Nintendo GameCube,HAL Laboratory
+202,Mario Party 5,GameCube,Party Game,1,2003,2003,50,89,1,25.37,13.78,10.75,16.78,"Emulated, Nintendo GameCube",Hudson Soft
+203,Mario Party 3,N64,Party Game,1,2003,2003,50,92,1,18.3,11.57,8.59,15.41,"Emulated, Nintendo 64",Hudson Soft
+204,Mario Tennis,GameCube,Sport,0,2004,2007,15,75,1,69.28,8.6,3.36,17.39,"Nintendo GameCube, Wii",Camelot Software Planning
+205,Paper Mario,GameCube,Action-Adventure|Platformer,0,2000,2009,10,80,1,58.23,36.64,30.66,39.43,"Nintendo GameCube, Nintendo Switch",Intelligent Systems
+206,Mario RPG,SNES,JRPG,0,1996,2000,15,82,0,25.23,18.57,17.53,19.03,Super Nintendo,Square
+207,Golden Eye,N64,FPS,0,1997,1998,40,92,1,22.06,11.04,8.75,13.53,"Nintendo 64, Nintendo Switch, Xbox One, Xbox Series X/S",Rare
+208,Perfect Dark,N64,FPS,0,2000,2000,5,80,1,33.42,11.5,8.47,16.5,"Game Boy Color, Nintendo 64, Xbox 360","Rare, 4J Studios"
+209,Rayman 2: The Great Escape,N64,Action-Adventure|Platformer,0,1999,2000,20,88,1,11.68,8.84,7.98,8.55,"Dreamcast, Mobile, Nintendo 64, PC, PlayStation",Ubisoft
+210,Rayman,GBA,Action-Adventure|Platformer,1,2000,2000,25,89,1,7.89,5.77,5.17,7.76,"Mobile, Game Boy Advance, N-Gage",Ludi Factory
+211,Rayman Origins,Wii,Action-Adventure|Platformer,0,2011,2011,20,89,1,21.54,13.84,10.99,14.41,"PC, Nintendo 3DS, PlayStation 3, PlayStation 4, PlayStation Vita, Wii, Xbox 360, Xbox One",Ubisoft Montpellier
+212,Batman Returns,NES,Action-Adventure|Beat'em All,0,1989,1993,10,40,1,2.95,1.82,1.57,2.6,"Atari Lynx, NES, Sega CD, Sega Game Gear, Sega Master System, Sega Mega Drive/Genesis, Super Nintendo",Various
+215,Wii Sports,Wii,Sport,0,2006,2006,5,80,1,78.24,26.39,7.94,39.67,Wii,Nintendo EAD
+216,Pokemon Pinball,GBA,Puzzle,0,1999,2000,10,78,1,35.88,27.19,19.24,28.39,Game Boy Advance,Jupiter
+217,Monument Valley,Android,Puzzle,1,2014,2018,3,81,1,1.72,1.65,1.57,1.66,"Mobile, PC",ustwo Games
+218,Monument Valley 2,Android,Puzzle,1,2017,2020,3,81,1,1.72,1.65,1.57,1.66,"Mobile, PC",ustwo Games
+219,Polytopia,Android,STR,0,2016,2017,2,78,0,0,3.3,3.05,3.78,"Mobile, PC",Midjiwan
+220,Cyberpunk 2077,PC,RPG|Open World,1,2020,2020,120,99,0,0,76,0,76,"PC, PlayStation 5, Xbox Series X/S",CD PROJEKT RED
+222,Among Us,Android,Party game,0,2018,2020,7,70,1,0,0,0,0,"Mobile, PC, PlayStation 4, Xbox One",AdHoc Games
+223,Mario Galaxy,Switch,Platformer,0,2008,2020,20,94,1,35.58,19.73,13.83,21.48,"Nintendo Switch, Wii",Nintendo EAD Tokyo
+224,Mario Sunshine,Switch,Platformer,0,2003,2020,10,75,1,29.27,19.33,15.06,20.31,"Nintendo GameCube, Nintendo Switch",Nintendo EAD
+225,Final Fantasy XII,Switch,JRPG,1,2006,2021,40,93,0,104.49,58.12,40.59,61.8,"Nintendo Switch, PC, PlayStation 4, Xbox One",Square Enix
+226,Hades,Switch,Action-Adventure|Hack&Clash,0,2020,2021,30,93,0,95.47,41.57,22.75,48.25,"Mac, Nintendo Switch, PC, PlayStation 4, PlayStation 5, Xbox One, Xbox Series X/S",Supergiant Games
+227,New Super Mario Bros U Deluxe,Switch,Platformer,0,2020,2021,25,90,1,28.78,13.58,9,16.61,Nintendo Switch,Nintendo EAD
+228,Hyrule Warriors : Age of Calamity,Switch,Action-Adventure|Hack&Clash,0,2020,2021,15,90,1,75.86,41.68,24.66,38.32,Nintendo Switch,Omega Force
+229,Assassin's Creed Valhalla,PC,RPG|Open World,0,2020,2021,50,92,0,5.3,4.29,2.61,3.67,"PC, PlayStation 4, PlayStation 5, Xbox One, Xbox Series X/S",Ubisoft Montreal
+230,Demon's Souls,PS5,JRPG|Action-Adventure,0,2020,2022,20,90,0,57.15,31.23,22.84,31.58,PlayStation 5,Bluepoint Games
+231,Horizon Forbidden West,PS5,RPG|Open World,0,2022,2022,50,93,0,87.87,64.44,28.72,61.43,"PC, PlayStation 4, PlayStation 5",Guerrilla
+232,Star Wars Jedi Fallen Order,PC,RPG|Action-Adventure,1,2019,2020,25,89,0,31.27,21.89,17.16,22.06,"Google Stadia, PC, PlayStation 4, PlayStation 5, Xbox One, Xbox Series X/S",Respawn Entertainment

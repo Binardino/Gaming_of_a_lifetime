@@ -23,12 +23,25 @@ from sklearn.preprocessing import LabelEncoder
 print("local path", os.getcwd())
 st.write("local path", os.getcwd())
 
-df_vg = pd.read_csv(r'C:/test/gitio_bine/Gaming_of_a_lifetime/db_data/csv/df_vg_local_csv.csv')
+df_vg = pd.read_csv('../../db_data/csv/df_vg_local_csv.csv')
+df_meta_2016 = pd.read_csv(r'../../\db_data\csv\metacritic_6900_games_22_Dec_2016_updated.csv')
+df_meta_ps4 = pd.read_csv(r'../../\db_data\csv\meta_scraper_ps4.csv')
+df_meta_ps5 = pd.read_csv(r'../../\db_data\csv\meta_scraper_ps5.csv')
+df_meta_switch = pd.read_csv(r'../../\db_data\csv\meta_scraper_switch.csv')
+#%%data wrangling
+col_mapper = { 
+               'Name'           :'game_title', 
+               'Platform'       :'game_platform',
+               'Year_of_Release':'game_release_date', 
+               'Critic_Score'   :'metascore',
+               'User_Score'     :'user _score'
+               }
+df_meta_2016.rename(columns=col_mapper, inplace=True)               
 
-df_meta_2016 = pd.read_csv(r'C:\test\gitio_bine\Gaming_of_a_lifetime\db_data\csv\metacritic_6900_games_22_Dec_2016_updated.csv')
-
+df_meta = pd.concat([df_meta_2016, df_meta_ps4,df_meta_ps5, df_meta_switch])
+               
 #%% import data
-df_meta['Name'].fillna('NaN', inplace=True)
+df_meta['game_title'].fillna('NaN', inplace=True)
 # df_meta['fuzz'] = df_meta['Name'].apply(lambda x : fuzzymatch_metacritic(x, df_vg))
 
 #data wrangling
@@ -36,13 +49,13 @@ df_vg['console'] = df_vg['console'].str.split('|',expand=True)[0]
 df_vg['console'].replace({'PS1':'PS'}, inplace=True)
 tqdm.pandas()
 #df_users.groupby(['userID', 'requestDate']).progress_apply(feature_rollup)
-df_vg['fuzz'] = df_vg['game_name'].progress_apply(lambda x : fuzzymatch_metacritic(x, df_meta['Name']))
+df_vg['fuzz'] = df_vg['game_name'].progress_apply(lambda x : fuzzymatch_metacritic(x, df_meta['game_title']))
 
 # st.write(df_meta)
 
-df_merge = pd.merge(df_vg, df_meta, how='inner', left_on=['fuzz', 'console'], right_on=['Name', 'Platform'])
+df_merge = pd.merge(df_vg, df_meta, how='inner', left_on=['fuzz', 'console'], right_on=['game_title', 'game_platform'])
 
-df_merge_test = pd.merge(df_vg, df_meta, how='left', left_on=['fuzz', 'console'], right_on=['Name', 'Platform'], indicator=True)
+df_merge_test = pd.merge(df_vg, df_meta, how='left', left_on=['fuzz', 'console'], right_on=['game_title', 'game_platform'], indicator=True)
 
 #Numerica encoding of categories
 label_encoder = LabelEncoder()
@@ -60,8 +73,7 @@ corr_matrix = df_merge_lite.corr()
 fig_heatmap = px.imshow(df_merge_lite,
 #                        labels=dict(x='game_type', y='perso_score'),
                         x='game_type',
-                        y='perso_score')
-
+                        y='perso_score',
                         text_auto=True)
 #df_merge.to_csv('meta_merge.csv')
 

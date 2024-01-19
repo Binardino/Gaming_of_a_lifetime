@@ -19,6 +19,10 @@ from functions.visualisation_tools import *
 from functions.db_connection import *
 from tqdm import tqdm
 from sklearn.preprocessing import LabelEncoder
+#from pandarallel import pandarallel
+
+# Initialization
+#pandarallel.initialize(progress_bar=True)
 
 print("local path", os.getcwd())
 st.write("local path", os.getcwd())
@@ -39,7 +43,14 @@ col_mapper = {
 df_meta_2016.rename(columns=col_mapper, inplace=True)               
 
 df_meta = pd.concat([df_meta_2016, df_meta_ps4,df_meta_ps5, df_meta_switch])
-               
+   
+console_mapper = { 
+               'PlayStation 4'  :'PS4', 
+               'PlayStation 5'  :'PS5'
+               }
+
+df_meta['game_platform'].replace(console_mapper, inplace=True)
+
 #%% import data
 df_meta['game_title'].fillna('NaN', inplace=True)
 # df_meta['fuzz'] = df_meta['Name'].apply(lambda x : fuzzymatch_metacritic(x, df_vg))
@@ -47,16 +58,17 @@ df_meta['game_title'].fillna('NaN', inplace=True)
 #data wrangling
 df_vg['console'] = df_vg['console'].str.split('|',expand=True)[0]
 df_vg['console'].replace({'PS1':'PS'}, inplace=True)
+
 tqdm.pandas()
 #df_users.groupby(['userID', 'requestDate']).progress_apply(feature_rollup)
 df_vg['fuzz'] = df_vg['game_name'].progress_apply(lambda x : fuzzymatch_metacritic(x, df_meta['game_title']))
 
 # st.write(df_meta)
-
+#%%
 df_merge = pd.merge(df_vg, df_meta, how='inner', left_on=['fuzz', 'console'], right_on=['game_title', 'game_platform'])
 
 df_merge_test = pd.merge(df_vg, df_meta, how='left', left_on=['fuzz', 'console'], right_on=['game_title', 'game_platform'], indicator=True)
-
+#%%
 #Numerica encoding of categories
 label_encoder = LabelEncoder()
 df_merge['game_type2'] = df_merge['game_type'].astype('category').cat.codes

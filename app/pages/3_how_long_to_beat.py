@@ -30,3 +30,46 @@ df_raw = get_data_sql(sql=query, engine=engine_vg.connect())
 
 df_hltb = get_data_sql(sql=sqlalchemy.text('SELECT * FROM how_long_to_beat'), engine=engine_vg.connect())
 st.write(df_hltb)
+#%% README
+st.write(f"# Welcome to the Adventure of a Lifetime - How long to beat comparison🎮")
+
+st.markdown(f"""The goal of this part is to compare my personal data from my videogame_lifetime database with the data from How Long To Beat (HLTB). 
+            HLTB is an crowd sourced database, agregating the time the players took to finish a game. 
+            
+            **Compare data from HLTB dataset**
+            
+            The available How Long To Beat is up-to-date with data fetching ;
+            
+            List how long takes a game to be done at various stages. Only the {df_hltb.size}
+
+            In How long to beat, the time the gamer took to play a game is divided in 4 categories
+            - comp_100 
+            - comp_all
+            - comp_main
+            - comp_plus
+
+            """)
+#%%
+fig_violin = px.violin(data_frame=df_hltb,
+                       x='game_name',
+                       y=['hours_played', 'comp_all'],
+                       box=True)
+                       #kde=50)
+
+st.plotly_chart(fig_violin)
+
+fig_boxplot = px.box(data_frame=df_hltb,
+                     x='game_name', 
+                     y=['hours_played', 'comp_all'],
+                     width=1000, height=400,
+                     color='platform'
+                     )
+
+st.plotly_chart(fig_boxplot)
+
+fig_radar = px.line_polar(df_hltb, 
+                          r='game_name', 
+                          theta=['hours_played', 'comp_all'], 
+                          line_close=True)
+
+st.plotly_chart(fig_radar)

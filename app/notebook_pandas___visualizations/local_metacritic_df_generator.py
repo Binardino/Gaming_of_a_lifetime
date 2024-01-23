@@ -71,9 +71,9 @@ df_merge_test = pd.merge(df_vg, df_meta, how='left', left_on=['fuzz', 'console']
 #%%
 #Numerica encoding of categories
 label_encoder = LabelEncoder()
-df_merge['game_type2'] = df_merge['game_type'].astype('category').cat.codes
-df_merge['console'] = df_merge['console'].astype('category').cat.codes
-df_merge['game_type'] = label_encoder.fit_transform(df_merge['game_type'])
+df_merge['game_type_encoded'] = df_merge['game_type'].astype('category').cat.codes
+df_merge['console_encoded'] = df_merge['console'].astype('category').cat.codes
+df_merge['game_type_label_encoder'] = label_encoder.fit_transform(df_merge['game_type'])
 
 st.write("label encoder")
 st.write(df_merge['game_type'])

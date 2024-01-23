@@ -75,6 +75,46 @@ df_merge['game_type_encoded'] = df_merge['game_type'].astype('category').cat.cod
 df_merge['console_encoded'] = df_merge['console'].astype('category').cat.codes
 df_merge['game_type_label_encoder'] = label_encoder.fit_transform(df_merge['game_type'])
 
+df_merge['score_diff'] = df_merge['metascore'] - df_merge['perso_score']
+
+df_merge.to_csv('metacritic_merged_local.csv',index=False)
+#%%
+sns.pairplot(df_merge)
+
+#%%
+fig_diverging_bar = px.bar(df_merge, x='game_name', y='score_diff', color='score_diff', title='Diverging Bar Chart of Score Differences')
+fig_diverging_bar.show()
+#%%
+import plotly.io as pio
+pio.renderers.default='browser'
+fig_violin = px.violin(df_merge,
+                       x='game_type',
+                       y='score_diff')
+#                       box=True)
+
+fig_violin.show()
+
+fig_name_violin = px.violin(df_merge,
+                       x='game_name',
+                       y='score_diff')
+#                       box=True)
+
+fig_name_violin.show()
+
+
+fig_strip_swarm = px.strip(df_merge, 
+                           x='game_type', y='score_diff', 
+                           color='game_type', 
+                           title='Strip Plot with Swarm Plot by Game Type', 
+                           width=800)
+fig_strip_swarm.show()
+
+fig_bar_error = px.bar(df_merge.groupby('game_type')['score_diff'].mean().reset_index(), 
+                       x='game_type', y='score_diff', 
+                       error_y=df_merge.groupby('game_type')['score_diff'].std().reset_index()['score_diff'], 
+                       title='Mean Score Difference with Error Bars by Game Type')
+fig_bar_error.show()
+#%%
 st.write("label encoder")
 st.write(df_merge['game_type'])
 

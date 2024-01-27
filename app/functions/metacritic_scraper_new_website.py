@@ -12,8 +12,7 @@ import pprint
 import scipy as sp
 import re
 from fake_useragent import UserAgent
-
-
+#%%
 class HTMLRequests_metacritic:
     def create_headers():
         """
@@ -28,20 +27,24 @@ class HTMLRequests_metacritic:
         return headers
 #%%
 class metacritic_data_fetcher:
-    def create_metacritic_dict(console_list):    
+    def create_metacritic_dict(console_list):
+        """
+        input  : list of console to scrap metacritic score
+        output : dictionary of consoles with all games' metascore
+        """    
         #init empty console_dict as end result
         console_dict = {}
         for console in console_list:
-            print("calling f{console}")
+            print("calling f{console} to scrap")
             page = 1
             has_next_page = True
             game_dict = {}
             while has_next_page:
                 print(f"----------------- querying {console} -----  page {page}")
-                url = f'https://www.metacritic.com/browse/game/ps4/all/all-time/metascore/?releaseYearMin=1958&releaseYearMax=2024&platform={console}&page={page}'
+                url = f'https://www.metacritic.com/browse/game/{console}/all/all-time/metascore/?releaseYearMin=1958&releaseYearMax=2024&platform={console}&page={page}'
                 print(url)
+                #calling url with headers
                 headers = HTMLRequests_metacritic.create_headers()
-                
                 response = requests.get(url, headers=headers)
                 print(response.status_code)
                 if response.status_code == 200:

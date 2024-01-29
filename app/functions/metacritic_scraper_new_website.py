@@ -55,17 +55,18 @@ class metacritic_data_fetcher:
                 # Find all product cards
                 product_cards = soup.find_all('div', class_='c-finderProductCard-game')
                 navigation = soup.find_all('div', class_='c-navigationPagination u-flexbox u-flexbox-alignCenter u-flexbox-justifyCenter g-outer-spacing-top-large g-outer-spacing-bottom-large u-text-center g-outer-spacing-bottom-medium-fluid')
-                
+                #iteration through each scraped item
                 for index, card in enumerate(product_cards, start=1):
+                    #fetch item from h3 beacon
                     title_elem =card.find('div', class_='c-finderProductCard_info').find('h3', class_='c-finderProductCard_titleHeading')
                     game_title = title_elem.text.strip() if title_elem else "Title not found"
-                
+                    #fetch release data from div
                     release_date_elem = card.find('div', class_='c-finderProductCard_meta').find_all('span')[0]
                     game_release_date = release_date_elem.text.strip() if release_date_elem else "Release date not found"
-                
+                    #fetch description  data from div
                     description_elem = card.find('div', class_='c-finderProductCard_description')
                     game_summary = description_elem.text.strip() if description_elem else "Description not found"
-                
+                    #fetch metascore data from div
                     metascore_elem = card.find('span', {'data-v-4cdca868': True})
                     metascore = metascore_elem.text.strip() if metascore_elem else "Metascore not found"
                 
@@ -74,7 +75,7 @@ class metacritic_data_fetcher:
                     print(f"Metascore: {metascore}")
                     print(f"Description: {game_summary}")
                     print("\n")
-                    
+                    #add game to game dict
                     game_dict[game_title] = {
                             'game_title'        : game_title,
                             'game_release_date' : game_release_date,
@@ -85,13 +86,26 @@ class metacritic_data_fetcher:
                 #check if next page exist
                 next_page_button = soup.find('span', {'class': 'c-navigationPagination_item--next'})
                 if next_page_button and 'enabled' in next_page_button.get('class', []):
-                    print(next_page_button.next_element)
+                    #print(next_page_button.next_element)
                     page +=1
                     time.sleep(1)
                 else:
+                    #end of loop for console - add all games console_dict[console] key
                     console_dict[console] = game_dict
                     has_next_page = False
+            
+        return console_dict
 
 #%%
 if __name__ == "__main__":        
-    test_dict = metacritic_data_fetcher.create_metacritic_dict(['ps5', 'switch'])
+    #test_dict = metacritic_data_fetcher.create_metacritic_dict(['ps4','ps5','nintendo-switch','pc'])
+    test_dict2 = metacritic_data_fetcher.create_metacritic_dict(['nintendo-switch'])
+    
+    #%%
+test_dict3 = test_dict | test_dict2
+
+import json
+
+# Convert and write JSON object to file
+with open("dic_meta.json", "w") as outfile: 
+    json.dump(test_dict3, outfile)

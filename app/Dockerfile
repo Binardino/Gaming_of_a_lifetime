@@ -6,15 +6,14 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --upgrade pip
 
-
 #set working directory to /app level
 WORKDIR /app
 
-# COPY requirements.txt .
+# COPY contents
 COPY . . 
 
 #install packages
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 #Expose port 8501
 EXPOSE 8501

@@ -5,9 +5,11 @@
 # importlib-resources==5.10.2
 # kiwisolver==1.4.4
 matplotlib==3.7.0
-numpy==1.21.5
+#numpy==1.21.5
+numpy
 packaging==23.0
-pandas==1.5.3
+#pandas==1.5.3
+pandas
 Pillow==9.4.0
 plotly==5.13.0
 pygal==3.0.0
@@ -20,8 +22,10 @@ seaborn==0.12.2
 six==1.16.0
 streamlit
 SQLAlchemy==2.0.3
+#scikit-learn
 squarify==0.4.3
 python-dotenv==0.10.1
+tqdm
 # tenacity==8.2.1
 # typing_extensions==4.5.0
 # wincertstore==0.2

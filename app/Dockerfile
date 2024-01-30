@@ -22,6 +22,13 @@ EXPOSE 8501
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
+#change user
+RUN groupadd -r gaming_reader && useradd -g gaming_reader gaming_reader
+#set ownership & permissions
+RUN chown -R gaming_reader:gaming_reader /app
+#switch user
+USER gaming_reader
+
 # HEALTHCHECK instruction tells Docker how to test a container check whether still working
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 

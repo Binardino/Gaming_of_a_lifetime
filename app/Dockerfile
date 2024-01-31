@@ -1,8 +1,14 @@
 FROM python:3.10
 
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # Update Linux and upgrade pip in one layer
 RUN apt-get update && \
     apt-get clean && \
+    apt-get install g++ -y && \
+    apt-get install gcc -y && \
+    apt-get install -y default-libmysqlclient-dev && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --upgrade pip
 

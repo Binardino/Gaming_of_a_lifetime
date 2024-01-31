@@ -11,18 +11,20 @@ import numpy as np
 #%%
 def str_cleaning(df):
     """cleaning str in columns to perform further analysis"""
-    df['game_type'] = df['game_type'].str.replace(' / ', '', regex=False)
-    df['console'] = df['console'].str.replace(' / ', '', regex=False)
-    df['finished'] = df['finished'].map({0:False, 1:True})
-    
+    df['game_type']      = df['game_type'].str.replace(' / ', '', regex=False)
+    df['console']        = df['console'].str.replace(' / ', '', regex=False)
+#    df['published_year'] = pd.to_datetime(df['published_year']).dt.strftime('%Y')
+#    df['played_year']    = pd.to_datetime(df['played_year']).dt.strftime('%Y')
+    df['published_year'] =  df['published_year'].astype(int)
+    df['played_year']    = df['played_year'].astype(int)    
     return df
 
 #%%
 def clean_df_list(df, column):
-    df_console_raw = pd.DataFrame(df[column])
-    df_console_raw[column] = df_console_raw[column].str.split(pat='|')
-    df_console_raw = df_console_raw.explode(column).reset_index(drop=True)
-    console_list = df_console_raw[column].unique().tolist()
+    df_console_raw          = pd.DataFrame(df[column])
+    df_console_raw[column]  = df_console_raw[column].str.split(pat='|')
+    df_console_raw          = df_console_raw.explode(column).reset_index(drop=True)
+    console_list            = df_console_raw[column].unique().tolist()
     
     # Create a mapping dictionary for individual values to concatenated values
     mapping_dict = {}

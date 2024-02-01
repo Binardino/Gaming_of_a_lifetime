@@ -33,6 +33,17 @@ st.markdown("""The goal of this part is to compare personal data from my videoga
             Side notebook updated the 2016 dataset used & displayed here. Only the {df_vg.size}
             
             """)
+
+#%%#%% import data
+engine_vg = db_co.sql_connection()
+
+query = sqlalchemy.text('SELECT * FROM metacritic')
+print(pd.read_sql(sql=query, con=engine_vg.connect()))
+df_meta = db_co.get_data_sql(sql=query, engine=engine_vg.connect())
+
+query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
+df_vg = db_co.get_data_sql(sql=query, engine=engine_vg.connect())
+#st.write(df_vg)
 #%% import data
 
 df_meta['game_name'].fillna('NaN', inplace=True)

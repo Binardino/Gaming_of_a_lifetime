@@ -18,33 +18,9 @@ from functions.data_wrangling import *
 from functions.metacritic_wrangling import *
 from functions.visualisation_tools import *
 import functions.db_connection as db_co
-
-st.set_page_config(page_title="page2 - Metacritic analysis")
-#%%#%% import data
-driver   = os.environ.get("POSTGRES_DRIVER")
-user     = os.environ.get("POSTGRES_USER")
-password = os.environ.get("POSTGRES_PASSWORD")
-table    = os.environ.get("POSTGRES_META_TABLE")
-database = os.environ.get("POSTGRES_META_DB")
-host     = os.environ.get("POSTGRES_HOST")
-port     = os.environ.get("CONTAINER_PORT")
-
-#connection_string = f'{driver}//{user}:{password}@{host}:{port}/{database}'
-connection_string = f'{driver}//{user}:{password}@{host}:5432/{database}'
-print("connection_string is :", connection_string)
-
-engine_vg_old = sqlalchemy.create_engine(connection_string)
-
-engine_vg = db_co.sql_connection()
-
-query = sqlalchemy.text('SELECT * FROM metacritic')
-print(pd.read_sql(sql=query, con=engine_vg.connect()))
-df_meta = db_co.get_data_sql(sql=query, engine=engine_vg.connect())
-
-query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
-df_vg = db_co.get_data_sql(sql=query, engine=engine_vg.connect())
-#st.write(df_vg)
 #%% README
+st.set_page_config(page_title="page2 - Metacritic analysis")
+
 st.write(f"# Welcome to the Adventure of a Lifetime - Metacritic comparison🎮")
 
 st.markdown("""The goal of this part is to compare personal data from my videogame_lifetime database with the data from Metacritic.

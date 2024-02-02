@@ -18,7 +18,6 @@ from functions.metacritic_wrangling import *
 from functions.visualisation_tools import *
 from functions.db_connection import *
 from tqdm import tqdm
-from sklearn.preprocessing import LabelEncoder
 #from pandarallel import pandarallel
 
 # Initialization
@@ -52,7 +51,8 @@ console_mapper = {
 df_meta['game_platform'].replace(console_mapper, inplace=True)
 
 #%% import data
-df_meta['game_title'].fillna('NaN', inplace=True)
+#drop inplace due to future warning
+df_meta['game_title'] = df_meta['game_title'].fillna('NaN')
 # df_meta['fuzz'] = df_meta['Name'].apply(lambda x : fuzzymatch_metacritic(x, df_vg))
 
 #data wrangling
@@ -70,10 +70,8 @@ df_merge = pd.merge(df_vg, df_meta, how='inner', left_on=['fuzz', 'console'], ri
 df_merge_test = pd.merge(df_vg, df_meta, how='left', left_on=['fuzz', 'console'], right_on=['game_title', 'game_platform'], indicator=True)
 #%%
 #Numerica encoding of categories
-label_encoder = LabelEncoder()
 df_merge['game_type_encoded'] = df_merge['game_type'].astype('category').cat.codes
 df_merge['console_encoded'] = df_merge['console'].astype('category').cat.codes
-df_merge['game_type_label_encoder'] = label_encoder.fit_transform(df_merge['game_type'])
 
 df_merge['score_diff'] = df_merge['metascore'] - df_merge['perso_score']
 
@@ -82,7 +80,10 @@ df_merge.to_csv('metacritic_merged_local.csv',index=False)
 sns.pairplot(df_merge)
 
 #%%
-fig_diverging_bar = px.bar(df_merge, x='game_name', y='score_diff', color='score_diff', title='Diverging Bar Chart of Score Differences')
+fig_diverging_bar = px.bar(df_merge, 
+                           x='game_name', y='score_diff', 
+                           color='score_diff', 
+                           title='Diverging Bar Chart of Score Differences')
 fig_diverging_bar.show()
 #%%
 import plotly.io as pio
@@ -118,13 +119,16 @@ fig_bar_error.show()
 st.write("label encoder")
 st.write(df_merge['game_type'])
 
-df_merge_lite = df_merge[['game_name','game_type','perso_score']].copy()
+df_merge_lite = df_merge[['game_name','game_type_encoded','perso_score']].copy()
 
 corr_matrix = df_merge_lite.corr()
 
+fig_heatmap = px.imshow(corr_matrix)
+
+
 fig_heatmap = px.imshow(df_merge_lite,
 #                        labels=dict(x='game_type', y='perso_score'),
-                        x='game_type',
+                        x='game_type_encoded',
                         y='perso_score',
                         text_auto=True)
 #df_merge.to_csv('meta_merge.csv')
@@ -142,3 +146,4 @@ plt.show()
 
 
 df_vg_lite = df_vg[['game_name','fuzz']]
+

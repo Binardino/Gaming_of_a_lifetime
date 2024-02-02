@@ -22,14 +22,15 @@ def get_data_sql(sql, engine):
     return pd.read_sql(sql=sql, con=engine)
 #%%functions
 def sql_connection():
-    driver   = os.environ.get("driver")
-    user     = os.environ.get("user")
-    password = os.environ.get("password")
-    database = os.environ.get("database")
-    ip       = os.environ.get("ip")
+    driver   = os.environ.get("POSTGRES_DRIVER")
+    user     = os.environ.get("POSTGRES_USER")
+    password = os.environ.get("POSTGRES_PASSWORD")
+    table    = os.environ.get("POSTGRES_TABLE")
+    database = os.environ.get("POSTGRES_DB")
+    host     = os.environ.get("POSTGRES_HOST")
+    port     = os.environ.get("POSTGRES_PORT")
 
-
-    connection_string = f'{driver}//{user}:{password}@{ip}/{database}'
+    connection_string = f'{driver}//{user}:{password}@{host}:{port}/{database}'
     print(connection_string)
     engine = create_engine(connection_string)
     

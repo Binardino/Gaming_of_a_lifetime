@@ -15,11 +15,14 @@ RUN apt-get update && \
 #set working directory to /app level
 WORKDIR /app
 
-# COPY contents
-COPY . . 
+# COPY requirements.txt
+COPY requirements.txt requirements.txt 
 
 #install packages
 RUN pip install -r requirements.txt
+
+#COPY all contents
+COPY . .
 
 #Expose port 8501
 EXPOSE 8501

@@ -64,7 +64,6 @@ def create_mask(df, column, slider, mapping_dict):
 engine = db_co.sql_connection()
 query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
 print(pd.read_sql(sql=query, con=engine.connect(), index_col='id'))
-
 df_raw = get_data_sql(sql=query, engine=engine.connect())
 #display
 st.title('Gaming of a lifetime df display')
@@ -135,6 +134,9 @@ df_console = add_console_tag(df_console_raw)
 df_console_count = df_console.loc[df_console['console'].isin(
                                     subdf_filter['console'])].groupby(['console', 'brand']
                                             ).size().sort_values(ascending=False).reset_index(name='count')
+
+st.write("df_console_count")
+st.write(df_console_count)
 #%%
 #treemap console brand
 st.subheader("""Treemap of amount of games per console - brand & model""")
@@ -233,11 +235,40 @@ if selection_dist_year == 'seaborn':
 
 elif selection_dist_year == 'plotly':
     fig_px_histo_years = px.histogram(subdf_filter, x="played_year",# y="hours_played", #color="sex",
-                                      marginal="box", nbins=90,# or violin, rug
+                                      marginal="box",
+                                      color='console', 
+                                      nbins=90,# or violin, rug
                                       hover_data=subdf_filter.columns)
     
     st.plotly_chart(fig_px_histo_years)
+#%%area chart
+df_console_year = subdf_filter.groupby(['played_year', 'console']).agg({'console'  : 'count'}) \
+                                                                    .rename(columns={'console':'console_count'}) \
+                                                                    .reset_index()    
+df_console_year_pivot = pd.pivot(data=df_console_year,
+                            index='played_year',
+                            columns='console',
+                            values='console_count')
 
+df_console_year_pct = df_console_year_pivot.fillna(0).div(df_console_year_pivot.sum(axis=1), axis=0)
+
+#df2 = df_long_filled.div(df_long_filled.sum(axis=1), axis=0)
+#st.write(df2)
+#for col in df_console_year2.columns:
+#    df_console_year2[col] = df_console_year2[col].fillna(0).div(df_console_year2[col].sum(axis=1), axis=0).multiply(100)
+
+# Assuming df is your DataFrame
+fig = px.area(data_frame=df_console_year_pct, 
+              x=df_console_year_pct.index,  y=df_console_year_pct.columns[1:], #facet_col='played_year',
+              title='Stack Area Chart of Games Played by Console Over the Years',
+              labels={'console_count': 'Percentage of Games Played', 'year': 'Year'},
+              category_orders={'played_year': sorted(df_console_year['played_year'].unique())},
+              #height=600, facet_col_wrap=3, facet_col_spacing=0.05
+              )
+
+fig.update_layout(xaxis=dict(type='category'), yaxis=dict(title='Percentage'))
+
+st.write(fig)
 #%%
 # distplot publish year
 st.subheader("""Distplot to measure whether I played a game right when it got released

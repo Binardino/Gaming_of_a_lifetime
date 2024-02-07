@@ -125,7 +125,7 @@ subdf_filter = df_vg[mask_console
                     ].reset_index(drop=True)#& mask_perso_score
 
 st.markdown("""filtered df""")
-st.write(subdf_filter)
+st.dataframe(subdf_filter)
 #%%
 #str cleaning & add console tag
 #df_console_raw, temp_lis, dict_console_temp = clean_df_list(subdf_filter, 'console')
@@ -136,7 +136,7 @@ df_console_count = df_console.loc[df_console['console'].isin(
                                             ).size().sort_values(ascending=False).reset_index(name='count')
 
 st.write("df_console_count")
-st.write(df_console_count)
+st.dataframe(df_console_count)
 #%%
 #treemap console brand
 st.subheader("""Treemap of amount of games per console - brand & model""")

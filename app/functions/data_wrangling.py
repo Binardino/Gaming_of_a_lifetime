@@ -13,9 +13,11 @@ def str_cleaning(df):
     """cleaning str in columns to perform further analysis"""
     df['game_type']      = df['game_type'].str.replace(' / ', '', regex=False)
     df['console']        = df['console'].str.replace(' / ', '', regex=False)
-#    df['published_year'] = pd.to_datetime(df['published_year']).dt.strftime('%Y')
-#    df['played_year']    = pd.to_datetime(df['played_year']).dt.strftime('%Y')
-    df['published_year'] =  df['published_year'].astype(int)
+    #creating console_raw column to keep raw value
+    df['console_raw']    = df['console']
+    #keeping one console only when several to simplify
+    df['console']        = df['console'].str.split('|').explode('console').reset_index(drop=True)
+    df['published_year'] = df['published_year'].astype(int)
     df['played_year']    = df['played_year'].astype(int)    
     return df
 

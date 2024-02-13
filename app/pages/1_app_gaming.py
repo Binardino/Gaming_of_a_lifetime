@@ -157,12 +157,28 @@ fig_console = px.treemap(data_frame=df_console_count,
                                              'Nintendo': '#C90104' , 
                                              'Sega':'#d787ff', 
                                              'Android':'#3DDC84'},
-                         title='Amount of game played per consoles - organised per console brand',
+                         title='Treemap graph - Amount of game played per consoles - organised per console brand',
                          width=1000, height=750
                         )
 
 st.plotly_chart(fig_console)
+#%%
+#add Sunburst diagram for games per console
+st.subheader("""Sunburst of amount of games per console - brand & model""")
 
+fig_sunburst = px.sunburst(data_frame=df_console_count,
+                       path=['brand', 'console'], 
+                         values='count',
+                         color='brand',
+                         color_discrete_map={'PlayStation' : '#0D0BDE',
+                                             'Microsoft' :'#008D00',
+                                             'Nintendo': '#C90104' , 
+                                             'Sega':'#d787ff', 
+                                             'Android':'#3DDC84'},
+                         title='Sunburst graph - Amount of game played per consoles - organised per console brand',
+                         width=1000, height=750)
+
+st.plotly_chart(fig_sunburst)
 #%%
 #treemap game type
 dfga , game_list, game_list_temp = clean_df_list(subdf_filter, 'game_type')

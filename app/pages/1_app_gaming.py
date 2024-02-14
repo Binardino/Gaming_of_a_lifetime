@@ -309,25 +309,35 @@ Checking below how much time is there between a game release and me playing it. 
 logically, most of early Nintendo & Sega games released in the late 80s, when I was obviously too young to buy & play them
 except for the gap in 2008-2013 when I seldom played, from 2014 onwards, I had the tendency of playing a game closely after its release""")
 
-fig_publish = plt.figure(figsize=(10,6))
+selection_pub_year = st.selectbox('select viz library', ['plotly', 'seaborn'],key=4)
+if selection_pub_year == 'seaborn':
+    fig_publish = plt.figure(figsize=(10,6))
 
-sns.histplot(subdf_filter['published_year'], 
-             kde=True , 
-             bins=30, 
-             color=[0,.5,0],
-             label='published_year')
+    sns.histplot(subdf_filter['published_year'], 
+                kde=True , 
+                bins=30, 
+                color=[0,.5,0],
+                label='published_year')
 
-sns.histplot(subdf_filter['played_year'], 
-             kde=True,
-             bins=30,  
-             color=[0,0,1],
-             label='played_year')
+    sns.histplot(subdf_filter['played_year'], 
+                kde=True,
+                bins=30,  
+                color=[0,0,1],
+                label='played_year')
 
-plt.xlabel('Years')
-plt.legend(loc=2) #upper left
-plt.title('Difference between Publication Year & Year I played it')
+    plt.xlabel('Years')
+    plt.legend(loc=2) #upper left
+    plt.title('Difference between Publication Year & Year I played it')
 
-st.pyplot(fig_publish)
+    st.pyplot(fig_publish)
+
+elif selection_pub_year == 'plotly':
+    df_test_year = subdf_filter[['published_year','played_year']].copy()
+    fig_px_publish = px.histogram(subdf_filter.loc[(subdf_filter['published_year'].notna()) & (subdf_filter['played_year'].notna())], x=["published_year", 'played_year'],
+                                      opacity=0.5, marginal="box", nbins=90, barmode='overlay')
+    
+
+    st.plotly_chart(fig_px_publish)
 #%%
 st.subheader("""Boxplot of personal scores spread per consoles
 TBW

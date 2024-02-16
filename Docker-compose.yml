@@ -17,6 +17,7 @@ services:
       - ./db_data/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./db_data/csv/hltb_scrap.csv:/docker-entrypoint-initdb.d/csv_file/hltb_scrap.csv
       - ./db_data/csv/metacritic_clean.csv:/docker-entrypoint-initdb.d/csv_file/metacritic_clean.csv
+      - db:${MOUNT_PATH}/db_data/backup/postgresql_data_vol
     ports:
       - "${POSTGRES_PORT}:5432"
 
@@ -32,3 +33,7 @@ services:
     restart: always
     ports:
       - "${STAPP_PORT}:${STAPP_PORT}"
+
+volumes:
+  db:
+    driver : local

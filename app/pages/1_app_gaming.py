@@ -259,8 +259,8 @@ elif selection_dist_year == 'plotly':
     st.plotly_chart(fig_px_histo_years)
 #%%area chart
 def get_df_long_format(df, column_list,year_column,agg_column,renamed_column):
-    df_temp_year = df.groupby([column_list]).agg(agg_column : 'count') \
-                                           .rename(columns={agg_column}: f"{agg_column}_count") \
+    df_temp_year = df.groupby([column_list]).agg({agg_column : 'count'}) \
+                                           .rename(columns={agg_column: f"{agg_column}_count"}) \
                                            .reset_index()
 
     df_year_pivot = pd.pivot(data=df_temp_year,

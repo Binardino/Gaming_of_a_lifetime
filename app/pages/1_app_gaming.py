@@ -142,21 +142,17 @@ st.dataframe(df_console_count)
 st.subheader("""Treemap of amount of games per console - brand & model""")
 
 st.caption("""Using PyPlot dynamic Treemap to map, for each console and related brand, how many games have been played on each platform
-(Encompassed PNG static image below, but availabe dynamic PyPlot chart version on [linked Google Colab]().
-Below 2 PyPlot version : 
-- the Dynamic version (for online usage) with Hover effect - displaying information when hovering over the chart
-- Static version with always on information (adding specific params) - version saved as PNG for local displaying
-""")
+Hover effect - displaying information when hovering over the chart""")
 
 fig_console = px.treemap(data_frame=df_console_count, 
                          path=['brand', 'console'], 
                          values='count',
                          color='brand',
                          color_discrete_map={'PlayStation' : '#0D0BDE',
-                                             'Microsoft' :'#008D00',
-                                             'Nintendo': '#C90104' , 
-                                             'Sega':'#d787ff', 
-                                             'Android':'#3DDC84'},
+                                             'Microsoft'   : '#008D00',
+                                             'Nintendo'    : '#C90104' , 
+                                             'Sega'        : '#d787ff', 
+                                             'Android'     : '#3DDC84'},
                          title='Treemap graph - Amount of game played per consoles - organised per console brand',
                          width=1000, height=750
                         )
@@ -165,16 +161,17 @@ st.plotly_chart(fig_console)
 #%%
 #add Sunburst diagram for games per console
 st.subheader("""Sunburst of amount of games per console - brand & model""")
+st.caption("""Similar chart with Sunburst viz""")
 
 fig_sunburst = px.sunburst(data_frame=df_console_count,
                        path=['brand', 'console'], 
                          values='count',
                          color='brand',
                          color_discrete_map={'PlayStation' : '#0D0BDE',
-                                             'Microsoft' :'#008D00',
-                                             'Nintendo': '#C90104' , 
-                                             'Sega':'#d787ff', 
-                                             'Android':'#3DDC84'},
+                                             'Microsoft'   : '#008D00',
+                                             'Nintendo'    : '#C90104' , 
+                                             'Sega'        : '#d787ff', 
+                                             'Android'     : '#3DDC84'},
                          title='Sunburst graph - Amount of game played per consoles - organised per console brand',
                          width=1000, height=750)
 

@@ -43,15 +43,30 @@ col_mapper = {
                }
 df_meta_2016.rename(columns=col_mapper, inplace=True)               
 
-df_meta = pd.concat([df_meta_2016, df_meta_ps4,df_meta_ps5, df_meta_switch])
+df_meta_console = pd.DataFrame()
+
+for console, df in df_meta_export.items():
+    df_meta_console = pd.concat([df_meta_console, df])
+   
+df_meta = pd.concat([df_meta_2016, df_meta_console]) 
    
 console_mapper = { 
                'PlayStation 4'  :'PS4', 
-               'PlayStation 5'  :'PS5'
+               'PlayStation 5'  :'PS5',
+               'ps2'            :'PS2',
+               'ps4'            :'PS5',
+               'PS'             :'PS1',
+               'pc'             :'PC',
+               'gamecube'       :'GameCube',
+               'GB'             :'GameBoy',
+               'GEN'            :'Megadrive'
                }
 
 df_meta['game_platform'].replace(console_mapper, inplace=True)
+#%%
+pattern = r'\d+\.\s*(.+)'
 
+df_meta['game_title'] = df_meta['game_title'].str.replace(pattern, r'\1', regex=True)
 #%% import data
 #drop inplace due to future warning
 df_meta['game_title'] = df_meta['game_title'].fillna('NaN')

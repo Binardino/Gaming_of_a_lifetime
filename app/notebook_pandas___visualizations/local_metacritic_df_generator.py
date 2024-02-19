@@ -28,10 +28,12 @@ st.write("local path", os.getcwd())
 
 df_vg = pd.read_csv('../../db_data/csv/df_vg_local_csv.csv')
 df_meta_2016 = pd.read_csv(r'../../\db_data\csv\metacritic_6900_games_22_Dec_2016_updated.csv')
-df_meta_ps4 = pd.read_csv(r'../../\db_data\csv\meta_scraper_ps4.csv')
-df_meta_ps5 = pd.read_csv(r'../../\db_data\csv\meta_scraper_ps5.csv')
-df_meta_switch = pd.read_csv(r'../../\db_data\csv\meta_scraper_switch.csv')
-#%%data wrangling
+
+df_meta_export = {}
+csv_folder = ['ps2','ps4', 'pS5', 'gamecube','switch', 'pc']
+for console in csv_folder:
+    df_meta_export[console] = pd.read_csv(rf'../../\db_data\csv\meta_scraper_{console}.csv')
+    #%%data wrangling
 col_mapper = { 
                'Name'           :'game_title', 
                'Platform'       :'game_platform',

@@ -74,17 +74,37 @@ df_meta['game_title'] = df_meta['game_title'].fillna('NaN')
 
 #data wrangling
 df_vg['console'] = df_vg['console'].str.split('|',expand=True)[0]
-df_vg['console'].replace({'PS1':'PS'}, inplace=True)
+#df_vg['console'].replace({'PS1':'PS'}, inplace=True)
 
 tqdm.pandas()
 #df_users.groupby(['userID', 'requestDate']).progress_apply(feature_rollup)
 df_vg['fuzz'] = df_vg['game_name'].progress_apply(lambda x : fuzzymatch_metacritic(x, df_meta['game_title']))
 
+#%%
+df_meta_clean = df_meta.drop_duplicates(['game_title', 'game_platform']).copy()
+
 # st.write(df_meta)
 #%%
-df_merge = pd.merge(df_vg, df_meta, how='inner', left_on=['fuzz', 'console'], right_on=['game_title', 'game_platform'])
+df_merge = pd.merge(df_vg, df_meta_clean, 
+                    how='inner', 
+                    left_on=['fuzz', 'console'], 
+                    right_on=['game_title', 'game_platform'])
 
-df_merge_test = pd.merge(df_vg, df_meta, how='left', left_on=['fuzz', 'console'], right_on=['game_title', 'game_platform'], indicator=True)
+df_merge_test = pd.merge(df_vg, df_meta_clean, how='left', left_on=['fuzz', 'console'], right_on=['game_title', 'game_platform'], indicator=True)
+#%%
+df_merge_exp = df_merge.assign(game_type2=df_merge['game_type'].str.split('|')).explode('game_type2').reset_index(drop=True)
+
+
+# Split the concatenated values and duplicate rows for 'column2'
+df_expanded = df_merge.assign(column2=df_merge['game_type'].str.split('|')).explode('game_type')
+
+# Reset the index if needed
+df_expanded.reset_index(drop=True, inplace=True)
+
+df_expanded = df_merge_exp['column_name'].str.split('|', expand=True).stack().reset_index(level=1, drop=True)
+
+
+df_merge_exp.reset_index(drop=True, inplace=True)
 #%%
 #Numerica encoding of categories
 df_merge['game_type_encoded'] = df_merge['game_type'].astype('category').cat.codes

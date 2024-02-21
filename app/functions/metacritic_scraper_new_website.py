@@ -40,59 +40,64 @@ class metacritic_data_fetcher:
             has_next_page = True
             game_dict = {}
             while has_next_page:
-                print(f"----------------- querying {console} -----  page {page}")
+                print(f"----------------- querying {console}  -----  page {page}")
                 url = f'https://www.metacritic.com/browse/game/{console}/all/all-time/metascore/?releaseYearMin=1958&releaseYearMax=2024&platform={console}&page={page}'
                 print(url)
                 #calling url with headers
                 headers = HTMLRequests_metacritic.create_headers()
                 response = requests.get(url, headers=headers)
                 print(response.status_code)
-                if response.status_code == 200:
+                if response.status_code != 200:
+                    has_next_page = False
+                    console_dict[console] = game_dict
+                    continue
+                elif response.status_code == 200:
                     # Get the HTML content
                     html_content = response.text
                     soup = BeautifulSoup(html_content, 'html.parser')
                 
-                # Find all product cards
-                product_cards = soup.find_all('div', class_='c-finderProductCard-game')
-                navigation = soup.find_all('div', class_='c-navigationPagination u-flexbox u-flexbox-alignCenter u-flexbox-justifyCenter g-outer-spacing-top-large g-outer-spacing-bottom-large u-text-center g-outer-spacing-bottom-medium-fluid')
-                #iteration through each scraped item
-                for index, card in enumerate(product_cards, start=1):
-                    #fetch item from h3 beacon
-                    title_elem =card.find('div', class_='c-finderProductCard_info').find('h3', class_='c-finderProductCard_titleHeading')
-                    game_title = title_elem.text.strip() if title_elem else "Title not found"
-                    #fetch release data from div
-                    release_date_elem = card.find('div', class_='c-finderProductCard_meta').find_all('span')[0]
-                    game_release_date = release_date_elem.text.strip() if release_date_elem else "Release date not found"
-                    #fetch description  data from div
-                    description_elem = card.find('div', class_='c-finderProductCard_description')
-                    game_summary = description_elem.text.strip() if description_elem else "Description not found"
-                    #fetch metascore data from div
-                    metascore_elem = card.find('span', {'data-v-4cdca868': True})
-                    metascore = metascore_elem.text.strip() if metascore_elem else "Metascore not found"
-                
-                    print(f"Game {index}: {game_title}")
-                    print(f"Release Date: {game_release_date}")
-                    print(f"Metascore: {metascore}")
-                    print(f"Description: {game_summary}")
-                    print("\n")
-                    #add game to game dict
-                    game_dict[game_title] = {
-                            'game_title'        : game_title,
-                            'game_release_date' : game_release_date,
-                            'metascore'         : metascore,
-                            'game_summary'      : game_summary
-                                            }
+                    # Find all product cards
+                    product_cards = soup.find_all('div', class_='c-finderProductCard-game')
+                    navigation = soup.find_all('div', class_='c-navigationPagination u-flexbox u-flexbox-alignCenter u-flexbox-justifyCenter g-outer-spacing-top-large g-outer-spacing-bottom-large u-text-center g-outer-spacing-bottom-medium-fluid')
+                    #iteration through each scraped item
+                    for index, card in enumerate(product_cards, start=1):
+                        #fetch item from h3 beacon
+                        title_elem =card.find('div', class_='c-finderProductCard_info').find('h3', class_='c-finderProductCard_titleHeading')
+                        game_title = title_elem.text.strip() if title_elem else "Title not found"
+                        #fetch release data from div
+                        release_date_elem = card.find('div', class_='c-finderProductCard_meta').find_all('span')[0]
+                        game_release_date = release_date_elem.text.strip() if release_date_elem else "Release date not found"
+                        #fetch description  data from div
+                        description_elem = card.find('div', class_='c-finderProductCard_description')
+                        game_summary = description_elem.text.strip() if description_elem else "Description not found"
+                        #fetch metascore data from div
+                        metascore_elem = card.find('span', {'data-v-4cdca868': True})
+                        metascore = metascore_elem.text.strip() if metascore_elem else "Metascore not found"
                     
-                #check if next page exist
-                next_page_button = soup.find('span', {'class': 'c-navigationPagination_item--next'})
-                if next_page_button and 'enabled' in next_page_button.get('class', []):
-                    #print(next_page_button.next_element)
-                    page +=1
-                    time.sleep(1)
-                else:
-                    #end of loop for console - add all games console_dict[console] key
-                    console_dict[console] = game_dict
-                    has_next_page = False
+                        print(f"Game {index}: {game_title}")
+                        print(f"Release Date: {game_release_date}")
+                        print(f"Metascore: {metascore}")
+                        print(f"Description: {game_summary}")
+                        print("\n")
+                        #add game to game dict
+                        game_dict[game_title] = {
+                                'game_title'        : game_title,
+                                'game_release_date' : game_release_date,
+                                'metascore'         : metascore,
+                                'game_summary'      : game_summary
+                                                }
+                        
+                    #check if next page exist
+                    next_page_button = soup.find('span', {'class': 'c-navigationPagination_item--next'})
+                    if next_page_button and 'enabled' in next_page_button.get('class', []):
+                        #print(next_page_button.next_element)
+                        page +=1
+                        time.sleep(5)
+                    else:
+                        #end of loop for console - add all games console_dict[console] key
+                        console_dict[console] = game_dict
+                        has_next_page = False
+
             
         return console_dict
 

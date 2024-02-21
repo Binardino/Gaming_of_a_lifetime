@@ -27,7 +27,9 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Final Fantasy X','PS2','JRPG',true,2000,2003,200,99,false),
 	 ('Final Fantasy X-2','PS2','JRPG',true,2004,2004,50,86,false),
 	 ('Final Fantasy XV','PS4','JRPG|Open World',true,2015,2017,80,95,false),
-	 ('Final Fantasy VII Remake','PS4','JRPG',true,2020,2020,50,99,false),
+	 ('Final Fantasy XVI','PS5','JRPG',true,2023,2023,45,68,false),
+	 ('Final Fantasy VII Remake','PS4','JRPG',true,2020,2020,50,96,false),
+	 ('Final Fantasy VII Rebirth','PS5','JRPG|Open World',false,2024,2024,5,99,false),
 	 ('The Witcher 3: Wild Hunt','PS4|PC','RPG|Open World',true,2015,2018,300,100,false),
 	 ('The Witcher 2: Assassins of Kings','PC','RPG|Open World',false,2011,2018,15,85,false);
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
@@ -46,12 +48,15 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('The Legend of Zelda: A Link to the Past','SNES','Action-Adventure',false,1991,2020,20,91,false),
 	 ('The Legend of Zelda: Twilight Princess','Wii','Action-Adventure',false,2006,2010,40,98,false),
 	 ('The Legend of Zelda: Link''s Awakening','GameBoy','Action-Adventure',true,1993,2001,20,90,false),
-	 ('The Legend of Zelda: Breath of the Wild','Switch','Action-Adventure|Open World',true,2016,2020,110,99,true),
+	 ('The Legend of Zelda: Breath of the Wild','Switch','Open World|Action-Adventure',true,2017,2020,110,99,true),
+	 ('The Legend of Zelda: Tears of the Kingdom','Switch','Open World|Action-Adventure',false,2023,2023,110,100,true),
 	 ('The Legend of Zelda: Ocarina of Time','N64','Action-Adventure',false,1998,2017,20,92,false),
-	 ('Red Dead Redemption 2','PS4','Action-Adventure|Open World',true,2018,2018,60,96,false),
-	 ('Marvel''s Spider-Man','PS4','Action|Platformer',true,2018,2020,30,90,false),
-	 ('God of War IV','PS4','Action|Beat''em All',false,2018,2020,75,99,false),
-	 ('God of War III','PS4','Action|Beat''em All',false,2015,2020,35,92,false);
+	 ('Red Dead Redemption 2','PS4','Open World|Action-Adventure',true,2018,2018,60,96,false),
+	 ('Marvel''s Spider-Man','PS4','Open World|Action-Adventure',true,2018,2020,30,90,false),
+	 ('Marvel''s Spider-Man 2','PS5','Open World|Action-Adventure',true,2023,2023,30,88,false),
+	 ('God of War','PS4','Action-Adventure|Beat''em All',true,2018,2020,75,99,false),
+	 ('God of War Ragnarök','PS5','Action-Adventure|Beat''em All',false,2022,2023,50,99,false),
+	 ('God of War III','PS4','Action-Adventure|Beat''em All',false,2015,2020,35,92,false);
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
 	 ('Uncharted: Drake''s Fortune','PS4','Action-Adventure|Platformer',true,2007,2020,10,68,true),
 	 ('Uncharted 2: Among Thieves','PS4','Action-Adventure|Platformer',true,2009,2020,10,87,true),
@@ -62,7 +67,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Journey','PS4','Action-Adventure|Platformer',true,2012,2019,5,86,true),
 	 ('Heavy Rain','PS3','Narrative',true,2010,2016,15,79,true),
 	 ('Red Dead Redemption','PS3','Action-Adventure|Open World',true,2010,2016,30,92,false),
-	 ('The Last of Us','PS3','Action-Adventure',false,2011,2016,30,92,false);
+	 ('The Last of Us','PS3','Action-Adventure|Survival horror',false,2011,2016,25,92,false);
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
 	 ('Okami','PS3','Action-Adventure',true,2006,2016,30,94,false),
 	 ('God of War: Ghost of Sparta','PSP','Action|Beat''em All',true,2010,2020,6,81,false),
@@ -150,7 +155,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Star Wars Jedi Knight II: Jedi Outcast','PC','Action-Adventure|Hack&Clash',true,2002,2003,30,98,true),
 	 ('Star Wars Jedi Knight: Jedi Academy','PC','Action-Adventure|Hack&Clash',true,2003,2003,30,97,true),
 	 ('Star Wars: The Old Republic','PC','Action-Adventure|RPG',true,2011,2012,50,92,true),
-	 ('Star Wars: Knights of The Old Republic','PC','Action-Adventure|RPG',true,2003,2012,25,91,false);
+	 ('Star Wars: Knights of The Old Republic','PC|Android','Action-Adventure|RPG',true,2003,2012,25,91,false);
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
 	 ('Star Wars Episode I Racer','PC','Racing',true,2001,2001,30,75,false),
 	 ('Star Wars: StarFighter','PC','Space Shooter',true,2001,2001,20,80,false),
@@ -265,7 +270,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Watch Dogs Legion','PC','Action-Adventure|Open World',true,2020,2020,50,95,true),
 	 ('Among Us','Android','Party game',false,2018,2020,7,70,true),
 	 ('Mario Galaxy','Switch','Platformer',false,2008,2020,20,94,true),
-	 ('Mario Sunshine','Switch','Platformer',false,2003,2020,10,75,true),
+	 ('Super Mario Sunshine','Switch','Platformer',false,2003,2020,10,75,true),
 	 ('Final Fantasy XII','Switch','JRPG',true,2006,2021,40,93,false),
 	 ('Hades','Switch','Action-Adventure|Hack&Clash',false,2020,2021,30,93,false),
 	 ('New Super Mario Bros U Deluxe','Switch','Platformer',false,2020,2021,25,90,true),
@@ -273,8 +278,16 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Assassin''s Creed Valhalla','PC','RPG|Open World',false,2020,2021,50,92,false),
 	 ('Demon''s Souls','PS5','JRPG|Action-Adventure',false,2020,2022,20,90,false);
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
-	 ('Horizon Forbidden West','PS5','RPG|Open World',false,2022,2022,50,93,false),
-	 ('Star Wars Jedi Fallen Order','PC','RPG|Action-Adventure',true,2019,2020,25,89,false);
+	 ('The Last of Us Part I','PS5','Action-Adventure|Survival horror',true,2023,2023,25,91,false),
+	 ('The Last of Us Part II','PS5','Action-Adventure|Survival horror',true,2020,2023,45,93,false),
+	 ('Horizon Forbidden West','PS5','RPG|Open World',true,2022,2022,50,93,false),
+	 ('Hogwart''s Legacy','PS5','Open World|RPG',false,2023,2023,50,95,false),
+	 ('Star Wars Jedi Fallen Order','PC','RPG|Action-Adventure',true,2019,2020,25,89,false),
+	 ('Marvel''s Guardians of the Galaxy','PS5','RPG|Action-Adventure',false,2021,2023,15,89,false),
+	 ('Kena: Bridge of Spirits','PS5','Action-Adventure',false,2021,2023,15,89,false),
+	 ('Elden Ring','PS5','RPG|Open World',false,2022,2024,120,100,false),
+	 ;
+	 
 
 -- create how long to beat table
 CREATE TABLE IF NOT EXISTS  public.how_long_to_beat (

@@ -75,7 +75,7 @@ df_meta['game_title'] = df_meta['game_title'].fillna('NaN')
 #data wrangling
 df_vg['console'] = df_vg['console'].str.split('|',expand=True)[0]
 #df_vg['console'].replace({'PS1':'PS'}, inplace=True)
-
+#%%
 tqdm.pandas()
 #df_users.groupby(['userID', 'requestDate']).progress_apply(feature_rollup)
 df_vg['fuzz'] = df_vg['game_name'].progress_apply(lambda x : fuzzymatch_metacritic(x, df_meta['game_title']))
@@ -92,32 +92,30 @@ df_merge = pd.merge(df_vg, df_meta_clean,
 
 df_merge_test = pd.merge(df_vg, df_meta_clean, how='left', left_on=['fuzz', 'console'], right_on=['game_title', 'game_platform'], indicator=True)
 #%%
-df_merge_exp = df_merge.assign(game_type2=df_merge['game_type'].str.split('|')).explode('game_type2').reset_index(drop=True)
+df_merge_exp = df_merge.assign(game_type=df_merge['game_type'].str.split('|')).explode('game_type').reset_index(drop=True)
+# # Split the concatenated values and duplicate rows for 'column2'
+# df_expanded = df_merge.assign(column2=df_merge['game_type'].str.split('|')).explode('game_type')
+
+# # Reset the index if needed
+# df_expanded.reset_index(drop=True, inplace=True)
+
+# df_expanded = df_merge_exp['column_name'].str.split('|', expand=True).stack().reset_index(level=1, drop=True)
 
 
-# Split the concatenated values and duplicate rows for 'column2'
-df_expanded = df_merge.assign(column2=df_merge['game_type'].str.split('|')).explode('game_type')
-
-# Reset the index if needed
-df_expanded.reset_index(drop=True, inplace=True)
-
-df_expanded = df_merge_exp['column_name'].str.split('|', expand=True).stack().reset_index(level=1, drop=True)
-
-
-df_merge_exp.reset_index(drop=True, inplace=True)
+# df_merge_exp.reset_index(drop=True, inplace=True)
 #%%
 #Numerica encoding of categories
-df_merge['game_type_encoded'] = df_merge['game_type'].astype('category').cat.codes
-df_merge['console_encoded'] = df_merge['console'].astype('category').cat.codes
+df_merge_exp['game_type_encoded'] = df_merge['game_type'].astype('category').cat.codes
+df_merge_exp['console_encoded'] = df_merge['console'].astype('category').cat.codes
 
-df_merge['score_diff'] = df_merge['metascore'] - df_merge['perso_score']
+df_merge_exp['score_diff'] = df_merge['metascore'] - df_merge['perso_score']
 
 df_merge.to_csv('metacritic_merged_local.csv',index=False)
 #%%
 sns.pairplot(df_merge)
 
 #%%
-fig_diverging_bar = px.bar(df_merge, 
+fig_diverging_bar = px.bar(df_merge_exp, 
                            x='game_name', y='score_diff', 
                            color='score_diff', 
                            title='Diverging Bar Chart of Score Differences')
@@ -125,14 +123,14 @@ fig_diverging_bar.show()
 #%%
 import plotly.io as pio
 pio.renderers.default='browser'
-fig_violin = px.violin(df_merge,
+fig_violin = px.violin(df_merge_exp,
                        x='game_type',
                        y='score_diff')
 #                       box=True)
 
 fig_violin.show()
 
-fig_name_violin = px.violin(df_merge,
+fig_name_violin = px.violin(df_merge_exp,
                        x='game_name',
                        y='score_diff')
 #                       box=True)
@@ -140,14 +138,14 @@ fig_name_violin = px.violin(df_merge,
 fig_name_violin.show()
 
 
-fig_strip_swarm = px.strip(df_merge, 
+fig_strip_swarm = px.strip(df_merge_exp, 
                            x='game_type', y='score_diff', 
                            color='game_type', 
                            title='Strip Plot with Swarm Plot by Game Type', 
                            width=800)
 fig_strip_swarm.show()
 
-fig_bar_error = px.bar(df_merge.groupby('game_type')['score_diff'].mean().reset_index(), 
+fig_bar_error = px.bar(df_merge_exp.groupby('game_type')['score_diff'].mean().reset_index(), 
                        x='game_type', y='score_diff', 
                        error_y=df_merge.groupby('game_type')['score_diff'].std().reset_index()['score_diff'], 
                        title='Mean Score Difference with Error Bars by Game Type')

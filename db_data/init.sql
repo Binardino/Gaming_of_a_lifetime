@@ -333,5 +333,40 @@ CREATE TABLE IF NOT EXISTS  public.metacritic (
 	rating VARCHAR(20)
 );
 
--- Populate the table with HLTB CSV data
+-- Populate the table with metacritic CSV data
 COPY metacritic FROM '/docker-entrypoint-initdb.d/csv_file/metacritic_clean.csv' DELIMITER ',' CSV HEADER;
+
+-- create metacritic table
+CREATE TABLE IF NOT EXISTS  public.metacritic_merged (
+	id INT,
+    game_name VARCHAR(255),
+    console VARCHAR(50),
+    game_type VARCHAR(50),
+    finished BOOLEAN,
+    published_year INT,
+    played_year INT,
+    hours_played INT,
+    perso_score INT,
+    multiplayed BOOLEAN,
+    fuzz VARCHAR(255),
+    game_title VARCHAR(255),
+    game_platform VARCHAR(50),
+    game_release_date VARCHAR(50),
+    Genre VARCHAR(50),
+    Publisher VARCHAR(255),
+    NA_Sales DECIMAL(5,2),
+    EU_Sales DECIMAL(5,2),
+    JP_Sales DECIMAL(5,2),
+    Other_Sales DECIMAL(5,2),
+    Global_Sales DECIMAL(5,2),
+    metascore INT,
+    Critic_Count INT,
+    user_score DECIMAL(3,1),
+    User_Count INT,
+    Developer VARCHAR(255),
+    Rating VARCHAR(5),
+    game_summary TEXT
+);
+
+-- Populate the table with metacritic merged CSV data
+COPY metacritic_merged FROM '/docker-entrypoint-initdb.d/csv_file/metacritic_merged_local.csv' DELIMITER ',' CSV HEADER;

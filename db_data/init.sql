@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS public.gaming_lifetime (
 	multiplayed bool NOT NULL,
 	CONSTRAINT idx_225486_primary PRIMARY KEY (id)
 );
-CREATE UNIQUE INDEX idx_225486_game_name ON public.gaming_lifetime USING btree (game_name);
+CREATE UNIQUE INDEX idx_225486_game_name ON public.gaming_lifetime USING btree (game_name,console,published_year);
 
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
 	 ('Final Fantasy VI','SNES','JRPG',false,1994,2019,10,79,false),
@@ -285,7 +285,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Star Wars Jedi Fallen Order','PC','RPG|Action-Adventure',true,2019,2020,25,89,false),
 	 ('Marvel''s Guardians of the Galaxy','PS5','RPG|Action-Adventure',false,2021,2023,15,89,false),
 	 ('Kena: Bridge of Spirits','PS5','Action-Adventure',false,2021,2023,15,89,false),
-	 ('Elden Ring','PS5','RPG|Open World',false,2022,2024,120,100,false),
+	 ('Elden Ring','PS5','RPG|Open World',false,2022,2024,120,100,false)
 	 ;
 	 
 

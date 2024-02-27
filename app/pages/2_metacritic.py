@@ -49,17 +49,22 @@ df_vg = db_co.get_data_sql(sql=query, engine=engine_vg.connect())
 st.write("""I want to establish, for both my personal scores and the one from Metacritic,
          whether there is a correlation between the scores and the type of games.""")
 
+st.write(df_meta)
 
+#%%data wrangling
 #Numerica encoding of categories
-df_merge['game_type2'] = df_merge['game_type'].astype('category').cat.codes
-df_merge['console'] = df_merge['console'].astype('category').cat.codes
+df_meta['game_type_encoded'] = df_meta['game_type'].astype('category').cat.codes
+df_meta['console_encoded']   = df_meta['console'].astype('category').cat.codes
+df_meta['score_diff']        = df_meta['metascore'] - df_meta['perso_score']
 
-st.write("label encoder")
-st.write(df_merge['game_type'])
+#%%
+df_corr = df_meta.select_dtypes(include='number').corr()
 
-fig_heatmap = px.imshow(df_merge,
-                        x='game_type',
-                        y='perso_score',
+sns_heatmap = plt.figure(figsize=(13, 5))
+sns.heatmap(df_corr)
+st.pyplot(sns_heatmap)
+
+fig_heatmap = px.imshow(df_corr,
                         text_auto=True)
 
 st.plotly_chart(fig_heatmap)

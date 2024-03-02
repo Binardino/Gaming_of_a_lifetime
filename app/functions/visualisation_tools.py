@@ -11,11 +11,57 @@ list of visualisations functions
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import squarify
-import pygal
+import pandas as pd
 import plotly.express as px
+import streamlit as st
+import numpy as np
+#%%streamlit functions
+#import data
+def create_slider_numeric(label, column, step):
+    slider_numeric = st.sidebar.slider(label, #label 
+                                  int(column.min()),
+                                  int(column.max()),
+                                  (int(column.min()), int(column.max())), #value
+                                  step) #step
+    return slider_numeric
 
-#%%functions
+def create_slider_multiselect(label, column, key):
+    all = st.sidebar.checkbox("Select all", key=key)
+    container = st.sidebar.container()
+    
+    if all:
+        selected_options = container.multiselect(label=label, #label 
+                                                options=column, #options
+                                                default=column)
+                                                #default=default_selection)
+    else:
+        selected_options =  container.multiselect(label=label, #label 
+                                                  options=column)
+    return selected_options
 
+def create_slider_multiselect2(label, column):
+    slider_multiselect = st.sidebar.multiselect(label=label, #label 
+                                                options=column, #options
+                                                default=column)
+    return slider_multiselect
+
+def create_mask(df, column, slider, mapping_dict):
+    """
+    Filtering the dataset based on selection from the streamlit slider.
+    Because some values are concataned (eg. "PC|PS4" ; "JRPG|Open-Word"), the split is made to display only unique values in the slider.
+    But there is still need to back propragate the filtered values into the original dataset.
+    Input  :  
+    Output : df mask with 
+    """
+    custom_mask = pd.Series(False, index=df.index)
+
+    for value in slider:
+        selection   = mapping_dict.get(value)
+        custom_mask = custom_mask | df[column].isin(slider) | df[column].str.contains(value)
+     
+    return custom_mask 
+
+## plotly functions
 def px_treemap_graph(df, columns, agg_func, colour, colour_mapper, title, width, height, image_path):
     """
     generate Treemap with plotly express lib

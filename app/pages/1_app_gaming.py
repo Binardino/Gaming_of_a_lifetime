@@ -28,36 +28,7 @@ import functions.db_connection as db_co
 
 st.set_page_config(page_title="Gaming EDA presentation")
 #%%
-#import data
-def create_slider_numeric(label, column, step):
-    slider_numeric = st.sidebar.slider(label, #label 
-                                  int(column.min()),
-                                  int(column.max()),
-                                  (int(column.min()), int(column.max())), #value
-                                  step) #step
-    return slider_numeric
 
-def create_slider_multiselect(label, column):
-    slider_multiselect = st.sidebar.multiselect(label, #label 
-                                  column, #options
-                                  column) #default
-    return slider_multiselect
-
-def create_mask(df, column, slider, mapping_dict):
-    """
-    Filtering the dataset based on selection from the streamlit slider.
-    Because some values are concataned (eg. "PC|PS4" ; "JRPG|Open-Word"), the split is made to display only unique values in the slider.
-    But there is still need to back propragate the filtered values into the original dataset.
-    Input  :  
-    Output : df mask with 
-    """
-    custom_mask = pd.Series(False, index=df.index)
-
-    for value in slider:
-        selection   = mapping_dict.get(value)
-        custom_mask = custom_mask | df[column].isin(slider) | df[column].str.contains(value)
-     
-    return custom_mask 
 
 #%%
 #read df

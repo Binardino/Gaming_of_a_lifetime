@@ -17,7 +17,8 @@ services:
       - ./db_data/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./db_data/csv/hltb_scrap.csv:/docker-entrypoint-initdb.d/csv_file/hltb_scrap.csv
       - ./db_data/csv/metacritic_clean.csv:/docker-entrypoint-initdb.d/csv_file/metacritic_clean.csv
-      - db:${MOUNT_PATH}/db_data/backup/postgresql_data_vol
+      - ./db_data/csv/metacritic_merged_local.csv:/docker-entrypoint-initdb.d/csv_file/metacritic_merged_local.csv
+      - ${MOUNT_PATH}/db_data/backup/postgresql_data_vol:/db_data/db
     ports:
       - "${POSTGRES_PORT}:5432"
 

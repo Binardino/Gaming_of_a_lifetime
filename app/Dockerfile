@@ -1,8 +1,10 @@
 FROM python:3.10
 
+# create and activate virtual environment
 ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m venv $VIRTUAL_ENV
+RUN python3.10 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
 # Update Linux and upgrade pip in one layer
 RUN apt-get update && \
     apt-get clean && \

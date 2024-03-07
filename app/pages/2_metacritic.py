@@ -136,3 +136,23 @@ fig_heatmap = px.imshow(df_corr,
                         text_auto=True)
 
 st.plotly_chart(fig_heatmap)
+
+
+fig_scatter = px.scatter(subdf_filter,
+                       x='perso_score',
+                       y='metascore',
+                       hover_name='game_name',
+                       color='game_type', 
+                       title='Scatter Plot comparing my Perso Score VS. Metacritic score', )
+#                       box=True)
+
+st.plotly_chart(fig_scatter)
+
+fig_violin = px.violin(subdf_filter,
+                       x='game_type',
+                       y='score_diff',
+                       color='game_type',
+                       title='Violin plot of Score difference per Game type',
+                       box=True)
+
+st.plotly_chart(fig_violin)

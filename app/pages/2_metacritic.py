@@ -156,3 +156,12 @@ fig_violin = px.violin(subdf_filter,
                        box=True)
 
 st.plotly_chart(fig_violin)
+
+fig_name_violin = px.violin(subdf_filter,
+                       x='game_name',
+                       y='score_diff',
+                       color='game_type')
+#                       box=True)
+
+st.plotly_chart(fig_name_violin)
+

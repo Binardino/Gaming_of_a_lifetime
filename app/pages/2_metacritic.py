@@ -165,3 +165,18 @@ fig_name_violin = px.violin(subdf_filter,
 
 st.plotly_chart(fig_name_violin)
 
+
+fig_strip_swarm = px.strip(subdf_filter, 
+                           x='game_type', y='score_diff', 
+                           hover_name='game_name',
+                           color='game_type', 
+                           title='Strip Plot with Swarm Plot by Game Type', 
+                           width=800)
+st.plotly_chart(fig_strip_swarm)
+
+fig_bar_error = px.bar(subdf_filter.groupby('game_type')['score_diff'].mean().reset_index(), 
+                       x='game_type', y='score_diff', 
+                       error_y=subdf_filter.groupby('game_type')['score_diff'].std().reset_index()['score_diff'], 
+                       title='Mean Score Difference with Error Bars by Game Type')
+
+st.plotly_chart(fig_bar_error)

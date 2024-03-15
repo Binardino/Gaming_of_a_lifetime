@@ -35,23 +35,14 @@ st.markdown("""The goal of this part is to compare personal data from my videoga
             """)
 
 #%%#%% import data
-engine_vg = db_co.sql_connection()
-
-query = sqlalchemy.text('SELECT * FROM metacritic')
-print(pd.read_sql(sql=query, con=engine_vg.connect()))
-df_meta = db_co.get_data_sql(sql=query, engine=engine_vg.connect())
+engine = db_co.sql_connection()
+query = sqlalchemy.text('SELECT * FROM public.metacritic_merged')
+print(pd.read_sql(sql=query, con=engine.connect()))
+df_meta = db_co.get_data_sql(sql=query, engine=engine.connect())
 
 query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
-df_vg = db_co.get_data_sql(sql=query, engine=engine_vg.connect())
-#st.write(df_vg)
+df_vg = db_co.get_data_sql(sql=query, engine=engine.connect())
 
-#%% correlation between scores
-st.write("""I want to establish, for both my personal scores and the one from Metacritic,
-         whether there is a correlation between the scores and the type of games.""")
-
-st.write(df_meta)
-
-#%%data wrangling
 #Numerica encoding of categories
 df_meta['game_type_encoded'] = df_meta['game_type'].astype('category').cat.codes
 df_meta['console_encoded']   = df_meta['console'].astype('category').cat.codes

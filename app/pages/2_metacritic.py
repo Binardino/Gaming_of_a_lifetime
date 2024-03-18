@@ -145,15 +145,16 @@ fig_heatmap = px.imshow(df_corr,
                         text_auto=True)
 
 st.plotly_chart(fig_heatmap)
-
+#%% scatter plot
+st.write("""Scatterplot to display for each game score differences between my personal scores and the ones from Metacritic.
+         Score dot are coloured by game type ; you may hover each one to display the game name""")
 
 fig_scatter = px.scatter(subdf_filter,
                        x='perso_score',
                        y='metascore',
                        hover_name='game_name',
                        color='game_type', 
-                       title='Scatter Plot comparing my Perso Score VS. Metacritic score', )
-#                       box=True)
+                       title='Scatter Plot comparing my Perso Score VS. Metacritic score')
 
 st.plotly_chart(fig_scatter)
 

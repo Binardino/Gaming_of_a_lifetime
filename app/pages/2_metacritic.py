@@ -42,17 +42,35 @@ df_meta = db_co.get_data_sql(sql=query, engine=engine.connect())
 
 query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
 df_vg = db_co.get_data_sql(sql=query, engine=engine.connect())
+#%% README
+st.set_page_config(page_title="page2 - Metacritic analysis")
 
+st.write(f"# Welcome to the Adventure of a Lifetime - Metacritic comparison🎮")
+
+st.markdown(f"""The goal of this part is to compare personal data from my videogame_lifetime database with the data from Metacritic.
+            
+            **Compare data from Metacritic dataset**
+            
+            The available Metacritic dataset dates back from 2016;
+            Remaining data post 2016 were fetched through web scraping from metacritic webpage for the set of consoles I played.
+            I end up doing the comparison between 
+            data from Metacritic fetched data (size : {df_meta.size}) VS. my personal gaming of the lifetime (size : {df_vg.size})
+            
+            """)
+#%% correlation between scores
+st.write("""I want to establish, for both my personal scores and the one from Metacritic,
+         whether there is a correlation between the scores and the type of games.""")
 #Numerica encoding of categories
 df_meta['game_type_encoded'] = df_meta['game_type'].astype('category').cat.codes
 df_meta['console_encoded']   = df_meta['console'].astype('category').cat.codes
 df_meta['score_diff']        = df_meta['metascore'] - df_meta['perso_score']
 
-#st.write(df_vg)
 #generate df, console list & dictionary 
 df_console_raw, console_list, dict_console = clean_df_list(df_meta, 'console')
 #generate df, gametype list & dictionary
 df_genre_raw, genre_list, dict_genre = clean_df_list(df_meta, 'game_type')
+
+st.write(df_meta)
 #%%
 #create sliders
 st.sidebar.header("select console")

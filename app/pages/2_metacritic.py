@@ -132,6 +132,8 @@ fig_heatmap = px.imshow(df_corr,
 
 st.plotly_chart(fig_heatmap)
 #%% scatter plot
+st.subheader("""Scatterplot of score differences between personal scores & meta scores - by game type""")
+
 st.write("""Scatterplot to display for each game score differences between my personal scores and the ones from Metacritic.
          Score dot are coloured by game type ; you may hover each one to display the game name""")
 
@@ -144,6 +146,11 @@ fig_scatter = px.scatter(subdf_filter,
 
 st.plotly_chart(fig_scatter)
 
+#%% violin plot
+st.subheader("""Violin plot of score differences between personal scores & meta scores - by game type""")
+
+st.write("""Violin plot to display for each game genre the score difference spread between my personal scores and the ones from Metacritic.""")
+
 fig_violin = px.violin(subdf_filter,
                        x='game_type',
                        y='score_diff',
@@ -152,14 +159,10 @@ fig_violin = px.violin(subdf_filter,
                        box=True)
 
 st.plotly_chart(fig_violin)
+#%% Swarm plot
+st.subheader("""Swarm plot of score differences between personal scores & meta scores - by game type""")
 
-fig_name_violin = px.violin(subdf_filter,
-                       x='game_name',
-                       y='score_diff',
-                       color='game_type')
-#                       box=True)
-
-st.plotly_chart(fig_name_violin)
+st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
 
 
 fig_strip_swarm = px.strip(subdf_filter, 

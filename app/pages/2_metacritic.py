@@ -18,22 +18,6 @@ from functions.data_wrangling import *
 from functions.metacritic_wrangling import *
 from functions.visualisation_tools import *
 import functions.db_connection as db_co
-#%% README
-st.set_page_config(page_title="page2 - Metacritic analysis")
-
-st.write(f"# Welcome to the Adventure of a Lifetime - Metacritic comparison🎮")
-
-st.markdown("""The goal of this part is to compare personal data from my videogame_lifetime database with the data from Metacritic.
-            
-            **Compare data from Metacritic dataset**
-            
-            The available Metacritic dataset dates back from 2016;
-            
-            Remaing data past 2016 fetched through web scraping from metacritic webpage for set of consoles I played.
-            Side notebook updated the 2016 dataset used & displayed here. Only the {df_vg.size}
-            
-            """)
-
 #%%#%% import data
 engine = db_co.sql_connection()
 query = sqlalchemy.text('SELECT * FROM public.metacritic_merged')
@@ -46,6 +30,8 @@ df_vg = db_co.get_data_sql(sql=query, engine=engine.connect())
 st.set_page_config(page_title="page2 - Metacritic analysis")
 
 st.write(f"# Welcome to the Adventure of a Lifetime - Metacritic comparison🎮")
+
+st.markdown("# To start using the app, please select the desired filters in the filter plane")
 
 st.markdown(f"""The goal of this part is to compare personal data from my videogame_lifetime database with the data from Metacritic.
             

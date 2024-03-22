@@ -30,6 +30,9 @@ df_raw = get_data_sql(sql=query, engine=engine_vg.connect())
 
 df_hltb = get_data_sql(sql=sqlalchemy.text('SELECT * FROM how_long_to_beat'), engine=engine_vg.connect())
 st.write(df_hltb)
+
+df_hltb['main_diff']        = df_hltb['comp_main'] - df_hltb['hours_played']
+df_hltb['plus_diff']        = df_hltb['comp_plus'] - df_hltb['hours_played']
 #%% README
 st.write(f"# Welcome to the Adventure of a Lifetime - How long to beat comparison🎮")
 

@@ -53,6 +53,24 @@ st.markdown(f"""The goal of this part is to compare my personal data from my vid
 
             """)
 #%%
+st.subheader("""Scatter plot of hour differences between personal played hours & main completional hours - by game type""")
+
+st.write("""Scatter plot to display hour differences between personal played hours & main completional hours from HLTB - by game type""")
+
+fig_scatter = px.scatter(data_frame=df_hltb,
+                       x='hours_played',
+                       y='comp_main',
+                       color='game_type',
+                       hover_name='game_name')
+                       #box=True)
+                       #kde=50)
+
+st.plotly_chart(fig_scatter)
+#%%
+st.subheader("""Violin plot of score differences between personal scores & meta scores - by game name""")
+
+st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
+
 fig_violin = px.violin(data_frame=df_hltb,
                        x='game_name',
                        y=['hours_played', 'comp_all'],

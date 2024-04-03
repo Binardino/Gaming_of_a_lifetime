@@ -92,6 +92,20 @@ fig_boxplot = px.box(data_frame=df_hltb,
 
 st.plotly_chart(fig_boxplot)
 
+#%% violin plot
+st.subheader("""Violin plot of score differences between personal scores & meta scores - by game type""")
+
+st.write("""Violin plot to display for each game genre the score difference spread between my personal scores and the ones from Metacritic.""")
+
+fig_violin = px.violin(df_hltb,
+                       x='game_type',
+                       y='plus_diff',
+                       color='game_type',
+                       title='Violin plot of Main + Plus hours difference per Game type',
+                       box=True)
+
+st.plotly_chart(fig_violin)
+
 fig_radar = px.line_polar(df_hltb, 
                           r='game_name', 
                           theta=['hours_played', 'comp_all'], 

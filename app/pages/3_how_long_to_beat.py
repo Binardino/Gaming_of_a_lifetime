@@ -105,6 +105,21 @@ fig_violin = px.violin(df_hltb,
                        box=True)
 
 st.plotly_chart(fig_violin)
+#%% Swarm plot
+st.subheader("""Swarm plot of score differences between personal scores & meta scores - by game type""")
+
+st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
+
+
+fig_strip_swarm = px.strip(df_hltb, 
+                           x='game_type', y='plus_diff', 
+                           hover_name='game_name',
+                           color='game_type', 
+                           title='Strip Plot with Swarm Plot by Game Type', 
+                           width=800)
+st.plotly_chart(fig_strip_swarm)
+
+#%%
 
 fig_radar = px.line_polar(df_hltb, 
                           r='game_name', 

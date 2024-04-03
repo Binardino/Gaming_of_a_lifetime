@@ -78,6 +78,10 @@ fig_violin = px.violin(data_frame=df_hltb,
                        #kde=50)
 
 st.plotly_chart(fig_violin)
+#%%
+st.subheader("""Violin plot of score differences between personal scores & meta scores - by game name""")
+
+st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
 
 fig_boxplot = px.box(data_frame=df_hltb,
                      x='game_name', 

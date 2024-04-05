@@ -9,7 +9,8 @@ import plotly.express as px
 import os
 import sys
 import sqlalchemy
-from tqdm import tqdm
+import random
+#from tqdm import tqdm
 # adding Folder_2 to the system path
 sys.path.append("..")
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -57,13 +58,19 @@ df_console_raw, console_list, dict_console = clean_df_list(df_meta, 'console')
 df_genre_raw, genre_list, dict_genre = clean_df_list(df_meta, 'game_type')
 
 st.write(df_meta)
-#%%
+#%% #random key for container visualisation
+random_key = range(10)
+
+unique_key = number_generator(random_key)
+
+#random_key = random.sample(range(1,10),10)
+
 #create sliders
 st.sidebar.header("select console")
 #sidebar console text to select
 sidebar_console = create_slider_multiselect(label='Consoles available', #label 
                                             column=console_list,        
-                                            key=1)
+                                            key=next(unique_key))
 
 st.sidebar.header('hours played')
 #slider hours played to select
@@ -78,7 +85,7 @@ sidebar_perso_score = create_slider_numeric('perso score', df_meta.perso_score, 
 
 sidebar_finish = create_slider_multiselect(label='finished game', #label 
                                             column=df_meta.finished.unique(),        
-                                            key=2)
+                                            key=next(unique_key))
 
 #sidebar game type text to select
 #sidebar_gametype = create_slider_multiselect(3,'Game genre', #label 
@@ -86,7 +93,7 @@ sidebar_finish = create_slider_multiselect(label='finished game', #label
 
 sidebar_gametype = create_slider_multiselect(label='Game genre', #label 
                                             column=genre_list,        
-                                            key=3)          
+                                            key=next(unique_key))          
 #%%
 #creates masks from the sidebar selection widgets
 mask_console = create_mask(df_meta, 'console', sidebar_console, dict_console)

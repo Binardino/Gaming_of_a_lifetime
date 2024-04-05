@@ -8,6 +8,11 @@ Created on Sat Feb 11 18:12:45 2023
 import pandas as pd
 import numpy as np
 
+#%% define key list of unique int - required to use streamlit container items
+def number_generator(number_list):
+    for number in number_list:
+        yield number
+
 #%%
 def str_cleaning(df):
     """cleaning str in columns to perform further analysis"""

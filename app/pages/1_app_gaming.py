@@ -46,6 +46,15 @@ df_console_raw, console_list, dict_console = clean_df_list(df_vg, 'console')
 #generate df, gametype list & dictionary
 df_genre_raw, genre_list, dict_genre = clean_df_list(df_vg, 'game_type')
 #%%
+# Global counter to generate unique keys
+key_counter = 0
+
+def get_unique_key(prefix="chart"):
+    """Generates a unique key using a global counter."""
+    global key_counter
+    key_counter += 1
+    return f"{prefix}_{key_counter}"
+
 #random key generator
 random_key = range(10)
 

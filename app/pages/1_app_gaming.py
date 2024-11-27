@@ -56,16 +56,16 @@ def get_unique_key(prefix="chart"):
     return f"{prefix}_{key_counter}"
 
 #random key generator
-random_key = range(10)
+#random_key = range(10)
 
-unique_key = number_generator(random_key)
+#get_unique_key = number_generator(random_key)
 #%%
 #create sliders
 st.sidebar.header("select console")
 #sidebar console text to select
 sidebar_console = create_slider_multiselect(label='Consoles available', #label 
                                             column=console_list,
-                                            key=next(unique_key))         #default
+                                            key=get_unique_key())         #default
 
 st.sidebar.header('hours played')
 #slider hours played to select
@@ -82,12 +82,12 @@ sidebar_perso_score = create_slider_numeric(label='perso score',
 #sidebar finish Boolean to select
 sidebar_finish = create_slider_multiselect(label='finished game', 
                                            column=df_vg.finished.unique(),
-                                           key=next(unique_key))    
+                                           key=get_unique_key())    
 
 #sidebar game type text to select
 sidebar_gametype = create_slider_multiselect(label='Game genre', #label 
                                              column=genre_list,
-                                             key=next(unique_key))   #default               
+                                             key=get_unique_key())   #default               
 #%%
 #creates masks from the sidebar selection widgets
 mask_console = create_mask(df=df_vg, 
@@ -199,7 +199,7 @@ Especially when I pay full price for a game, I expect it to be at least 30-40 ho
 
 Below distplot illustrates I spent in general between 15 & 30 for most of the games I played""")
 
-selection_hours = st.selectbox('select viz library', ['plotly', 'seaborn'],key=next(unique_key))
+selection_hours = st.selectbox('select viz library', ['plotly', 'seaborn'],key=get_unique_key())
 if selection_hours == 'seaborn':
     fig_distplot = plt.figure(figsize=(13, 5))
     ax = sns.histplot(subdf_filter['hours_played'], 
@@ -234,7 +234,7 @@ during mid 1990s (on Megadrive & PC mainly) up to the mid-2000s (on PS2 & PC)
 during my college year, I dropped down heavily on playing (just some random PC & Wii gaming sessions here & there)
 starting mid-2010s, when I started my professional life, I got myself a PS3 & PS4 & catched up on all crazy games I haven't had a chance to play""")
 
-selection_dist_year = st.selectbox('select viz library', ['plotly', 'seaborn'],key=next(unique_key))
+selection_dist_year = st.selectbox('select viz library', ['plotly', 'seaborn'],key=get_unique_key())
 if selection_dist_year == 'seaborn':
     fig_dis_year = plt.figure()
     subdf_filter['played_year'].hist(bins=25)
@@ -292,7 +292,9 @@ fig = px.area(data_frame=df_console_year_pct,
 
 fig.update_layout(xaxis=dict(type='category'), yaxis=dict(title='Percentage'))
 
-st.write(fig)
+#st.write)
+st.plotly_chart(fig, key=get_unique_key())
+
 #%%
 # distplot publish year
 st.subheader("""Distplot to measure whether I played a game right when it got released
@@ -302,7 +304,7 @@ Checking below how much time is there between a game release and me playing it. 
 logically, most of early Nintendo & Sega games released in the late 80s, when I was obviously too young to buy & play them
 except for the gap in 2008-2013 when I seldom played, from 2014 onwards, I had the tendency of playing a game closely after its release""")
 
-selection_pub_year = st.selectbox('select viz library', ['plotly', 'seaborn'],key=next(unique_key))
+selection_pub_year = st.selectbox('select viz library', ['plotly', 'seaborn'],key=get_unique_key())
 if selection_pub_year == 'seaborn':
     fig_publish = plt.figure(figsize=(10,6))
 
@@ -341,7 +343,7 @@ subdf_filter['console'] = subdf_filter['console'].apply(lambda x: x.split('|')[0
 
 df_vg = add_console_tag(subdf_filter)
 
-selection_score_console = st.selectbox('select viz library', ['plotly', 'seaborn'],key=next(unique_key))
+selection_score_console = st.selectbox('select viz library', ['plotly', 'seaborn'],key=get_unique_key())
 
 if selection_score_console == 'plotly':
     fig_score_console = px.box(df_vg,
@@ -357,7 +359,7 @@ if selection_score_console == 'plotly':
 st.subheader("""Scatterplot of played hours per personal scores
 TBW
 """)
-selection_scatterscore = st.selectbox('select viz library', ['plotly', 'seaborn'],key=next(unique_key))
+selection_scatterscore = st.selectbox('select viz library', ['plotly', 'seaborn'],key=get_unique_key())
 
 if selection_scatterscore == 'plotly':
     fig_scatterscore = px.scatter(subdf_filter, 

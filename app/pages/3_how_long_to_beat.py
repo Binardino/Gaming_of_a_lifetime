@@ -120,6 +120,9 @@ fig_strip_swarm = px.strip(df_hltb,
 st.plotly_chart(fig_strip_swarm)
 
 #%%
+st.subheader("""Violin plot of score differences between personal scores & meta scores - by game name""")
+
+st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
 
 fig_radar = px.line_polar(df_hltb, 
                           r='game_name', 

@@ -179,9 +179,14 @@ fig_strip_swarm = px.strip(subdf_filter,
                            title='Strip Plot with Swarm Plot by Game Type', 
                            width=800)
 st.plotly_chart(fig_strip_swarm)
+#%% bar plot
+st.subheader("""Bar plot of score differences between personal scores & meta scores - by game name""")
 
-fig_bar_error = px.bar(subdf_filter.groupby('game_type')['score_diff'].mean().reset_index(), 
-                       x='game_type', y='score_diff', 
+st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
+
+fig_bar_error = px.bar(subdf_filter.groupby('game_type')['score_diff'].mean().reset_index(), # 
+                       x='game_type', 
+                       y='score_diff', 
                        error_y=subdf_filter.groupby('game_type')['score_diff'].std().reset_index()['score_diff'], 
                        title='Mean Score Difference with Error Bars by Game Type')
 

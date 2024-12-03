@@ -191,3 +191,14 @@ fig_bar_error = px.bar(subdf_filter.groupby('game_type')['score_diff'].mean().re
                        title='Mean Score Difference with Error Bars by Game Type')
 
 st.plotly_chart(fig_bar_error)
+#%% violin plot
+st.subheader("""Violin plot of score differences between personal scores & meta scores - by game name""")
+
+st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
+
+fig_name_violin = px.violin(subdf_filter,
+                       x='game_name',
+                       y='score_diff',
+                       color='game_type')
+
+st.plotly_chart(fig_name_violin)

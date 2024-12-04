@@ -285,7 +285,10 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Star Wars Jedi Fallen Order','PC','RPG|Action-Adventure',true,2019,2020,25,89,false),
 	 ('Marvel''s Guardians of the Galaxy','PS5','RPG|Action-Adventure',false,2021,2023,15,89,false),
 	 ('Kena: Bridge of Spirits','PS5','Action-Adventure',false,2021,2023,15,89,false),
-	 ('Elden Ring','PS5','RPG|Open World',false,2022,2024,120,100,false)
+	 ('Elden Ring','PS5','RPG|Open World',false,2022,2024,120,99,true),
+	 ('Final Fantasy VII Rebirth','PS5','RPG|Open World',false,2024,2024,90,99,false),
+	 ('Star Wars Outlaws','PS5','RPG|Open World',false,2024,2024,50,93,false)
+	 ('Astro Bot','PS5','Platformer',false,2024,2024,3,88,false),
 	 ;
 	 
 

@@ -289,6 +289,13 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Final Fantasy VII Rebirth','PS5','RPG|Open World',false,2024,2024,90,99,false),
 	 ('Star Wars Outlaws','PS5','RPG|Open World',false,2024,2024,50,93,false)
 	 ('Astro Bot','PS5','Platformer',false,2024,2024,3,88,false),
+	 ('Star Wars Jedi Survivor','PS5','RPG|Action-Adventure',false,2023,2025,25,89,false),
+	 ('Baldur''s Gate','PS5','RPG|Action-Adventure',true,2023,2024,25,99,false),
+	 ('Outer Wilds','PS5','Open World|Action-Adventure',false,2019,2024,90,99,true),
+	 ('Clair Obscur Expedition 33','PS5','RPG',false,2025,2025,90,99,true),
+	 ('Pokemon Y','3DS','Action-Adventure|JRPG',false,2013,2025,1,85,false),
+	 ('The Legend of Zelda: Ocarina of Time 3D','3DS','Action-Adventure',false,2011,2025,2,93,false),
+
 	 ;
 	 
 

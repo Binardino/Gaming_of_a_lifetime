@@ -276,6 +276,18 @@ INSERT INTO `my_videogames` VALUES (7,'Final Fantasy VI','SNES','JRPG',0,1994,20
 (236,'Demon\'s Souls','PS5','JRPG|Action-Adventure',0,2020,2022,20,90,0), 
 (237,'Horizon Forbidden West','PS5','RPG|Open World',0,2022,2022,50,93,0), 
 (238,'Star Wars Jedi Fallen Order','PC','RPG|Action-Adventure',1,2019,2020,25,89,0);
+(239,'The Last of Us Part I','PS5','Action-Adventure|Survival horror',1,2023,2023,25,91,0),
+(240,'The Last of Us Part II','PS5','Action-Adventure|Survival horror',1,2020,2023,45,93,0),
+(241,'Horizon Forbidden West','PS5','RPG|Open World',1,2022,2022,50,93,0),
+(242,'Hogwart''s Legacy','PS5','Open World|RPG',0,2023,2023,50,95,0),
+(243,'Star Wars Jedi Fallen Order','PC','RPG|Action-Adventure',1,2019,2020,25,89,0),
+(244,'Marvel''s Guardians of the Galaxy','PS5','RPG|Action-Adventure',0,2021,2023,15,89,0),
+(245,'Kena: Bridge of Spirits','PS5','Action-Adventure',0,2021,2023,15,89,0),
+(246,'Elden Ring','PS5','RPG|Open World',0,2022,2024,120,99,1),
+(247,'Final Fantasy VII Rebirth','PS5','RPG|Open World',0,2024,2024,90,99,0),
+(248,'Star Wars Outlaws','PS5','RPG|Open World',0,2024,2024,50,93,0)
+(249,'Astro Bot','PS5','Platformer',0,2024,2024,3,88,0),
+;
 /*!40000 ALTER TABLE `my_videogames` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

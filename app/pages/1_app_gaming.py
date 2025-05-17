@@ -387,6 +387,18 @@ sns.boxenplot(data=subdf_filter, x='console', y='perso_score')
 sns.stripplot(data=subdf_filter, x='console', y='perso_score')
 
 st.pyplot(fig_boxscore)
+#%% TBD
+df_type_year_raw = subdf_filter.copy()
+st.write("df_type_year_raw")
+st.dataframe(df_type_year_raw)
+df_type_year = df_type_year_raw.groupby(['played_year', 'game_type']).agg({'game_type': 'count'}) \
+                                                                    .rename(columns={'game_type':'type_count'}) \
+                                                                    .reset_index()
+
+df_console_year = df_type_year_raw.groupby(['played_year', 'console']).agg({'console'  : 'count'}) \
+                                                                    .rename(columns={'console':'console_count'}) \
+                                                                    .reset_index()
+
 st.subheader("""Stack Area Chart of Games Played by Console Over the Years""")
 
 st.caption("""I consider a game to be a good one whenever I spend more than 15-20 hours on it.

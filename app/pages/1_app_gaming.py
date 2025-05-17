@@ -387,3 +387,21 @@ sns.boxenplot(data=subdf_filter, x='console', y='perso_score')
 sns.stripplot(data=subdf_filter, x='console', y='perso_score')
 
 st.pyplot(fig_boxscore)
+st.subheader("""Stack Area Chart of Games Played by Console Over the Years""")
+
+st.caption("""I consider a game to be a good one whenever I spend more than 15-20 hours on it.
+Especially when I pay full price for a game, I expect it to be at least 30-40 hours long, if not I consider it a scam.
+
+Below distplot illustrates I spent in general between 15 & 30 for most of the games I played""")
+# Assuming df is your DataFrame
+fig2 = px.area(data_frame=df_console_year_pct, 
+              x=df_console_year_pct.index,  y=df_console_year_pct.columns[1:], #facet_col='played_year',
+              title='Stack Area Chart of Games Played by Console Over the Years',
+              labels={'console_count': 'Percentage of Games Played', 'year': 'Year'},
+              category_orders={'played_year': sorted(df_console_year['played_year'].unique())},
+              #height=600, facet_col_wrap=3, facet_col_spacing=0.05
+              )
+
+fig2.update_layout(xaxis=dict(type='category'), yaxis=dict(title='Percentage'))
+
+st.plotly_chart(fig2, key=get_unique_key())

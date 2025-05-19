@@ -1,3 +1,10 @@
+####IDEAS TO BE DONE
+- GOTY perso list VS. GOTY list
+- spyder graph of hours of game type per console
+- HLTB graph
+- dynamic top game per console
+
+
 # Gaming_of_a_lifetime
 **Historical Data analytics of my Gaming lifetime history**
 

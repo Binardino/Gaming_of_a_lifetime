@@ -70,9 +70,14 @@ class metacritic_data_fetcher:
                         #fetch description  data from div
                         description_elem = card.find('div', class_='c-finderProductCard_description')
                         game_summary = description_elem.text.strip() if description_elem else "Description not found"
-                        #fetch metascore data from div
-                        metascore_elem = card.find('span', {'data-v-4cdca868': True})
-                        metascore = metascore_elem.text.strip() if metascore_elem else "Metascore not found"
+                        # fetch metascore from title attribute
+                        metascore_div = card.find('div', title=re.compile(r'^Metascore \d+ out of 100'))
+                        if metascore_div:
+                            title_attr = metascore_div.get('title')
+                            metascore_match = re.search(r'Metascore (\d+) out of 100', title_attr)
+                            metascore = metascore_match.group(1) if metascore_match else "Metascore not found"
+                        else:
+                            metascore = "Metascore not found"
                     
                         print(f"Game {index}: {game_title}")
                         print(f"Release Date: {game_release_date}")

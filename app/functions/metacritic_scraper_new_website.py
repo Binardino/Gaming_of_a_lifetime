@@ -41,7 +41,7 @@ class metacritic_data_fetcher:
             game_dict = {}
             while has_next_page:
                 print(f"----------------- querying {console}  -----  page {page}")
-                url = f'https://www.metacritic.com/browse/game/{console}/all/all-time/metascore/?releaseYearMin=1958&releaseYearMax=2024&platform={console}&page={page}'
+                url = f'https://www.metacritic.com/browse/game/{console}/all/all-time/metascore/?releaseYearMin=1958&releaseYearMax=2025&platform={console}&page={page}'
                 print(url)
                 #calling url with headers
                 headers = HTMLRequests_metacritic.create_headers()
@@ -92,7 +92,7 @@ class metacritic_data_fetcher:
                     if next_page_button and 'enabled' in next_page_button.get('class', []):
                         #print(next_page_button.next_element)
                         page +=1
-                        time.sleep(5)
+                        time.sleep(45)
                     else:
                         #end of loop for console - add all games console_dict[console] key
                         console_dict[console] = game_dict

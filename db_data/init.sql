@@ -294,7 +294,10 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Outer Wilds','PS5','Open World|Action-Adventure',false,2019,2024,90,99,true),
 	 ('Clair Obscur Expedition 33','PS5','RPG',false,2025,2025,90,99,true),
 	 ('Pokemon Y','3DS','Action-Adventure|JRPG',false,2013,2025,1,85,false),
-	 ('The Legend of Zelda: Ocarina of Time 3D','3DS','Action-Adventure',false,2011,2025,2,93,false),
+	 ('The Legend of Zelda: Ocarina of Time 3D','3DS','Action-Adventure',false,2011,2025,2,94,false),
+	 ('The Legend of Zelda: A Link Between Worlds','3DS','Action-Adventure',false,2013,2025,2,93,false),
+	 ('The Legend of Zelda: Majora''s Mask 3D','3DS','Action-Adventure',false,2015,2025,2,93,false),
+	 ('Tanoshiku - Omoshiroku - Kanken Shougakusei','3DS','Edutainment',false,2018,2025,2,70,false),
 
 	 ;
 	 

@@ -33,12 +33,16 @@ EXPOSE 8501
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
-#change user
-RUN groupadd -r gaming_reader && useradd -g gaming_reader gaming_reader
-#set ownership & permissions
-RUN chown -R gaming_reader:gaming_reader /app
-#switch user
+# Create user with a home directory
+RUN useradd -m -d /home/gaming_reader -s /bin/bash gaming_reader && \
+    mkdir -p /home/gaming_reader/.streamlit && \
+    chown -R gaming_reader:gaming_reader /home/gaming_reader
+
+# Switch to user
 USER gaming_reader
+
+# Set HOME environment variable
+ENV HOME=${USER_HOME}
 
 # HEALTHCHECK instruction tells Docker how to test a container check whether still working
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health

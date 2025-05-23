@@ -286,8 +286,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Marvel''s Guardians of the Galaxy','PS5','RPG|Action-Adventure',false,2021,2023,15,89,false),
 	 ('Kena: Bridge of Spirits','PS5','Action-Adventure',false,2021,2023,15,89,false),
 	 ('Elden Ring','PS5','RPG|Open World',false,2022,2024,120,99,true),
-	 ('Final Fantasy VII Rebirth','PS5','RPG|Open World',false,2024,2024,90,99,false),
-	 ('Star Wars Outlaws','PS5','RPG|Open World',false,2024,2024,50,93,false)
+	 ('Star Wars Outlaws','PS5','RPG|Open World',false,2024,2024,50,93,false),
 	 ('Astro Bot','PS5','Platformer',false,2024,2024,3,88,false),
 	 ('Star Wars Jedi Survivor','PS5','RPG|Action-Adventure',false,2023,2025,25,89,false),
 	 ('Baldur''s Gate','PS5','RPG|Action-Adventure',true,2023,2024,25,99,false),
@@ -297,8 +296,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('The Legend of Zelda: Ocarina of Time 3D','3DS','Action-Adventure',false,2011,2025,2,94,false),
 	 ('The Legend of Zelda: A Link Between Worlds','3DS','Action-Adventure',false,2013,2025,2,93,false),
 	 ('The Legend of Zelda: Majora''s Mask 3D','3DS','Action-Adventure',false,2015,2025,2,93,false),
-	 ('Tanoshiku - Omoshiroku - Kanken Shougakusei','3DS','Edutainment',false,2018,2025,2,70,false),
-
+	 ('Tanoshiku - Omoshiroku - Kanken Shougakusei','3DS','Edutainment',false,2018,2025,2,70,false)
 	 ;
 	 
 

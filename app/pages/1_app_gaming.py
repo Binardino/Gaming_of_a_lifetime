@@ -17,9 +17,13 @@ import os
 import sys
 import sqlalchemy
 #set path for dynamic function import
-sys.path.append("..")
-dir_path = os.path.dirname(os.path.realpath(__file__))
-os.chdir(dir_path)
+from pathlib import Path
+import sys
+# Adds the parent directory of this script to sys.path
+CURRENT_FILE = Path(__file__).resolve()
+PAGES_DIR = CURRENT_FILE.parent
+ROOT_DIR = PAGES_DIR.parent
+sys.path.append(str(ROOT_DIR))
 from functions.data_wrangling import *
 from functions.db_connection import *
 from functions.visualisation_tools import *

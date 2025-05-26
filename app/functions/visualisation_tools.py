@@ -26,17 +26,30 @@ def create_slider_numeric(label, column, step):
     return slider_numeric
 
 def create_slider_multiselect(label, column, key):
-    all = st.sidebar.checkbox("Select all", key=key)
     container = st.sidebar.container()
-    
-    if all:
-        selected_options = container.multiselect(label=label, #label 
-                                                options=column, #options
-                                                default=column)
-                                                #default=default_selection)
+    all_key = f"{key}_select_all"
+    multi_key = f"{key}_multiselect"
+
+    all_selected = container.checkbox("Select all", value=True, key=all_key)
+
+    if all_selected:
+        selected_options = container.multiselect(
+            label=label,
+            options=column,
+            default=column,
+            key=multi_key
+        )
     else:
-        selected_options =  container.multiselect(label=label, #label 
-                                                  options=column)
+        selected_options = container.multiselect(
+            label=label,
+            options=column,
+            key=multi_key
+        )
+
+    if not selected_options:
+        st.warning("⚠️ Please select at least one console to display the data.")
+        st.stop()
+
     return selected_options
 
 def create_slider_multiselect2(label, column):

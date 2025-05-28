@@ -7,7 +7,7 @@ def create_sidebar_widgets(df_vg, console_list, genre_list):
     sidebar_console = create_slider_multiselect(
         label='Consoles available',
         column=console_list,
-        key=get_unique_key("console")
+        key="filter_console"
     )
 
     st.sidebar.header("hours played")
@@ -15,7 +15,7 @@ def create_sidebar_widgets(df_vg, console_list, genre_list):
         label='hours played',
         column=df_vg["hours_played"],
         step=1,
-        key=get_unique_key("hours")
+        key="filter_hours"
     )
 
     st.sidebar.header("personal score")
@@ -23,20 +23,20 @@ def create_sidebar_widgets(df_vg, console_list, genre_list):
         label='perso score',
         column=df_vg["perso_score"],
         step=1,
-        key=get_unique_key("score")
+        key="filter_score"
     )
 
     sidebar_finish = create_slider_multiselect(
         label='finished game',
         column=df_vg["finished"].unique(),
-        key=get_unique_key("finished")
+        key="filter_finished"
     )
 
     st.sidebar.header('Game genre')
     sidebar_gametype = create_slider_multiselect(
         label='Game genre',
         column=genre_list,
-        key=get_unique_key("genre")
+        key="filter_genre"
     )
 
     return {

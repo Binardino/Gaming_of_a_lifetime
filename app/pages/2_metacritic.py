@@ -9,16 +9,20 @@ import plotly.express as px
 import os
 import sys
 import sqlalchemy
-import random
-#from tqdm import tqdm
-# adding Folder_2 to the system path
-sys.path.append("..")
-dir_path = os.path.dirname(os.path.realpath(__file__))
-os.chdir(dir_path)
 from functions.data_wrangling import *
-from functions.metacritic_wrangling import *
+from functions.db_connection import *
 from functions.visualisation_tools import *
+from functions.sidebar_filters import *
+from functions.mask_df_utils import *
 import functions.db_connection as db_co
+#from tqdm import tqdm
+#set path for dynamic function import
+from pathlib import Path
+# Adds the parent directory of this script to sys.path
+CURRENT_FILE = Path(__file__).resolve()
+PAGES_DIR = CURRENT_FILE.parent
+ROOT_DIR = PAGES_DIR.parent
+sys.path.append(str(ROOT_DIR))
 #%%#%% import data
 engine = db_co.sql_connection()
 query = sqlalchemy.text('SELECT * FROM public.metacritic_merged')

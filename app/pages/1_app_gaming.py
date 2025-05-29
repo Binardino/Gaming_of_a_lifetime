@@ -18,7 +18,6 @@ import sys
 import sqlalchemy
 #set path for dynamic function import
 from pathlib import Path
-import sys
 # Adds the parent directory of this script to sys.path
 CURRENT_FILE = Path(__file__).resolve()
 PAGES_DIR = CURRENT_FILE.parent
@@ -27,7 +26,8 @@ sys.path.append(str(ROOT_DIR))
 from functions.data_wrangling import *
 from functions.db_connection import *
 from functions.visualisation_tools import *
-from functions.db_connection import *
+from functions.sidebar_filters import *
+from functions.mask_df_utils import *
 import functions.db_connection as db_co
 #from functions.data_wrangling import number_generator
 st.set_page_config(page_title="Gaming EDA presentation")

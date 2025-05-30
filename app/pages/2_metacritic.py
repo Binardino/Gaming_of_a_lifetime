@@ -62,67 +62,16 @@ df_console_raw, console_list, dict_console = clean_df_list(df_meta, 'console')
 df_genre_raw, genre_list, dict_genre = clean_df_list(df_meta, 'game_type')
 
 st.write(df_meta)
-#%% #random key for container visualisation
-random_key = range(10)
-
-unique_key = number_generator(random_key)
-
-#random_key = random.sample(range(1,10),10)
-
-#create sliders
-st.sidebar.header("select console")
-#sidebar console text to select
-sidebar_console = create_slider_multiselect(label='Consoles available', #label 
-                                            column=console_list,        
-                                            key=next(unique_key))
-
-st.sidebar.header('hours played')
-#slider hours played to select
-sidebar_hours = create_slider_numeric('hours played', df_meta.hours_played, 1)
-
-st.sidebar.header('personal score')
-#slider personal score to select
-sidebar_perso_score = create_slider_numeric('perso score', df_meta.perso_score, 1)
-
-#sidebar finish Boolean to select
-#sidebar_finish = create_slider_multiselect(2,'finished game', df_meta.finished.unique())
-
-sidebar_finish = create_slider_multiselect(label='finished game', #label 
-                                            column=df_meta.finished.unique(),        
-                                            key=next(unique_key))
-
-#sidebar game type text to select
-#sidebar_gametype = create_slider_multiselect(3,'Game genre', #label 
-                                             #genre_list)   #default     
-
-sidebar_gametype = create_slider_multiselect(label='Game genre', #label 
-                                            column=genre_list,        
-                                            key=next(unique_key))          
 #%%
-#creates masks from the sidebar selection widgets
-mask_console = create_mask(df_meta, 'console', sidebar_console, dict_console)
+# Set up initial session state values once
+init_sidebar_state(console_list, genre_list, df_meta)
 
-# st.write("mask_console")
-# st.write(mask_console)
-#creates masks from the sidebar selection widgets
-mask_gametype = create_mask(df_meta, 'game_type', sidebar_gametype, dict_genre)
+filters = create_sidebar_widgets(df_meta, console_list, genre_list)
 
-#filter with hours in range of selected hours
-mask_hours = df_meta['hours_played'].between(sidebar_hours[0],sidebar_hours[1])
+subdf_filter = apply_all_masks(df_meta, filters, dict_console=dict_console, dict_genre=dict_genre)
 
-#mask score
-mask_perso_score = df_meta['perso_score'].between(sidebar_perso_score[0],sidebar_perso_score[1])
-
-#mask finish
-mask_finish = df_meta['finished'].isin(sidebar_finish)
-
-#apply list of masks to dataset
-subdf_filter = df_meta[mask_console 
-                     & mask_hours 
-                     & mask_finish
-                     & mask_perso_score 
-                     & mask_gametype
-                    ].reset_index(drop=True)#& mask_perso_score
+# Assume you have loaded df_vg, console_list, genre_list, dict_console, dict_genre
+#subdf_filter = apply_sidebar_filters(df_vg, console_list, genre_list, dict_console, dict_genre)
 
 st.markdown("""filtered df""")
 st.dataframe(subdf_filter)

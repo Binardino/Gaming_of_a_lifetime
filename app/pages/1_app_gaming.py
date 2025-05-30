@@ -18,7 +18,6 @@ import sys
 import sqlalchemy
 #set path for dynamic function import
 from pathlib import Path
-import sys
 # Adds the parent directory of this script to sys.path
 CURRENT_FILE = Path(__file__).resolve()
 PAGES_DIR = CURRENT_FILE.parent
@@ -27,7 +26,8 @@ sys.path.append(str(ROOT_DIR))
 from functions.data_wrangling import *
 from functions.db_connection import *
 from functions.visualisation_tools import *
-from functions.db_connection import *
+from functions.sidebar_filters import *
+from functions.mask_df_utils import *
 import functions.db_connection as db_co
 #from functions.data_wrangling import number_generator
 st.set_page_config(page_title="Gaming EDA presentation")
@@ -64,65 +64,27 @@ def get_unique_key(prefix="chart"):
 
 #get_unique_key = number_generator(random_key)
 #%%
-#create sliders
-st.sidebar.header("select console")
-#sidebar console text to select
-sidebar_console = create_slider_multiselect(label='Consoles available', #label 
-                                            column=console_list,
-                                            key=get_unique_key())         #default
+# Inject custom CSS to set the width of the sidebar
+st.markdown(
+    """
+    <style>
+        section[data-testid="stSidebar"] {
+            width: 300px !important; # Set the width to your desired value
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+# Assume you have loaded df_vg, console_list, genre_list, dict_console, dict_genre
+#subdf_filter = apply_sidebar_filters(df_vg, console_list, genre_list, dict_console, dict_genre)
+#%% filters
 
-st.sidebar.header('hours played')
-#slider hours played to select
-sidebar_hours = create_slider_numeric(label='hours played', 
-                                      column=df_vg.hours_played, 
-                                      step=1)
+# Set up initial session state values once
+init_sidebar_state(console_list, genre_list, df_vg)
 
-st.sidebar.header('personal score')
-#slider personal score to select
-sidebar_perso_score = create_slider_numeric(label='perso score', 
-                                            column=df_vg.perso_score, 
-                                            step=1)
+filters = create_sidebar_widgets(df_vg, console_list, genre_list)
 
-#sidebar finish Boolean to select
-sidebar_finish = create_slider_multiselect(label='finished game', 
-                                           column=df_vg.finished.unique(),
-                                           key=get_unique_key())    
-
-#sidebar game type text to select
-sidebar_gametype = create_slider_multiselect(label='Game genre', #label 
-                                             column=genre_list,
-                                             key=get_unique_key())   #default               
-#%%
-#creates masks from the sidebar selection widgets
-mask_console = create_mask(df=df_vg, 
-                           column='console', 
-                           slider=sidebar_console, 
-                           mapping_dict=dict_console)
-
-# st.write("mask_console")
-# st.write(mask_console)
-#creates masks from the sidebar selection widgets
-mask_gametype = create_mask(df=df_vg, 
-                            column='game_type', 
-                            slider=sidebar_gametype, 
-                            mapping_dict=dict_genre)
-
-#filter with hours in range of selected hours
-mask_hours = df_vg['hours_played'].between(sidebar_hours[0],sidebar_hours[1])
-
-#mask score
-mask_perso_score = df_vg['perso_score'].between(sidebar_perso_score[0],sidebar_perso_score[1])
-
-#mask finish
-mask_finish = df_vg['finished'].isin(sidebar_finish)
-
-#apply list of masks to dataset
-subdf_filter = df_vg[mask_console 
-                     & mask_hours 
-                     & mask_finish
-                     & mask_perso_score 
-                     & mask_gametype
-                    ].reset_index(drop=True)#& mask_perso_score
+subdf_filter = apply_all_masks(df_vg, filters, dict_console=dict_console, dict_genre=dict_genre)
 
 st.markdown("""filtered df""")
 st.dataframe(subdf_filter)

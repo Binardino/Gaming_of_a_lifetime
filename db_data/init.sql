@@ -15,12 +15,15 @@ CREATE TABLE IF NOT EXISTS public.gaming_lifetime (
 	hours_played int2 NULL,
 	perso_score int2 NOT NULL,
 	multiplayed bool NOT NULL,
+	country_dev varchar(255) NOT NULL,
+	studio varchar(255) NOT NULL,
+	editor varchar(255) NOT NULL,
 	CONSTRAINT idx_225486_primary PRIMARY KEY (id)
 );
 CREATE UNIQUE INDEX idx_225486_game_name ON public.gaming_lifetime USING btree (game_name,console,published_year);
 
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
-	 ('Final Fantasy VI','SNES','JRPG',false,1994,2019,10,79,false),
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
+	 ('Final Fantasy VI','SNES','JRPG',false,1994,2019,10,79,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('Final Fantasy VII','PS1','JRPG',true,1997,2018,80,99,false),
 	 ('Final Fantasy VIII','PS1','JRPG',true,1998,2000,70,95,false),
 	 ('Final Fantasy IX','PS1','JRPG',true,2000,2019,70,95,false),
@@ -79,7 +82,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Assassin''s Creed Odyssey','PC','RPG|Open World',true,2018,2018,100,97,true),
 	 ('Watch Dogs','PS3','Open World|Action-Adventure',true,2013,2015,30,85,false),
 	 ('Watch Dogs 2','PC','Open World|Action-Adventure',true,2016,2016,50,89,false);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Sid Meier''s Civilization III','PC','STR',true,2001,2001,15,88,false),
 	 ('Sid Meier''s Civilization V','PC','STR',true,2010,2014,150,97,true),
 	 ('Sid Meier''s Civilization: Beyond Earth','PC','STR',true,2014,2014,15,78,false),
@@ -90,7 +93,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Command & Conquer: Red Alert','PC','STR',true,1996,1998,40,89,true),
 	 ('Command & Conquer: Red Alert 2','PC','STR',true,2000,2001,60,90,true),
 	 ('Command & Conquer: Red Alert Yuri','PC','STR',true,2001,2001,20,91,true);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Command & Conquer: Red Alert 3','PC','STR',true,2008,2018,10,75,true),
 	 ('Command & Conquer: Generals','PC','STR',true,2003,2005,15,77,true),
 	 ('Stronghold','PC','STR',false,2003,2003,10,73,true),
@@ -101,7 +104,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('StarCraft','PC','STR',true,1998,1998,150,92,true),
 	 ('StarCraft Brood War','PC','STR',true,1998,1998,20,92,false),
 	 ('StarCraft II: Wings of Liberty','PC','STR',true,2010,2010,150,95,true);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('StarCraft II: Heart of the Swarm','PC','STR',true,2013,2013,50,94,true),
 	 ('StarCraft II: Legacy of the Void','PC','STR',true,2015,2015,70,96,true),
 	 ('Warcraft II: Tides of Darkness','PC','STR',true,1995,1996,20,85,true),
@@ -112,7 +115,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Heroes of Might and Magic IV','PC','STR',true,2002,2002,45,94,true),
 	 ('Heroes of Might and Magic V','PC','STR',false,2006,2008,25,89,true),
 	 ('Heroes of Might and Magic VII','PC','STR',false,2015,2018,10,85,true);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Age of Empire II','PC','STR',false,2000,2003,30,88,true),
 	 ('Life is Strange','PC','Narrative',true,2008,2018,10,79,true),
 	 ('Worms','PC','STR|Shoot''em All',false,1995,1996,30,80,true),
@@ -123,7 +126,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Dungeon Keeper','PC','STR',false,1997,2000,10,80,true),
 	 ('The Sims','PC','STR',true,2000,2000,50,90,true),
 	 ('The Sims 2','PC','STR',true,2000,2005,30,88,false);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Baldur''s Gate','PC','Action-Adventure|RPG',true,1998,2000,40,90,false),
 	 ('Baldur''s Gate II: Shadows of Amn','PC','Action-Adventure|RPG',true,2000,2001,50,92,false),
 	 ('Drakan: Order of the Flame','PC','Action-Adventure',true,1999,2000,25,89,false),
@@ -134,7 +137,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Escape From Monkey Island','PC','Point&Click',true,2004,2004,30,85,true),
 	 ('The Secret of Monkey Island','PC','Point&Click',false,1990,2018,2,87,true),
 	 ('Myst','PC','Point&Click',true,1993,1993,25,86,true);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Versailles','PC','Point&Click',false,1996,1996,10,73,true),
 	 ('Goblins','PC','Point&Click',false,1991,1993,10,73,true),
 	 ('Goblins 2','PC','Point&Click',false,1992,1994,10,75,true),
@@ -145,7 +148,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('SimCity 2000','PC','STR',false,1994,1995,15,70,false),
 	 ('Caesar II','PC','STR',false,1995,1998,10,80,true),
 	 ('Pharaoh','PC','STR',false,1999,2001,20,86,true);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Carmageddon','PC','Racing|Beat''em All',false,1997,1999,20,86,true),
 	 ('Carmageddon II: Carpocalypse Now','PC','Racing|Beat''em All',false,1998,2000,10,86,true),
 	 ('RollerCoaster Tycoon','PC','STR',false,1999,2000,15,70,false),

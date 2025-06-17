@@ -53,7 +53,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('The Legend of Zelda: Link''s Awakening','GameBoy','Action-Adventure',true,1993,2001,20,90,false, 'Japan', 'Nintendo','Nintendo'),
 	 ('The Legend of Zelda: Breath of the Wild','Switch','Open World|Action-Adventure',true,2017,2020,110,99,true, 'Japan', 'Nintendo','Nintendo'),
 	 ('The Legend of Zelda: Tears of the Kingdom','Switch','Open World|Action-Adventure',false,2023,2023,110,100,true, 'Japan', 'Nintendo','Nintendo'),
-	 ('The Legend of Zelda: Ocarina of Time','N64','Action-Adventure',false,1998,2017,20,92,false, 'Japan', 'Square Enix','Square Enix'),
+	 ('The Legend of Zelda: Ocarina of Time','N64','Action-Adventure',false,1998,2017,20,92,false, 'Japan', 'Nintendo','Nintendo'),
 	 ('Red Dead Redemption 2','PS4','Open World|Action-Adventure',true,2018,2018,60,96,false, 'USA', 'Rockstar Games','Take Two Interactive'),
 	 ('Marvel''s Spider-Man','PS4','Open World|Action-Adventure',true,2018,2020,30,90,false, 'USA', 'Insomniac Games', 'Sony'),
 	 ('Marvel''s Spider-Man 2','PS5','Open World|Action-Adventure',true,2023,2023,30,88,false, 'USA', 'Insomniac Games', 'Sony'),
@@ -82,6 +82,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Assassin''s Creed Odyssey','PC','RPG|Open World',true,2018,2018,100,97,true, 'France', 'Ubisoft','Ubisoft'),
 	 ('Watch Dogs','PS3','Open World|Action-Adventure',true,2013,2015,30,85,false, 'France', 'Ubisoft','Ubisoft'),
 	 ('Watch Dogs 2','PC','Open World|Action-Adventure',true,2016,2016,50,89,false, 'France', 'Ubisoft','Ubisoft');
+
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Sid Meier''s Civilization III','PC','STR',true,2001,2001,15,88,false),
 	 ('Sid Meier''s Civilization V','PC','STR',true,2010,2014,150,97,true),
@@ -159,7 +160,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Star Wars Jedi Knight: Jedi Academy','PC','Action-Adventure|Hack&Clash',true,2003,2003,30,97,true),
 	 ('Star Wars: The Old Republic','PC','Action-Adventure|RPG',true,2011,2012,50,92,true),
 	 ('Star Wars: Knights of The Old Republic','PC|Android','Action-Adventure|RPG',true,2003,2012,25,91,false);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Star Wars Episode I Racer','PC','Racing',true,2001,2001,30,75,false),
 	 ('Star Wars: StarFighter','PC','Space Shooter',true,2001,2001,20,80,false),
 	 ('Star Wars: Jedi StarFighter','PS2','Space Shooter',true,2001,2001,20,80,false),
@@ -170,7 +171,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Star Wars: The Force Unleashed II','PS3','Hack&Clash',true,2008,2016,15,75,false),
 	 ('LEGO Star Wars: The Complete Saga','PS3','Hack&Clash',true,2007,2016,10,75,false),
 	 ('Star Wars Rogue Squadron II: Rogue Leader','GameCube','Gunfight',true,2001,2003,50,94,true);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Star Wars: Rogue Squadron','PC','Gunfight',true,1998,2003,20,93,true),
 	 ('Little Big Adventure','PC','Action-Adventure|Platformer',true,1994,1999,20,85,true),
 	 ('Little Big Adventure 2','PC','Action-Adventure|Platformer',true,1997,2000,50,97,true),
@@ -181,7 +182,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Rise of the Tomb Raider','PS4','Action|Platformer',false,2015,2015,10,75,true),
 	 ('Crash Bandicoot','PS1','Action|Platformer',false,1996,1996,10,79,true),
 	 ('Crash Nitro Kart','PS2','Racing',false,2003,2003,15,72,true);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Metal Gear Solid','PS1','Action|Infiltration',false,1998,2016,5,80,false),
 	 ('Splinter Cell','PS2','Action|Infiltration',false,2002,2002,15,82,false),
 	 ('WipeOut 2097','PS1','Racing',false,1996,1996,15,82,true),
@@ -192,7 +193,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Resident Evil 2','PS1','Survival horror',false,1998,1998,10,80,true),
 	 ('Sonic the Hedgehog','Megadrive','Platformer',true,1991,1996,40,85,true),
 	 ('Sonic the Hedgehog 2','Megadrive','Platformer',true,1992,1996,50,88,true);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Sonic the Hedgehog 3','Megadrive','Platformer',true,1994,1996,40,88,true),
 	 ('Sonic & Knuckles','Megadrive','Platformer',true,1994,1996,20,80,true),
 	 ('Sonic 3 & Knuckles','Megadrive','Platformer',true,1994,1996,60,94,true),
@@ -203,7 +204,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Sonic 3D: Flickies'' Island','Megadrive','Platformer',true,1996,1996,30,79,false),
 	 ('Sonic Pinball','Megadrive','Platformer',true,1996,1996,30,79,true),
 	 ('Jungle Strike','Megadrive','Action-Adventure|Beat''em All',false,1993,1996,30,79,false);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('EarthWorm Jim','Megadrive','Action-Adventure|Platformer',false,1994,1995,15,78,true),
 	 ('Aladdin','Megadrive','Action-Adventure|Platformer',true,1993,1994,25,89,true),
 	 ('Disney''s The Lion King','Megadrive','Action-Adventure|Platformer',false,1994,1994,15,80,true),
@@ -214,7 +215,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Ristar','Megadrive','Action-Adventure|Platformer',false,1995,1996,20,80,false),
 	 ('AAAHH!!! Real Monsters','Megadrive','Action-Adventure|Platformer',false,1995,1996,15,68,false),
 	 ('Jurassic Park','Megadrive','Action-Adventure|Platformer',false,1994,1996,5,62,true);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('The Lost World: Jurassic Park','PS1','Action-Adventure|Platformer',false,1995,1996,5,62,true),
 	 ('M.U.S.H.A','Megadrive','Gunfight|Space Shooter',false,1990,1995,10,65,true),
 	 ('Street Fighter 2','Megadrive','Versus Fighting',false,1991,1995,20,67,true),
@@ -225,7 +226,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('SSX 3','PS2','Sport',true,2003,2003,50,96,true),
 	 ('SSX On Tour','PS2','Sport',true,2005,2005,50,95,true),
 	 ('The Lord of the Rings: The Two Towers','PS2','Action-Adventure|Beat''em All',true,2002,2002,30,90,true);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('The Lord of the Rings: The Return of the King','PS2','Action-Adventure|Beat''em All',true,2003,2003,35,90,true),
 	 ('The Lord of the Rings: The Battle for Middle-earth','PC','STR',false,2003,2003,35,85,true),
 	 ('God of War','PS2','Beat''em All|Action-Adventure',true,2005,2020,10,86,false),
@@ -235,30 +236,30 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('FIFA 15','PS3','Sport',false,2014,2015,20,80,true),
 	 ('FIFA 16','PS4','Sport',false,2015,2016,20,80,true),
 	 ('PES5','PS2','Sport',false,2005,2005,20,75,true),
-	 ('Super Mario Bros.','NES','Platformer',true,1985,1993,20,82,true);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
-	 ('Super Mario Bros. 2','NES','Platformer',true,1988,1995,15,83,true),
-	 ('Super Mario Bros. 3','NES','Platformer',true,1988,1995,20,90,true),
-	 ('New Super Mario Bros. Wii','Wii','Platformer',true,2008,2010,20,90,true),
-	 ('Super Mario Land','GameBoy','Platformer',true,1989,1993,5,65,true),
-	 ('Mario Kart: Double Dash','GameCube','Racing',true,2003,2003,30,90,true),
-	 ('Super Mario Kart','SNES','Racing',false,1992,2000,5,80,true),
-	 ('Mario Kart Wii','Wii','Racing',false,2008,2008,30,90,true),
-	 ('Mario Kart Deluxe','Switch','Racing',false,2017,2020,5,90,true),
-	 ('Mario Kart 64','N64','Racing',false,1996,2001,10,85,true),
-	 ('Super Mario 64','N64','Racing',false,1996,1996,15,92,true);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
-	 ('Super Smash Bros. Melee','GameCube','Versus Fighting',true,2002,2002,30,92,true),
-	 ('Mario Party 5','GameCube','Party Game',true,2003,2003,50,89,true),
-	 ('Mario Party 3','N64','Party Game',true,2003,2003,50,92,true),
-	 ('Mario Tennis','GameCube','Sport',false,2004,2007,15,75,true),
-	 ('Paper Mario','GameCube','Action-Adventure|Platformer',false,2000,2009,10,80,true),
-	 ('Mario RPG','SNES','JRPG',false,1996,2000,15,82,false),
+	 ('Super Mario Bros.','NES','Platformer',true,1985,1993,20,82,true, 'Japan', 'Nintendo','Nintendo');
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
+	 ('Super Mario Bros. 2','NES','Platformer',true,1988,1995,15,83,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('Super Mario Bros. 3','NES','Platformer',true,1988,1995,20,90,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('New Super Mario Bros. Wii','Wii','Platformer',true,2008,2010,20,90,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('Super Mario Land','GameBoy','Platformer',true,1989,1993,5,65,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('Mario Kart: Double Dash','GameCube','Racing',true,2003,2003,30,90,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('Super Mario Kart','SNES','Racing',false,1992,2000,5,80,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('Mario Kart Wii','Wii','Racing',false,2008,2008,30,90,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('Mario Kart Deluxe','Switch','Racing',false,2017,2020,5,90,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('Mario Kart 64','N64','Racing',false,1996,2001,10,85,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('Super Mario 64','N64','Racing',false,1996,1996,15,92,true, 'Japan', 'Nintendo','Nintendo');
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
+	 ('Super Smash Bros. Melee','GameCube','Versus Fighting',true,2002,2002,30,92,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('Mario Party 5','GameCube','Party Game',true,2003,2003,50,89,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('Mario Party 3','N64','Party Game',true,2003,2003,50,92,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('Mario Tennis','GameCube','Sport',false,2004,2007,15,75,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('Paper Mario','GameCube','Action-Adventure|Platformer',false,2000,2009,10,80,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('Mario RPG','SNES','JRPG',false,1996,2000,15,82,false, 'Japan', 'Nintendo','Nintendo'),
 	 ('Golden Eye','N64','FPS',false,1997,1998,40,92,true),
 	 ('Perfect Dark','N64','FPS',false,2000,2000,5,80,true),
 	 ('Rayman 2: The Great Escape','N64','Action-Adventure|Platformer',false,1999,2000,20,88,true),
 	 ('Rayman','GBA','Action-Adventure|Platformer',true,2000,2000,25,89,true);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Rayman Origins','Wii','Action-Adventure|Platformer',false,2011,2011,20,89,true),
 	 ('Batman Returns','NES','Action-Adventure|Beat''em All',false,1989,1993,10,40,true),
 	 ('Pokemon Yellow: Special Pikachu Edition','GameBoy','Action-Adventure|JRPG',true,1997,1998,40,92,true),
@@ -269,7 +270,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Monument Valley 2','Android','Puzzle',true,2017,2020,3,81,true),
 	 ('Polytopia','Android','STR',false,2016,2017,2,78,false),
 	 ('Cyberpunk 2077','PC','RPG|Open World',true,2020,2020,120,99,false);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Watch Dogs Legion','PC','Action-Adventure|Open World',true,2020,2020,50,95,true),
 	 ('Among Us','Android','Party game',false,2018,2020,7,70,true),
 	 ('Mario Galaxy','Switch','Platformer',false,2008,2020,20,94,true),
@@ -280,7 +281,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Hyrule Warriors : Age of Calamity','Switch','Action-Adventure|Hack&Clash',false,2020,2021,15,90,true),
 	 ('Assassin''s Creed Valhalla','PC','RPG|Open World',false,2020,2021,50,92,false),
 	 ('Demon''s Souls','PS5','JRPG|Action-Adventure',false,2020,2022,20,90,false);
-INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed) VALUES
+INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('The Last of Us Part I','PS5','Action-Adventure|Survival horror',true,2023,2023,25,91,false),
 	 ('The Last of Us Part II','PS5','Action-Adventure|Survival horror',true,2020,2023,45,93,false),
 	 ('Horizon Forbidden West','PS5','RPG|Open World',true,2022,2022,50,93,false),
@@ -296,9 +297,9 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Outer Wilds','PS5','Open World|Action-Adventure',false,2019,2024,90,99,true),
 	 ('Clair Obscur Expedition 33','PS5','RPG',false,2025,2025,90,99,true),
 	 ('Pokemon Y','3DS','Action-Adventure|JRPG',false,2013,2025,1,85,false),
-	 ('The Legend of Zelda: Ocarina of Time 3D','3DS','Action-Adventure',false,2011,2025,2,94,false),
-	 ('The Legend of Zelda: A Link Between Worlds','3DS','Action-Adventure',false,2013,2025,2,93,false),
-	 ('The Legend of Zelda: Majora''s Mask 3D','3DS','Action-Adventure',false,2015,2025,2,93,false),
+	 ('The Legend of Zelda: Ocarina of Time 3D','3DS','Action-Adventure',false,2011,2025,2,94,false, 'Japan', 'Nintendo','Nintendo'),
+	 ('The Legend of Zelda: A Link Between Worlds','3DS','Action-Adventure',false,2013,2025,2,93,false, 'Japan', 'Nintendo','Nintendo'),
+	 ('The Legend of Zelda: Majora''s Mask 3D','3DS','Action-Adventure',false,2015,2025,2,93,false, 'Japan', 'Nintendo','Nintendo'),
 	 ('Tanoshiku - Omoshiroku - Kanken Shougakusei','3DS','Edutainment',false,2018,2025,2,70,false)
 	 ;
 	 

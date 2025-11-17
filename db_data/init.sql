@@ -35,7 +35,15 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Final Fantasy VII Rebirth','PS5','JRPG|Open World',false,2024,2024,5,99,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('The Witcher 3: Wild Hunt','PS4|PC','RPG|Open World',true,2015,2018,300,100,false, 'Poland', 'CD Projekt Red','CD Projekt Red'),
 	 ('The Witcher 2: Assassins of Kings','PC','RPG|Open World',false,2011,2018,15,85,false, 'Poland', 'CD Projekt Red','CD Projekt Red');
+	 ('The Witcher 3: Wild Hunt','PS4|PC','RPG|Open World',true,2015,2018,300,100,false, 'Poland', 'CD Projekt Red','CD Projekt Red'),
+	 ('The Witcher 2: Assassins of Kings','PC','RPG|Open World',false,2011,2018,15,85,false, 'Poland', 'CD Projekt Red','CD Projekt Red');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
+	 ('The Witcher','PC','RPG|Open World',false,2008,2018,15,85,false, 'Poland', 'CD Projekt Red','CD Projekt Red'),
+	 ('Grand Theft Auto','PC','Open World|Action-Adventure',true,1997,1998,20,88,true, 'UK', 'Rockstar Games','Take Two Interactive'),
+	 ('Grand Theft Auto: Vice City','PS2','Open World|Action-Adventure',true,2002,2003,100,93,true, 'UK', 'Rockstar Games','Take Two Interactive'),
+	 ('Grand Theft Auto: San Andreas','PS2','Open World|Action-Adventure',true,2004,2005,200,99,true, 'UK', 'Rockstar Games','Take Two Interactive'),
+	 ('Grand Theft Auto IV','PS3','Open World|Action-Adventure',true,2008,2016,35,94,false, 'UK', 'Rockstar Games','Take Two Interactive'),
+	 ('Grand Theft Auto V','PS3|PC','Open World|Action-Adventure',true,2013,2014,210,100,true, 'UK', 'Rockstar Games','Take Two Interactive'),
 	 ('The Witcher','PC','RPG|Open World',false,2008,2018,15,85,false, 'Poland', 'CD Projekt Red','CD Projekt Red'),
 	 ('Grand Theft Auto','PC','Open World|Action-Adventure',true,1997,1998,20,88,true, 'UK', 'Rockstar Games','Take Two Interactive'),
 	 ('Grand Theft Auto: Vice City','PS2','Open World|Action-Adventure',true,2002,2003,100,93,true, 'UK', 'Rockstar Games','Take Two Interactive'),
@@ -46,6 +54,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Kingdom Hearts II','PS2','Action|JRPG',true,2005,2009,50,98,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('Kingdom Hearts III','PS4','Action|JRPG',true,2019,2019,40,95,true, 'Japan', 'Square Enix','Square Enix'),
 	 ('Kingdom Hearts: Birth by Sleep','PSP','Action|JRPG',true,2010,2017,35,92,false, 'Japan', 'Square Enix','Square Enix');
+	 ('Kingdom Hearts: Birth by Sleep','PSP','Action|JRPG',true,2010,2017,35,92,false, 'Japan', 'Square Enix','Square Enix');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('The Legend of Zelda: The Wind Waker','GameCube','Action-Adventure',false,2002,2008,35,91,false, 'Japan', 'Nintendo','Nintendo'),
 	 ('The Legend of Zelda: A Link to the Past','SNES','Action-Adventure',false,1991,2020,20,91,false, 'Japan', 'Nintendo','Nintendo'),
@@ -53,6 +62,13 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('The Legend of Zelda: Link''s Awakening','GameBoy','Action-Adventure',true,1993,2001,20,90,false, 'Japan', 'Nintendo','Nintendo'),
 	 ('The Legend of Zelda: Breath of the Wild','Switch','Open World|Action-Adventure',true,2017,2020,110,99,true, 'Japan', 'Nintendo','Nintendo'),
 	 ('The Legend of Zelda: Tears of the Kingdom','Switch','Open World|Action-Adventure',false,2023,2023,110,100,true, 'Japan', 'Nintendo','Nintendo'),
+	 ('The Legend of Zelda: Ocarina of Time','N64','Action-Adventure',false,1998,2017,20,92,false, 'Japan', 'Nintendo','Nintendo'),
+	 ('Red Dead Redemption 2','PS4','Open World|Action-Adventure',true,2018,2018,60,96,false, 'USA', 'Rockstar Games','Take Two Interactive'),
+	 ('Marvel''s Spider-Man','PS4','Open World|Action-Adventure',true,2018,2020,30,90,false, 'USA', 'Insomniac Games', 'Sony'),
+	 ('Marvel''s Spider-Man 2','PS5','Open World|Action-Adventure',true,2023,2023,30,88,false, 'USA', 'Insomniac Games', 'Sony'),
+	 ('God of War','PS4','Action-Adventure|Beat''em All',true,2018,2020,75,99,false, 'USA', 'SIE Santa Monica Studio', 'Sony'),
+	 ('God of War Ragnarök','PS5','Action-Adventure|Beat''em All',false,2022,2023,50,99,false, 'USA', 'SIE Santa Monica Studio', 'Sony'),
+	 ('God of War III','PS4','Action-Adventure|Beat''em All',false,2015,2020,35,92,false, 'USA', 'SIE Santa Monica Studio', 'Sony');
 	 ('The Legend of Zelda: Ocarina of Time','N64','Action-Adventure',false,1998,2017,20,92,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('Red Dead Redemption 2','PS4','Open World|Action-Adventure',true,2018,2018,60,96,false, 'USA', 'Rockstar Games','Take Two Interactive'),
 	 ('Marvel''s Spider-Man','PS4','Open World|Action-Adventure',true,2018,2020,30,90,false, 'USA', 'Insomniac Games', 'Sony'),
@@ -61,6 +77,16 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('God of War Ragnarök','PS5','Action-Adventure|Beat''em All',false,2022,2023,50,99,false, 'USA', 'SIE Santa Monica Studio', 'Sony'),
 	 ('God of War III','PS4','Action-Adventure|Beat''em All',false,2015,2020,35,92,false, 'USA', 'SIE Santa Monica Studio', 'Sony');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
+	 ('Uncharted: Drake''s Fortune','PS4','Action-Adventure|Platformer',true,2007,2020,10,68,true, 'USA', 'Naughty Dog', 'Sony'),
+	 ('Uncharted 2: Among Thieves','PS4','Action-Adventure|Platformer',true,2009,2020,10,87,true, 'USA', 'Naughty Dog', 'Sony'),
+	 ('Uncharted 3: Drake''s Deception','PS4','Action-Adventure|Platformer',false,2011,2020,10,80,true, 'USA', 'Naughty Dog', 'Sony'),
+	 ('Uncharted: The Nathan Drake Collection','PS4','Action-Adventure|Platformer',true,2015,2020,30,83,true, 'USA', 'Naughty Dog', 'Sony'),
+	 ('Uncharted 4: A Thief''s End','PS4','Action-Adventure|Platformer',false,2016,2020,10,90,true, 'USA', 'Naughty Dog', 'Sony'),
+	 ('Horizon Zero Dawn','PS4','Action-Adventure|Open World',false,2017,2019,10,91,true, 'Netherlands', 'Guerrilla Games' , 'Sony'),
+	 ('Journey','PS4','Action-Adventure|Platformer',true,2012,2019,5,86,true, 'USA', 'Thatgamecompany' , 'Sony'),
+	 ('Heavy Rain','PS3','Narrative',true,2010,2016,15,79,true, 'France', 'Quantic Dream' , 'Sony'),
+	 ('Red Dead Redemption','PS3','Action-Adventure|Open World',true,2010,2016,30,92,false, 'USA', 'Rockstar Games','Take Two Interactive'),
+	 ('The Last of Us','PS3','Action-Adventure|Survival horror',false,2011,2016,25,92,false, 'USA', 'Naughty Dog', 'Sony');
 	 ('Uncharted: Drake''s Fortune','PS4','Action-Adventure|Platformer',true,2007,2020,10,68,true, 'USA', 'Naughty Dog', 'Sony'),
 	 ('Uncharted 2: Among Thieves','PS4','Action-Adventure|Platformer',true,2009,2020,10,87,true, 'USA', 'Naughty Dog', 'Sony'),
 	 ('Uncharted 3: Drake''s Deception','PS4','Action-Adventure|Platformer',false,2011,2020,10,80,true, 'USA', 'Naughty Dog', 'Sony'),

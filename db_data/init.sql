@@ -35,15 +35,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Final Fantasy VII Rebirth','PS5','JRPG|Open World',false,2024,2024,5,99,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('The Witcher 3: Wild Hunt','PS4|PC','RPG|Open World',true,2015,2018,300,100,false, 'Poland', 'CD Projekt Red','CD Projekt Red'),
 	 ('The Witcher 2: Assassins of Kings','PC','RPG|Open World',false,2011,2018,15,85,false, 'Poland', 'CD Projekt Red','CD Projekt Red');
-	 ('The Witcher 3: Wild Hunt','PS4|PC','RPG|Open World',true,2015,2018,300,100,false, 'Poland', 'CD Projekt Red','CD Projekt Red'),
-	 ('The Witcher 2: Assassins of Kings','PC','RPG|Open World',false,2011,2018,15,85,false, 'Poland', 'CD Projekt Red','CD Projekt Red');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('The Witcher','PC','RPG|Open World',false,2008,2018,15,85,false, 'Poland', 'CD Projekt Red','CD Projekt Red'),
-	 ('Grand Theft Auto','PC','Open World|Action-Adventure',true,1997,1998,20,88,true, 'UK', 'Rockstar Games','Take Two Interactive'),
-	 ('Grand Theft Auto: Vice City','PS2','Open World|Action-Adventure',true,2002,2003,100,93,true, 'UK', 'Rockstar Games','Take Two Interactive'),
-	 ('Grand Theft Auto: San Andreas','PS2','Open World|Action-Adventure',true,2004,2005,200,99,true, 'UK', 'Rockstar Games','Take Two Interactive'),
-	 ('Grand Theft Auto IV','PS3','Open World|Action-Adventure',true,2008,2016,35,94,false, 'UK', 'Rockstar Games','Take Two Interactive'),
-	 ('Grand Theft Auto V','PS3|PC','Open World|Action-Adventure',true,2013,2014,210,100,true, 'UK', 'Rockstar Games','Take Two Interactive'),
 	 ('The Witcher','PC','RPG|Open World',false,2008,2018,15,85,false, 'Poland', 'CD Projekt Red','CD Projekt Red'),
 	 ('Grand Theft Auto','PC','Open World|Action-Adventure',true,1997,1998,20,88,true, 'UK', 'Rockstar Games','Take Two Interactive'),
 	 ('Grand Theft Auto: Vice City','PS2','Open World|Action-Adventure',true,2002,2003,100,93,true, 'UK', 'Rockstar Games','Take Two Interactive'),
@@ -54,7 +46,6 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Kingdom Hearts II','PS2','Action|JRPG',true,2005,2009,50,98,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('Kingdom Hearts III','PS4','Action|JRPG',true,2019,2019,40,95,true, 'Japan', 'Square Enix','Square Enix'),
 	 ('Kingdom Hearts: Birth by Sleep','PSP','Action|JRPG',true,2010,2017,35,92,false, 'Japan', 'Square Enix','Square Enix');
-	 ('Kingdom Hearts: Birth by Sleep','PSP','Action|JRPG',true,2010,2017,35,92,false, 'Japan', 'Square Enix','Square Enix');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('The Legend of Zelda: The Wind Waker','GameCube','Action-Adventure',false,2002,2008,35,91,false, 'Japan', 'Nintendo','Nintendo'),
 	 ('The Legend of Zelda: A Link to the Past','SNES','Action-Adventure',false,1991,2020,20,91,false, 'Japan', 'Nintendo','Nintendo'),
@@ -62,13 +53,6 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('The Legend of Zelda: Link''s Awakening','GameBoy','Action-Adventure',true,1993,2001,20,90,false, 'Japan', 'Nintendo','Nintendo'),
 	 ('The Legend of Zelda: Breath of the Wild','Switch','Open World|Action-Adventure',true,2017,2020,110,99,true, 'Japan', 'Nintendo','Nintendo'),
 	 ('The Legend of Zelda: Tears of the Kingdom','Switch','Open World|Action-Adventure',false,2023,2023,110,100,true, 'Japan', 'Nintendo','Nintendo'),
-	 ('The Legend of Zelda: Ocarina of Time','N64','Action-Adventure',false,1998,2017,20,92,false, 'Japan', 'Nintendo','Nintendo'),
-	 ('Red Dead Redemption 2','PS4','Open World|Action-Adventure',true,2018,2018,60,96,false, 'USA', 'Rockstar Games','Take Two Interactive'),
-	 ('Marvel''s Spider-Man','PS4','Open World|Action-Adventure',true,2018,2020,30,90,false, 'USA', 'Insomniac Games', 'Sony'),
-	 ('Marvel''s Spider-Man 2','PS5','Open World|Action-Adventure',true,2023,2023,30,88,false, 'USA', 'Insomniac Games', 'Sony'),
-	 ('God of War','PS4','Action-Adventure|Beat''em All',true,2018,2020,75,99,false, 'USA', 'SIE Santa Monica Studio', 'Sony'),
-	 ('God of War Ragnarök','PS5','Action-Adventure|Beat''em All',false,2022,2023,50,99,false, 'USA', 'SIE Santa Monica Studio', 'Sony'),
-	 ('God of War III','PS4','Action-Adventure|Beat''em All',false,2015,2020,35,92,false, 'USA', 'SIE Santa Monica Studio', 'Sony');
 	 ('The Legend of Zelda: Ocarina of Time','N64','Action-Adventure',false,1998,2017,20,92,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('Red Dead Redemption 2','PS4','Open World|Action-Adventure',true,2018,2018,60,96,false, 'USA', 'Rockstar Games','Take Two Interactive'),
 	 ('Marvel''s Spider-Man','PS4','Open World|Action-Adventure',true,2018,2020,30,90,false, 'USA', 'Insomniac Games', 'Sony'),
@@ -77,16 +61,6 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('God of War Ragnarök','PS5','Action-Adventure|Beat''em All',false,2022,2023,50,99,false, 'USA', 'SIE Santa Monica Studio', 'Sony'),
 	 ('God of War III','PS4','Action-Adventure|Beat''em All',false,2015,2020,35,92,false, 'USA', 'SIE Santa Monica Studio', 'Sony');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('Uncharted: Drake''s Fortune','PS4','Action-Adventure|Platformer',true,2007,2020,10,68,true, 'USA', 'Naughty Dog', 'Sony'),
-	 ('Uncharted 2: Among Thieves','PS4','Action-Adventure|Platformer',true,2009,2020,10,87,true, 'USA', 'Naughty Dog', 'Sony'),
-	 ('Uncharted 3: Drake''s Deception','PS4','Action-Adventure|Platformer',false,2011,2020,10,80,true, 'USA', 'Naughty Dog', 'Sony'),
-	 ('Uncharted: The Nathan Drake Collection','PS4','Action-Adventure|Platformer',true,2015,2020,30,83,true, 'USA', 'Naughty Dog', 'Sony'),
-	 ('Uncharted 4: A Thief''s End','PS4','Action-Adventure|Platformer',false,2016,2020,10,90,true, 'USA', 'Naughty Dog', 'Sony'),
-	 ('Horizon Zero Dawn','PS4','Action-Adventure|Open World',false,2017,2019,10,91,true, 'Netherlands', 'Guerrilla Games' , 'Sony'),
-	 ('Journey','PS4','Action-Adventure|Platformer',true,2012,2019,5,86,true, 'USA', 'Thatgamecompany' , 'Sony'),
-	 ('Heavy Rain','PS3','Narrative',true,2010,2016,15,79,true, 'France', 'Quantic Dream' , 'Sony'),
-	 ('Red Dead Redemption','PS3','Action-Adventure|Open World',true,2010,2016,30,92,false, 'USA', 'Rockstar Games','Take Two Interactive'),
-	 ('The Last of Us','PS3','Action-Adventure|Survival horror',false,2011,2016,25,92,false, 'USA', 'Naughty Dog', 'Sony');
 	 ('Uncharted: Drake''s Fortune','PS4','Action-Adventure|Platformer',true,2007,2020,10,68,true, 'USA', 'Naughty Dog', 'Sony'),
 	 ('Uncharted 2: Among Thieves','PS4','Action-Adventure|Platformer',true,2009,2020,10,87,true, 'USA', 'Naughty Dog', 'Sony'),
 	 ('Uncharted 3: Drake''s Deception','PS4','Action-Adventure|Platformer',false,2011,2020,10,80,true, 'USA', 'Naughty Dog', 'Sony'),
@@ -109,33 +83,34 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Watch Dogs','PS3','Open World|Action-Adventure',true,2013,2015,30,85,false, 'France', 'Ubisoft','Ubisoft'),
 	 ('Watch Dogs 2','PC','Open World|Action-Adventure',true,2016,2016,50,89,false, 'France', 'Ubisoft','Ubisoft');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('Sid Meier''s Civilization III','PC','STR',true,2001,2001,15,88,false),
-	 ('Sid Meier''s Civilization V','PC','STR',true,2010,2014,150,97,true),
-	 ('Sid Meier''s Civilization: Beyond Earth','PC','STR',true,2014,2014,15,78,false),
-	 ('Sid Meier''s Civilization VI','PC','STR',true,2016,2016,300,100,true),
-	 ('Command & Conquer','PC','STR',true,1996,1998,30,89,true),
-	 ('Command & Conquer: Tiberian Sun','PC','STR',true,1999,1999,50,92,true),
-	 ('Command & Conquer 3: Tiberium Wars','PC','STR',true,2007,2007,60,92,true),
-	 ('Command & Conquer: Red Alert','PC','STR',true,1996,1998,40,89,true),
-	 ('Command & Conquer: Red Alert 2','PC','STR',true,2000,2001,60,90,true),
-	 ('Command & Conquer: Red Alert Yuri','PC','STR',true,2001,2001,20,91,true);
+	 ('Sid Meier''s Civilization III','PC','STR',true,2001,2001,15,88,false, 'USA', 'Firaxis Games', 'Infogrames Interactive'),
+	 ('Sid Meier''s Civilization V','PC','STR',true,2010,2014,150,97,true, 'USA', 'Firaxis Games', '2K'),
+	 ('Sid Meier''s Civilization: Beyond Earth','PC','STR',true,2014,2014,15,78,false, 'USA', 'Firaxis Games', '2K'),
+	 ('Sid Meier''s Civilization VI','PC','STR',true,2016,2016,300,100,true, 'USA', 'Firaxis Games', '2K'),
+	 ('Sid Meier''s Civilization VII','PC','STR',false,2025,2025,20,100,false, 'USA', 'Firaxis Games', '2K'),
+	 ('Command & Conquer','PC','STR',true,1996,1998,30,89,true, 'USA', 'Westwood Studios', 'Virgin Interactive'),
+	 ('Command & Conquer: Tiberian Sun','PC','STR',true,1999,1999,50,92,true, 'USA', 'Westwood Studios', 'Electronic Arts'),
+	 ('Command & Conquer 3: Tiberium Wars','PC','STR',true,2007,2007,60,92,true, 'USA', 'Westwood Studios', 'Electronic Arts'),
+	 ('Command & Conquer: Red Alert','PC','STR',true,1996,1998,40,89,true, 'USA', 'Westwood Studios', 'Virgin Interactive'),
+	 ('Command & Conquer: Red Alert 2','PC','STR',true,2000,2001,60,90,true, 'USA', 'Westwood Studios', 'Electronic Arts'),
+	 ('Command & Conquer: Red Alert Yuri','PC','STR',true,2001,2001,20,91,true, 'USA', 'Westwood Studios', 'Electronic Arts');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('Command & Conquer: Red Alert 3','PC','STR',true,2008,2018,10,75,true),
-	 ('Command & Conquer: Generals','PC','STR',true,2003,2005,15,77,true),
+	 ('Command & Conquer: Red Alert 3','PC','STR',true,2008,2018,10,75,true, 'USA', 'Westwood Studios', 'Electronic Arts')
+	 ('Command & Conquer: Generals','PC','STR',true,2003,2005,15,77,true, 'USA', 'Westwood Studios', 'Electronic Arts')
 	 ('Stronghold','PC','STR',false,2003,2003,10,73,true),
 	 ('Nox','PC','RPG|Hack&Clash',true,2008,2018,10,75,true),
-	 ('Diablo','PS1|PC','RPG|Hack&Clash',true,1997,1998,40,92,true),
-	 ('Diablo II','PC','RPG|Hack&Clash',true,2000,2005,25,89,true),
-	 ('Diablo III','PS3|PC','RPG|Hack&Clash',true,2012,2015,35,93,true),
-	 ('StarCraft','PC','STR',true,1998,1998,150,92,true),
-	 ('StarCraft Brood War','PC','STR',true,1998,1998,20,92,false),
-	 ('StarCraft II: Wings of Liberty','PC','STR',true,2010,2010,150,95,true);
+	 ('Diablo','PS1|PC','RPG|Hack&Clash',true,1997,1998,40,92,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
+	 ('Diablo II','PC','RPG|Hack&Clash',true,2000,2005,25,89,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
+	 ('Diablo III','PS3|Switch 2','RPG|Hack&Clash',true,2012,2015,35,93,true, 'USA', 'Blizzard Entertainment', 'Activision Blizzard'),
+	 ('StarCraft','PC','STR',true,1998,1998,150,92,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
+	 ('StarCraft Brood War','PC','STR',true,1998,1998,20,92,false, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
+	 ('StarCraft II: Wings of Liberty','PC','STR',true,2010,2010,150,95,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('StarCraft II: Heart of the Swarm','PC','STR',true,2013,2013,50,94,true),
-	 ('StarCraft II: Legacy of the Void','PC','STR',true,2015,2015,70,96,true),
-	 ('Warcraft II: Tides of Darkness','PC','STR',true,1995,1996,20,85,true),
-	 ('Warcraft III: Reign of Chaos','PC','STR',true,2002,2002,100,95,true),
-	 ('Warcraft III: The Frozen Throne','PC','STR',true,2003,2003,30,93,true),
+	 ('StarCraft II: Heart of the Swarm','PC','STR',true,2013,2013,50,94,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
+	 ('StarCraft II: Legacy of the Void','PC','STR',true,2015,2015,70,96,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
+	 ('Warcraft II: Tides of Darkness','PC','STR',true,1995,1996,20,85,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
+	 ('Warcraft III: Reign of Chaos','PC','STR',true,2002,2002,100,95,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
+	 ('Warcraft III: The Frozen Throne','PC','STR',true,2003,2003,30,93,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
 	 ('Heroes of Might and Magic II: The Succession Wars','PC','STR',true,1996,1998,30,88,true),
 	 ('Heroes of Might and Magic III','PC','STR',true,1999,2000,60,94,true),
 	 ('Heroes of Might and Magic IV','PC','STR',true,2002,2002,45,94,true),

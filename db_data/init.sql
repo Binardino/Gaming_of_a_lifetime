@@ -32,7 +32,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Final Fantasy XV','PS4','JRPG|Open World',true,2015,2017,80,95,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('Final Fantasy XVI','PS5','JRPG',true,2023,2023,45,68,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('Final Fantasy VII Remake','PS4','JRPG',true,2020,2020,50,96,false, 'Japan', 'Square Enix','Square Enix'),
-	 ('Final Fantasy VII Rebirth','PS5','JRPG|Open World',false,2024,2024,5,99,false, 'Japan', 'Square Enix','Square Enix'),
+	 ('Final Fantasy VII Rebirth','PS5','JRPG|Open World',false,2024,2024,70,99,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('The Witcher 3: Wild Hunt','PS4|PC','RPG|Open World',true,2015,2018,300,100,false, 'Poland', 'CD Projekt Red','CD Projekt Red'),
 	 ('The Witcher 2: Assassins of Kings','PC','RPG|Open World',false,2011,2018,15,85,false, 'Poland', 'CD Projekt Red','CD Projekt Red');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
@@ -111,11 +111,11 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Warcraft II: Tides of Darkness','PC','STR',true,1995,1996,20,85,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
 	 ('Warcraft III: Reign of Chaos','PC','STR',true,2002,2002,100,95,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
 	 ('Warcraft III: The Frozen Throne','PC','STR',true,2003,2003,30,93,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
-	 ('Heroes of Might and Magic II: The Succession Wars','PC','STR',true,1996,1998,30,88,true),
-	 ('Heroes of Might and Magic III','PC','STR',true,1999,2000,60,94,true),
-	 ('Heroes of Might and Magic IV','PC','STR',true,2002,2002,45,94,true),
-	 ('Heroes of Might and Magic V','PC','STR',false,2006,2008,25,89,true),
-	 ('Heroes of Might and Magic VII','PC','STR',false,2015,2018,10,85,true);
+  ('Heroes of Might and Magic II: The Succession Wars','PC','STR',true,1996,1998,30,88,true, 'USA','New World Computing','The 3DO Company'),
+  ('Heroes of Might and Magic III','PC','STR',true,1999,2000,60,94,true, 'USA','New World Computing','The 3DO Company'),
+  ('Heroes of Might and Magic IV','PC','STR',true,2002,2002,45,94,true, 'USA','New World Computing','The 3DO Company'),
+  ('Heroes of Might and Magic V','PC','STR',false,2006,2008,25,89,true, 'Russia','Nival Interactive','Ubisoft'),
+  ('Heroes of Might and Magic VII','PC','STR',false,2015,2018,10,85,true, 'Germany','Limbic Entertainment','Ubisoft');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Age of Empire II','PC','STR',false,2000,2003,30,88,true, 'USA','Ensemble Studios','Microsoft'),
 	 ('Life is Strange','PC','Narrative',true,2008,2018,10,79,true, 'France','Dontnod Entertainment','Square Enix'),
@@ -154,25 +154,25 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Carmageddon II: Carpocalypse Now','PC','Racing|Beat''em All',false,1998,2000,10,86,true),
 	 ('RollerCoaster Tycoon','PC','STR',false,1999,2000,15,70,false),
 	 ('Beyond Good & Evil','PC','Action-Adventure|Platformer',false,2003,2016,5,62,false),
-	 ('Star Wars: Galactic Battlegrounds','PC','STR',true,2001,2001,40,90,false),
-	 ('Star Wars: Shadows of the Empire','PC','Action-Adventure|Hack&Clash',true,1996,2002,20,85,false),
-	 ('Star Wars Jedi Knight II: Jedi Outcast','PC','Action-Adventure|Hack&Clash',true,2002,2003,30,98,true),
-	 ('Star Wars Jedi Knight: Jedi Academy','PC','Action-Adventure|Hack&Clash',true,2003,2003,30,97,true),
-	 ('Star Wars: The Old Republic','PC','Action-Adventure|RPG',true,2011,2012,50,92,true),
-	 ('Star Wars: Knights of The Old Republic','PC|Android','Action-Adventure|RPG',true,2003,2012,25,91,false);
+	 ('Star Wars: Galactic Battlegrounds','PC','STR',true,2001,2001,40,90,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
+	 ('Star Wars: Shadows of the Empire','PC','Action-Adventure|Hack&Clash',true,1996,2002,20,85,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
+	 ('Star Wars Jedi Knight II: Jedi Outcast','PC','Action-Adventure|Hack&Clash',true,2002,2003,30,98,true, 'USA', 'Raven Software', 'Lucas Arts'),
+	 ('Star Wars Jedi Knight: Jedi Academy','PC','Action-Adventure|Hack&Clash',true,2003,2003,30,97,true, 'USA', 'Raven Software', 'Lucas Arts'),
+	 ('Star Wars: The Old Republic','PC','Action-Adventure|RPG',true,2011,2012,50,92,true, 'USA', 'BioWare', 'Lucas Arts'),
+	 ('Star Wars: Knights of The Old Republic','PC|Android','Action-Adventure|RPG',true,2003,2012,25,91,false, 'USA', 'BioWare', 'Lucas Arts');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('Star Wars Episode I Racer','PC','Racing',true,2001,2001,30,75,false),
-	 ('Star Wars: StarFighter','PC','Space Shooter',true,2001,2001,20,80,false),
-	 ('Star Wars: Jedi StarFighter','PS2','Space Shooter',true,2001,2001,20,80,false),
-	 ('Star Wars: Battlefront (2015)','PC','FPS|Space Shooter',true,2015,2015,20,80,true),
-	 ('Star Wars: Battlefront II (2017)','PS4|PC','FPS|Space Shooter',true,2017,2017,50,90,true),
-	 ('Star Wars: Bounty Hunter','PS2','Action-Adventure',true,2002,2002,30,70,true),
-	 ('Star Wars: The Force Unleashed','PS3','Hack&Clash',true,2008,2016,15,75,false),
-	 ('Star Wars: The Force Unleashed II','PS3','Hack&Clash',true,2008,2016,15,75,false),
-	 ('LEGO Star Wars: The Complete Saga','PS3','Hack&Clash',true,2007,2016,10,75,false),
-	 ('Star Wars Rogue Squadron II: Rogue Leader','GameCube','Gunfight',true,2001,2003,50,94,true);
+	 ('Star Wars Episode I Racer','PC','Racing',true,2001,2001,30,75,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
+	 ('Star Wars: StarFighter','PC','Space Shooter',true,2001,2001,20,80,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
+	 ('Star Wars: Jedi StarFighter','PS2','Space Shooter',true,2001,2001,20,80,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
+	 ('Star Wars: Battlefront (2015)','PC','FPS|Space Shooter',true,2015,2015,20,80,true, 'Sweden', 'DICE', 'Electronic Arts'),
+	 ('Star Wars: Battlefront II (2017)','PS4|PC','FPS|Space Shooter',true,2017,2017,50,90,true, 'Sweden', 'DICE', 'Electronic Arts'),
+	 ('Star Wars: Bounty Hunter','PS2','Action-Adventure',true,2002,2002,30,70,true, 'USA', 'Lucas Arts', 'Lucas Arts'),
+	 ('Star Wars: The Force Unleashed','PS3','Hack&Clash',true,2008,2016,15,75,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
+	 ('Star Wars: The Force Unleashed II','PS3','Hack&Clash',true,2008,2016,15,75,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
+	 ('LEGO Star Wars: The Complete Saga','PS3','Hack&Clash',true,2007,2016,10,75,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
+	 ('Star Wars Rogue Squadron II: Rogue Leader','GameCube','Gunfight',true,2001,2003,50,94,true, 'USA', 'Lucas Arts', 'Lucas Arts');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('Star Wars: Rogue Squadron','PC','Gunfight',true,1998,2003,20,93,true),
+	 ('Star Wars: Rogue Squadron','PC','Gunfight',true,1998,2003,20,93,true, 'USA', 'Lucas Arts', 'Lucas Arts'),
 	 ('Little Big Adventure','PC','Action-Adventure|Platformer',true,1994,1999,20,85,true),
 	 ('Little Big Adventure 2','PC','Action-Adventure|Platformer',true,1997,2000,50,97,true),
 	 ('Tomb Raider','PS1','Action|Platformer',true,1997,1997,15,85,true),
@@ -191,19 +191,19 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Fighting Force','PS1','Beat''em All',true,1997,1997,20,79,true),
 	 ('Tekken','PS1','Versus Fighting',false,1995,1997,20,79,true),
 	 ('Resident Evil 2','PS1','Survival horror',false,1998,1998,10,80,true),
-	 ('Sonic the Hedgehog','Megadrive','Platformer',true,1991,1996,40,85,true),
-	 ('Sonic the Hedgehog 2','Megadrive','Platformer',true,1992,1996,50,88,true);
+	 ('Sonic the Hedgehog','Megadrive','Platformer',true,1991,1996,40,85,true, 'Japan', 'Sega','Sega'),
+	 ('Sonic the Hedgehog 2','Megadrive','Platformer',true,1992,1996,50,88,true, 'Japan', 'Sega','Sega');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('Sonic the Hedgehog 3','Megadrive','Platformer',true,1994,1996,40,88,true),
-	 ('Sonic & Knuckles','Megadrive','Platformer',true,1994,1996,20,80,true),
-	 ('Sonic 3 & Knuckles','Megadrive','Platformer',true,1994,1996,60,94,true),
+	 ('Sonic the Hedgehog 3','Megadrive','Platformer',true,1994,1996,40,88,true, 'Japan', 'Sega','Sega'),
+	 ('Sonic & Knuckles','Megadrive','Platformer',true,1994,1996,20,80,true, 'Japan', 'Sega','Sega'),
+	 ('Sonic 3 & Knuckles','Megadrive','Platformer',true,1994,1996,60,94,true, 'Japan', 'Sega','Sega'),
 	 ('ToeJam&Earl','Megadrive','Action-Adventure|Platformer',false,1991,1996,10,75,true),
 	 ('Streets of Rage 3','Megadrive','Beat''em All',true,1992,1996,15,70,false),
 	 ('Golden Axe','Megadrive','Beat''em All',false,1989,1993,15,70,false),
 	 ('Mighty Morphin Power Rangers','Megadrive','Beat''em All',false,1994,1994,15,60,true),
-	 ('Sonic 3D: Flickies'' Island','Megadrive','Platformer',true,1996,1996,30,79,false),
-	 ('Sonic Pinball','Megadrive','Platformer',true,1996,1996,30,79,true),
-	 ('Jungle Strike','Megadrive','Action-Adventure|Beat''em All',false,1993,1996,30,79,false);
+	 ('Sonic 3D: Flickies'' Island','Megadrive','Platformer',true,1996,1996,30,79,false, 'Japan', 'Sega','Sega'),
+	 ('Sonic Pinball','Megadrive','Platformer',true,1996,1996,30,79,true, 'Japan', 'Sega','Sega'),
+	 ('Jungle Strike','Megadrive','Action-Adventure|Beat''em All',false,1993,1996,30,79,false, 'Japan', 'Sega','Sega');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('EarthWorm Jim','Megadrive','Action-Adventure|Platformer',false,1994,1995,15,78,true),
 	 ('Aladdin','Megadrive','Action-Adventure|Platformer',true,1993,1994,25,89,true),

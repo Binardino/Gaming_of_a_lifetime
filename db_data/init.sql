@@ -227,15 +227,15 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('SSX On Tour','PS2','Sport',true,2005,2005,50,95,true, 'Canada', 'Electronic Arts', 'Electronic Arts'),
 	 ('The Lord of the Rings: The Two Towers','PS2','Action-Adventure|Beat''em All',true,2002,2002,30,90,true);
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('The Lord of the Rings: The Return of the King','PS2','Action-Adventure|Beat''em All',true,2003,2003,35,90,true),
-	 ('The Lord of the Rings: The Battle for Middle-earth','PC','STR',false,2003,2003,35,85,true),
-	 ('God of War','PS2','Beat''em All|Action-Adventure',true,2005,2020,10,86,false),
-	 ('God of War II: Divine Retribution','PS2','Beat''em All|Action-Adventure',true,2007,2020,10,90,false),
-	 ('FIFA: Road to World Cup 98','PS1','Sport',false,1998,1998,15,85,true),
-	 ('FIFA 2000','PC','Sport',false,2000,2000,20,75,false),
-	 ('FIFA 15','PS3','Sport',false,2014,2015,20,80,true),
-	 ('FIFA 16','PS4','Sport',false,2015,2016,20,80,true),
-	 ('PES5','PS2','Sport',false,2005,2005,20,75,true),
+	 ('The Lord of the Rings: The Return of the King','PS2','Action-Adventure|Beat''em All',true,2003,2003,35,90,true, 'USA','EA Redwood Shores','Electronic Arts'),
+	 ('The Lord of the Rings: The Battle for Middle-earth','PC','STR',false,2003,2003,35,85,true, 'USA','EA Los Angeles','Electronic Arts'),
+	 ('God of War','PS2','Beat''em All|Action-Adventure',true,2005,2020,10,86,false, 'USA','Santa Monica Studio','Sony Computer Entertainment'),
+	 ('God of War II: Divine Retribution','PS2','Beat''em All|Action-Adventure',true,2007,2020,10,90,false, 'USA','Santa Monica Studio','Sony Computer Entertainment'),
+	 ('FIFA: Road to World Cup 98','PS1','Sport',false,1998,1998,15,85,true, 'Canada', 'Electronic Arts', 'Electronic Arts'),
+	 ('FIFA 2000','PC','Sport',false,2000,2000,20,75,false, 'Canada', 'Electronic Arts', 'Electronic Arts'),
+	 ('FIFA 15','PS3','Sport',false,2014,2015,20,80,true, 'Canada', 'Electronic Arts', 'Electronic Arts'),
+	 ('FIFA 16','PS4','Sport',false,2015,2016,20,80,true, 'Canada', 'Electronic Arts', 'Electronic Arts'),
+	 ('PES5','PS2','Sport',false,2005,2005,20,75,true, 'Japan','Konami Computer Entertainment Tokyo','Konami'),
 	 ('Super Mario Bros.','NES','Platformer',true,1985,1993,20,82,true, 'Japan', 'Nintendo','Nintendo');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Super Mario Bros. 2','NES','Platformer',true,1988,1995,15,83,true, 'Japan', 'Nintendo','Nintendo'),
@@ -255,8 +255,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Mario Tennis','GameCube','Sport',false,2004,2007,15,75,true, 'Japan', 'Nintendo','Nintendo'),
 	 ('Paper Mario','GameCube','Action-Adventure|Platformer',false,2000,2009,10,80,true, 'Japan', 'Nintendo','Nintendo'),
 	 ('Mario RPG','SNES','JRPG',false,1996,2000,15,82,false, 'Japan', 'Nintendo','Nintendo'),
-	 ('Golden Eye','N64','FPS',false,1997,1998,40,92,true),
-	 ('Perfect Dark','N64','FPS',false,2000,2000,5,80,true),
+     ('Golden Eye','N64','FPS',false,1997,1998,40,92,true, 'UK','Rare','Nintendo'),
+     ('Perfect Dark','N64','FPS',false,2000,2000,5,80,true, 'UK','Rare','Nintendo'),
 	 ('Rayman 2: The Great Escape','N64','Action-Adventure|Platformer',false,1999,2000,20,88,true),
 	 ('Rayman','GBA','Action-Adventure|Platformer',true,2000,2000,25,89,true);
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES

@@ -150,10 +150,10 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Caesar II','PC','STR',false,1995,1998,10,80,true, 'USA','Impressions Games','Sierra On-Line'),
 	 ('Pharaoh','PC','STR',false,1999,2001,20,86,true, 'USA','Impressions Games','Sierra On-Line');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('Carmageddon','PC','Racing|Beat''em All',false,1997,1999,20,86,true),
-	 ('Carmageddon II: Carpocalypse Now','PC','Racing|Beat''em All',false,1998,2000,10,86,true),
-	 ('RollerCoaster Tycoon','PC','STR',false,1999,2000,15,70,false),
-	 ('Beyond Good & Evil','PC','Action-Adventure|Platformer',false,2003,2016,5,62,false),
+	 ('Carmageddon','PC','Racing|Beat''em All',false,1997,1999,20,86,true, 'UK', 'Stainless Games', 'SCi Games'),
+	 ('Carmageddon II: Carpocalypse Now','PC','Racing|Beat''em All',false,1998,2000,10,86,true, 'UK', 'Stainless Games', 'SCi Games'),
+  	 ('RollerCoaster Tycoon','PC','STR',false,1999,2000,15,70,false, 'UK','Chris Sawyer Productions','Hasbro Interactive'),
+     ('Beyond Good & Evil','PC','Action-Adventure|Platformer',false,2003,2016,5,62,false,'France','Ubisoft Montpellier','Ubisoft'),
 	 ('Star Wars: Galactic Battlegrounds','PC','STR',true,2001,2001,40,90,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
 	 ('Star Wars: Shadows of the Empire','PC','Action-Adventure|Hack&Clash',true,1996,2002,20,85,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
 	 ('Star Wars Jedi Knight II: Jedi Outcast','PC','Action-Adventure|Hack&Clash',true,2002,2003,30,98,true, 'USA', 'Raven Software', 'Lucas Arts'),
@@ -172,25 +172,25 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('LEGO Star Wars: The Complete Saga','PS3','Hack&Clash',true,2007,2016,10,75,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
 	 ('Star Wars Rogue Squadron II: Rogue Leader','GameCube','Gunfight',true,2001,2003,50,94,true, 'USA', 'Lucas Arts', 'Lucas Arts');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('Star Wars: Rogue Squadron','PC','Gunfight',true,1998,2003,20,93,true, 'USA', 'Lucas Arts', 'Lucas Arts'),
-	 ('Little Big Adventure','PC','Action-Adventure|Platformer',true,1994,1999,20,85,true),
-	 ('Little Big Adventure 2','PC','Action-Adventure|Platformer',true,1997,2000,50,97,true),
-	 ('Tomb Raider','PS1','Action|Platformer',true,1997,1997,15,85,true),
-	 ('Tomb Raider II','PC','Action|Platformer',true,1997,1998,10,86,true),
-	 ('Tomb Raider III: Adventures of Lara Croft','PC','Action|Platformer',true,1998,1998,10,86,true),
-	 ('Tomb Raider (2013)','PS3','Action|Platformer',true,2013,2013,30,92,true),
-	 ('Rise of the Tomb Raider','PS4','Action|Platformer',false,2015,2015,10,75,true),
-	 ('Crash Bandicoot','PS1','Action|Platformer',false,1996,1996,10,79,true),
-	 ('Crash Nitro Kart','PS2','Racing',false,2003,2003,15,72,true);
+	 ('Star Wars: Rogue Squadron','PC','Gunfight',true,1998,2003,20,93,true, 'USA','Factor 5','LucasArts'),
+	 ('Little Big Adventure','PC','Action-Adventure|Platformer',true,1994,1999,20,85,true, 'France','Adeline Software International','Electronic Arts'),
+	 ('Little Big Adventure 2','PC','Action-Adventure|Platformer',true,1997,2000,50,97,true, 'France','Adeline Software International','Electronic Arts'),
+	 ('Tomb Raider','PS1','Action|Platformer',true,1997,1997,15,85,true, 'UK','Core Design','Eidos Interactive'),
+	 ('Tomb Raider II','PC','Action|Platformer',true,1997,1998,10,86,true, 'UK','Core Design','Eidos Interactive'),
+	 ('Tomb Raider III: Adventures of Lara Croft','PC','Action|Platformer',true,1998,1998,10,86,true, 'UK','Core Design','Eidos Interactive'),
+	 ('Tomb Raider (2013)','PS3','Action|Platformer',true,2013,2013,30,92,true, 'USA','Crystal Dynamics','Square Enix'),
+	 ('Rise of the Tomb Raider','PS4','Action|Platformer',false,2015,2015,10,75,true, 'USA','Crystal Dynamics','Square Enix'),
+	 ('Crash Bandicoot','PS1','Action|Platformer',false,1996,1996,10,79,true, 'USA','Naughty Dog','Sony Computer Entertainment'),
+	 ('Crash Nitro Kart','PS2','Racing',false,2003,2003,15,72,true,  'Canada','Vicarious Visions','Universal Interactive');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('Metal Gear Solid','PS1','Action|Infiltration',false,1998,2016,5,80,false),
-	 ('Splinter Cell','PS2','Action|Infiltration',false,2002,2002,15,82,false),
-	 ('WipeOut 2097','PS1','Racing',false,1996,1996,15,82,true),
-	 ('Driver','PC','Racing',false,1999,2000,15,72,true),
-	 ('Chrono Trigger','PS1','JRPG',false,1995,2015,5,75,false),
-	 ('Fighting Force','PS1','Beat''em All',true,1997,1997,20,79,true),
-	 ('Tekken','PS1','Versus Fighting',false,1995,1997,20,79,true),
-	 ('Resident Evil 2','PS1','Survival horror',false,1998,1998,10,80,true),
+	 ('Metal Gear Solid','PS1','Action|Infiltration',false,1998,2016,5,80,false, 'Japan','Konami Computer Entertainment Japan','Konami'),
+	 ('Splinter Cell','PS2','Action|Infiltration',false,2002,2002,15,82,false, 'Canada','Ubisoft Montreal','Ubisoft'),
+	 ('WipeOut 2097','PS1','Racing',false,1996,1996,15,82,true, 'UK','Psygnosis','Psygnosis'),
+	 ('Driver','PC','Racing',false,1999,2000,15,72,true, 'France','Reflections Interactive','GT Interactive'),
+	 ('Chrono Trigger','PS1','JRPG',false,1995,2015,5,75,false, 'Japan','Square','Square'),
+	 ('Fighting Force','PS1','Beat''em All',true,1997,1997,20,79,true, 'UK','Core Design','Eidos Interactive'),
+	 ('Tekken','PS1','Versus Fighting',false,1995,1997,20,79,true, 'Japan','Namco','Namco'),
+	 ('Resident Evil 2','PS1','Survival horror',false,1998,1998,10,80,true, 'Japan','Capcom','Capcom')
 	 ('Sonic the Hedgehog','Megadrive','Platformer',true,1991,1996,40,85,true, 'Japan', 'Sega','Sega'),
 	 ('Sonic the Hedgehog 2','Megadrive','Platformer',true,1992,1996,50,88,true, 'Japan', 'Sega','Sega');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES

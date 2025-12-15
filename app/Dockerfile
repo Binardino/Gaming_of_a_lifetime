@@ -1,27 +1,34 @@
-FROM python:3.10
+FROM python:3.11
 
-# create and activate virtual environment
-ENV VIRTUAL_ENV=/opt/venv
-RUN python3.10 -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+# Variables d’environnement propres
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 # Update Linux and upgrade pip in one layer
 RUN apt-get update && \
     apt-get clean && \
     apt-get install g++ -y && \
-    apt-get install gcc -y && \
+    apt-get install -y gcc g++ curl && \
     apt-get install -y default-libmysqlclient-dev && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --upgrade pip
 
+# Install Poetry
+ENV POETRY_VERSION=2.2.1
+RUN curl -sSL https://install.python-poetry.org | python3 -
+ENV PATH="/root/.local/bin:$PATH"
+
+# Desactivate virtualenvs Poetry (Docker = venv)
+RUN poetry config virtualenvs.create false
+
 #set working directory to /app level
 WORKDIR /app
 
-# COPY requirements.txt
-COPY requirements.txt requirements.txt 
+# Copy Poetry files (Docker cache optimised)
+COPY pyproject.toml poetry.lock* ./
 
-#install packages
-RUN pip install -r requirements.txt
+# Installer dependencies
+RUN poetry install--only main --no-interaction --no-ansi
 
 #COPY all contents
 COPY . .

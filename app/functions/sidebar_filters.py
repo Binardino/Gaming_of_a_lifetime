@@ -1,5 +1,5 @@
 import streamlit as st
-from functions.visualisation_tools import create_slider_multiselect, create_slider_numeric, get_unique_key, create_mask
+from functions.visualisation_tools import create_slider_multiselect, create_slider_numeric, create_mask
 
 #%%
 def create_sidebar_widgets(df_vg, console_list, genre_list):

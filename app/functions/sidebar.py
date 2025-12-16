@@ -25,13 +25,13 @@ def render_sidebar(
         st.subheader('Console')
         select_all_console = st.checkbox('Select all consoles',
                                         value = True,
-                                        key   = SiderbarKeys.CONSOLE_ALL
+                                        key   = SidebarKeys.CONSOLE_ALL
                                         )
         
         consoles = st.multiselect('Consoles available',
-                                options=console_list,
+                                options = console_list,
                                 default = console_list if select_all_console else [],
-                                key=SidebarKeys.CONSOLE,
+                                key     = SidebarKeys.CONSOLE,
 
         )
 
@@ -42,14 +42,14 @@ def render_sidebar(
                         int(df_vg["hours_played"].max()),
                         (int(df_vg["hours_played"].min()), int(df_vg["hours_played"].max())), #value
                         step=1,
-                        key=SiderBars.HOURS
+                        key=SidebarKeys.HOURS
                         )
         
         #personal_score
         st.subheader('Personal score')
         score = st.slider('Personal score',
-                        int(df_vg["perso_score"]).min(),
-                        int(df_vg["perso_score"]).mmax(),
+                        int(df_vg["perso_score"].min()),
+                        int(df_vg["perso_score"].max()),
                         (int(df_vg["perso_score"].min()), int(df_vg["perso_score"].max())),
                         step=1,
                         key=SidebarKeys.SCORE,
@@ -58,8 +58,8 @@ def render_sidebar(
         #finished
         st.subheader('Finihsed game')
         finished = st.multiselect('Finished game',
-                                  options=sorted(df_vf['fiished'].unique()),
-                                  default=sorted(df_vf['fiished'].unique()),
+                                  options=sorted(df_vg['finished'].unique()),
+                                  default=sorted(df_vg['finished'].unique()),
                                   key=SidebarKeys.FINISHED,
                                         )
 
@@ -71,9 +71,9 @@ def render_sidebar(
                                key=SidebarKeys.GENRE)         
                                             
     return {
-        "console": sidebar_console,
-        "hours": sidebar_hours,
-        "score": sidebar_perso_score,
-        "finish": sidebar_finish,
-        "genre": sidebar_gametype
+        "consoles" : consoles,
+        "hours"    : hours,
+        "score"    : score,
+        "finished" : finished,
+        "genre"    : genre
     }

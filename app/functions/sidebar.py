@@ -1,5 +1,5 @@
 import streamlit as st
-from typing import Dict
+from typing import Dict, Any
 
 class SidebarKeys:
     CONSOLE     = "filter_console"
@@ -58,7 +58,7 @@ def render_sidebar(
         #finished
         st.subheader('Finihsed game')
         finished = st.multiselect('Finished game',
-                                  options=sorted(df_vf['fiished'].unique())
+                                  options=sorted(df_vf['fiished'].unique()),
                                   default=sorted(df_vf['fiished'].unique()),
                                   key=SidebarKeys.FINISHED,
                                         )

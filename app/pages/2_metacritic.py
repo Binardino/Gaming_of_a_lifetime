@@ -12,7 +12,6 @@ import sqlalchemy
 from functions.data_wrangling import *
 from functions.db_connection import *
 from functions.visualisation_tools import *
-from functions.sidebar_filters import *
 from functions.mask_df_utils import *
 import functions.db_connection as db_co
 #from tqdm import tqdm

@@ -26,7 +26,7 @@ sys.path.append(str(ROOT_DIR))
 from functions.data_wrangling import *
 from functions.db_connection import *
 from functions.visualisation_tools import *
-from functions.sidebar_filters import *
+from functions.sidebar import *
 from functions.mask_df_utils import *
 import functions.db_connection as db_co
 #from functions.data_wrangling import number_generator
@@ -64,9 +64,9 @@ st.markdown(
 # Assume you have loaded df_vg, console_list, genre_list, dict_console, dict_genre
 #subdf_filter = apply_sidebar_filters(df_vg, console_list, genre_list, dict_console, dict_genre)
 #%% filters
-
 # Set up initial session state values once
-filters = create_sidebar_widgets(df_vg, console_list, genre_list)
+filters = render_sidebar(df_vg=df_vg, console_list=console_list, genre_list=genre_list)
+st.write("DEBUG filters keys:", filters.keys())
 
 subdf_filter = apply_all_masks(df_vg, filters, dict_console=dict_console, dict_genre=dict_genre)
 

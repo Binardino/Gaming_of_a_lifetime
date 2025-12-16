@@ -7,9 +7,9 @@ ENV PYTHONUNBUFFERED=1
 # Update Linux and upgrade pip in one layer
 RUN apt-get update && \
     apt-get clean && \
-    apt-get install g++ -y && \
     apt-get install -y gcc g++ curl && \
     apt-get install -y default-libmysqlclient-dev && \
+    apt-get install -y cmake build-essential libssl-dev libffi-dev && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --upgrade pip
 

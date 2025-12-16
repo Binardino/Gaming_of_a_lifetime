@@ -79,7 +79,7 @@ st.markdown(
 #subdf_filter = apply_sidebar_filters(df_vg, console_list, genre_list, dict_console, dict_genre)
 #%% filters
 # Set up initial session state values once
-filters = render_sidebar(df_vg=df_vg, console_list=console_list, genre_list=dict_genre)
+filters = render_sidebar(df_vg=df_vg, console_list=console_list, genre_list=genre_list)
 
 subdf_filter = apply_all_masks(df_vg, filters, dict_console=dict_console, dict_genre=dict_genre)
 

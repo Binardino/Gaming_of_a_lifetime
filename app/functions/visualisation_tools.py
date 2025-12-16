@@ -17,34 +17,28 @@ import streamlit as st
 import numpy as np
 #%%streamlit functions
 #import data
-def create_slider_numeric(label, column, step):
+def create_slider_numeric(label, column, step, key):
     slider_numeric = st.sidebar.slider(label, #label 
                                   int(column.min()),
                                   int(column.max()),
                                   (int(column.min()), int(column.max())), #value
-                                  step) #step
+                                  step,  #step
+                                  key=key)
     return slider_numeric
 
 def create_slider_multiselect(label, column, key):
     container = st.sidebar.container()
+
     all_key = f"{key}_select_all"
-    multi_key = f"{key}_multiselect"
 
     all_selected = container.checkbox("Select all", value=True, key=all_key)
 
-    if all_selected:
-        selected_options = container.multiselect(
-            label=label,
-            options=column,
-            default=column,
-            key=multi_key
-        )
-    else:
-        selected_options = container.multiselect(
-            label=label,
-            options=column,
-            key=multi_key
-        )
+    selected_options = container.multiselect(
+        label=label,
+        options=column,
+        default=column if all_selected else [],
+        key=key
+    )
 
     if not selected_options:
         st.warning("⚠️ Please select at least one console to display the data.")

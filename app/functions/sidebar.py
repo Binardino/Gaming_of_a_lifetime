@@ -28,7 +28,7 @@ def render_sidebar(
                                         key   = SidebarKeys.CONSOLE_ALL
                                         )
         
-        consoles = st.multiselect('Consoles available',
+        console = st.multiselect('Consoles available',
                                 options = console_list,
                                 default = console_list if select_all_console else [],
                                 key     = SidebarKeys.CONSOLE,
@@ -57,7 +57,7 @@ def render_sidebar(
         
         #finished
         st.subheader('Finihsed game')
-        finished = st.multiselect('Finished game',
+        finish = st.multiselect('Finished game',
                                   options=sorted(df_vg['finished'].unique()),
                                   default=sorted(df_vg['finished'].unique()),
                                   key=SidebarKeys.FINISHED,
@@ -71,9 +71,9 @@ def render_sidebar(
                                key=SidebarKeys.GENRE)         
                                             
     return {
-        "consoles" : consoles,
+        "console"  : console,
         "hours"    : hours,
         "score"    : score,
-        "finished" : finished,
+        "finish"   : finish,
         "genre"    : genre
     }

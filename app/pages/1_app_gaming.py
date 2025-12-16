@@ -80,6 +80,7 @@ st.markdown(
 #%% filters
 # Set up initial session state values once
 filters = render_sidebar(df_vg=df_vg, console_list=console_list, genre_list=genre_list)
+st.write("DEBUG filters keys:", filters.keys())
 
 subdf_filter = apply_all_masks(df_vg, filters, dict_console=dict_console, dict_genre=dict_genre)
 

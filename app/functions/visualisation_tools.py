@@ -13,50 +13,7 @@ import matplotlib.ticker as ticker
 import squarify
 import pandas as pd
 import plotly.express as px
-import streamlit as st
 import numpy as np
-#%%streamlit functions
-#import data
-def create_slider_numeric(label, column, step):
-    slider_numeric = st.sidebar.slider(label, #label 
-                                  int(column.min()),
-                                  int(column.max()),
-                                  (int(column.min()), int(column.max())), #value
-                                  step) #step
-    return slider_numeric
-
-def create_slider_multiselect(label, column, key):
-    container = st.sidebar.container()
-    all_key = f"{key}_select_all"
-    multi_key = f"{key}_multiselect"
-
-    all_selected = container.checkbox("Select all", value=True, key=all_key)
-
-    if all_selected:
-        selected_options = container.multiselect(
-            label=label,
-            options=column,
-            default=column,
-            key=multi_key
-        )
-    else:
-        selected_options = container.multiselect(
-            label=label,
-            options=column,
-            key=multi_key
-        )
-
-    if not selected_options:
-        st.warning("⚠️ Please select at least one console to display the data.")
-        st.stop()
-
-    return selected_options
-
-def create_slider_multiselect2(label, column):
-    slider_multiselect = st.sidebar.multiselect(label=label, #label 
-                                                options=column, #options
-                                                default=column)
-    return slider_multiselect
 
 def create_mask(df, column, slider, mapping_dict):
     """

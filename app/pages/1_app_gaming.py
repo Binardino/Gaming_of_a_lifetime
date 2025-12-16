@@ -66,8 +66,6 @@ st.markdown(
 #%% filters
 
 # Set up initial session state values once
-init_sidebar_state(console_list, genre_list, df_vg)
-
 filters = create_sidebar_widgets(df_vg, console_list, genre_list)
 
 subdf_filter = apply_all_masks(df_vg, filters, dict_console=dict_console, dict_genre=dict_genre)

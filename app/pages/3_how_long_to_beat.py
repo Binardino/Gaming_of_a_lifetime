@@ -10,7 +10,6 @@ import os
 import sys
 import sqlalchemy
 from functions.db_connection import *
-from functions.sidebar_filters import *
 from functions.mask_df_utils import *
 #set path for dynamic function import
 from pathlib import Path

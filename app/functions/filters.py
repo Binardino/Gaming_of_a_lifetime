@@ -11,3 +11,10 @@ def filter_range(df : pd.DataFrame,
     min_val, max_val = value_range
     return df[df[column].between(min_val, max_val)]
 
+def filter_exact(df: pd.DataFrame,
+                 column : str,
+                 values : List[str]
+                 ) -> pd.DataFrame:
+    """ Filter df by category column """
+    return df[df[column].isin(values)]
+

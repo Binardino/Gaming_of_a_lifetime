@@ -18,3 +18,18 @@ def filter_exact(df: pd.DataFrame,
     """ Filter df by category column """
     return df[df[column].isin(values)]
 
+def filter_mapping(df : pd.DataFrame, 
+                   column : str,
+                   values : List[str],
+                   mapping_dict : Dict[str, List[str]]
+                ) -> pd.DataFrame:
+    """ Handle columns with concatenated values (e.g. console : ['PC|PS4']) """
+    
+    mask = pd.Series(False, index=df.index)
+
+    for value in values:
+        mapped_values = mapping_dict.get(value, [value])
+        for m_value in mapped_values:
+            mask |= df[column].str.contains(m_value, na=False)
+
+    return df[mask]

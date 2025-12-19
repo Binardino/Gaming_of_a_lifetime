@@ -33,3 +33,63 @@ def filter_mapping(df           : pd.DataFrame,
             mask |= df[column].str.contains(m_value, na=False)
 
     return df[mask]
+
+   
+def apply_filters(df           : pd.DataFrame, 
+                  filters      : Dict[str, Any], 
+                  dict_console : Dict[str, List[str]],
+                  dict_genre   : Dict[str, List[str]]
+                ) -> pd.DataFrame:
+    """ Apply all business filters to the input df 
+    Output filtered_df for sidebars 
+    
+    As each filter has its own logic, 
+    more futureproof to have one if condition per filter
+    
+    Output : df_filtered[mask] - df_filter with all filters applied """
+
+    df_filtered = df.copy()
+
+    #console - mapping filter
+    if filters.get('f_console'):
+        df_filtered = filter_mapping(
+            df_filtered,
+            column='console',
+            values=filters['f_console'],
+            mapping_dict=dict_console
+        )
+
+    #played hours - range filter
+    if filters.get('f_hours_played'):
+        df_filtered = filter_range(
+            df_filtered,
+            column='hours_played',
+            value_range=filters['f_hours_played']
+            )
+        
+    #personal score - range filter
+    if filters.get('f_perso_score'):
+        df_filtered = filter_range(
+            df_filtered,
+            column='perso_score',
+            value_range=filters["f_perso_score"],
+        )        
+
+    #finished - exact match
+    if filters.get('f_finish'):
+        df_filtered = filter_exact(
+            df_filtered,
+            column='finished',
+            values=filters["f_finish"],
+        )
+
+    #genre - mapping filter
+    if filters.get('genre'):
+        df_filtered = filter_mapping(
+            df_filtered,
+            column='game_type',
+            values=filters['genre'],
+            mapping_dict=dict_genre
+        )
+
+    return df_filtered

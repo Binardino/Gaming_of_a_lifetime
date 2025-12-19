@@ -71,9 +71,9 @@ def render_sidebar(
                                key=SidebarKeys.GENRE)         
                                             
     return {
-        "console"  : console,
-        "hours"    : hours,
-        "score"    : score,
-        "finish"   : finish,
-        "genre"    : genre
+        "f_console"  : console,
+        "f_hours"    : hours,
+        "f_score"    : score,
+        "f_finish"   : finish,
+        "f_genre"    : genre
     }

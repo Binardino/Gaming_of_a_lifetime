@@ -27,7 +27,7 @@ from functions.data_wrangling import *
 from functions.db_connection import *
 from functions.visualisation_tools import *
 from functions.sidebar import *
-from functions.mask_df_utils import *
+from functions.filters import *
 import functions.db_connection as db_co
 #from functions.data_wrangling import number_generator
 st.set_page_config(page_title="Gaming EDA presentation")
@@ -49,6 +49,10 @@ df_vg = str_cleaning(df_raw)
 df_console_raw, console_list, dict_console = clean_df_list(df_vg, 'console')
 #generate df, gametype list & dictionary
 df_genre_raw, genre_list, dict_genre = clean_df_list(df_vg, 'game_type')
+
+st.dataframe(df_vg)
+
+st.dataframe(df_console_raw)
 #%%
 # Inject custom CSS to set the width of the sidebar
 st.markdown(
@@ -68,7 +72,8 @@ st.markdown(
 filters = render_sidebar(df_vg=df_vg, console_list=console_list, genre_list=genre_list)
 st.write("DEBUG filters keys:", filters.keys())
 
-subdf_filter = apply_all_masks(df_vg, filters, dict_console=dict_console, dict_genre=dict_genre)
+#subdf_filter = apply_all_masks(df_vg, filters, dict_console=dict_console, dict_genre=dict_genre)
+subdf_filter = apply_filters(df=df_vg, filters=filters, dict_console=dict_console, dict_genre=dict_genre)
 
 st.markdown("""filtered df""")
 st.dataframe(subdf_filter)

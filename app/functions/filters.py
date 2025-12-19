@@ -84,11 +84,11 @@ def apply_filters(df           : pd.DataFrame,
         )
 
     #genre - mapping filter
-    if filters.get('genre'):
+    if filters.get('f_genre'):
         df_filtered = filter_mapping(
             df_filtered,
             column='game_type',
-            values=filters['genre'],
+            values=filters['f_genre'],
             mapping_dict=dict_genre
         )
 

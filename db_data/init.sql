@@ -17,9 +17,9 @@ CREATE TABLE IF NOT EXISTS public.gaming_lifetime (
 	multiplayed bool NOT NULL,
 	country_dev varchar(255) NOT NULL,
 	studio varchar(255) NOT NULL,
-	editor varchar(255) NOT NULL,
-	CONSTRAINT idx_225486_primary PRIMARY KEY (id)
+	editor varchar(255) NOT NULL
 );
+
 CREATE UNIQUE INDEX IF NOT EXISTS idx_225486_game_name ON public.gaming_lifetime USING btree (game_name,console,published_year);
 CREATE INDEX IF NOT EXISTS idx_console ON public.gaming_lifetime(console);
 CREATE INDEX IF NOT EXISTS idx_game_type ON public.gaming_lifetime(game_type);
@@ -46,9 +46,8 @@ CREATE TABLE IF NOT EXISTS  public.how_long_to_beat (
     platform VARCHAR(255),
     developer VARCHAR(255)
 );
-
--- Populate the table with HLTB CSV data
-COPY how_long_to_beat FROM '/docker-entrypoint-initdb.d/csv_file/hltb_scrap.csv' DELIMITER ',' CSV HEADER;
+CREATE INDEX IF NOT EXISTS idx_hltb_game_name ON public.how_long_to_beat(game_name);
+CREATE INDEX IF NOT EXISTS idx_hltb_platform ON public.how_long_to_beat(platform);
 
 -- create metacritic table
 CREATE TABLE IF NOT EXISTS  public.metacritic (
@@ -70,11 +69,12 @@ CREATE TABLE IF NOT EXISTS  public.metacritic (
 	developer VARCHAR(255),
 	rating VARCHAR(20)
 );
+CREATE INDEX IF NOT EXISTS idx_meta_game_name ON public.metacritic(game_name);
+CREATE INDEX IF NOT EXISTS idx_meta_platform ON public.metacritic(platform);
+CREATE INDEX IF NOT EXISTS idx_meta_genre ON public.metacritic(genre);
+CREATE INDEX IF NOT EXISTS idx_meta_publisher ON public.metacritic(publisher);
 
--- Populate the table with metacritic CSV data
-COPY metacritic FROM '/docker-entrypoint-initdb.d/csv_file/metacritic_clean.csv' DELIMITER ',' CSV HEADER;
-
--- create metacritic table
+-- create metacritic_merged table
 CREATE TABLE IF NOT EXISTS  public.metacritic_merged (
 	id INT,
     game_name VARCHAR(255),
@@ -105,6 +105,7 @@ CREATE TABLE IF NOT EXISTS  public.metacritic_merged (
     Rating VARCHAR(5),
     game_summary TEXT
 );
-
--- Populate the table with metacritic merged CSV data
-COPY metacritic_merged FROM '/docker-entrypoint-initdb.d/csv_file/metacritic_merged_local.csv' DELIMITER ',' CSV HEADER;
+CREATE INDEX IF NOT EXISTS idx_mm_game_name ON public.metacritic_merged(game_name);
+CREATE INDEX IF NOT EXISTS idx_mm_console ON public.metacritic_merged(console);
+CREATE INDEX IF NOT EXISTS idx_mm_publisher ON public.metacritic_merged(publisher);
+CREATE INDEX IF NOT EXISTS idx_mm_genre ON public.metacritic_merged(genre);

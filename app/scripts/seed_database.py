@@ -1,10 +1,12 @@
 from sqlalchemy import create_engine, text
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 DB_URL = os.environ.get("DATABASE_URL")
 
-SEED_SQL_PATH = Path(__file__).resolve().parents[1] / "db_data" / "seed.sql"
+SEED_SQL_PATH = Path(__file__).resolve().parents[2] / "db_data" / "seed.sql"
 
 
 def check_already_seeded(engine) -> bool:

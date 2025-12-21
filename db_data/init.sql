@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS  public.how_long_to_beat (
     platform VARCHAR(255),
     developer VARCHAR(255)
 );
+CREATE UNIQUE INDEX IF NOT EXISTS ux_hltb_game_platform ON how_long_to_beat (game_name, platform);
 CREATE INDEX IF NOT EXISTS idx_hltb_game_name ON public.how_long_to_beat(game_name);
 CREATE INDEX IF NOT EXISTS idx_hltb_platform ON public.how_long_to_beat(platform);
 
@@ -69,6 +70,7 @@ CREATE TABLE IF NOT EXISTS  public.metacritic (
 	developer VARCHAR(255),
 	rating VARCHAR(20)
 );
+CREATE UNIQUE INDEX IF NOT EXISTS ux_metacritic_game ON metacritic (game_name, platform, year_of_release);
 CREATE INDEX IF NOT EXISTS idx_meta_game_name ON public.metacritic(game_name);
 CREATE INDEX IF NOT EXISTS idx_meta_platform ON public.metacritic(platform);
 CREATE INDEX IF NOT EXISTS idx_meta_genre ON public.metacritic(genre);

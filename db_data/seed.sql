@@ -166,18 +166,17 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Chrono Trigger','PS1','JRPG',false,1995,2015,5,75,false, 'Japan','Square','Square'),
 	 ('Fighting Force','PS1','Beat''em All',true,1997,1997,20,79,true, 'UK','Core Design','Eidos Interactive'),
 	 ('Tekken','PS1','Versus Fighting',false,1995,1997,20,79,true, 'Japan','Namco','Namco'),
-	 ('Resident Evil 2','PS1','Survival horror',false,1998,1998,10,80,true, 'Japan','Capcom','Capcom')
+	 ('Resident Evil 2','PS1','Survival horror',false,1998,1998,10,80,true, 'Japan','Capcom','Capcom'),
 	 ('Sonic the Hedgehog','Megadrive','Platformer',true,1991,1996,40,85,true, 'Japan', 'Sega','Sega'),
 	 ('Sonic the Hedgehog 2','Megadrive','Platformer',true,1992,1996,50,88,true, 'Japan', 'Sega','Sega');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Sonic the Hedgehog 3','Megadrive','Platformer',true,1994,1996,40,88,true, 'Japan', 'Sega','Sega'),
 	 ('Sonic & Knuckles','Megadrive','Platformer',true,1994,1996,20,80,true, 'Japan', 'Sega','Sega'),
 	 ('Sonic 3 & Knuckles','Megadrive','Platformer',true,1994,1996,60,94,true, 'Japan', 'Sega','Sega'),
-	 ('ToeJam&Earl','Megadrive','Action-Adventure|Platformer',false,1991,1996,10,75,true),
-	 ('Streets of Rage 3','Megadrive','Beat''em All',true,1992,1996,15,70,false),
-	 ('Golden Axe','Megadrive','Beat''em All',false,1989,1993,15,70,false),
-	 ('Mighty Morphin Power Rangers','Megadrive','Beat''em All',false,1994,1994,15,60,true),
-	 ('Sonic 3D: Flickies'' Island','Megadrive','Platformer',true,1996,1996,30,79,false, 'Japan', 'Sega','Sega'),
+     ('ToeJam&Earl','Megadrive','Action-Adventure|Platformer',false,1991,1996,10,75,true, 'USA','Johnson Voorsanger Productions','Sega'),
+	 ('Streets of Rage 3','Megadrive','Beat''em All',true,1992,1996,15,70,false, 'Japan','Sega AM7','Sega'),
+	 ('Golden Axe','Megadrive','Beat''em All',false,1989,1993,15,70,false, 'Japan','Sega AM1','Sega'),
+	 ('Mighty Morphin Power Rangers','Megadrive','Beat''em All',false,1994,1994,15,60,true, 'USA','Natsume','Bandai'),	 ('Sonic 3D: Flickies'' Island','Megadrive','Platformer',true,1996,1996,30,79,false, 'Japan', 'Sega','Sega'),
 	 ('Sonic Pinball','Megadrive','Platformer',true,1996,1996,30,79,true, 'Japan', 'Sega','Sega'),
 	 ('Jungle Strike','Megadrive','Action-Adventure|Beat''em All',false,1993,1996,30,79,false, 'Japan', 'Sega','Sega');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
@@ -200,9 +199,9 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('SSX','PS2','Sport',false,2000,2001,10,88,true, 'Canada', 'Electronic Arts', 'Electronic Arts'),
 	 ('SSX Tricky','PS2','Sport',true,2001,2002,30,92,true, 'Canada', 'Electronic Arts', 'Electronic Arts'),
 	 ('SSX 3','PS2','Sport',true,2003,2003,50,96,true, 'Canada', 'Electronic Arts', 'Electronic Arts'),
-	 ('SSX On Tour','PS2','Sport',true,2005,2005,50,95,true, 'Canada', 'Electronic Arts', 'Electronic Arts'),
-	 ('The Lord of the Rings: The Two Towers','PS2','Action-Adventure|Beat''em All',true,2002,2002,30,90,true);
+	 ('SSX On Tour','PS2','Sport',true,2005,2005,50,95,true, 'Canada', 'Electronic Arts', 'Electronic Arts');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
+	 ('The Lord of the Rings: The Two Towers','PS2','Action-Adventure|Beat''em All',true,2002,2002,30,90,true, 'USA','Stormfront Studios','Electronic Arts'),
 	 ('The Lord of the Rings: The Return of the King','PS2','Action-Adventure|Beat''em All',true,2003,2003,35,90,true, 'USA','EA Redwood Shores','Electronic Arts'),
 	 ('The Lord of the Rings: The Battle for Middle-earth','PC','STR',false,2003,2003,35,85,true, 'USA','EA Los Angeles','Electronic Arts'),
 	 ('God of War','PS2','Beat''em All|Action-Adventure',true,2005,2020,10,86,false, 'USA','Santa Monica Studio','Sony Computer Entertainment'),
@@ -233,18 +232,18 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Mario RPG','SNES','JRPG',false,1996,2000,15,82,false, 'Japan', 'Nintendo','Nintendo'),
      ('Golden Eye','N64','FPS',false,1997,1998,40,92,true, 'UK','Rare','Nintendo'),
      ('Perfect Dark','N64','FPS',false,2000,2000,5,80,true, 'UK','Rare','Nintendo'),
-	 ('Rayman 2: The Great Escape','N64','Action-Adventure|Platformer',false,1999,2000,20,88,true),
-	 ('Rayman','GBA','Action-Adventure|Platformer',true,2000,2000,25,89,true);
+     ('Rayman 2: The Great Escape','N64','Action-Adventure|Platformer',false,1999,2000,20,88,true, 'France','Ubisoft Montpellier','Ubisoft'),
+     ('Rayman','GBA','Action-Adventure|Platformer',true,2000,2000,25,89,true, 'France','Ubisoft','Ubisoft'),
+     ('Rayman Origins','Wii','Action-Adventure|Platformer',false,2011,2011,20,89,true,'France','Ubisoft Montpellier','Ubisoft');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('Rayman Origins','Wii','Action-Adventure|Platformer',false,2011,2011,20,89,true),
-	 ('Batman Returns','NES','Action-Adventure|Beat''em All',false,1989,1993,10,40,true),
+	 ('Batman Returns','NES','Action-Adventure|Beat''em All',false,1989,1993,10,40,true,'Japan','Sunsoft','Konami'),
 	 ('Pokemon Yellow: Special Pikachu Edition','GameBoy','Action-Adventure|JRPG',true,1997,1998,40,92,true, 'Japan', 'Game Freak', 'Nintendo'), 
 	 ('Pokemon Gold/Pokemon Silver','GameBoy','Action-Adventure|JRPG',true,1999,1999,40,95,true, 'Japan', 'Game Freak', 'Nintendo'), 
 	 ('Wii Sports','Wii','Sport',false,2006,2006,5,80,true, 'Japan', 'Nintendo', 'Nintendo'),
 	 ('Pokemon Pinball','GBA','Puzzle',false,1999,2000,10,78,true, 'Japan', 'Game Freak', 'Nintendo'), 
 	 ('Monument Valley','Android','Puzzle',true,2014,2018,3,81,true, 'UK','ustwo Games','ustwo Games'),
 	 ('Monument Valley 2','Android','Puzzle',true,2017,2020,3,81,true, 'UK','ustwo Games','ustwo Games'),
-	 ('Polytopia','Android','STR',false,2016,2017,2,78,false, 'Sweden','Midjiwan AB','Midjiwan AB');
+	 ('Polytopia','Android','STR',false,2016,2017,2,78,false, 'Sweden','Midjiwan AB','Midjiwan AB'),
 	 ('Cyberpunk 2077','PC','RPG|Open World',true,2020,2020,120,99,false, 'Poland', 'CD Projekt Red','CD Projekt Red');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Watch Dogs Legion','PC','Action-Adventure|Open World',true,2020,2020,50,95,true, 'France', 'Ubisoft','Ubisoft'),
@@ -276,5 +275,5 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('The Legend of Zelda: Ocarina of Time 3D','3DS','Action-Adventure',false,2011,2025,2,94,false, 'Japan', 'Nintendo','Nintendo'),
 	 ('The Legend of Zelda: A Link Between Worlds','3DS','Action-Adventure',false,2013,2025,2,93,false, 'Japan', 'Nintendo','Nintendo'),
 	 ('The Legend of Zelda: Majora''s Mask 3D','3DS','Action-Adventure',false,2015,2025,2,93,false, 'Japan', 'Nintendo','Nintendo'),
-	 ('Tanoshiku - Omoshiroku - Kanken Shougakusei','3DS','Edutainment',false,2018,2025,2,70,false)
+	 ('Tanoshiku - Omoshiroku - Kanken Shougakusei','3DS','Edutainment',false,2018,2025,2,70,false, 'Japan','Imagineer','Imagineer');
 	 ;

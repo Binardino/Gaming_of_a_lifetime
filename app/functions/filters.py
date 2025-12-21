@@ -92,4 +92,28 @@ def apply_filters(df           : pd.DataFrame,
             mapping_dict=dict_genre
         )
 
+    #country - mapping filter
+    if filters.get('f_country'):
+        df_filtered = filter_exact(
+            df_filtered,
+            column='country_dev',
+            values=filters['f_country']
+        )
+
+    #studio - mapping filter
+    if filters.get('f_studio'):
+        df_filtered = filter_exact(
+            df_filtered,
+            column='studio',
+            values=filters['f_studio']
+        )
+
+    #editor - mapping filter
+    if filters.get('f_editor'):
+        df_filtered = filter_exact(
+            df_filtered,
+            column='editor',
+            values=filters['f_editor']
+        )
+
     return df_filtered

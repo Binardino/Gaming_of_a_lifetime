@@ -8,6 +8,9 @@ class SidebarKeys:
     SCORE       = "filter_score"
     FINISHED    = "filter_finished"
     GENRE       = "filter_genre"
+    COUNTRY     = "filter_country"
+    STUDIO      = "filter_studio"
+    EDITOR      = "filter_editor"
 
 def render_sidebar(
         df_vg,
@@ -69,11 +72,33 @@ def render_sidebar(
                                options=genre_list,
                                default=genre_list,
                                key=SidebarKeys.GENRE)         
-                                            
-    return {
+
+        #country_dev
+        st.subheader('Developer Country')
+        country = st.multiselect('Developer Country',
+                               options=sorted(df_vg['country_dev'].unique()),
+                               default=sorted(df_vg['country_dev'].unique()),
+                               key=SidebarKeys.COUNTRY)         
+        #studio
+        st.subheader('Studio')
+        studio = st.multiselect('Studio',
+                               options=sorted(df_vg['studio'].unique()),
+                               default=sorted(df_vg['studio'].unique()),
+                               key=SidebarKeys.STUDIO)         
+        #editor
+        st.subheader('Editor')
+        editor = st.multiselect('Editor',
+                               options=sorted(df_vg['editor'].unique()),
+                               default=sorted(df_vg['editor'].unique()),
+                               key=SidebarKeys.EDITOR)         
+        
+        return {
         "f_console"  : console,
         "f_hours"    : hours,
         "f_score"    : score,
         "f_finish"   : finish,
-        "f_genre"    : genre
+        "f_genre"    : genre,
+        "f_country"  : country,
+        "f_studio"   : studio,
+        "f_editor"   : editor                        
     }

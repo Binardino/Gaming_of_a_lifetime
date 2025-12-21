@@ -109,9 +109,9 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Drakan: Order of the Flame','PC','Action-Adventure',true,1999,2000,25,89,false, 'USA','Surreal Software','Psygnosis'),
 	 ('Heart of Darkness','PC','Action-Adventure|Platformer',true,1998,2001,15,77,false, 'France','Amazing Studio','Infogrames'),
 	 ('Heroes of the Storm','PC','MOBA',false,2016,2016,90,93,true, 'USA','Blizzard Entertainment','Blizzard Entertainment'),
-	 ('Grim Fandango','PC','Point&Click',true,2008,2018,20,80,true, 'USA','LucasArts','LucasArts'),
-	 ('The Curse of Monkey Island','PC','Point&Click',true,1997,2018,10,75,true, 'USA','LucasArts','LucasArts'),
-	 ('Escape From Monkey Island','PC','Point&Click',true,2004,2004,30,85,true, 'USA','LucasArts','LucasArts'),
+	 ('Grim Fandango','PC','Point&Click',true,2008,2018,20,80,true, 'USA','Lucas Arts','Lucas Arts'),
+	 ('The Curse of Monkey Island','PC','Point&Click',true,1997,2018,10,75,true, 'USA','Lucas Arts','Lucas Arts'),
+	 ('Escape From Monkey Island','PC','Point&Click',true,2004,2004,30,85,true, 'USA','Lucas Arts','Lucas Arts'),
 	 ('The Secret of Monkey Island','PC','Point&Click',false,1990,2018,2,87,true, 'USA','Lucasfilm Games','Lucasfilm Games'),
 	 ('Myst','PC','Point&Click',true,1993,1993,25,86,true, 'USA','Cyan','Brøderbund');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
@@ -148,7 +148,7 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('LEGO Star Wars: The Complete Saga','PS3','Hack&Clash',true,2007,2016,10,75,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
 	 ('Star Wars Rogue Squadron II: Rogue Leader','GameCube','Gunfight',true,2001,2003,50,94,true, 'USA', 'Lucas Arts', 'Lucas Arts');
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
-	 ('Star Wars: Rogue Squadron','PC','Gunfight',true,1998,2003,20,93,true, 'USA','Factor 5','LucasArts'),
+	 ('Star Wars: Rogue Squadron','PC','Gunfight',true,1998,2003,20,93,true, 'USA','Factor 5','Lucas Arts'),
 	 ('Little Big Adventure','PC','Action-Adventure|Platformer',true,1994,1999,20,85,true, 'France','Adeline Software International','Electronic Arts'),
 	 ('Little Big Adventure 2','PC','Action-Adventure|Platformer',true,1997,2000,50,97,true, 'France','Adeline Software International','Electronic Arts'),
 	 ('Tomb Raider','PS1','Action|Platformer',true,1997,1997,15,85,true, 'UK','Core Design','Eidos Interactive'),

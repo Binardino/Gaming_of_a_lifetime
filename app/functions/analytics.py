@@ -23,3 +23,12 @@ def games_per_console_and_brand(df: pd.DataFrame) -> pd.DataFrame:
         
         return df_console_brand
 
+
+def hours_by_console(df : pd.DataFrame) -> pd.DataFrame :
+    df_gb_hours = (df.groupby("console")["hours_played"]
+                     .sum()
+                     .sort_values(ascending=False)
+                     .reset_index()
+                     )
+                    
+    return df_gb_hours

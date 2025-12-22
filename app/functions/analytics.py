@@ -9,3 +9,17 @@ def games_per_console_year(df : pd.DataFrame) -> pd.DataFrame :
               )
     
     return df_gb
+
+def games_per_console_and_brand(df: pd.DataFrame) -> pd.DataFrame:
+        """Compute amount of games per console and brand"""
+        df_temp = df.copy()
+        df_temp = add_console_tag(df_temp)
+
+        df_console_brand =(df_temp.groupby(['console', 'brand'])
+                                  .size()
+                                  .reset_index(name='game_count')
+                                  .sort_values('game_count', ascending=False)
+                                  )
+        
+        return df_console_brand
+

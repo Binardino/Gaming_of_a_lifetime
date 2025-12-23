@@ -345,3 +345,14 @@ fig2 = px.area(data_frame=df_console_year_pct,
 fig2.update_layout(xaxis=dict(type='category'), yaxis=dict(title='Percentage'))
 
 st.plotly_chart(fig2, key='viz_stack_area_games_by_console_by_year')
+#%% compute rentability score / played hours
+
+df_score_hour = score_per_hour(subdf_filter)
+
+px.scatter(
+    df_score_hour,
+    x="hours_played",
+    y="perso_score",
+    size="score_per_hour",
+    hover_name="game_name"
+)

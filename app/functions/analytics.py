@@ -2,6 +2,7 @@ import pandas as pd
 from functions.data_wrangling import *
 
 def games_per_console_year(df : pd.DataFrame) -> pd.DataFrame :
+    """Compute amount of played games per console per year """
     df_gb = (df.groupby(['played_year', 'console'])
               .size()
               .reset_index(name='game_count')
@@ -64,7 +65,7 @@ def hours_by_console(df : pd.DataFrame) -> pd.DataFrame :
                     
     return df_gb_hours
 
-def score_by_hour(df : pd.DataFrame) -> pd.DataFrame:
+def score_per_hour(df : pd.DataFrame) -> pd.DataFrame:
      """ Compute persoanal score per hour played for each game """
 
      df_score = df[df['hours_played'].notna() & (df['hours_played'] > 0)].copy()

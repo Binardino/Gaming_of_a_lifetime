@@ -89,3 +89,14 @@ def backlog_games(df : pd.DataFrame) -> pd.DataFrame :
 
      return df_backlog
 
+def abandon_rate_per_console(df : pd.DataFrame) -> pd.DataFrame :
+     """ Compute abandonment rate per console"""
+
+     df_abandon = df.groupby('console_raw').agg(
+          total_games    = ('game_name', 'count'),
+          finished_games = ('finished', 'sum')
+     )
+
+     df_abandon['abandonment_rate'] = (1 - df_abandon['finished_games'] / df_abandon['total_games'])
+
+     return df_abandon.reset_index().sort_values('abandonment_rate', ascending=False)

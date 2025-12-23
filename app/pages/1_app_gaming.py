@@ -93,7 +93,7 @@ Hover effect - displaying information when hovering over the chart""")
 
 fig_console = px.treemap(data_frame=df_console_count, 
                          path=['brand', 'console'], 
-                         values='count',
+                         values='game_count',
                          color='brand',
                          color_discrete_map={'PlayStation' : '#0D0BDE',
                                              'Microsoft'   : '#008D00',
@@ -112,7 +112,7 @@ st.caption("""Similar chart with Sunburst viz""")
 
 fig_sunburst = px.sunburst(data_frame=df_console_count,
                        path=['brand', 'console'], 
-                         values='count',
+                         values='game_count',
                          color='brand',
                          color_discrete_map={'PlayStation' : '#0D0BDE',
                                              'Microsoft'   : '#008D00',
@@ -127,8 +127,7 @@ st.plotly_chart(fig_sunburst)
 #treemap game type
 dfga , game_list, game_list_temp = clean_df_list(subdf_filter, 'game_type')
 
-dfga_count = dfga.groupby('game_type').agg({'game_type':'count'}
-                                           ).rename(columns={'game_type':'count'}).reset_index()
+dfga_count = games_per_type(subdf_filter)
 
 st.subheader("""Treemap of amount of games per types""")
 
@@ -137,7 +136,7 @@ st.caption("""Using PyPlot Treemap to plot the amount of game played by types of
 
 fig_game = px.treemap(data_frame=dfga_count,
                       path=['game_type'],
-                      values='count',
+                      values='game_count',
                       title='Count Games per types',
                       width=1000, height=750)
 
@@ -217,20 +216,7 @@ def get_df_long_format(df, column_list,year_column,agg_column,renamed_column):
 
     return df_year_pct
 
-df_console_year = subdf_filter.groupby(['played_year', 'console']).agg({'console'  : 'count'}) \
-                                                                    .rename(columns={'console':'console_count'}) \
-                                                                    .reset_index()    
-df_console_year_pivot = pd.pivot(data=df_console_year,
-                            index='played_year',
-                            columns='console',
-                            values='console_count')
-
-df_console_year_pct = df_console_year_pivot.fillna(0).div(df_console_year_pivot.sum(axis=1), axis=0)
-
-#df2 = df_long_filled.div(df_long_filled.sum(axis=1), axis=0)
-#st.write(df2)
-#for col in df_console_year2.columns:
-#    df_console_year2[col] = df_console_year2[col].fillna(0).div(df_console_year2[col].sum(axis=1), axis=0).multiply(100)
+df_console_year_pct = games_per_console_year_pct(subdf_filter)
 
 # Assuming df is your DataFrame
 fig = px.area(data_frame=df_console_year_pct, 

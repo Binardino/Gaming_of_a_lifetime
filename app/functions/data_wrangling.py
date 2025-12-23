@@ -21,7 +21,7 @@ def str_cleaning(df):
     df['published_year'] = df['published_year'].astype(int)
     df['played_year']    = df['played_year'].astype(int)
     df['country_dev']    = df['country_dev'].str.strip()
-
+     
     return df
 
 #%%

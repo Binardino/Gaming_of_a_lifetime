@@ -325,3 +325,21 @@ px.scatter(
     size="score_per_hour",
     hover_name="game_name"
 )
+
+#%%
+# abandon rate per console
+abandon_series = abandon_rate_per_console(subdf_filter)
+
+st.dataframe(abandon_series)
+
+#df_abandon = abandon_series.rename("abandon_rate").reset_index()
+df_abandon = abandon_series
+
+st.dataframe(df_abandon)
+fig_abandon = px.bar(df_abandon,
+                     x           = 'console',
+                     y           = 'abandonment_rate', 
+                     labels      = {"x": "Abandonment rate", "y": "Console"},
+                     title       = "Abandonment rate by console")
+
+st.plotly_chart(fig_abandon)

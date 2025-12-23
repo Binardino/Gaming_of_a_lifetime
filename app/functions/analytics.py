@@ -38,6 +38,23 @@ def games_per_type(df: pd.DataFrame) -> pd.DataFrame :
           
      )
      
+     return df_games_per_type
+
+def games_per_console_year_pct(df : pd.DataFrame) -> pd.DataFrame :
+    df_year = (
+          df.groupby(['played_year', 'console'])
+          .size()
+          .reset_index(name='game_count')
+     )
+
+    df_console_year_pivot = pd.pivot(data=df_year,
+                            index='played_year',
+                            columns='console',
+                            values='console_count'
+                            ).fillna(0)
+
+    return df_console_year_pivot.div(df_console_year_pivot.sum(axis=1), axis=0)
+
 def hours_by_console(df : pd.DataFrame) -> pd.DataFrame :
     df_gb_hours = (df.groupby("console")["hours_played"]
                      .sum()

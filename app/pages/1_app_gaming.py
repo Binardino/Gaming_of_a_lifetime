@@ -315,17 +315,16 @@ sns.stripplot(data=subdf_filter, x='console', y='perso_score')
 
 st.pyplot(fig_boxscore)
 #%% compute rentability score / played hours
-
 df_score_hour = score_per_hour(subdf_filter)
 
-px.scatter(
-    df_score_hour,
-    x="hours_played",
-    y="perso_score",
-    size="score_per_hour",
-    hover_name="game_name"
-)
+fig_scorehour = px.scatter(df_score_hour,
+                            x="hours_played",
+                            y="perso_score",
+                            size="score_per_hour",
+                            hover_name="game_name"
+                )
 
+st.plotly_chart(fig_scorehour)
 #%%
 # abandon rate per console
 abandon_series = abandon_rate_per_console(subdf_filter)

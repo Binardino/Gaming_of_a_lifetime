@@ -63,3 +63,12 @@ def hours_by_console(df : pd.DataFrame) -> pd.DataFrame :
                      )
                     
     return df_gb_hours
+
+def score_by_hour(df : pd.DataFrame) -> pd.DataFrame:
+     """ Compute persoanal score per hour played for each game """
+
+     df_score = df[df['hours_played'].notna() & (df['hours_played'] > 0)].copy()
+
+     df_score['score_per_hour'] = (df_score['perso_score'] / df_score['hours_played'])
+
+     return df_score

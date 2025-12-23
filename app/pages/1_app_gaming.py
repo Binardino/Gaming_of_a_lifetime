@@ -9,7 +9,6 @@ Created on Sat May 6 16:04:01 2023
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
@@ -26,6 +25,7 @@ sys.path.append(str(ROOT_DIR))
 from functions.data_wrangling import *
 from functions.db_connection import *
 from functions.visualisation_tools import *
+from functions.analytics import *
 from functions.sidebar import *
 from functions.filters import *
 import functions.db_connection as db_co
@@ -80,11 +80,7 @@ st.dataframe(subdf_filter)
 #%%
 #str cleaning & add console tag
 #df_console_raw, temp_lis, dict_console_temp = clean_df_list(subdf_filter, 'console')
-df_console = add_console_tag(df_console_raw)
-
-df_console_count = df_console.loc[df_console['console'].isin(
-                                    subdf_filter['console'])].groupby(['console', 'brand']
-                                            ).size().sort_values(ascending=False).reset_index(name='count')
+df_console_count = games_per_console_and_brand(subdf_filter)
 
 st.write("df_console_count")
 st.dataframe(df_console_count)

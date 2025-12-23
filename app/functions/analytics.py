@@ -80,3 +80,12 @@ def score_per_hour(df : pd.DataFrame) -> pd.DataFrame:
      df_score['score_per_hour'] = (df_score['perso_score'] / df_score['hours_played'])
 
      return df_score
+
+def backlog_games(df : pd.DataFrame) -> pd.DataFrame :
+     """Returns df of games unfinished and part of backlog"""
+     df_backlog = (df[df['finished'] == False]
+                    .sort_values('played_years')
+     )
+
+     return df_backlog
+

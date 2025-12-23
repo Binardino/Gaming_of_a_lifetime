@@ -42,6 +42,13 @@ def games_per_type(df: pd.DataFrame) -> pd.DataFrame :
      return df_games_per_type
 
 def games_per_console_year_pct(df : pd.DataFrame) -> pd.DataFrame :
+    """ 
+    Returns a pivot table:
+    index    = played_year
+    columns  = console
+    values   = percentage of games
+    """
+    
     df_year = (
           df.groupby(['played_year', 'console'])
           .size()
@@ -51,7 +58,7 @@ def games_per_console_year_pct(df : pd.DataFrame) -> pd.DataFrame :
     df_console_year_pivot = pd.pivot(data=df_year,
                             index='played_year',
                             columns='console',
-                            values='console_count'
+                            values='game_count'
                             ).fillna(0)
 
     return df_console_year_pivot.div(df_console_year_pivot.sum(axis=1), axis=0)

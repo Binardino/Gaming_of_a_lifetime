@@ -24,6 +24,20 @@ def games_per_console_and_brand(df: pd.DataFrame) -> pd.DataFrame:
         return df_console_brand
 
 
+def games_per_type(df: pd.DataFrame) -> pd.DataFrame :
+     """ Compute group by - count() of games - per type of games """
+     df_temp = df[['game_type']].copy()
+
+     df_temp['game_type'] = df_temp['game_type'].str.split('|')
+     df_temp = df_temp.explode('game_type')
+
+     df_games_per_type = (df_temp.groupby('game_type')
+                          .size()
+                          .reset_index(name='game_count')
+                          .sort_values('game_count', ascending=False)
+          
+     )
+     
 def hours_by_console(df : pd.DataFrame) -> pd.DataFrame :
     df_gb_hours = (df.groupby("console")["hours_played"]
                      .sum()

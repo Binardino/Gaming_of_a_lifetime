@@ -325,16 +325,7 @@ sns.stripplot(data=subdf_filter, x='console', y='perso_score')
 
 st.pyplot(fig_boxscore)
 #%% TBD
-df_type_year_raw = subdf_filter.copy()
-st.write("df_type_year_raw")
-st.dataframe(df_type_year_raw)
-df_type_year = df_type_year_raw.groupby(['played_year', 'game_type']).agg({'game_type': 'count'}) \
-                                                                    .rename(columns={'game_type':'type_count'}) \
-                                                                    .reset_index()
-
-df_console_year = df_type_year_raw.groupby(['played_year', 'console']).agg({'console'  : 'count'}) \
-                                                                    .rename(columns={'console':'console_count'}) \
-                                                                    .reset_index()
+df_console_year = games_per_console_year_pct(subdf_filter)
 
 st.subheader("""Stack Area Chart of Games Played by Console Over the Years""")
 

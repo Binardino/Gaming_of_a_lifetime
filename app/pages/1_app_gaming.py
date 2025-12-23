@@ -208,20 +208,22 @@ Especially when I pay full price for a game, I expect it to be at least 30-40 ho
 Below distplot illustrates I spent in general between 15 & 30 for most of the games I played""")
 df_console_year_pct = games_per_console_year_pct(subdf_filter)
 
-# Assuming df is your DataFrame
-fig = px.area(data_frame=df_console_year_pct, 
-              x=df_console_year_pct.index,  
-              y=df_console_year_pct.columns, #[1:], #facet_col='played_year',
-              title='Stack Area Chart of Games Played by Console Over the Years',
-              labels={'value': 'Percentage of Games Played', 'year': 'Year'},
-              category_orders={'played_year': sorted(df_console_year_pct.index.to_list())},
-              #height=600, facet_col_wrap=3, facet_col_spacing=0.05
-              )
+# compute stack area fig
+fig_stack_played_game = px.area(data_frame=df_console_year_pct, 
+                                x=df_console_year_pct.index,  
+                                y=df_console_year_pct.columns, #[1:], #facet_col='played_year',
+                                title='Stack Area Chart of Games Played by Console Over the Years',
+                                labels={'value': 'Percentage of Games Played', 'year': 'Year'},
+                                category_orders={'played_year': sorted(df_console_year_pct.index.to_list())},
+                                #height=600, facet_col_wrap=3, facet_col_spacing=0.05
+                                )
 
-fig.update_layout(xaxis=dict(type='category'), 
-                   yaxis=dict(title='Percentage'))
+fig_stack_played_game.update_layout(xaxis            = dict(type='category'), 
+                                    yaxis            = dict(title='Percentage'),
+                                    hovermode        = "x unified",
+                                    legend_title_text= "Console")
 
-st.plotly_chart(fig, key='viz_stack_area_games_by_console_by_year')
+st.plotly_chart(fig_stack_played_game, key='viz_stack_area_games_by_console_by_year')
 #%%
 # distplot publish year
 st.subheader("""Distplot to measure whether I played a game right when it got released

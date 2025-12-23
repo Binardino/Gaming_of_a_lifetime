@@ -276,14 +276,14 @@ TBW
 """)
 
 #WIP add clean console 
-subdf_filter['console'] = subdf_filter['console'].apply(lambda x: x.split('|')[0] if x else x)
+df_console_norm = normalise_console(subdf_filter)
 
-df_vg = add_console_tag(subdf_filter)
+df_vg_with_console = add_console_tag(df_console_norm.copy())
 
 selection_score_console = st.selectbox('select viz library', ['plotly', 'seaborn'],key='viz_select_score_console')
 
 if selection_score_console == 'plotly':
-    fig_score_console = px.box(df_vg,
+    fig_score_console = px.box(df_vg_with_console,
                                 x='console', y='perso_score', 
                                 width=1000, height=400,
                                 color='brand', 

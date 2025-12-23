@@ -48,7 +48,7 @@ def games_per_console_year_pct(df : pd.DataFrame) -> pd.DataFrame :
     columns  = console
     values   = percentage of games
     """
-    
+
     df_year = (
           df.groupby(['played_year', 'console'])
           .size()
@@ -92,11 +92,11 @@ def backlog_games(df : pd.DataFrame) -> pd.DataFrame :
 def abandon_rate_per_console(df : pd.DataFrame) -> pd.DataFrame :
      """ Compute abandonment rate per console"""
 
-     df_abandon = df.groupby('console_raw').agg(
+     df_abandon = df.groupby('console').agg(
           total_games    = ('game_name', 'count'),
           finished_games = ('finished', 'sum')
      )
 
      df_abandon['abandonment_rate'] = (1 - df_abandon['finished_games'] / df_abandon['total_games'])
 
-     return df_abandon.reset_index().sort_values('abandonment_rate', ascending=False)
+     return df_abandon.sort_values('abandonment_rate', ascending=False).reset_index()

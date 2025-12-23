@@ -79,7 +79,6 @@ st.markdown("""filtered df""")
 st.dataframe(subdf_filter)
 #%%
 #str cleaning & add console tag
-#df_console_raw, temp_lis, dict_console_temp = clean_df_list(subdf_filter, 'console')
 df_console_count = games_per_console_and_brand(subdf_filter)
 
 st.write("df_console_count")
@@ -132,7 +131,6 @@ dfga_count = games_per_type(subdf_filter)
 st.subheader("""Treemap of amount of games per types""")
 
 st.caption("""Using PyPlot Treemap to plot the amount of game played by types of games - classifcation on all consoles combined""")
-
 
 fig_game = px.treemap(data_frame=dfga_count,
                       path=['game_type'],
@@ -200,22 +198,7 @@ elif selection_dist_year == 'plotly':
                                       hover_data=subdf_filter.columns)
     
     st.plotly_chart(fig_px_histo_years)
-#%%area chart
-def get_df_long_format(df, column_list,year_column,agg_column,renamed_column):
-    df_temp_year = df.groupby([column_list]).agg({agg_column : 'count'}) \
-                                           .rename(columns={agg_column: f"{agg_column}_count"}) \
-                                           .reset_index()
-
-    df_year_pivot = pd.pivot(data=df_temp_year,
-                             index=year_column,
-                             columns=agg_column,
-                             values=f"{agg_column}_count"
-                             )
-    
-    df_year_pct = df_year_pivot.fillna(0).div(df_year_pivot.sum(axis=1), axis=0)
-
-    return df_year_pct
-
+Below distplot illustrates I spent in general between 15 & 30 for most of the games I played""")
 df_console_year_pct = games_per_console_year_pct(subdf_filter)
 
 # Assuming df is your DataFrame
@@ -227,11 +210,10 @@ fig = px.area(data_frame=df_console_year_pct,
               #height=600, facet_col_wrap=3, facet_col_spacing=0.05
               )
 
-fig.update_layout(xaxis=dict(type='category'), yaxis=dict(title='Percentage'))
+fig.update_layout(xaxis=dict(type='category'), 
+                   yaxis=dict(title='Percentage'))
 
-#st.write)
-st.plotly_chart(fig, key='viz_stack_games_console_year')
-
+st.plotly_chart(fig, key='viz_stack_area_games_by_console_by_year')
 #%%
 # distplot publish year
 st.subheader("""Distplot to measure whether I played a game right when it got released
@@ -324,27 +306,6 @@ sns.boxenplot(data=subdf_filter, x='console', y='perso_score')
 sns.stripplot(data=subdf_filter, x='console', y='perso_score')
 
 st.pyplot(fig_boxscore)
-#%% TBD
-df_console_year = games_per_console_year_pct(subdf_filter)
-
-st.subheader("""Stack Area Chart of Games Played by Console Over the Years""")
-
-st.caption("""I consider a game to be a good one whenever I spend more than 15-20 hours on it.
-Especially when I pay full price for a game, I expect it to be at least 30-40 hours long, if not I consider it a scam.
-
-Below distplot illustrates I spent in general between 15 & 30 for most of the games I played""")
-# Assuming df is your DataFrame
-fig2 = px.area(data_frame=df_console_year_pct, 
-              x=df_console_year_pct.index,  y=df_console_year_pct.columns[1:], #facet_col='played_year',
-              title='Stack Area Chart of Games Played by Console Over the Years',
-              labels={'console_count': 'Percentage of Games Played', 'year': 'Year'},
-              category_orders={'played_year': sorted(df_console_year['played_year'].unique())},
-              #height=600, facet_col_wrap=3, facet_col_spacing=0.05
-              )
-
-fig2.update_layout(xaxis=dict(type='category'), yaxis=dict(title='Percentage'))
-
-st.plotly_chart(fig2, key='viz_stack_area_games_by_console_by_year')
 #%% compute rentability score / played hours
 
 df_score_hour = score_per_hour(subdf_filter)

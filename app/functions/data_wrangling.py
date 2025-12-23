@@ -65,3 +65,10 @@ def add_console_tag(df):
                             default='Nintendo')
     
     return df
+
+def normalise_console(df : pd.DataFrame) -> pd.DataFrame :
+    """"""
+    df_normalised = df.copy()
+    df_normalised['console'] = df_normalised['console'].apply(lambda x: x.split('|')[0] if x else x)
+
+    return df_normalised

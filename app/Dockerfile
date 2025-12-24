@@ -7,9 +7,9 @@ ENV PYTHONUNBUFFERED=1
 # Update Linux and upgrade pip in one layer
 RUN apt-get update && \
     apt-get clean && \
-    apt-get install g++ -y && \
     apt-get install -y gcc g++ curl && \
     apt-get install -y default-libmysqlclient-dev && \
+    apt-get install -y cmake build-essential libssl-dev libffi-dev && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --upgrade pip
 
@@ -28,7 +28,7 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock* ./
 
 # Installer dependencies
-RUN poetry install--only main --no-interaction --no-ansi
+RUN poetry install --only main --no-root --no-interaction --no-ansi
 
 #COPY all contents
 COPY . .

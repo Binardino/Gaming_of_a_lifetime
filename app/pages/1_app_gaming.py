@@ -9,7 +9,6 @@ Created on Sat May 6 16:04:01 2023
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
@@ -26,8 +25,9 @@ sys.path.append(str(ROOT_DIR))
 from functions.data_wrangling import *
 from functions.db_connection import *
 from functions.visualisation_tools import *
-from functions.sidebar_filters import *
-from functions.mask_df_utils import *
+from functions.analytics import *
+from functions.sidebar import *
+from functions.filters import *
 import functions.db_connection as db_co
 #from functions.data_wrangling import number_generator
 st.set_page_config(page_title="Gaming EDA presentation")
@@ -49,20 +49,10 @@ df_vg = str_cleaning(df_raw)
 df_console_raw, console_list, dict_console = clean_df_list(df_vg, 'console')
 #generate df, gametype list & dictionary
 df_genre_raw, genre_list, dict_genre = clean_df_list(df_vg, 'game_type')
-#%%
-# Global counter to generate unique keys
-key_counter = 0
 
-def get_unique_key(prefix="chart"):
-    """Generates a unique key using a global counter."""
-    global key_counter
-    key_counter += 1
-    return f"{prefix}_{key_counter}"
+st.dataframe(df_vg)
 
-#random key generator
-#random_key = range(10)
-
-#get_unique_key = number_generator(random_key)
+st.dataframe(df_console_raw)
 #%%
 # Inject custom CSS to set the width of the sidebar
 st.markdown(
@@ -78,24 +68,18 @@ st.markdown(
 # Assume you have loaded df_vg, console_list, genre_list, dict_console, dict_genre
 #subdf_filter = apply_sidebar_filters(df_vg, console_list, genre_list, dict_console, dict_genre)
 #%% filters
-
 # Set up initial session state values once
-init_sidebar_state(console_list, genre_list, df_vg)
+filters = render_sidebar(df_vg=df_vg, console_list=console_list, genre_list=genre_list)
+st.write("DEBUG filters keys:", filters.keys())
 
-filters = create_sidebar_widgets(df_vg, console_list, genre_list)
-
-subdf_filter = apply_all_masks(df_vg, filters, dict_console=dict_console, dict_genre=dict_genre)
+#subdf_filter = apply_all_masks(df_vg, filters, dict_console=dict_console, dict_genre=dict_genre)
+subdf_filter = apply_filters(df=df_vg, filters=filters, dict_console=dict_console, dict_genre=dict_genre)
 
 st.markdown("""filtered df""")
 st.dataframe(subdf_filter)
 #%%
 #str cleaning & add console tag
-#df_console_raw, temp_lis, dict_console_temp = clean_df_list(subdf_filter, 'console')
-df_console = add_console_tag(df_console_raw)
-
-df_console_count = df_console.loc[df_console['console'].isin(
-                                    subdf_filter['console'])].groupby(['console', 'brand']
-                                            ).size().sort_values(ascending=False).reset_index(name='count')
+df_console_count = games_per_console_and_brand(subdf_filter)
 
 st.write("df_console_count")
 st.dataframe(df_console_count)
@@ -108,7 +92,7 @@ Hover effect - displaying information when hovering over the chart""")
 
 fig_console = px.treemap(data_frame=df_console_count, 
                          path=['brand', 'console'], 
-                         values='count',
+                         values='game_count',
                          color='brand',
                          color_discrete_map={'PlayStation' : '#0D0BDE',
                                              'Microsoft'   : '#008D00',
@@ -127,7 +111,7 @@ st.caption("""Similar chart with Sunburst viz""")
 
 fig_sunburst = px.sunburst(data_frame=df_console_count,
                        path=['brand', 'console'], 
-                         values='count',
+                         values='game_count',
                          color='brand',
                          color_discrete_map={'PlayStation' : '#0D0BDE',
                                              'Microsoft'   : '#008D00',
@@ -142,17 +126,15 @@ st.plotly_chart(fig_sunburst)
 #treemap game type
 dfga , game_list, game_list_temp = clean_df_list(subdf_filter, 'game_type')
 
-dfga_count = dfga.groupby('game_type').agg({'game_type':'count'}
-                                           ).rename(columns={'game_type':'count'}).reset_index()
+dfga_count = games_per_type(subdf_filter)
 
 st.subheader("""Treemap of amount of games per types""")
 
 st.caption("""Using PyPlot Treemap to plot the amount of game played by types of games - classifcation on all consoles combined""")
 
-
 fig_game = px.treemap(data_frame=dfga_count,
                       path=['game_type'],
-                      values='count',
+                      values='game_count',
                       title='Count Games per types',
                       width=1000, height=750)
 
@@ -165,7 +147,7 @@ Especially when I pay full price for a game, I expect it to be at least 30-40 ho
 
 Below distplot illustrates I spent in general between 15 & 30 for most of the games I played""")
 
-selection_hours = st.selectbox('select viz library', ['plotly', 'seaborn'],key=get_unique_key())
+selection_hours = st.selectbox('select viz library', ['plotly', 'seaborn'],key='viz_select_hours')
 if selection_hours == 'seaborn':
     fig_distplot = plt.figure(figsize=(13, 5))
     ax = sns.histplot(subdf_filter['hours_played'], 
@@ -200,7 +182,7 @@ during mid 1990s (on Megadrive & PC mainly) up to the mid-2000s (on PS2 & PC)
 during my college year, I dropped down heavily on playing (just some random PC & Wii gaming sessions here & there)
 starting mid-2010s, when I started my professional life, I got myself a PS3 & PS4 & catched up on all crazy games I haven't had a chance to play""")
 
-selection_dist_year = st.selectbox('select viz library', ['plotly', 'seaborn'],key=get_unique_key())
+selection_dist_year = st.selectbox('select viz library', ['plotly', 'seaborn'],key='viz_select_year')
 if selection_dist_year == 'seaborn':
     fig_dis_year = plt.figure()
     subdf_filter['played_year'].hist(bins=25)
@@ -216,51 +198,32 @@ elif selection_dist_year == 'plotly':
                                       hover_data=subdf_filter.columns)
     
     st.plotly_chart(fig_px_histo_years)
-#%%area chart
-def get_df_long_format(df, column_list,year_column,agg_column,renamed_column):
-    df_temp_year = df.groupby([column_list]).agg({agg_column : 'count'}) \
-                                           .rename(columns={agg_column: f"{agg_column}_count"}) \
-                                           .reset_index()
 
-    df_year_pivot = pd.pivot(data=df_temp_year,
-                             index=year_column,
-                             columns=agg_column,
-                             values=f"{agg_column}_count"
-                             )
-    
-    df_year_pct = df_year_pivot.fillna(0).div(df_year_pivot.sum(axis=1), axis=0)
+#%% Stack Area Games by Console over years
+st.subheader("""Stack Area Chart of Games Played by Console Over the Years""")
 
-    return df_year_pct
+st.caption("""I consider a game to be a good one whenever I spend more than 15-20 hours on it.
+Especially when I pay full price for a game, I expect it to be at least 30-40 hours long, if not I consider it a scam.
 
-df_console_year = subdf_filter.groupby(['played_year', 'console']).agg({'console'  : 'count'}) \
-                                                                    .rename(columns={'console':'console_count'}) \
-                                                                    .reset_index()    
-df_console_year_pivot = pd.pivot(data=df_console_year,
-                            index='played_year',
-                            columns='console',
-                            values='console_count')
+Below distplot illustrates I spent in general between 15 & 30 for most of the games I played""")
+df_console_year_pct = games_per_console_year_pct(subdf_filter)
 
-df_console_year_pct = df_console_year_pivot.fillna(0).div(df_console_year_pivot.sum(axis=1), axis=0)
+# compute stack area fig
+fig_stack_played_game = px.area(data_frame=df_console_year_pct, 
+                                x=df_console_year_pct.index,  
+                                y=df_console_year_pct.columns, #[1:], #facet_col='played_year',
+                                title='Stack Area Chart of Games Played by Console Over the Years',
+                                labels={'value': 'Percentage of Games Played', 'year': 'Year'},
+                                category_orders={'played_year': sorted(df_console_year_pct.index.to_list())},
+                                #height=600, facet_col_wrap=3, facet_col_spacing=0.05
+                                )
 
-#df2 = df_long_filled.div(df_long_filled.sum(axis=1), axis=0)
-#st.write(df2)
-#for col in df_console_year2.columns:
-#    df_console_year2[col] = df_console_year2[col].fillna(0).div(df_console_year2[col].sum(axis=1), axis=0).multiply(100)
+fig_stack_played_game.update_layout(xaxis            = dict(type='category'), 
+                                    yaxis            = dict(title='Percentage'),
+                                    hovermode        = "x unified",
+                                    legend_title_text= "Console")
 
-# Assuming df is your DataFrame
-fig = px.area(data_frame=df_console_year_pct, 
-              x=df_console_year_pct.index,  y=df_console_year_pct.columns[1:], #facet_col='played_year',
-              title='Stack Area Chart of Games Played by Console Over the Years',
-              labels={'console_count': 'Percentage of Games Played', 'year': 'Year'},
-              category_orders={'played_year': sorted(df_console_year['played_year'].unique())},
-              #height=600, facet_col_wrap=3, facet_col_spacing=0.05
-              )
-
-fig.update_layout(xaxis=dict(type='category'), yaxis=dict(title='Percentage'))
-
-#st.write)
-st.plotly_chart(fig, key=get_unique_key())
-
+st.plotly_chart(fig_stack_played_game, key='viz_stack_area_games_by_console_by_year')
 #%%
 # distplot publish year
 st.subheader("""Distplot to measure whether I played a game right when it got released
@@ -270,7 +233,7 @@ Checking below how much time is there between a game release and me playing it. 
 logically, most of early Nintendo & Sega games released in the late 80s, when I was obviously too young to buy & play them
 except for the gap in 2008-2013 when I seldom played, from 2014 onwards, I had the tendency of playing a game closely after its release""")
 
-selection_pub_year = st.selectbox('select viz library', ['plotly', 'seaborn'],key=get_unique_key())
+selection_pub_year = st.selectbox('select viz library', ['plotly', 'seaborn'],key='viz_select_pub_year')
 if selection_pub_year == 'seaborn':
     fig_publish = plt.figure(figsize=(10,6))
 
@@ -305,14 +268,14 @@ TBW
 """)
 
 #WIP add clean console 
-subdf_filter['console'] = subdf_filter['console'].apply(lambda x: x.split('|')[0] if x else x)
+df_console_norm = normalise_console(subdf_filter)
 
-df_vg = add_console_tag(subdf_filter)
+df_vg_with_console = add_console_tag(df_console_norm.copy())
 
-selection_score_console = st.selectbox('select viz library', ['plotly', 'seaborn'],key=get_unique_key())
+selection_score_console = st.selectbox('select viz library', ['plotly', 'seaborn'],key='viz_select_score_console')
 
 if selection_score_console == 'plotly':
-    fig_score_console = px.box(df_vg,
+    fig_score_console = px.box(df_vg_with_console,
                                 x='console', y='perso_score', 
                                 width=1000, height=400,
                                 color='brand', 
@@ -325,7 +288,7 @@ if selection_score_console == 'plotly':
 st.subheader("""Scatterplot of played hours per personal scores
 TBW
 """)
-selection_scatterscore = st.selectbox('select viz library', ['plotly', 'seaborn'],key=get_unique_key())
+selection_scatterscore = st.selectbox('select viz library', ['plotly', 'seaborn'],key='viz_select_scatter_score')
 
 if selection_scatterscore == 'plotly':
     fig_scatterscore = px.scatter(subdf_filter, 
@@ -353,33 +316,31 @@ sns.boxenplot(data=subdf_filter, x='console', y='perso_score')
 sns.stripplot(data=subdf_filter, x='console', y='perso_score')
 
 st.pyplot(fig_boxscore)
-#%% TBD
-df_type_year_raw = subdf_filter.copy()
-st.write("df_type_year_raw")
-st.dataframe(df_type_year_raw)
-df_type_year = df_type_year_raw.groupby(['played_year', 'game_type']).agg({'game_type': 'count'}) \
-                                                                    .rename(columns={'game_type':'type_count'}) \
-                                                                    .reset_index()
+#%% compute rentability score / played hours
+df_score_hour = score_per_hour(subdf_filter)
 
-df_console_year = df_type_year_raw.groupby(['played_year', 'console']).agg({'console'  : 'count'}) \
-                                                                    .rename(columns={'console':'console_count'}) \
-                                                                    .reset_index()
+fig_scorehour = px.scatter(df_score_hour,
+                            x="hours_played",
+                            y="perso_score",
+                            size="score_per_hour",
+                            hover_name="game_name"
+                )
 
-st.subheader("""Stack Area Chart of Games Played by Console Over the Years""")
+st.plotly_chart(fig_scorehour)
+#%%
+# abandon rate per console
+abandon_series = abandon_rate_per_console(subdf_filter)
 
-st.caption("""I consider a game to be a good one whenever I spend more than 15-20 hours on it.
-Especially when I pay full price for a game, I expect it to be at least 30-40 hours long, if not I consider it a scam.
+st.dataframe(abandon_series)
 
-Below distplot illustrates I spent in general between 15 & 30 for most of the games I played""")
-# Assuming df is your DataFrame
-fig2 = px.area(data_frame=df_console_year_pct, 
-              x=df_console_year_pct.index,  y=df_console_year_pct.columns[1:], #facet_col='played_year',
-              title='Stack Area Chart of Games Played by Console Over the Years',
-              labels={'console_count': 'Percentage of Games Played', 'year': 'Year'},
-              category_orders={'played_year': sorted(df_console_year['played_year'].unique())},
-              #height=600, facet_col_wrap=3, facet_col_spacing=0.05
-              )
+#df_abandon = abandon_series.rename("abandon_rate").reset_index()
+df_abandon = abandon_series
 
-fig2.update_layout(xaxis=dict(type='category'), yaxis=dict(title='Percentage'))
+st.dataframe(df_abandon)
+fig_abandon = px.bar(df_abandon,
+                     x           = 'console',
+                     y           = 'abandonment_rate', 
+                     labels      = {"x": "Abandonment rate", "y": "Console"},
+                     title       = "Abandonment rate by console")
 
-st.plotly_chart(fig2, key=get_unique_key())
+st.plotly_chart(fig_abandon)

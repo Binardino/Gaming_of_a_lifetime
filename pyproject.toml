@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "gaming-of-a-lifetime"
-version = "0.1.0"
-description = ""
+version = "0.3.0"
+description = "Streamlit analytics app for a personal video game lifetime database"
 authors = ["Binardino <langlois.robin@gmail.com>"]
 readme = "README.md"
 

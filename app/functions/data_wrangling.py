@@ -18,19 +18,17 @@ def str_cleaning(df):
     """cleaning str in columns to perform further analysis"""
     df['game_type']      = df['game_type'].str.replace(' / ', '', regex=False)
     df['console']        = df['console'].str.replace(' / ', '', regex=False)
-    #creating console_raw column to keep raw value
-    df['console_raw']    = df['console']
-    #keeping one console only when several to simplify
-    df['console']        = df['console'].str.split('|').explode('console').reset_index(drop=True)
     df['published_year'] = df['published_year'].astype(int)
-    df['played_year']    = df['played_year'].astype(int)    
+    df['played_year']    = df['played_year'].astype(int)
+    df['country_dev']    = df['country_dev'].str.strip()
+     
     return df
 
 #%%
 def clean_df_list(df, column):
     df_console_raw          = pd.DataFrame(df[column])
     df_console_raw[column]  = df_console_raw[column].str.split(pat='|')
-    df_console_raw          = df_console_raw.explode(column).reset_index(drop=True)
+    df_console_raw          = df_console_raw.explode(column)
     console_list            = df_console_raw[column].unique().tolist()
     
     # Create a mapping dictionary for individual values to concatenated values
@@ -67,3 +65,10 @@ def add_console_tag(df):
                             default='Nintendo')
     
     return df
+
+def normalise_console(df : pd.DataFrame) -> pd.DataFrame :
+    """"""
+    df_normalised = df.copy()
+    df_normalised['console'] = df_normalised['console'].apply(lambda x: x.split('|')[0] if x else x)
+
+    return df_normalised

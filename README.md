@@ -8,6 +8,8 @@
 # Gaming_of_a_lifetime
 **Historical Data analytics of my Gaming lifetime history**
 
+Streamlit Web App to display my video game history in various dynamic visualisations. *
+Cross data with Metacritic & How Long To Beat 
 Python Pandas &amp; SQL Project - EDA & Datavisualization of gaming habits
 
 Having been a gamer all my life, the idea of this project is to list all the games I played, with several KPIs (score, hours played etc.), and visualize this gaming of a lifetime, to see some trends in my gaming behaviour.

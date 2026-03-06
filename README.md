@@ -43,6 +43,10 @@ SQL queries to create this ad hoc dataset with the following columns :
     * hours_played SMALLINT(4), #approximation of hours spent playing the game
     * perso_score SMALLINT(2) NOT NULL, #personal score on the game - rating over 100
     * multiplayed BOOL NOT NULL, #have I played it with other persons
+    * country_dev varchar(255) NOT NULL, #country where the developing studio comes from
+    * studio varchar(255) NOT NULL, #name of the developing studio
+    * editor varchar(255) NOT NULL #name of the game editor
+    
 
 - Datavisualization with Pandas over those gaming data
 - Comparison between my personal scores given to the games, and the existing Metascore given by the Press in general to those same games

@@ -14,14 +14,15 @@ def number_generator(number_list):
         yield number
 
 #%%
-def str_cleaning(df):
+def str_cleaning(df: pd.DataFrame) -> pd.DataFrame:
     """cleaning str in columns to perform further analysis"""
+    df = df.copy()
     df['game_type']      = df['game_type'].str.replace(' / ', '', regex=False)
     df['console']        = df['console'].str.replace(' / ', '', regex=False)
-    df['published_year'] = df['published_year'].astype(int)
-    df['played_year']    = df['played_year'].astype(int)
+    df['published_year'] = pd.to_numeric(df['published_year'], errors='coerce').fillna(0).astype(int)
+    df['played_year']    = pd.to_numeric(df['played_year'],    errors='coerce').fillna(0).astype(int)
     df['country_dev']    = df['country_dev'].str.strip()
-     
+
     return df
 
 #%%
@@ -55,13 +56,13 @@ def add_console_tag(df):
     """
     condlist = [df['console'].str.startswith('PS'),
                 df['console'].str.startswith('PC'),
-                df['console'].str.startswith('Mega'), 
+                df['console'].str.startswith('Mega'),
                 df['console'].str.startswith('Android')]
-    
+
     choicelist = ['PlayStation', 'Microsoft', 'Sega', 'Android']
-    
-    df['brand'] = np.select(condlist, 
-                            choicelist, 
+
+    df['brand'] = np.select(condlist,
+                            choicelist,
                             default='Nintendo')
     
     return df

@@ -1,7 +1,7 @@
 import pandas as pd
-from typing import Dict, List, Tuple, Any
+from typing import Dict, List, Tuple, Any, TypeAlias
 
-filters = Dict[str, Any]
+Filters: TypeAlias = Dict[str, Any]
 
 def filter_range(df          : pd.DataFrame,
                  column      : str,
@@ -92,7 +92,7 @@ def apply_filters(df           : pd.DataFrame,
             mapping_dict=dict_genre
         )
 
-    #country - mapping filter
+    #country - exact filter
     if filters.get('f_country'):
         df_filtered = filter_exact(
             df_filtered,
@@ -100,7 +100,7 @@ def apply_filters(df           : pd.DataFrame,
             values=filters['f_country']
         )
 
-    #studio - mapping filter
+    #studio - exact filter
     if filters.get('f_studio'):
         df_filtered = filter_exact(
             df_filtered,
@@ -108,7 +108,7 @@ def apply_filters(df           : pd.DataFrame,
             values=filters['f_studio']
         )
 
-    #editor - mapping filter
+    #editor - exact filter
     if filters.get('f_editor'):
         df_filtered = filter_exact(
             df_filtered,

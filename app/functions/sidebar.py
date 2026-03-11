@@ -92,13 +92,14 @@ def render_sidebar(
                                default=sorted(df_vg['editor'].unique()),
                                key=SidebarKeys.EDITOR)         
         
+        # Keys must match exactly what apply_filters() expects in filters.py.
         return {
-        "f_console"  : console,
-        "f_hours"    : hours,
-        "f_score"    : score,
-        "f_finish"   : finish,
-        "f_genre"    : genre,
-        "f_country"  : country,
-        "f_studio"   : studio,
-        "f_editor"   : editor                        
+        "f_console"      : console,
+        "f_hours_played" : hours, 
+        "f_perso_score"  : score,  
+        "f_finish"       : finish,
+        "f_genre"        : genre,
+        "f_country"      : country,
+        "f_studio"       : studio,
+        "f_editor"       : editor
     }

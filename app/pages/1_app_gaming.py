@@ -9,7 +9,7 @@ Created on Sat May 6 16:04:01 2023
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker  # required for xaxis tick spacing in seaborn histplot
+import matplotlib.ticker as ticker 
 import seaborn as sns
 import plotly.express as px
 import os

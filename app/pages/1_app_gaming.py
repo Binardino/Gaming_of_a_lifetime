@@ -7,14 +7,13 @@ Created on Sat May 6 16:04:01 2023
 """
 # Imports
 import streamlit as st
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker  # required for xaxis tick spacing in seaborn histplot
 import seaborn as sns
 import plotly.express as px
 import os
 import sys
-import sqlalchemy
 #set path for dynamic function import
 from pathlib import Path
 # Adds the parent directory of this script to sys.path
@@ -32,11 +31,7 @@ import functions.db_connection as db_co
 #from functions.data_wrangling import number_generator
 st.set_page_config(page_title="Gaming EDA presentation")
 #%%
-#read df
-engine = db_co.sql_connection()
-query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
-print(pd.read_sql(sql=query, con=engine.connect(), index_col='id'))
-df_raw = get_data_sql(sql=query, engine=engine.connect())
+df_raw = db_co.load_gaming_lifetime()
 #display
 st.title('Gaming of a lifetime df display')
 st.markdown("""

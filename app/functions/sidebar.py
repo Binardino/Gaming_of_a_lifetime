@@ -59,7 +59,7 @@ def render_sidebar(
                         )
         
         #finished
-        st.subheader('Finihsed game')
+        st.subheader('Finished game')
         finish = st.multiselect('Finished game',
                                   options=sorted(df_vg['finished'].unique()),
                                   default=sorted(df_vg['finished'].unique()),

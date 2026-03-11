@@ -28,7 +28,7 @@ from functions.analytics import *
 from functions.sidebar import *
 from functions.filters import *
 import functions.db_connection as db_co
-#from functions.data_wrangling import number_generator
+    abandon_rate_per_console,
 st.set_page_config(page_title="Gaming EDA presentation")
 #%%
 df_raw = db_co.load_gaming_lifetime()

@@ -51,15 +51,8 @@ df_genre_raw, genre_list, dict_genre = clean_df_list(df_meta, 'game_type')
 
 st.write(df_meta)
 #%%
-# Set up initial session state values once
-init_sidebar_state(console_list, genre_list, df_meta)
-
-filters = create_sidebar_widgets(df_meta, console_list, genre_list)
-
-subdf_filter = apply_all_masks(df_meta, filters, dict_console=dict_console, dict_genre=dict_genre)
-
-# Assume you have loaded df_vg, console_list, genre_list, dict_console, dict_genre
-#subdf_filter = apply_sidebar_filters(df_vg, console_list, genre_list, dict_console, dict_genre)
+filters = render_sidebar(df_vg=df_meta, console_list=console_list, genre_list=genre_list)
+subdf_filter = apply_filters(df=df_meta, filters=filters, dict_console=dict_console, dict_genre=dict_genre)
 
 st.markdown("""filtered df""")
 st.dataframe(subdf_filter)

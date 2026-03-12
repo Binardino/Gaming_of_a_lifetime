@@ -98,7 +98,7 @@ poetry run python scripts/import_hltb.py
 - **Project State**: In active development. Focus is on improving modularity and EDA features.
 **Refactoring Directions**
 - Move logic out of `pages/` and into `functions/` modules.
-- refactor of page_2_metacritic and page_3_hltb
+- refactor of page_3_hltb (page_2_metacritic done)
 - dynamic sql system to add new game entries in the future
 
 ### Two-container Docker setup
@@ -114,16 +114,15 @@ poetry run python scripts/import_hltb.py
 ### Business logic modules (`app/functions/`)
 | Module | Responsibility |
 |---|---|
-| `db_connection.py` | SQLAlchemy engine from `.env`, `get_data_sql()` / `get_data_csv()` |
+| `db_connection.py` | SQLAlchemy engine from `.env`, `load_table(table_name)` (cached), `get_data_sql()` / `get_data_csv()` |
 | `data_wrangling.py` | String cleaning, pipe-delimited column splitting, console brand tagging |
 | `filters.py` | Filter dispatcher (`apply_filters()`), handles pipe-delimited multi-values |
 | `analytics.py` | GroupBy/pivot computations (games per console, hours, abandon rate, etc.) |
 | `sidebar.py` | `SidebarKeys` constants, `render_sidebar()` → returns filter dict |
 | `visualisation_tools.py` | Plotly/Matplotlib wrappers |
-| `mask_df_utils.py` | Boolean masking helpers |
 
 ### Typical page data flow
-1. `sql_connection()` → fetch from PostgreSQL
+1. `db_co.load_table('table_name')` → fetch from PostgreSQL (cached per table, no connection leaks)
 2. `str_cleaning()` → `clean_df_list()` — normalize columns
 3. `render_sidebar()` → `apply_filters()` — mask DataFrame
 4. `analytics.*()` — compute aggregations

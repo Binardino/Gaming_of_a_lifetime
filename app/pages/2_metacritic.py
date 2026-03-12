@@ -32,8 +32,7 @@ st.markdown(f"""The goal of this part is to compare personal data from my videog
             
             The available Metacritic dataset dates back from 2016;
             Remaining data post 2016 were fetched through web scraping from metacritic webpage for the set of consoles I played.
-            I end up doing the comparison between 
-            data from Metacritic fetched data (size : {df_meta.size}) VS. my personal gaming of the lifetime (size : {df_vg.size})
+            The metacritic_merged dataset contains {df_meta.shape[0]} matched games.
             
             """)
 #%% correlation between scores

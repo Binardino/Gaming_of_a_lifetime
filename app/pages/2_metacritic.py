@@ -16,14 +16,9 @@ import functions.db_connection as db_co
 from functions.data_wrangling import clean_df_list
 from functions.sidebar import render_sidebar
 from functions.filters import apply_filters
-#%%#%% import data
-engine = db_co.sql_connection()
-query = sqlalchemy.text('SELECT * FROM public.metacritic_merged')
-print(pd.read_sql(sql=query, con=engine.connect()))
-df_meta = db_co.get_data_sql(sql=query, engine=engine.connect())
-
-query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
-df_vg = db_co.get_data_sql(sql=query, engine=engine.connect())
+#%% load data
+# Single cached call — no connection leaks, DB queried once per session.
+df_meta = db_co.load_table('public.metacritic_merged')
 #%% README
 st.set_page_config(page_title="page2 - Metacritic analysis")
 

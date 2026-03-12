@@ -45,7 +45,7 @@ BRAND_COLOUR_MAP = {
 
 st.set_page_config(page_title="Gaming EDA presentation")
 #%%
-df_raw = db_co.load_gaming_lifetime()
+df_raw = db_co.load_table('gaming_lifetime')
 #display
 st.title('Gaming of a lifetime df display')
 st.markdown("""

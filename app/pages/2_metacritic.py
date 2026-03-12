@@ -102,7 +102,7 @@ st.plotly_chart(fig_violin)
 #%% Swarm plot
 st.subheader("""Swarm plot of score differences between personal scores & meta scores - by game type""")
 
-st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
+st.write("""Strip/Swarm plot displaying for every single game the score difference between my personal scores and the ones from Metacritic.""")
 
 
 fig_strip_swarm = px.strip(subdf_filter, 
@@ -115,7 +115,7 @@ st.plotly_chart(fig_strip_swarm)
 #%% bar plot
 st.subheader("""Bar plot of score differences between personal scores & meta scores - by game name""")
 
-st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
+st.write("""Bar chart showing the mean score difference per game type, with error bars representing the standard deviation.""")
 
 fig_bar_error = px.bar(subdf_filter.groupby('game_type')['score_diff'].mean().reset_index(), # 
                        x='game_type', 

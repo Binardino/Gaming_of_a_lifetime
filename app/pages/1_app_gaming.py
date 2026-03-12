@@ -7,36 +7,45 @@ Created on Sat May 6 16:04:01 2023
 """
 # Imports
 import streamlit as st
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker 
 import seaborn as sns
 import plotly.express as px
 import os
 import sys
-import sqlalchemy
-#set path for dynamic function import
 from pathlib import Path
-# Adds the parent directory of this script to sys.path
+
+# Adds the parent directory (app/) to sys.path so that functions/ is importable
+# regardless of how Streamlit resolves multi-page script paths.
 CURRENT_FILE = Path(__file__).resolve()
-PAGES_DIR = CURRENT_FILE.parent
-ROOT_DIR = PAGES_DIR.parent
+ROOT_DIR = CURRENT_FILE.parent.parent
 sys.path.append(str(ROOT_DIR))
-from functions.data_wrangling import *
-from functions.db_connection import *
-from functions.visualisation_tools import *
-from functions.analytics import *
-from functions.sidebar import *
-from functions.filters import *
+
 import functions.db_connection as db_co
-#from functions.data_wrangling import number_generator
+from functions.data_wrangling import str_cleaning, clean_df_list, normalise_console, add_console_tag
+from functions.analytics import (
+    games_per_console_and_brand,
+    games_per_type,
+    games_per_console_year_pct,
+    score_per_hour,
+    abandon_rate_per_console,
+)
+from functions.sidebar import render_sidebar
+from functions.filters import apply_filters
+
+# Brand color palette shared across all console charts (treemap, sunburst, box plot).
+# Single source of truth — add new brands here only.
+BRAND_COLOUR_MAP = {
+    'PlayStation' : '#0D0BDE',
+    'Microsoft'   : '#008D00',
+    'Nintendo'    : '#C90104',
+    'Sega'        : '#d787ff',
+    'Android'     : '#3DDC84',
+}
+
 st.set_page_config(page_title="Gaming EDA presentation")
 #%%
-#read df
-engine = db_co.sql_connection()
-query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
-print(pd.read_sql(sql=query, con=engine.connect(), index_col='id'))
-df_raw = get_data_sql(sql=query, engine=engine.connect())
+df_raw = db_co.load_gaming_lifetime()
 #display
 st.title('Gaming of a lifetime df display')
 st.markdown("""
@@ -65,14 +74,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-# Assume you have loaded df_vg, console_list, genre_list, dict_console, dict_genre
-#subdf_filter = apply_sidebar_filters(df_vg, console_list, genre_list, dict_console, dict_genre)
-#%% filters
-# Set up initial session state values once
 filters = render_sidebar(df_vg=df_vg, console_list=console_list, genre_list=genre_list)
-st.write("DEBUG filters keys:", filters.keys())
-
-#subdf_filter = apply_all_masks(df_vg, filters, dict_console=dict_console, dict_genre=dict_genre)
 subdf_filter = apply_filters(df=df_vg, filters=filters, dict_console=dict_console, dict_genre=dict_genre)
 
 st.markdown("""filtered df""")
@@ -90,15 +92,11 @@ st.subheader("""Treemap of amount of games per console - brand & model""")
 st.caption("""Using PyPlot dynamic Treemap to map, for each console and related brand, how many games have been played on each platform
 Hover effect - displaying information when hovering over the chart""")
 
-fig_console = px.treemap(data_frame=df_console_count, 
-                         path=['brand', 'console'], 
+fig_console = px.treemap(data_frame=df_console_count,
+                         path=['brand', 'console'],
                          values='game_count',
                          color='brand',
-                         color_discrete_map={'PlayStation' : '#0D0BDE',
-                                             'Microsoft'   : '#008D00',
-                                             'Nintendo'    : '#C90104' , 
-                                             'Sega'        : '#d787ff', 
-                                             'Android'     : '#3DDC84'},
+                         color_discrete_map=BRAND_COLOUR_MAP,
                          title='Treemap graph - Amount of game played per consoles - organised per console brand',
                          width=1000, height=750
                         )
@@ -110,16 +108,12 @@ st.subheader("""Sunburst of amount of games per console - brand & model""")
 st.caption("""Similar chart with Sunburst viz""")
 
 fig_sunburst = px.sunburst(data_frame=df_console_count,
-                       path=['brand', 'console'], 
-                         values='game_count',
-                         color='brand',
-                         color_discrete_map={'PlayStation' : '#0D0BDE',
-                                             'Microsoft'   : '#008D00',
-                                             'Nintendo'    : '#C90104' , 
-                                             'Sega'        : '#d787ff', 
-                                             'Android'     : '#3DDC84'},
-                         title='Sunburst graph - Amount of game played per consoles - organised per console brand',
-                         width=1000, height=750)
+                           path=['brand', 'console'],
+                           values='game_count',
+                           color='brand',
+                           color_discrete_map=BRAND_COLOUR_MAP,
+                           title='Sunburst graph - Amount of game played per consoles - organised per console brand',
+                           width=1000, height=750)
 
 st.plotly_chart(fig_sunburst)
 #%%
@@ -202,10 +196,8 @@ elif selection_dist_year == 'plotly':
 #%% Stack Area Games by Console over years
 st.subheader("""Stack Area Chart of Games Played by Console Over the Years""")
 
-st.caption("""I consider a game to be a good one whenever I spend more than 15-20 hours on it.
-Especially when I pay full price for a game, I expect it to be at least 30-40 hours long, if not I consider it a scam.
-
-Below distplot illustrates I spent in general between 15 & 30 for most of the games I played""")
+st.caption("""For each year, shows the share of games played per console.
+Useful to track platform shifts over time — e.g. moving from PS2/PC era to PS4, or gaps in activity.""")
 df_console_year_pct = games_per_console_year_pct(subdf_filter)
 
 # compute stack area fig
@@ -256,7 +248,6 @@ if selection_pub_year == 'seaborn':
     st.pyplot(fig_publish)
 
 elif selection_pub_year == 'plotly':
-    df_test_year = subdf_filter[['published_year','played_year']].copy()
     fig_px_publish = px.histogram(subdf_filter.loc[(subdf_filter['published_year'].notna()) & (subdf_filter['played_year'].notna())], x=["published_year", 'played_year'],
                                       opacity=0.5, marginal="box", nbins=90, barmode='overlay')
     
@@ -291,14 +282,14 @@ TBW
 selection_scatterscore = st.selectbox('select viz library', ['plotly', 'seaborn'],key='viz_select_scatter_score')
 
 if selection_scatterscore == 'plotly':
-    fig_scatterscore = px.scatter(subdf_filter, 
-                                x='hours_played', y='perso_score', 
+    fig_scatterscore = px.scatter(subdf_filter,
+                                x='hours_played', y='perso_score',
                                 color='console',
                                 hover_name='game_name')
 
     st.plotly_chart(fig_scatterscore)
 
-if selection_scatterscore == 'seaborn':
+elif selection_scatterscore == 'seaborn':
     fig_scatter = plt.figure(figsize=(13, 5))
     
     sns.scatterplot(x='hours_played', y='perso_score', hue='console', data=subdf_filter)
@@ -329,12 +320,7 @@ fig_scorehour = px.scatter(df_score_hour,
 st.plotly_chart(fig_scorehour)
 #%%
 # abandon rate per console
-abandon_series = abandon_rate_per_console(subdf_filter)
-
-st.dataframe(abandon_series)
-
-#df_abandon = abandon_series.rename("abandon_rate").reset_index()
-df_abandon = abandon_series
+df_abandon = abandon_rate_per_console(subdf_filter)
 
 st.dataframe(df_abandon)
 fig_abandon = px.bar(df_abandon,

@@ -45,14 +45,14 @@ def sql_connection():
     return engine
 
 @st.cache_data
-def load_gaming_lifetime() -> pd.DataFrame:
+def load_table(table_name: str) -> pd.DataFrame:
     """
-    Load the full gaming_lifetime table from PostgreSQL.
-    @st.cache_data: result is cached — DB is queried once per session,
-    not on every Streamlit widget re-run.
+    Load a full table from PostgreSQL by name.
+    @st.cache_data: each unique table_name is cached independently.
     Context manager ensures the connection is always properly closed after the query.
+    Note: table_name is developer-controlled (hardcoded in pages), not user input.
     """
     engine = sql_connection()
-    query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
+    query = sqlalchemy.text(f'SELECT * FROM {table_name}')
     with engine.connect() as conn:
         return pd.read_sql(sql=query, con=conn)

@@ -1,27 +1,21 @@
 # Imports
 import streamlit as st
-import pandas as pd
-import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
-import os
 import sys
-import sqlalchemy
-from functions.data_wrangling import *
-from functions.db_connection import *
-from functions.visualisation_tools import *
-from functions.mask_df_utils import *
-import functions.db_connection as db_co
-#from tqdm import tqdm
-#set path for dynamic function import
 from pathlib import Path
-# Adds the parent directory of this script to sys.path
+
+# Adds the parent directory (app/) to sys.path so that functions/ is importable
+# regardless of how Streamlit resolves multi-page script paths.
 CURRENT_FILE = Path(__file__).resolve()
-PAGES_DIR = CURRENT_FILE.parent
-ROOT_DIR = PAGES_DIR.parent
+ROOT_DIR = CURRENT_FILE.parent.parent
 sys.path.append(str(ROOT_DIR))
+
+import functions.db_connection as db_co
+from functions.data_wrangling import clean_df_list
+from functions.sidebar import render_sidebar
+from functions.filters import apply_filters
 #%%#%% import data
 engine = db_co.sql_connection()
 query = sqlalchemy.text('SELECT * FROM public.metacritic_merged')

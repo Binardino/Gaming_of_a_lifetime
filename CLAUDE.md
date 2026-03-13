@@ -88,6 +88,7 @@ cd app/
 poetry run python scripts/seed_database.py
 poetry run python scripts/import_metacritic.py
 poetry run python scripts/import_hltb.py
+poetry run python scripts/build_metacritic_merged.py
 ```
 
 ### Access
@@ -100,6 +101,7 @@ poetry run python scripts/import_hltb.py
 - Move logic out of `pages/` and into `functions/` modules.
 - refactor of page_3_hltb (page_2_metacritic done)
 - dynamic sql system to add new game entries in the future
+- fuzzy matching improvement done (`rapidfuzz`, `build_metacritic_merged.py`)
 
 ### Two-container Docker setup
 - **gaming_db**: PostgreSQL 16 Alpine — initialized from `db_data/init.sql` (schema) and `db_data/seed.sql` (250+ games). CSV files are copied into the container for import scripts.
@@ -120,6 +122,7 @@ poetry run python scripts/import_hltb.py
 | `analytics.py` | GroupBy/pivot computations (games per console, hours, abandon rate, etc.) |
 | `sidebar.py` | `SidebarKeys` constants, `render_sidebar()` → returns filter dict |
 | `visualisation_tools.py` | Plotly/Matplotlib wrappers |
+| `metacritic_wrangling.py` | `normalize_title()`, `fuzzymatch_metacritic()` — rapidfuzz `token_sort_ratio`, threshold 85 |
 
 ### Typical page data flow
 1. `db_co.load_table('table_name')` → fetch from PostgreSQL (cached per table, no connection leaks)

@@ -1,35 +1,41 @@
+import re
 import pandas as pd
-import numpy as np
-import difflib 
+from rapidfuzz import fuzz, process
 
-def import_metacritic(df):
-    df_meta = pd.read_csv('metacritic.csv')
+_LEADING_ARTICLES = re.compile(r'^(the|a|an)\s+', re.IGNORECASE)
+_PUNCTUATION = re.compile(r'[^\w\s]')
 
-    df_join = pd.merge(df, df_meta,
-    left_on=df['game_name'],
-    right_on=df_meta['gamename'],
-    how='left')
+def normalize_title(name: str) -> str:
+    """Lowercase, strip punctuation, remove leading articles (the/a/an)."""
+    name = name.lower().strip()
+    name = _PUNCTUATION.sub('', name)
+    name = _LEADING_ARTICLES.sub('', name)
+    return name.strip()
 
-    return df_join
 
-# Define a function to find the best match for a given game name
-def fuzzymatch_metacritic(row, game_column):
-    # Initialize variables to store the best match and its similarity score
-    best_match = None
-    best_similarity = 0
-    
-    # Iterate over the game names in df_vg
-    for name in game_column:
-        # Compute the similarity score between the game names
-        similarity = difflib.SequenceMatcher(None, row, name).ratio()
-        
-        # Update the best match if the similarity score is higher than the previous best
-        if similarity > best_similarity:
-            best_match = name
-            best_similarity = similarity
-    
-    # Check if the similarity score is above the threshold (e.g., 90%)
-    if best_similarity >= 0.95:
-        return best_match
-    else:
-        return ""
+def fuzzymatch_metacritic(row: str, game_column: pd.Series, threshold: int = 85) -> tuple[str, int]:
+    """
+    Find the best match for a game title in a list of candidates.
+
+    Uses token_sort_ratio to handle word-order variations
+    (e.g. 'Witcher 3, The' vs 'The Witcher 3').
+
+    Returns:
+        (best_match_original_title, score) if score >= threshold
+        ("", 0) otherwise
+    """
+    row_norm = normalize_title(row)
+    candidates_norm = game_column.map(normalize_title)
+
+    result = process.extractOne(
+        row_norm,
+        candidates_norm,
+        scorer=fuzz.token_sort_ratio,
+        score_cutoff=threshold,
+    )
+
+    if result is None:
+        return ("", 0)
+
+    best_norm, score, idx = result
+    return (game_column.iloc[idx], score)

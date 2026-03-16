@@ -12,6 +12,15 @@ class SidebarKeys:
     STUDIO      = "filter_studio"
     EDITOR      = "filter_editor"
 
+def _int_range(series):
+    """(min, max) as ints — NaN treated as 0."""
+    clean = series.fillna(0)
+    return int(clean.min()), int(clean.max())
+
+def _sorted_unique(series):
+    """Sorted unique values, NaN excluded."""
+    return sorted(series.dropna().unique())
+
 def render_sidebar(
         df_vg,
         console_list,
@@ -30,7 +39,7 @@ def render_sidebar(
                                         value = True,
                                         key   = SidebarKeys.CONSOLE_ALL
                                         )
-        
+
         console = st.multiselect('Consoles available',
                                 options = console_list,
                                 default = console_list if select_all_console else [],
@@ -40,29 +49,28 @@ def render_sidebar(
 
         #played_hours
         st.subheader('Hours played')
+        h_min, h_max = _int_range(df_vg["hours_played"])
         hours = st.slider('Hours played',
-                        int(df_vg["hours_played"].min()),
-                        int(df_vg["hours_played"].max()),
-                        (int(df_vg["hours_played"].min()), int(df_vg["hours_played"].max())), #value
+                        h_min, h_max, (h_min, h_max),
                         step=1,
                         key=SidebarKeys.HOURS
                         )
-        
+
         #personal_score
         st.subheader('Personal score')
+        s_min, s_max = _int_range(df_vg["perso_score"])
         score = st.slider('Personal score',
-                        int(df_vg["perso_score"].min()),
-                        int(df_vg["perso_score"].max()),
-                        (int(df_vg["perso_score"].min()), int(df_vg["perso_score"].max())),
+                        s_min, s_max, (s_min, s_max),
                         step=1,
                         key=SidebarKeys.SCORE,
                         )
-        
+
         #finished
         st.subheader('Finished game')
+        finish_opts = _sorted_unique(df_vg['finished'])
         finish = st.multiselect('Finished game',
-                                  options=sorted(df_vg['finished'].unique()),
-                                  default=sorted(df_vg['finished'].unique()),
+                                  options=finish_opts,
+                                  default=finish_opts,
                                   key=SidebarKeys.FINISHED,
                                         )
 
@@ -71,32 +79,35 @@ def render_sidebar(
         genre = st.multiselect('Game genre',
                                options=genre_list,
                                default=genre_list,
-                               key=SidebarKeys.GENRE)         
+                               key=SidebarKeys.GENRE)
 
         #country_dev
         st.subheader('Developer Country')
+        country_opts = _sorted_unique(df_vg['country_dev'])
         country = st.multiselect('Developer Country',
-                               options=sorted(df_vg['country_dev'].unique()),
-                               default=sorted(df_vg['country_dev'].unique()),
-                               key=SidebarKeys.COUNTRY)         
+                               options=country_opts,
+                               default=country_opts,
+                               key=SidebarKeys.COUNTRY)
         #studio
         st.subheader('Studio')
+        studio_opts = _sorted_unique(df_vg['studio'])
         studio = st.multiselect('Studio',
-                               options=sorted(df_vg['studio'].unique()),
-                               default=sorted(df_vg['studio'].unique()),
-                               key=SidebarKeys.STUDIO)         
+                               options=studio_opts,
+                               default=studio_opts,
+                               key=SidebarKeys.STUDIO)
         #editor
         st.subheader('Editor')
+        editor_opts = _sorted_unique(df_vg['editor'])
         editor = st.multiselect('Editor',
-                               options=sorted(df_vg['editor'].unique()),
-                               default=sorted(df_vg['editor'].unique()),
-                               key=SidebarKeys.EDITOR)         
-        
+                               options=editor_opts,
+                               default=editor_opts,
+                               key=SidebarKeys.EDITOR)
+
         # Keys must match exactly what apply_filters() expects in filters.py.
         return {
         "f_console"      : console,
-        "f_hours_played" : hours, 
-        "f_perso_score"  : score,  
+        "f_hours_played" : hours,
+        "f_perso_score"  : score,
         "f_finish"       : finish,
         "f_genre"        : genre,
         "f_country"      : country,

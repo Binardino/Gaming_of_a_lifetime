@@ -49,6 +49,17 @@ KAGGLE_COL_MAPPER = {
     'Year_of_Release' : 'game_release_date',
     'Critic_Score'    : 'metascore',
     'User_Score'      : 'user_score',
+    'Genre'           : 'genre',
+    'Publisher'       : 'publisher',
+    'NA_Sales'        : 'na_sales',
+    'EU_Sales'        : 'eu_sales',
+    'JP_Sales'        : 'jp_sales',
+    'Other_Sales'     : 'other_sales',
+    'Global_Sales'    : 'global_sales',
+    'Critic_Count'    : 'critic_count',
+    'User_Count'      : 'user_count',
+    'Developer'       : 'developer',
+    'Rating'          : 'rating',
 }
 
 CONSOLE_MAPPER = {
@@ -78,10 +89,10 @@ MERGED_COLUMNS = [
     'id', 'game_name', 'console', 'game_type', 'finished',
     'published_year', 'played_year', 'hours_played', 'perso_score', 'multiplayed',
     'fuzz', 'game_title', 'game_platform', 'game_release_date',
-    'Genre', 'Publisher',
-    'NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales', 'Global_Sales',
-    'metascore', 'Critic_Count', 'user_score', 'User_Count',
-    'Developer', 'Rating', 'game_summary',
+    'genre', 'publisher',
+    'na_sales', 'eu_sales', 'jp_sales', 'other_sales', 'global_sales',
+    'metascore', 'critic_count', 'user_score', 'user_count',
+    'developer', 'rating', 'game_summary',
 ]
 
 

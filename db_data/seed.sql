@@ -10,7 +10,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Final Fantasy VII Remake','PS4','JRPG',true,2020,2020,50,96,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('Final Fantasy VII Rebirth','PS5','JRPG|Open World',false,2024,2024,70,99,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('The Witcher 3: Wild Hunt','PS4|PC','RPG|Open World',true,2015,2018,300,100,false, 'Poland', 'CD Projekt Red','CD Projekt Red'),
-	 ('The Witcher 2: Assassins of Kings','PC','RPG|Open World',false,2011,2018,15,85,false, 'Poland', 'CD Projekt Red','CD Projekt Red');
+	 ('The Witcher 2: Assassins of Kings','PC','RPG|Open World',false,2011,2018,15,85,false, 'Poland', 'CD Projekt Red','CD Projekt Red')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('The Witcher','PC','RPG|Open World',false,2008,2018,15,85,false, 'Poland', 'CD Projekt Red','CD Projekt Red'),
 	 ('Grand Theft Auto','PC','Open World|Action-Adventure',true,1997,1998,20,88,true, 'UK', 'Rockstar Games','Take Two Interactive'),
@@ -21,7 +22,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Kingdom Hearts','PS2','Action|JRPG',true,2002,2008,30,90,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('Kingdom Hearts II','PS2','Action|JRPG',true,2005,2009,50,98,false, 'Japan', 'Square Enix','Square Enix'),
 	 ('Kingdom Hearts III','PS4','Action|JRPG',true,2019,2019,40,95,true, 'Japan', 'Square Enix','Square Enix'),
-	 ('Kingdom Hearts: Birth by Sleep','PSP','Action|JRPG',true,2010,2017,35,92,false, 'Japan', 'Square Enix','Square Enix');
+	 ('Kingdom Hearts: Birth by Sleep','PSP','Action|JRPG',true,2010,2017,35,92,false, 'Japan', 'Square Enix','Square Enix')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('The Legend of Zelda: The Wind Waker','GameCube','Action-Adventure',false,2002,2008,35,91,false, 'Japan', 'Nintendo','Nintendo'),
 	 ('The Legend of Zelda: A Link to the Past','SNES','Action-Adventure',false,1991,2020,20,91,false, 'Japan', 'Nintendo','Nintendo'),
@@ -35,7 +37,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Marvel''s Spider-Man 2','PS5','Open World|Action-Adventure',true,2023,2023,30,88,false, 'USA', 'Insomniac Games', 'Sony'),
 	 ('God of War','PS4','Action-Adventure|Beat''em All',true,2018,2020,75,99,false, 'USA', 'SIE Santa Monica Studio', 'Sony'),
 	 ('God of War Ragnarök','PS5','Action-Adventure|Beat''em All',false,2022,2023,50,99,false, 'USA', 'SIE Santa Monica Studio', 'Sony'),
-	 ('God of War III','PS4','Action-Adventure|Beat''em All',false,2015,2020,35,92,false, 'USA', 'SIE Santa Monica Studio', 'Sony');
+	 ('God of War III','PS4','Action-Adventure|Beat''em All',false,2015,2020,35,92,false, 'USA', 'SIE Santa Monica Studio', 'Sony')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Uncharted: Drake''s Fortune','PS4','Action-Adventure|Platformer',true,2007,2020,10,68,true, 'USA', 'Naughty Dog', 'Sony'),
 	 ('Uncharted 2: Among Thieves','PS4','Action-Adventure|Platformer',true,2009,2020,10,87,true, 'USA', 'Naughty Dog', 'Sony'),
@@ -46,7 +49,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Journey','PS4','Action-Adventure|Platformer',true,2012,2019,5,86,true, 'USA', 'Thatgamecompany' , 'Sony'),
 	 ('Heavy Rain','PS3','Narrative',true,2010,2016,15,79,true, 'France', 'Quantic Dream' , 'Sony'),
 	 ('Red Dead Redemption','PS3','Action-Adventure|Open World',true,2010,2016,30,92,false, 'USA', 'Rockstar Games','Take Two Interactive'),
-	 ('The Last of Us','PS3','Action-Adventure|Survival horror',false,2011,2016,25,92,false, 'USA', 'Naughty Dog', 'Sony');
+	 ('The Last of Us','PS3','Action-Adventure|Survival horror',false,2011,2016,25,92,false, 'USA', 'Naughty Dog', 'Sony')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Okami','PS3','Action-Adventure',true,2006,2016,30,94,false, 'Japan', 'Clover Studio' , 'Capcom'),
 	 ('God of War: Ghost of Sparta','PSP','Action|Beat''em All',true,2010,2020,6,81,false, 'USA', 'SIE Santa Monica Studio', 'Sony'),
@@ -57,7 +61,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Assassin''s Creed Origins','PS4','RPG|Open World',true,2017,2017,70,96,true, 'France', 'Ubisoft','Ubisoft'),
 	 ('Assassin''s Creed Odyssey','PC','RPG|Open World',true,2018,2018,100,97,true, 'France', 'Ubisoft','Ubisoft'),
 	 ('Watch Dogs','PS3','Open World|Action-Adventure',true,2013,2015,30,85,false, 'France', 'Ubisoft','Ubisoft'),
-	 ('Watch Dogs 2','PC','Open World|Action-Adventure',true,2016,2016,50,89,false, 'France', 'Ubisoft','Ubisoft');
+	 ('Watch Dogs 2','PC','Open World|Action-Adventure',true,2016,2016,50,89,false, 'France', 'Ubisoft','Ubisoft')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Sid Meier''s Civilization III','PC','STR',true,2001,2001,15,88,false, 'USA', 'Firaxis Games', 'Infogrames Interactive'),
 	 ('Sid Meier''s Civilization V','PC','STR',true,2010,2014,150,97,true, 'USA', 'Firaxis Games', '2K'),
@@ -69,7 +74,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Command & Conquer 3: Tiberium Wars','PC','STR',true,2007,2007,60,92,true, 'USA', 'Westwood Studios', 'Electronic Arts'),
 	 ('Command & Conquer: Red Alert','PC','STR',true,1996,1998,40,89,true, 'USA', 'Westwood Studios', 'Virgin Interactive'),
 	 ('Command & Conquer: Red Alert 2','PC','STR',true,2000,2001,60,90,true, 'USA', 'Westwood Studios', 'Electronic Arts'),
-	 ('Command & Conquer: Red Alert Yuri','PC','STR',true,2001,2001,20,91,true, 'USA', 'Westwood Studios', 'Electronic Arts');
+	 ('Command & Conquer: Red Alert Yuri','PC','STR',true,2001,2001,20,91,true, 'USA', 'Westwood Studios', 'Electronic Arts')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Command & Conquer: Red Alert 3','PC','STR',true,2008,2018,10,75,true, 'USA', 'Westwood Studios', 'Electronic Arts'),
 	 ('Command & Conquer: Generals','PC','STR',true,2003,2005,15,77,true, 'USA', 'Westwood Studios', 'Electronic Arts'),
@@ -80,7 +86,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Diablo III','PS3|Switch 2','RPG|Hack&Clash',true,2012,2015,35,93,true, 'USA', 'Blizzard Entertainment', 'Activision Blizzard'),
 	 ('StarCraft','PC','STR',true,1998,1998,150,92,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
 	 ('StarCraft Brood War','PC','STR',true,1998,1998,20,92,false, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
-	 ('StarCraft II: Wings of Liberty','PC','STR',true,2010,2010,150,95,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment');
+	 ('StarCraft II: Wings of Liberty','PC','STR',true,2010,2010,150,95,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('StarCraft II: Heart of the Swarm','PC','STR',true,2013,2013,50,94,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
 	 ('StarCraft II: Legacy of the Void','PC','STR',true,2015,2015,70,96,true, 'USA', 'Blizzard Entertainment', 'Blizzard Entertainment'),
@@ -91,7 +98,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
   ('Heroes of Might and Magic III','PC','STR',true,1999,2000,60,94,true, 'USA','New World Computing','The 3DO Company'),
   ('Heroes of Might and Magic IV','PC','STR',true,2002,2002,45,94,true, 'USA','New World Computing','The 3DO Company'),
   ('Heroes of Might and Magic V','PC','STR',false,2006,2008,25,89,true, 'Russia','Nival Interactive','Ubisoft'),
-  ('Heroes of Might and Magic VII','PC','STR',false,2015,2018,10,85,true, 'Germany','Limbic Entertainment','Ubisoft');
+  ('Heroes of Might and Magic VII','PC','STR',false,2015,2018,10,85,true, 'Germany','Limbic Entertainment','Ubisoft')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Age of Empire II','PC','STR',false,2000,2003,30,88,true, 'USA','Ensemble Studios','Microsoft'),
 	 ('Life is Strange','PC','Narrative',true,2008,2018,10,79,true, 'France','Dontnod Entertainment','Square Enix'),
@@ -102,7 +110,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Theme Hospital','PC','STR',false,1997,2000,10,80,true, 'UK','Bullfrog Productions','Electronic Arts'),
 	 ('Dungeon Keeper','PC','STR',false,1997,2000,10,80,true, 'UK','Bullfrog Productions','Electronic Arts'),
 	 ('The Sims','PC','STR',true,2000,2000,50,90,true, 'USA','Maxis','Electronic Arts'),
-	 ('The Sims 2','PC','STR',true,2000,2005,30,88,false, 'USA','Maxis','Electronic Arts');
+	 ('The Sims 2','PC','STR',true,2000,2005,30,88,false, 'USA','Maxis','Electronic Arts')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Baldur''s Gate','PC','Action-Adventure|RPG',true,1998,2000,40,90,false, 'Canada','BioWare','Interplay Entertainment'),
 	 ('Baldur''s Gate II: Shadows of Amn','PC','Action-Adventure|RPG',true,2000,2001,50,92,false, 'Canada','BioWare','Interplay Entertainment'),
@@ -113,7 +122,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('The Curse of Monkey Island','PC','Point&Click',true,1997,2018,10,75,true, 'USA','Lucas Arts','Lucas Arts'),
 	 ('Escape From Monkey Island','PC','Point&Click',true,2004,2004,30,85,true, 'USA','Lucas Arts','Lucas Arts'),
 	 ('The Secret of Monkey Island','PC','Point&Click',false,1990,2018,2,87,true, 'USA','Lucasfilm Games','Lucasfilm Games'),
-	 ('Myst','PC','Point&Click',true,1993,1993,25,86,true, 'USA','Cyan','Brøderbund');
+	 ('Myst','PC','Point&Click',true,1993,1993,25,86,true, 'USA','Cyan','Brøderbund')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Versailles','PC','Point&Click',false,1996,1996,10,73,true, 'France','Cryo Interactive','Canal+ Multimedia'),
 	 ('Goblins','PC','Point&Click',false,1991,1993,10,73,true, 'France','Coktel Vision','Sierra On-Line'),
@@ -124,7 +134,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('MegaBomberMan','PC','Party Game',false,1993,1999,15,72,true, 'Japan','Hudson Soft','Sega'),
 	 ('SimCity 2000','PC','STR',false,1994,1995,15,70,false, 'USA','Maxis','Maxis'),
 	 ('Caesar II','PC','STR',false,1995,1998,10,80,true, 'USA','Impressions Games','Sierra On-Line'),
-	 ('Pharaoh','PC','STR',false,1999,2001,20,86,true, 'USA','Impressions Games','Sierra On-Line');
+	 ('Pharaoh','PC','STR',false,1999,2001,20,86,true, 'USA','Impressions Games','Sierra On-Line')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Carmageddon','PC','Racing|Beat''em All',false,1997,1999,20,86,true, 'UK', 'Stainless Games', 'SCi Games'),
 	 ('Carmageddon II: Carpocalypse Now','PC','Racing|Beat''em All',false,1998,2000,10,86,true, 'UK', 'Stainless Games', 'SCi Games'),
@@ -135,7 +146,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Star Wars Jedi Knight II: Jedi Outcast','PC','Action-Adventure|Hack&Clash',true,2002,2003,30,98,true, 'USA', 'Raven Software', 'Lucas Arts'),
 	 ('Star Wars Jedi Knight: Jedi Academy','PC','Action-Adventure|Hack&Clash',true,2003,2003,30,97,true, 'USA', 'Raven Software', 'Lucas Arts'),
 	 ('Star Wars: The Old Republic','PC','Action-Adventure|RPG',true,2011,2012,50,92,true, 'USA', 'BioWare', 'Lucas Arts'),
-	 ('Star Wars: Knights of The Old Republic','PC|Android','Action-Adventure|RPG',true,2003,2012,25,91,false, 'USA', 'BioWare', 'Lucas Arts');
+	 ('Star Wars: Knights of The Old Republic','PC|Android','Action-Adventure|RPG',true,2003,2012,25,91,false, 'USA', 'BioWare', 'Lucas Arts')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Star Wars Episode I Racer','PC','Racing',true,2001,2001,30,75,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
 	 ('Star Wars: StarFighter','PC','Space Shooter',true,2001,2001,20,80,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
@@ -146,7 +158,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Star Wars: The Force Unleashed','PS3','Hack&Clash',true,2008,2016,15,75,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
 	 ('Star Wars: The Force Unleashed II','PS3','Hack&Clash',true,2008,2016,15,75,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
 	 ('LEGO Star Wars: The Complete Saga','PS3','Hack&Clash',true,2007,2016,10,75,false, 'USA', 'Lucas Arts', 'Lucas Arts'),
-	 ('Star Wars Rogue Squadron II: Rogue Leader','GameCube','Gunfight',true,2001,2003,50,94,true, 'USA', 'Lucas Arts', 'Lucas Arts');
+	 ('Star Wars Rogue Squadron II: Rogue Leader','GameCube','Gunfight',true,2001,2003,50,94,true, 'USA', 'Lucas Arts', 'Lucas Arts')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Star Wars: Rogue Squadron','PC','Gunfight',true,1998,2003,20,93,true, 'USA','Factor 5','Lucas Arts'),
 	 ('Little Big Adventure','PC','Action-Adventure|Platformer',true,1994,1999,20,85,true, 'France','Adeline Software International','Electronic Arts'),
@@ -157,7 +170,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Tomb Raider (2013)','PS3','Action|Platformer',true,2013,2013,30,92,true, 'USA','Crystal Dynamics','Square Enix'),
 	 ('Rise of the Tomb Raider','PS4','Action|Platformer',false,2015,2015,10,75,true, 'USA','Crystal Dynamics','Square Enix'),
 	 ('Crash Bandicoot','PS1','Action|Platformer',false,1996,1996,10,79,true, 'USA','Naughty Dog','Sony Computer Entertainment'),
-	 ('Crash Nitro Kart','PS2','Racing',false,2003,2003,15,72,true,  'Canada','Vicarious Visions','Universal Interactive');
+	 ('Crash Nitro Kart','PS2','Racing',false,2003,2003,15,72,true,  'Canada','Vicarious Visions','Universal Interactive')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Metal Gear Solid','PS1','Action|Infiltration',false,1998,2016,5,80,false, 'Japan','Konami Computer Entertainment Japan','Konami'),
 	 ('Splinter Cell','PS2','Action|Infiltration',false,2002,2002,15,82,false, 'Canada','Ubisoft Montreal','Ubisoft'),
@@ -168,7 +182,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Tekken','PS1','Versus Fighting',false,1995,1997,20,79,true, 'Japan','Namco','Namco'),
 	 ('Resident Evil 2','PS1','Survival horror',false,1998,1998,10,80,true, 'Japan','Capcom','Capcom'),
 	 ('Sonic the Hedgehog','Megadrive','Platformer',true,1991,1996,40,85,true, 'Japan', 'Sega','Sega'),
-	 ('Sonic the Hedgehog 2','Megadrive','Platformer',true,1992,1996,50,88,true, 'Japan', 'Sega','Sega');
+	 ('Sonic the Hedgehog 2','Megadrive','Platformer',true,1992,1996,50,88,true, 'Japan', 'Sega','Sega')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Sonic the Hedgehog 3','Megadrive','Platformer',true,1994,1996,40,88,true, 'Japan', 'Sega','Sega'),
 	 ('Sonic & Knuckles','Megadrive','Platformer',true,1994,1996,20,80,true, 'Japan', 'Sega','Sega'),
@@ -178,7 +193,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Golden Axe','Megadrive','Beat''em All',false,1989,1993,15,70,false, 'Japan','Sega AM1','Sega'),
 	 ('Mighty Morphin Power Rangers','Megadrive','Beat''em All',false,1994,1994,15,60,true, 'USA','Natsume','Bandai'),	 ('Sonic 3D: Flickies'' Island','Megadrive','Platformer',true,1996,1996,30,79,false, 'Japan', 'Sega','Sega'),
 	 ('Sonic Pinball','Megadrive','Platformer',true,1996,1996,30,79,true, 'Japan', 'Sega','Sega'),
-	 ('Jungle Strike','Megadrive','Action-Adventure|Beat''em All',false,1993,1996,30,79,false, 'Japan', 'Sega','Sega');
+	 ('Jungle Strike','Megadrive','Action-Adventure|Beat''em All',false,1993,1996,30,79,false, 'Japan', 'Sega','Sega')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('EarthWorm Jim','Megadrive','Action-Adventure|Platformer',false,1994,1995,15,78,true, 'USA','Shiny Entertainment','Playmates Interactive'),
 	 ('Aladdin','Megadrive','Action-Adventure|Platformer',true,1993,1994,25,89,true, 'USA','Virgin Games USA','Sega'),
@@ -189,7 +205,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Tales of Symphonia','GameCube','JRPG',true,2003,2008,30,85,false, 'Japan','Namco Tales Studio','Namco'),
 	 ('Ristar','Megadrive','Action-Adventure|Platformer',false,1995,1996,20,80,false, 'Japan','Sega AM7','Sega'),
 	 ('AAAHH!!! Real Monsters','Megadrive','Action-Adventure|Platformer',false,1995,1996,15,68,false, 'USA','Realtime Associates','Viacom New Media'),
-	 ('Jurassic Park','Megadrive','Action-Adventure|Platformer',false,1994,1996,5,62,true, 'USA','BlueSky Software','Sega');
+	 ('Jurassic Park','Megadrive','Action-Adventure|Platformer',false,1994,1996,5,62,true, 'USA','BlueSky Software','Sega')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('The Lost World: Jurassic Park','PS1','Action-Adventure|Platformer',false,1995,1996,5,62,true, 'USA','DreamWorks Interactive','Electronic Arts'),
 	 ('M.U.S.H.A','Megadrive','Gunfight|Space Shooter',false,1990,1995,10,65,true, 'Japan','Compile','Seismic'),
@@ -199,7 +216,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('SSX','PS2','Sport',false,2000,2001,10,88,true, 'Canada', 'Electronic Arts', 'Electronic Arts'),
 	 ('SSX Tricky','PS2','Sport',true,2001,2002,30,92,true, 'Canada', 'Electronic Arts', 'Electronic Arts'),
 	 ('SSX 3','PS2','Sport',true,2003,2003,50,96,true, 'Canada', 'Electronic Arts', 'Electronic Arts'),
-	 ('SSX On Tour','PS2','Sport',true,2005,2005,50,95,true, 'Canada', 'Electronic Arts', 'Electronic Arts');
+	 ('SSX On Tour','PS2','Sport',true,2005,2005,50,95,true, 'Canada', 'Electronic Arts', 'Electronic Arts')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('The Lord of the Rings: The Two Towers','PS2','Action-Adventure|Beat''em All',true,2002,2002,30,90,true, 'USA','Stormfront Studios','Electronic Arts'),
 	 ('The Lord of the Rings: The Return of the King','PS2','Action-Adventure|Beat''em All',true,2003,2003,35,90,true, 'USA','EA Redwood Shores','Electronic Arts'),
@@ -211,7 +229,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('FIFA 15','PS3','Sport',false,2014,2015,20,80,true, 'Canada', 'Electronic Arts', 'Electronic Arts'),
 	 ('FIFA 16','PS4','Sport',false,2015,2016,20,80,true, 'Canada', 'Electronic Arts', 'Electronic Arts'),
 	 ('PES5','PS2','Sport',false,2005,2005,20,75,true, 'Japan','Konami Computer Entertainment Tokyo','Konami'),
-	 ('Super Mario Bros.','NES','Platformer',true,1985,1993,20,82,true, 'Japan', 'Nintendo','Nintendo');
+	 ('Super Mario Bros.','NES','Platformer',true,1985,1993,20,82,true, 'Japan', 'Nintendo','Nintendo')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Super Mario Bros. 2','NES','Platformer',true,1988,1995,15,83,true, 'Japan', 'Nintendo','Nintendo'),
 	 ('Super Mario Bros. 3','NES','Platformer',true,1988,1995,20,90,true, 'Japan', 'Nintendo','Nintendo'),
@@ -222,7 +241,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Mario Kart Wii','Wii','Racing',false,2008,2008,30,90,true, 'Japan', 'Nintendo','Nintendo'),
 	 ('Mario Kart Deluxe','Switch','Racing',false,2017,2020,5,90,true, 'Japan', 'Nintendo','Nintendo'),
 	 ('Mario Kart 64','N64','Racing',false,1996,2001,10,85,true, 'Japan', 'Nintendo','Nintendo'),
-	 ('Super Mario 64','N64','Racing',false,1996,1996,15,92,true, 'Japan', 'Nintendo','Nintendo');
+	 ('Super Mario 64','N64','Racing',false,1996,1996,15,92,true, 'Japan', 'Nintendo','Nintendo')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Super Smash Bros. Melee','GameCube','Versus Fighting',true,2002,2002,30,92,true, 'Japan', 'Nintendo','Nintendo'),
 	 ('Mario Party 5','GameCube','Party Game',true,2003,2003,50,89,true, 'Japan', 'Nintendo','Nintendo'),
@@ -234,7 +254,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
      ('Perfect Dark','N64','FPS',false,2000,2000,5,80,true, 'UK','Rare','Nintendo'),
      ('Rayman 2: The Great Escape','N64','Action-Adventure|Platformer',false,1999,2000,20,88,true, 'France','Ubisoft Montpellier','Ubisoft'),
      ('Rayman','GBA','Action-Adventure|Platformer',true,2000,2000,25,89,true, 'France','Ubisoft','Ubisoft'),
-     ('Rayman Origins','Wii','Action-Adventure|Platformer',false,2011,2011,20,89,true,'France','Ubisoft Montpellier','Ubisoft');
+     ('Rayman Origins','Wii','Action-Adventure|Platformer',false,2011,2011,20,89,true,'France','Ubisoft Montpellier','Ubisoft')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Batman Returns','NES','Action-Adventure|Beat''em All',false,1989,1993,10,40,true,'Japan','Sunsoft','Konami'),
 	 ('Pokemon Yellow: Special Pikachu Edition','GameBoy','Action-Adventure|JRPG',true,1997,1998,40,92,true, 'Japan', 'Game Freak', 'Nintendo'), 
@@ -244,7 +265,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('Monument Valley','Android','Puzzle',true,2014,2018,3,81,true, 'UK','ustwo Games','ustwo Games'),
 	 ('Monument Valley 2','Android','Puzzle',true,2017,2020,3,81,true, 'UK','ustwo Games','ustwo Games'),
 	 ('Polytopia','Android','STR',false,2016,2017,2,78,false, 'Sweden','Midjiwan AB','Midjiwan AB'),
-	 ('Cyberpunk 2077','PC','RPG|Open World',true,2020,2020,120,99,false, 'Poland', 'CD Projekt Red','CD Projekt Red');
+	 ('Cyberpunk 2077','PC','RPG|Open World',true,2020,2020,120,99,false, 'Poland', 'CD Projekt Red','CD Projekt Red')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('Watch Dogs Legion','PC','Action-Adventure|Open World',true,2020,2020,50,95,true, 'France', 'Ubisoft','Ubisoft'),
 	 ('Among Us','Android','Party game',false,2018,2020,7,70,true, 'USA', 'Innersloth', 'Innersloth'),
@@ -255,7 +277,8 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('New Super Mario Bros U Deluxe','Switch','Platformer',false,2020,2021,25,90,true, 'Japan', 'Nintendo', 'Nintendo'),
 	 ('Hyrule Warriors : Age of Calamity','Switch','Action-Adventure|Hack&Clash',false,2020,2021,15,90,true, 'Japan', 'Nintendo', 'Nintendo'),
 	 ('Assassin''s Creed Valhalla','PC','RPG|Open World',false,2020,2021,50,92,false, 'France', 'Ubisoft','Ubisoft'),
-	 ('Demon''s Souls','PS5','JRPG|Action-Adventure',false,2020,2022,20,90,false, 'Japan', 'FromSoftware', 'Sony');
+	 ('Demon''s Souls','PS5','JRPG|Action-Adventure',false,2020,2022,20,90,false, 'Japan', 'FromSoftware', 'Sony')
+ON CONFLICT DO NOTHING;
 INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,published_year,played_year,hours_played,perso_score,multiplayed, country_dev, studio, editor) VALUES
 	 ('The Last of Us Part I','PS5','Action-Adventure|Survival horror',true,2023,2023,25,91,false, 'USA','Naughty Dog', 'Sony'),
 	 ('The Last of Us Part II','PS5','Action-Adventure|Survival horror',true,2020,2023,45,93,false, 'USA','Naughty Dog', 'Sony'),
@@ -275,5 +298,5 @@ INSERT INTO public.gaming_lifetime (game_name,console,game_type,finished,publish
 	 ('The Legend of Zelda: Ocarina of Time 3D','3DS','Action-Adventure',false,2011,2025,2,94,false, 'Japan', 'Nintendo','Nintendo'),
 	 ('The Legend of Zelda: A Link Between Worlds','3DS','Action-Adventure',false,2013,2025,2,93,false, 'Japan', 'Nintendo','Nintendo'),
 	 ('The Legend of Zelda: Majora''s Mask 3D','3DS','Action-Adventure',false,2015,2025,2,93,false, 'Japan', 'Nintendo','Nintendo'),
-	 ('Tanoshiku - Omoshiroku - Kanken Shougakusei','3DS','Edutainment',false,2018,2025,2,70,false, 'Japan','Imagineer','Imagineer');
-	 ;
+	 ('Tanoshiku - Omoshiroku - Kanken Shougakusei','3DS','Edutainment',false,2018,2025,2,70,false, 'Japan','Imagineer','Imagineer')
+ON CONFLICT DO NOTHING;

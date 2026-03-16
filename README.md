@@ -1,163 +1,139 @@
-####IDEAS TO BE DONE
-- GOTY perso list VS. GOTY list
-- spyder graph of hours of game type per console
-- HLTB graph
-- dynamic top game per console
+# 🎮 Gaming of a Lifetime: Personal Data Analytics Dashboard
 
+**A comprehensive, interactive analytics platform to visualize and analyze your personal video game history across decades.**
 
-# Gaming_of_a_lifetime
-**Historical Data analytics of my Gaming lifetime history**
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.25+-FF4B4B.svg)](https://streamlit.io/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14-336791.svg)](https://www.postgresql.org/)
+[![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED.svg)](https://www.docker.com/)
 
-Streamlit Web App to display my video game history in various dynamic visualisations. *
-Cross data with Metacritic & How Long To Beat 
-Python Pandas &amp; SQL Project - EDA & Datavisualization of gaming habits
+---
 
-Having been a gamer all my life, the idea of this project is to list all the games I played, with several KPIs (score, hours played etc.), and visualize this gaming of a lifetime, to see some trends in my gaming behaviour.
-- which genre did I play the most ?
-- on which console ?
-- for how long ?
-It is a nice way to remember all of gaming experiences, and to make something professional Python training & visualization of all this leisure time I had playing on those fantastic games !
+## 🌟 Overview
 
-Once the database created with SQL queries, I use various Python visualization libraries (Matplotlib, Seaborn, PyPlot, Bokeh) to visualize this gaming of a lifetime.
-Finally, I imported a Kaggle dataset encompassing scores of all the games I played (both from the Press & Players) to compare my scores given and theirs.
+**Gaming of a Lifetime** is a data-driven web application designed to track, visualize, and analyze a lifetime of gaming habits. It transforms raw personal data (game name, console, genre, hours played, personal scores) into high-fidelity interactive visualizations, providing insights into platform preferences, genre evolution, and scoring trends.
 
-## Content
-- [Project Overview](#project-overview)
-- [Hypotheses / Questions](#hypotheses-questions)
-- [Repo Structure](#repo-structure)
-- [Workflow](#workflow)
-- [Analysis](#analysis)
-- [Conclusion](#conclusion)
-- [Future Work](#future-work)
+The platform goes beyond simple tracking by cross-referencing personal data with industry-standard benchmarks from **Metacritic** (scores and sales) and **How Long To Beat** (completion times).
 
-## Project Overview
-- Creation of a dataset of my overall gaming experience.
-SQL queries to create this ad hoc dataset with the following columns :
+---
 
-* CREATE TABLE my_videogames(
-	* id SMALLINT(6) UNSIGNED NOT NULL AUTO_INCREMENT,
-    * game_name VARCHAR(255) NOT NULL,
-    * console VARCHAR(20) NOT NULL,
-    * game_type VARCHAR(50) NOT NULL,
-    * finished BOOL NOT NULL, #have I finish the game or Not
-    * published_year SMALLINT(4) NOT NULL,
-    * played_year SMALLINT(4) NOT NULL, #first time I played the game
-    * hours_played SMALLINT(4), #approximation of hours spent playing the game
-    * perso_score SMALLINT(2) NOT NULL, #personal score on the game - rating over 100
-    * multiplayed BOOL NOT NULL, #have I played it with other persons
-    * country_dev varchar(255) NOT NULL, #country where the developing studio comes from
-    * studio varchar(255) NOT NULL, #name of the developing studio
-    * editor varchar(255) NOT NULL #name of the game editor
-    
+## 🚀 Key Features
 
-- Datavisualization with Pandas over those gaming data
-- Comparison between my personal scores given to the games, and the existing Metascore given by the Press in general to those same games
+### 1. Interactive EDA Dashboard
+- **Platform Analytics:** Dynamic treemaps and sunburst charts to explore game distribution by brand (Sony, Microsoft, Nintendo, etc.) and specific console models.
+- **Genre Insights:** Real-time breakdown of gaming habits by genre and sub-genre.
+- **Backlog Management:** Automated tracking of unfinished games and abandonment rates per platform.
 
-Each row for one game played, with several
-cf. SQL queries for more detailed information over the dataset creation
+### 2. External Data Integration
+- **Metacritic Comparison:** Merge personal scores with critical reviews and user ratings to identify personal bias or "hidden gems."
+- **HLTB Analysis:** Compare actual time spent playing vs. global completion averages for story-driven or completionist playthroughs.
+- **Automated Scrapers:** Custom-built Python scrapers for fetching the latest data from Metacritic and HLTB.
 
-## Hypotheses / Questions
-- Finding key stats over my gaming lifetime : 
-    * how many hours in average have I spent per gametype/console ?
-    * which are the years I played the most ?
-    * when comparing my grades given to all of those games, am I giving comparable grades to the critics (i.e. Metacritics) & in comparison to other players (i.e. playerscore) ?
+### 3. Advanced Filtering & Exploration
+- Multi-dimensional filters (year, genre, console, finished status) powered by Streamlit's reactive UI.
+- Direct DataFrame exploration with pre-processed and cleaned data.
 
-## Repo Structure
-1. DB_creation_SQL_queries : SQL queries for creation of the dataset
-2. Notebook Pandas & Visualizations
-    * Pandas visualizations of the Gaming lifetime dataset
-    * Comparison of scores between this dataset and existing Metacritic dataset (TBD)
+---
 
-3. Plots_Charts_PNG
-    * PNG plots from Visualization notebook
+## 🛠 Tech Stack
 
-## Workflow
-My workflow consisted on 3 steps - each detailed in the relevant notebook:
+### Backend & Data Processing
+- **Python 3.10+**: Core logic and data manipulation.
+- **Pandas & NumPy**: High-performance data wrangling and ETL.
+- **SQLAlchemy & Psycopg2**: Object-Relational Mapping (ORM) and direct PostgreSQL connection.
+- **Scrapy/BeautifulSoup**: Scraper logic for HLTB and Metacritic data retrieval.
 
-**1 - Database creation**
-creating the database with SQL queries (brainstorming over the structure of the dataset, and some quality memory times to remember all those great games I played).
+### Frontend & Visualization
+- **Streamlit**: Modern reactive framework for the web dashboard.
+- **Plotly Express**: Interactive, hover-enabled charts (Treemaps, Scatter plots).
+- **Seaborn & Matplotlib**: Static statistical visualizations for distribution analysis.
+- **Pygal & Squarify**: Specialized visualizations for hierarchy and radar charting.
 
-Each Workflow is detailed in its respective Notebooks.
+### Infrastructure & Operations
+- **PostgreSQL 14**: Centralized relational database for persistent storage.
+- **Docker & Docker Compose**: Full-stack containerization for consistent deployment.
+- **Poetry**: Dependency management and environment isolation.
 
-**2 - Data visualization & analaysis**
+---
 
-**3 - Importing Metacritic dataset**
-Importing & Cleaning the dataset, then doing comparison & datavisualizations over those 2 datasets
+## 🏗 System Architecture
 
-## Analysis
-1. [Data exploration](#1.-data-exploration)
-- [x] **Import & minor wrangling**
-- [x] **Exploratory Data Analysis (EDA)**: Aims to approach the data from both a qualitative and a quantitative standpoint for main insights
+The project follows a modular architecture:
 
-[2. Visualizing gaming of a lifetime dataset](#2.-visualizing-gaming-of-a-lifetime-dataset)
+1.  **Data Ingestion Layer**: Scrapers and CSV importers fetch data into the PostgreSQL database.
+2.  **Database Layer**: Tables for `gaming_lifetime` (personal), `metacritic` (market), and `how_long_to_beat` (metrics) are maintained with specialized indexes for performance.
+3.  **Analytics Layer**: Python functions process the raw SQL data into analysis-ready DataFrames (handling multi-genre explosion, brand tagging, etc.).
+4.  **Presentation Layer**: Multi-page Streamlit app renders interactive components.
 
-- [x]  **Data visualizations**: plots over KPIs (seaborn & pyplot)
-- [x] **Monthly churn rate and Cohort Analysis**: Aims to identify monthly churn rates and performance measurement through customer cohort analysis on retention rates
+---
 
-[3. Comparison of Scores with complete video game dataset](#3.-comparison-of-scores)
-- [x] **Importation & Data transformation** : import & clean 16.8K rows dataset
-- [x] **Merging & EDA of two dataframes**
-- [x] **Comparison plots**
+## 📁 Repository Structure
 
+```text
+├── app/                        # Streamlit Application Source
+│   ├── functions/              # Modular logic: db_co, analytics, filters, scrapers
+│   ├── pages/                  # Multi-page dashboard layouts
+│   ├── home_page.py            # Main entry point (Welcome/Overview)
+│   └── pyproject.toml          # Poetry dependency manifest
+├── db_data/                    # Database Infrastructure
+│   ├── init.sql                # PostgreSQL Schema definition
+│   ├── seed.sql                # Initial data insertion
+│   └── csv/                    # Source data for initialization
+├── scripts/                    # Standalone utility scripts for DB imports
+├── Docker-compose.yml          # Container orchestration
+└── new_features_ideas.md       # Project roadmap & upcoming features
+```
 
-**1. Data exploration**
+---
 
-**2. Visualizing gaming of a lifetime dataset**
+## 🚦 Getting Started
 
-**Amount of hours played distribution**
-Main gaming habits explored :
-- Distribution of average amount of hours per game
-- Slightly right skewed distribution, with most games having between 20 & 30 of playedhours - few outliers greater than 100 hours 
+### Prerequisites
+- **Docker & Docker Compose**
+- **Python 3.10+** (if running outside Docker)
+- **Poetry** (recommended for local development)
 
+### Quick Start (Dockerized)
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/Binardino/Gaming_of_a_lifetime.git
+    cd Gaming_of_a_lifetime
+    ```
+2.  **Configure Environment**:
+    Create a `.env` file in the root directory (refer to the project settings for required variables like `POSTGRES_USER`, `POSTGRES_PASSWORD`, etc.).
+3.  **Launch the stack**:
+    ```bash
+    docker-compose up --build
+    ```
+4.  **Access the Dashboard**:
+    Open [http://localhost:8501](http://localhost:8501) (default Streamlit port).
 
-<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_hours_played_all_game.png" alt="#displot hours played"/>
+### Local Development (Non-Docker)
+1.  Install dependencies: `poetry install`
+2.  Run the app: `streamlit run app/home_page.py`
 
+---
 
-**Distribution per system**
+## 📊 Database Schema Highlights
 
-Using Plotly to create dynamic Treemap of game per console, divided by brand.
+- **`gaming_lifetime`**: The core table containing game metadata, personal scores, and play timestamps.
+- **`metacritic_merged`**: A denormalized table joining personal records with Metascores, User scores, and global sales data.
+- **Unique Indexes**: Implemented on `(game_name, console, published_year)` to prevent data duplication during scraping cycles.
 
-**Platfrom & Brand distribution**
+---
 
-#Hover effect plot
+## 🗺 Roadmap
 
-On dynamic notebook version, displaying game type when hovering 
+Current development focuses on implementing the features detailed in `new_features_ideas.md`, including:
+- **Console Genre Radar**: Visualizing platform "identity" via spider charts.
+- **Hidden Gems Detector**: Highlighting games with high personal scores but low critical consensus.
+- **World Development Map**: Geographic analysis of developer studios.
 
-- Microsoft & PC is the most played system
-- PlayStation & Nintendo systems have the most different system used. 
+---
 
-<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/console_distribution.png" alt="hover pyplot console treemap"/>
+## 👤 Author
 
-**Genre distribution**
-- Action-Adventure games assess for top games
-- PC strategic games (STR) & old-school platforms are the second most played games, regardless of the amount of time spent on each of them
-<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/barplot_game_type_rainbow_version.png"/>
+**Binardino** - [langlois.robin@gmail.com](mailto:langlois.robin@gmail.com)
 
-**Published year VS. played year**
-Quick analysis comparing the release year of a game VS. the actual year I played it.
-Overall, I have the tendency to play games 1 or 2 years after their release ; truth be told, I usually look for metacritics, scores & reviews before spending hours on a game.
-Hence the following analysis over scores and ratings comparison
-
-<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/distplot_difference_publication.VS.played_year.png" alt="#seaborn distplot played year"/>
-
-
-**3. Comparison of Scores**
-
-Comparing  with complete video game dataset
-On the second notebook, using Plotly to create dynamic scatter plot to compare my personal score VS. metacritic scor (on a 100 scale)
-
-- Adding new dimension with sales per game
-Bubble-size relies on overall sales for each game - in order to measure whether good critics equal massive sales
-<img src="https://raw.githubusercontent.com/Binardino/Gaming_of_a_lifetime/master/Plots_Charts_PNG/Score_comparison_Metascore_VS._Perso_score.png" alt="#comparing metascores"/>
-
-
-## Conclusion
-Fun projects to practice SQL & DataViz
-- Comparable score ranking with metacritics' scores 
-- Mostly PC STR & platformers during early period - OpenWorld & Action Adventure in recent years
-- PlayStation is the most represented brand
-
-## Future Work
-- using Bokeh
-- PostGreSQL version
-- analyzing global & continental sales VS. scores
+---
+*Created as part of a Python training and personal data visualization project.*

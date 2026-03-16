@@ -91,6 +91,17 @@ poetry run python scripts/import_hltb.py
 poetry run python scripts/build_metacritic_merged.py
 ```
 
+> **Note** : `seed.sql` is NOT auto-loaded by docker-compose (only `init.sql` is). On a fresh DB, run manually:
+> ```bash
+> docker cp db_data/seed.sql gaming_db:/tmp/seed.sql
+> docker exec gaming_db sh -c "psql -U gaming_pandas -d my_videogames -f /tmp/seed.sql"
+> ```
+
+> **Note** : `build_metacritic_merged.py` reads CSVs from `db_data/csv/` and requires `DATABASE_URL`. When running against the Docker DB (recommended), use `docker exec`:
+> ```bash
+> docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@gaming_db:5432/my_videogames python scripts/build_metacritic_merged.py"
+> ```
+
 ### Access
 - Streamlit app: http://localhost:8501
 - PostgreSQL: localhost:5432
@@ -104,8 +115,8 @@ poetry run python scripts/build_metacritic_merged.py
 - fuzzy matching improvement done (`rapidfuzz`, `build_metacritic_merged.py`)
 
 ### Two-container Docker setup
-- **gaming_db**: PostgreSQL 16 Alpine — initialized from `db_data/init.sql` (schema) and `db_data/seed.sql` (250+ games). CSV files are copied into the container for import scripts.
-- **py_gaming_app**: Python 3.11 Streamlit app — depends on DB healthcheck before starting.
+- **gaming_db**: PostgreSQL 16 Alpine — initialized from `db_data/init.sql` (schema only). `seed.sql` must be loaded manually on fresh DB (see Database scripts above).
+- **py_gaming_app**: Python 3.11 Streamlit app — depends on DB healthcheck before starting. Uses `ENV POETRY_VIRTUALENVS_CREATE=false` to install packages globally (not in a venv).
 
 ### Multi-page Streamlit app (`app/`)
 - `home_page.py` — entry point / landing page

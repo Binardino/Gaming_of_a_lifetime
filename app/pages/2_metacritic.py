@@ -1,35 +1,24 @@
 # Imports
 import streamlit as st
-import pandas as pd
-import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
-import os
 import sys
-import sqlalchemy
-from functions.data_wrangling import *
-from functions.db_connection import *
-from functions.visualisation_tools import *
-from functions.mask_df_utils import *
-import functions.db_connection as db_co
-#from tqdm import tqdm
-#set path for dynamic function import
 from pathlib import Path
-# Adds the parent directory of this script to sys.path
-CURRENT_FILE = Path(__file__).resolve()
-PAGES_DIR = CURRENT_FILE.parent
-ROOT_DIR = PAGES_DIR.parent
-sys.path.append(str(ROOT_DIR))
-#%%#%% import data
-engine = db_co.sql_connection()
-query = sqlalchemy.text('SELECT * FROM public.metacritic_merged')
-print(pd.read_sql(sql=query, con=engine.connect()))
-df_meta = db_co.get_data_sql(sql=query, engine=engine.connect())
 
-query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
-df_vg = db_co.get_data_sql(sql=query, engine=engine.connect())
+# Adds the parent directory (app/) to sys.path so that functions/ is importable
+# regardless of how Streamlit resolves multi-page script paths.
+CURRENT_FILE = Path(__file__).resolve()
+ROOT_DIR = CURRENT_FILE.parent.parent
+sys.path.append(str(ROOT_DIR))
+
+import functions.db_connection as db_co
+from functions.data_wrangling import clean_df_list
+from functions.sidebar import render_sidebar
+from functions.filters import apply_filters
+#%% load data
+# Single cached call — no connection leaks, DB queried once per session.
+df_meta = db_co.load_table('public.metacritic_merged')
 #%% README
 st.set_page_config(page_title="page2 - Metacritic analysis")
 
@@ -43,8 +32,7 @@ st.markdown(f"""The goal of this part is to compare personal data from my videog
             
             The available Metacritic dataset dates back from 2016;
             Remaining data post 2016 were fetched through web scraping from metacritic webpage for the set of consoles I played.
-            I end up doing the comparison between 
-            data from Metacritic fetched data (size : {df_meta.size}) VS. my personal gaming of the lifetime (size : {df_vg.size})
+            The metacritic_merged dataset contains {df_meta.shape[0]} matched games.
             
             """)
 #%% correlation between scores
@@ -62,15 +50,8 @@ df_genre_raw, genre_list, dict_genre = clean_df_list(df_meta, 'game_type')
 
 st.write(df_meta)
 #%%
-# Set up initial session state values once
-init_sidebar_state(console_list, genre_list, df_meta)
-
-filters = create_sidebar_widgets(df_meta, console_list, genre_list)
-
-subdf_filter = apply_all_masks(df_meta, filters, dict_console=dict_console, dict_genre=dict_genre)
-
-# Assume you have loaded df_vg, console_list, genre_list, dict_console, dict_genre
-#subdf_filter = apply_sidebar_filters(df_vg, console_list, genre_list, dict_console, dict_genre)
+filters = render_sidebar(df_vg=df_meta, console_list=console_list, genre_list=genre_list)
+subdf_filter = apply_filters(df=df_meta, filters=filters, dict_console=dict_console, dict_genre=dict_genre)
 
 st.markdown("""filtered df""")
 st.dataframe(subdf_filter)
@@ -121,7 +102,7 @@ st.plotly_chart(fig_violin)
 #%% Swarm plot
 st.subheader("""Swarm plot of score differences between personal scores & meta scores - by game type""")
 
-st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
+st.write("""Strip/Swarm plot displaying for every single game the score difference between my personal scores and the ones from Metacritic.""")
 
 
 fig_strip_swarm = px.strip(subdf_filter, 
@@ -134,7 +115,7 @@ st.plotly_chart(fig_strip_swarm)
 #%% bar plot
 st.subheader("""Bar plot of score differences between personal scores & meta scores - by game name""")
 
-st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
+st.write("""Bar chart showing the mean score difference per game type, with error bars representing the standard deviation.""")
 
 fig_bar_error = px.bar(subdf_filter.groupby('game_type')['score_diff'].mean().reset_index(), # 
                        x='game_type', 

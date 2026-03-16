@@ -20,6 +20,7 @@ python-dotenv = ">=1.0"
 sqlalchemy = ">=2.0"
 psycopg2-binary = ">=2.9"
 pyarrow = ">=14,<16"
+rapidfuzz = ">=3.0"
 streamlit = ">=1.25"
 
 [build-system]

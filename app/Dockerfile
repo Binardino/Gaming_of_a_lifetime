@@ -21,7 +21,7 @@ ENV POETRY_VERSION=2.2.1
 RUN pip install --upgrade pip poetry==${POETRY_VERSION}
 
 # Desactivate virtualenvs Poetry (Docker = venv)
-RUN poetry config virtualenvs.create false
+ENV POETRY_VIRTUALENVS_CREATE=false
 
 # Create non-root user
 RUN useradd -m -d /home/gaming_reader -s /bin/bash gaming_reader && \

@@ -21,7 +21,8 @@ def str_cleaning(df: pd.DataFrame) -> pd.DataFrame:
     df['console']        = df['console'].str.replace(' / ', '', regex=False)
     df['published_year'] = pd.to_numeric(df['published_year'], errors='coerce').fillna(0).astype(int)
     df['played_year']    = pd.to_numeric(df['played_year'],    errors='coerce').fillna(0).astype(int)
-    df['country_dev']    = df['country_dev'].str.strip()
+    if 'country_dev' in df.columns:
+        df['country_dev'] = df['country_dev'].str.strip()
 
     return df
 

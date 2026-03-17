@@ -1,43 +1,18 @@
-# Imports
 import streamlit as st
-import pandas as pd
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-import seaborn as sns
 import plotly.express as px
-import os
 import sys
-import sqlalchemy
-from functions.db_connection import *
-from functions.mask_df_utils import *
-#set path for dynamic function import
 from pathlib import Path
-# Adds the parent directory of this script to sys.path
+
 CURRENT_FILE = Path(__file__).resolve()
-PAGES_DIR = CURRENT_FILE.parent
-ROOT_DIR = PAGES_DIR.parent
-sys.path.append(str(ROOT_DIR))
-from functions.data_wrangling import *
-from functions.metacritic_wrangling import *
-from functions.visualisation_tools import *
-from functions.db_connection import *
+sys.path.append(str(CURRENT_FILE.parent.parent))
+
 import functions.db_connection as db_co
+from functions.data_wrangling import str_cleaning, clean_df_list
+from functions.sidebar import render_sidebar
+from functions.filters import apply_filters
 
-st.set_page_config(page_title="page3 - How long to beat analysis")
-#%%#%% import data
-engine_vg = db_co.sql_connection()
+st.set_page_config(page_title="Page 3 - How Long To Beat analysis")
 
-query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
-print(pd.read_sql(sql=query, con=engine_vg.connect(), index_col='id'))
-
-df_raw = get_data_sql(sql=query, engine=engine_vg.connect())
-
-df_hltb = get_data_sql(sql=sqlalchemy.text('SELECT * FROM how_long_to_beat'), engine=engine_vg.connect())
-st.write(df_hltb)
-
-df_hltb['main_diff']        = df_hltb['comp_main'] - df_hltb['hours_played']
-df_hltb['plus_diff']        = df_hltb['comp_plus'] - df_hltb['hours_played']
 #%% README
 st.write(f"# Welcome to the Adventure of a Lifetime - How long to beat comparison🎮")
 

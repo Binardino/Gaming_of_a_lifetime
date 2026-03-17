@@ -15,6 +15,8 @@ services:
       - POSTGRES_PORT=${POSTGRES_PORT}
     volumes:
       - ./db_data/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db_data/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+      - ./db_data/seed_metacritic_merged.sql:/docker-entrypoint-initdb.d/seed_metacritic_merged.sql
       - ./db_data/csv/hltb_scrap.csv:/docker-entrypoint-initdb.d/csv_file/hltb_scrap.csv
       - ./db_data/csv/metacritic_clean.csv:/docker-entrypoint-initdb.d/csv_file/metacritic_clean.csv
       - ./db_data/csv/metacritic_merged_local.csv:/docker-entrypoint-initdb.d/csv_file/metacritic_merged_local.csv

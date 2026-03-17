@@ -87,26 +87,32 @@ def render_sidebar(
                                key=SidebarKeys.GENRE)
 
         #country_dev
-        st.subheader('Developer Country')
-        country_opts = _sorted_unique(df_vg['country_dev'])
-        country = st.multiselect('Developer Country',
-                               options=country_opts,
-                               default=country_opts,
-                               key=SidebarKeys.COUNTRY)
+        country = None
+        if 'country_dev' in df_vg.columns:
+            st.subheader('Developer Country')
+            country_opts = _sorted_unique(df_vg['country_dev'])
+            country = st.multiselect('Developer Country',
+                                   options=country_opts,
+                                   default=country_opts,
+                                   key=SidebarKeys.COUNTRY)
         #studio
-        st.subheader('Studio')
-        studio_opts = _sorted_unique(df_vg['studio'])
-        studio = st.multiselect('Studio',
-                               options=studio_opts,
-                               default=studio_opts,
-                               key=SidebarKeys.STUDIO)
+        studio = None
+        if 'studio' in df_vg.columns:
+            st.subheader('Studio')
+            studio_opts = _sorted_unique(df_vg['studio'])
+            studio = st.multiselect('Studio',
+                                   options=studio_opts,
+                                   default=studio_opts,
+                                   key=SidebarKeys.STUDIO)
         #editor
-        st.subheader('Editor')
-        editor_opts = _sorted_unique(df_vg['editor'])
-        editor = st.multiselect('Editor',
-                               options=editor_opts,
-                               default=editor_opts,
-                               key=SidebarKeys.EDITOR)
+        editor = None
+        if 'editor' in df_vg.columns:
+            st.subheader('Editor')
+            editor_opts = _sorted_unique(df_vg['editor'])
+            editor = st.multiselect('Editor',
+                                   options=editor_opts,
+                                   default=editor_opts,
+                                   key=SidebarKeys.EDITOR)
 
         # Keys must match exactly what apply_filters() expects in filters.py.
         return {

@@ -91,31 +91,33 @@ poetry run python scripts/import_hltb.py
 poetry run python scripts/build_metacritic_merged.py
 ```
 
-> **Note** : `seed.sql` is NOT auto-loaded by docker-compose (only `init.sql` is). On a fresh DB, run manually:
-> ```bash
-> docker cp db_data/seed.sql gaming_db:/tmp/seed.sql
-> docker exec gaming_db sh -c "psql -U gaming_pandas -d my_videogames -f /tmp/seed.sql"
-> ```
+> **Note** : On a fresh DB, `docker-compose up --build` auto-seeds all three tables via `initdb.d` (alphabetical order):
+> `init.sql` (schema) → `seed.sql` (gaming_lifetime) → `seed_hltb.sql` (how_long_to_beat) → `seed_metacritic_merged.sql` (metacritic_merged)
+> Re-seeding is **only triggered on a truly empty data volume** — use `docker-compose down && docker-compose up --build` to force it.
 
-> **Note** : `build_metacritic_merged.py` reads CSVs from `db_data/csv/` and requires `DATABASE_URL`. When running against the Docker DB (recommended), use `docker exec`:
+> **Note** : `country_dev`, `studio`, `editor` were added late to `gaming_lifetime`. To regenerate joined tables with these columns:
 > ```bash
+> # metacritic_merged
 > docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@gaming_db:5432/my_videogames python scripts/build_metacritic_merged.py"
+> # how_long_to_beat (import_hltb.py joins gaming_lifetime to add the 3 columns)
+> docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@gaming_db:5432/my_videogames python scripts/import_hltb.py"
 > ```
+> After running, commit the updated CSVs in `db_data/csv/` so Docker seeding stays in sync.
 
 ### Access
 - Streamlit app: http://localhost:8501
 - PostgreSQL: localhost:5432
 
 ## 3. Current Architecture & WIP Goals
-- **Project State**: In active development. Focus is on improving modularity and EDA features.
+- **Project State**: In active development. Active branch: `refacto/page3-hltb`.
 **Refactoring Directions**
 - Move logic out of `pages/` and into `functions/` modules.
-- refactor of page_3_hltb (page_2_metacritic done)
+- refactor of page_3_hltb — **IN PROGRESS** (page_2_metacritic done)
 - dynamic sql system to add new game entries in the future
 - fuzzy matching improvement done (`rapidfuzz`, `build_metacritic_merged.py`)
 
 ### Two-container Docker setup
-- **gaming_db**: PostgreSQL 16 Alpine — initialized from `db_data/init.sql` (schema only). `seed.sql` must be loaded manually on fresh DB (see Database scripts above).
+- **gaming_db**: PostgreSQL 16 Alpine — `init.sql` (schema) + `seed.sql` + `seed_hltb.sql` + `seed_metacritic_merged.sql` all auto-run via `initdb.d` on a fresh volume.
 - **py_gaming_app**: Python 3.11 Streamlit app — depends on DB healthcheck before starting. Uses `ENV POETRY_VIRTUALENVS_CREATE=false` to install packages globally (not in a venv).
 
 ### Multi-page Streamlit app (`app/`)
@@ -131,7 +133,7 @@ poetry run python scripts/build_metacritic_merged.py
 | `data_wrangling.py` | String cleaning, pipe-delimited column splitting, console brand tagging |
 | `filters.py` | Filter dispatcher (`apply_filters()`), handles pipe-delimited multi-values |
 | `analytics.py` | GroupBy/pivot computations (games per console, hours, abandon rate, etc.) |
-| `sidebar.py` | `SidebarKeys` constants, `render_sidebar()` → returns filter dict |
+| `sidebar.py` | `SidebarKeys` constants, `render_sidebar()` → returns filter dict. Uses `_int_range()` / `_sorted_unique()` helpers (NaN-safe). `country_dev`/`studio`/`editor` widgets are conditional on column presence. |
 | `visualisation_tools.py` | Plotly/Matplotlib wrappers |
 | `metacritic_wrangling.py` | `normalize_title()`, `fuzzymatch_metacritic()` — rapidfuzz `token_sort_ratio`, threshold 85 |
 
@@ -143,16 +145,18 @@ poetry run python scripts/build_metacritic_merged.py
 5. `st.plotly_chart()` / `st.dataframe()` — display
 
 ### Database tables
-- **gaming_lifetime** — personal data: game_name, console, game_type, finished, played_year, hours_played, perso_score, studio, etc. (~250 games)
+- **gaming_lifetime** — personal data: game_name, console, game_type, finished, played_year, hours_played, perso_score, country_dev, studio, editor, etc. (~250 games)
 - **metacritic** — external: critic_score, user_score, sales data (~16K games from Kaggle + scraping)
-- **how_long_to_beat** — completion times: comp_main, comp_all, comp_100, comp_plus
-- **metacritic_merged** — join of gaming_lifetime + metacritic with fuzzy match scores
+- **how_long_to_beat** — join of gaming_lifetime + HLTB scraped data: comp_main, comp_all, comp_100, comp_plus + personal columns. `country_dev`/`studio`/`editor` added to schema; regenerate by re-running `import_hltb.py`.
+- **metacritic_merged** — join of gaming_lifetime + metacritic with fuzzy match scores. `country_dev`/`studio`/`editor` added to schema; regenerate by re-running `build_metacritic_merged.py`.
 
 ### Key data conventions
 - Console and game_type columns are **pipe-delimited** (e.g., `"PS4|PC"`, `"JRPG|Open World"`) — use `filter_mapping()` / `clean_df_list()` to handle them
 - `Filters` is a `TypeAlias = Dict[str, Any]` (defined in `filters.py`)
 - Always use `.copy()` on DataFrames before mutation
 - Scores are 0–100 scale
+- `str_cleaning()` in `data_wrangling.py` guards `country_dev` with `if 'country_dev' in df.columns` — not all tables have this column
+- Each page must have an **empty-table guard** (`if df.empty: st.warning(...); st.stop()`) right after `load_table()` — seeds load on fresh DB only, edge cases exist
 
 ## Environment
 

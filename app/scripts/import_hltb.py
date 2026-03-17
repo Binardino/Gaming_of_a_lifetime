@@ -10,6 +10,12 @@ def main():
     engine = create_engine(DB_URL)
     df = pd.read_csv(CSV_PATH)
 
+    df_gl = pd.read_sql(
+        "SELECT game_name, country_dev, studio, editor FROM gaming_lifetime",
+        engine,
+    )
+    df = df.merge(df_gl, on="game_name", how="left")
+
     upsert_dataframe(
         df=df,
         table="how_long_to_beat",
@@ -17,6 +23,7 @@ def main():
         conflict_cols=["game_name", "platform"],
     )
 
+    df.to_csv(CSV_PATH, index=False)
     print(f"✅ {len(df)} rows processed")
 
 if __name__ == "__main__":

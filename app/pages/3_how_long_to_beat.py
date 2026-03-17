@@ -1,137 +1,151 @@
-# Imports
 import streamlit as st
-import pandas as pd
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-import seaborn as sns
 import plotly.express as px
-import os
 import sys
-import sqlalchemy
-from functions.db_connection import *
-from functions.mask_df_utils import *
-#set path for dynamic function import
 from pathlib import Path
-# Adds the parent directory of this script to sys.path
+
 CURRENT_FILE = Path(__file__).resolve()
-PAGES_DIR = CURRENT_FILE.parent
-ROOT_DIR = PAGES_DIR.parent
-sys.path.append(str(ROOT_DIR))
-from functions.data_wrangling import *
-from functions.metacritic_wrangling import *
-from functions.visualisation_tools import *
-from functions.db_connection import *
+sys.path.append(str(CURRENT_FILE.parent.parent))
+
 import functions.db_connection as db_co
+from functions.data_wrangling import str_cleaning, clean_df_list
+from functions.sidebar import render_sidebar
+from functions.filters import apply_filters
 
-st.set_page_config(page_title="page3 - How long to beat analysis")
-#%%#%% import data
-engine_vg = db_co.sql_connection()
+st.set_page_config(page_title="Page 3 - How Long To Beat analysis")
 
-query = sqlalchemy.text('SELECT * FROM gaming_lifetime')
-print(pd.read_sql(sql=query, con=engine_vg.connect(), index_col='id'))
+#%% Load data
+df_hltb_raw = db_co.load_table('how_long_to_beat')
 
-df_raw = get_data_sql(sql=query, engine=engine_vg.connect())
+if df_hltb_raw.empty:
+    st.warning(
+        "No How Long To Beat data available yet. "
+        "The dataset has not been loaded into the database."
+    )
+    st.info(
+        "**For admins:** populate the table by running the import script inside the app container:\n\n"
+        "```bash\n"
+        "docker exec py_gaming_app sh -c "
+        "\"DATABASE_URL=postgresql://<user>:<password>@gaming_db:<port>/<db> "
+        "python scripts/import_hltb.py\"\n"
+        "```"
+    )
+    st.stop()
 
-df_hltb = get_data_sql(sql=sqlalchemy.text('SELECT * FROM how_long_to_beat'), engine=engine_vg.connect())
-st.write(df_hltb)
+#%% Clean + extract lists
+df_hltb = str_cleaning(df_hltb_raw)
+_, console_list, dict_console = clean_df_list(df_hltb, 'console')
+_, genre_list,   dict_genre   = clean_df_list(df_hltb, 'game_type')
 
-df_hltb['main_diff']        = df_hltb['comp_main'] - df_hltb['hours_played']
-df_hltb['plus_diff']        = df_hltb['comp_plus'] - df_hltb['hours_played']
+#%% Sidebar + filters
+filters      = render_sidebar(df_vg=df_hltb, console_list=console_list, genre_list=genre_list)
+subdf_filter = apply_filters(df=df_hltb, filters=filters,
+                             dict_console=dict_console, dict_genre=dict_genre)
+
+#%% Computed columns (on filtered df)
+subdf_filter = subdf_filter.copy()
+subdf_filter['main_diff'] = subdf_filter['comp_main'] - subdf_filter['hours_played']
+subdf_filter['plus_diff'] = subdf_filter['comp_plus'] - subdf_filter['hours_played']
+
 #%% README
-st.write(f"# Welcome to the Adventure of a Lifetime - How long to beat comparison🎮")
-
-st.markdown(f"""The goal of this part is to compare my personal data from my videogame_lifetime database with the data from How Long To Beat (HLTB). 
-            HLTB is an crowd sourced database, agregating the time the players took to finish a game. 
+st.write("# How Long To Beat — Comparison 🎮")
+st.markdown(f"""# Welcome to the Adventure of a Lifetime - How long to beat comparison🎮
             
-            **Compare data from HLTB dataset**
-            
-            The available How Long To Beat is up-to-date with data fetching ;
-            
-            List how long takes a game to be done at various stages. Only the {df_hltb.size}
+The goal of this part is to compare my personal data from my videogame_lifetime database with the data from How Long To Beat (HLTB). 
+HLTB is an crowd sourced database, agregating the time the players took to finish a game. 
 
-            In How long to beat, the time the gamer took to play a game is divided in 4 categories
-            - comp_100 
-            - comp_all
-            - comp_main
-            - comp_plus
+**Compare data from HLTB dataset**
 
-            """)
-#%%
-st.subheader("""Scatter plot of hour differences between personal played hours & main completional hours - by game type""")
+The available How Long To Beat is up-to-date with data fetching ;
 
-st.write("""Scatter plot to display hour differences between personal played hours & main completional hours from HLTB - by game type""")
+List how long takes a game to be done at various stages. Only the {df_hltb.size}
 
-fig_scatter = px.scatter(data_frame=df_hltb,
-                       x='hours_played',
-                       y='comp_main',
-                       color='game_type',
-                       hover_name='game_name')
-                       #box=True)
-                       #kde=50)
+Compare personal gaming data against the [How Long To Beat](https://howlongtobeat.com/) dataset.
+HLTB is a crowd-sourced database aggregating the time players took to complete a game.
 
+**Completion time categories:**
+- `comp_main` — main story only
+- `comp_plus` — main story + extras
+- `comp_all` — all achievements / side content
+- `comp_100` — 100% completion
+
+Dataset: **{len(subdf_filter)} games** matched after filters.
+""")
+
+#%% Chart 1 — Scatter: personal hours vs HLTB main completion time
+st.subheader("Personal hours played vs HLTB main completion time — by game type")
+st.write("Scatter plot comparing time I actually spent vs the average main story completion time from HLTB.")
+
+fig_scatter = px.scatter(
+    data_frame=subdf_filter,
+    x='hours_played',
+    y='comp_main',
+    color='game_type',
+    hover_name='game_name',
+)
 st.plotly_chart(fig_scatter)
-#%%
-st.subheader("""Violin plot of score differences between personal scores & meta scores - by game name""")
 
-st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
+#%% Chart 2 — Violin: hours_played vs comp_all distribution by game name
+st.subheader("Personal hours vs full completion time — distribution by game")
+st.write("Violin plot showing the spread between personal hours played and HLTB all-achievements time, per game.")
 
-fig_violin = px.violin(data_frame=df_hltb,
-                       x='game_name',
-                       y=['hours_played', 'comp_all'],
-                       box=True)
-                       #kde=50)
+fig_violin_by_game = px.violin(
+    data_frame=subdf_filter,
+    x='game_name',
+    y=['hours_played', 'comp_all'],
+    box=True,
+)
+st.plotly_chart(fig_violin_by_game)
 
-st.plotly_chart(fig_violin)
-#%%
-st.subheader("""Violin plot of score differences between personal scores & meta scores - by game name""")
+#%% Chart 3 — Box: hours_played vs comp_all by game name, colored by platform
+st.subheader("Personal hours vs full completion time — box plot by game and platform")
+st.write("Box plot of personal hours vs HLTB all-achievements time, broken down by game and HLTB platform.")
 
-st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
-
-fig_boxplot = px.box(data_frame=df_hltb,
-                     x='game_name', 
-                     y=['hours_played', 'comp_all'],
-                     width=1000, height=400,
-                     color='platform'
-                     )
-
+fig_boxplot = px.box(
+    data_frame=subdf_filter,
+    x='game_name',
+    y=['hours_played', 'comp_all'],
+    width=1000, height=400,
+    color='platform',
+)
 st.plotly_chart(fig_boxplot)
 
-#%% violin plot
-st.subheader("""Violin plot of score differences between personal scores & meta scores - by game type""")
+#%% Chart 4 — Violin: main+extras time difference by game type
+st.subheader("Main + extras hours difference (personal vs HLTB) — by game type")
+st.write("Violin plot of the difference between my playtime and HLTB main+extras time, per genre.")
 
-st.write("""Violin plot to display for each game genre the score difference spread between my personal scores and the ones from Metacritic.""")
+fig_violin_diff = px.violin(
+    subdf_filter,
+    x='game_type',
+    y='plus_diff',
+    color='game_type',
+    title='Violin: Main+Plus hours difference per game type',
+    box=True,
+)
+st.plotly_chart(fig_violin_diff)
 
-fig_violin = px.violin(df_hltb,
-                       x='game_type',
-                       y='plus_diff',
-                       color='game_type',
-                       title='Violin plot of Main + Plus hours difference per Game type',
-                       box=True)
+#%% Chart 5 — Strip: main+extras time difference by game type
+st.subheader("Main + extras hours difference — strip plot by game type")
+st.write("Individual data points showing the difference between my playtime and HLTB main+extras time.")
 
-st.plotly_chart(fig_violin)
-#%% Swarm plot
-st.subheader("""Swarm plot of score differences between personal scores & meta scores - by game type""")
+fig_strip = px.strip(
+    subdf_filter,
+    x='game_type',
+    y='plus_diff',
+    hover_name='game_name',
+    color='game_type',
+    title='Strip plot: Main+Plus hours difference by game type',
+    width=800,
+)
+st.plotly_chart(fig_strip)
 
-st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
+#%% Chart 6 — Polar: main completion time by game
+st.subheader("HLTB main completion time — polar chart by game")
+st.write("Polar chart showing main story completion time from HLTB for each matched game.")
 
-
-fig_strip_swarm = px.strip(df_hltb, 
-                           x='game_type', y='plus_diff', 
-                           hover_name='game_name',
-                           color='game_type', 
-                           title='Strip Plot with Swarm Plot by Game Type', 
-                           width=800)
-st.plotly_chart(fig_strip_swarm)
-
-#%%
-st.subheader("""Violin plot of score differences between personal scores & meta scores - by game name""")
-
-st.write("""Violin plot to display for every single game name the score difference spread between my personal scores and the ones from Metacritic.""")
-
-fig_radar = px.line_polar(df_hltb, 
-                          r='game_name', 
-                          theta=['hours_played', 'comp_all'], 
-                          line_close=True)
-
+fig_radar = px.line_polar(
+    subdf_filter,
+    r='comp_main',
+    theta='game_name',
+    line_close=True,
+)
 st.plotly_chart(fig_radar)

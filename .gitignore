@@ -30,6 +30,9 @@ htmlcov/
 models/
 outputs/
 
+# Local dataset CSVs — not committed, see private data repo
+db_data/csv/
+
 # OS
 .DS_Store
 Thumbs.db

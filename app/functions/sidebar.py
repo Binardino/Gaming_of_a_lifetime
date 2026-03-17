@@ -13,9 +13,14 @@ class SidebarKeys:
     EDITOR      = "filter_editor"
 
 def _int_range(series):
-    """(min, max) as ints — NaN treated as 0."""
+    """(min, max) as ints — NaN treated as 0, empty/flat series returns sensible range."""
     clean = series.fillna(0)
-    return int(clean.min()), int(clean.max())
+    if clean.empty:
+        return 0, 1
+    lo, hi = int(clean.min()), int(clean.max())
+    if lo == hi:
+        return lo, lo + 1  # st.slider requires min < max (strict)
+    return lo, hi
 
 def _sorted_unique(series):
     """Sorted unique values, NaN excluded."""

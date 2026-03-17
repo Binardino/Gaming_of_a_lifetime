@@ -19,6 +19,22 @@ from functions.filters import apply_filters
 #%% load data
 # Single cached call — no connection leaks, DB queried once per session.
 df_meta = db_co.load_table('public.metacritic_merged')
+
+if df_meta.empty:
+    st.warning(
+        "No Metacritic data available yet. "
+        "The comparison dataset has not been loaded into the database."
+    )
+    st.info(
+        "**For admins:** populate the table by running the build script inside the app container:\n\n"
+        "```bash\n"
+        "docker exec py_gaming_app sh -c "
+        "\"DATABASE_URL=postgresql://<user>:<password>@gaming_db:<port>/<db> "
+        "python scripts/build_metacritic_merged.py\"\n"
+        "```"
+    )
+    st.stop()
+
 #%% README
 st.set_page_config(page_title="page2 - Metacritic analysis")
 

@@ -88,6 +88,7 @@ CONSOLE_MAPPER = {
 MERGED_COLUMNS = [
     'id', 'game_name', 'console', 'game_type', 'finished',
     'published_year', 'played_year', 'hours_played', 'perso_score', 'multiplayed',
+    'country_dev', 'studio', 'editor',
     'fuzz', 'game_title', 'game_platform', 'game_release_date',
     'genre', 'publisher',
     'na_sales', 'eu_sales', 'jp_sales', 'other_sales', 'global_sales',
@@ -188,6 +189,14 @@ def main():
 
     df_out.to_sql('metacritic_merged', engine, if_exists='append', index=False, method='multi')
     print(f"✅ metacritic_merged rebuilt with {len(df_out)} rows")
+
+    # Export CSV snapshot for Docker seeding (db_data/csv/metacritic_merged_local.csv)
+    csv_path = CSV_DIR / "metacritic_merged_local.csv"
+    try:
+        df_out.to_csv(csv_path, index=False)
+        print(f"✅ CSV snapshot saved to {csv_path}")
+    except Exception as e:
+        print(f"⚠️  Could not save CSV snapshot to {csv_path}: {e}")
 
 
 if __name__ == "__main__":

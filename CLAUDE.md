@@ -137,6 +137,9 @@ docker-compose down && docker-compose up --build
 - Dynamic SQL system for adding new games (`seed.sql` + idempotent `seed_database.py`)
 **Next**
 - Dynamic SQL form in Streamlit (add new games via UI)
+- HLTB scraper: build `app/scripts/scrape_hltb.py` — either fix `OLD/hltb_scraper_deprecated.py`
+  (replace `search_modifiers.value` bug) or use the `howlongtobeat` pip package (recommended,
+  community-maintained, handles API changes). Feeds into `import_hltb.py` via `hltb_scrap.csv`.
 
 ### Two-container Docker setup
 - **gaming_db**: PostgreSQL 16 Alpine — `init.sql` (schema) + `seed.sql` + `seed_hltb.sql` + `seed_metacritic_merged.sql` all auto-run via `initdb.d` on a fresh volume.

@@ -85,36 +85,58 @@ poetry run mypy functions/
 ### Database scripts
 ```bash
 cd app/
-poetry run python scripts/seed_database.py
-poetry run python scripts/import_metacritic.py
-poetry run python scripts/import_hltb.py
-poetry run python scripts/build_metacritic_merged.py
+poetry run python scripts/seed_database.py        # seed or update gaming_lifetime (idempotent)
+poetry run python scripts/import_hltb.py          # upsert how_long_to_beat from hltb_scrap.csv
+poetry run python scripts/build_metacritic_merged.py  # rebuild metacritic_merged via fuzzy match
 ```
 
-> **Note** : On a fresh DB, `docker-compose up --build` auto-seeds all three tables via `initdb.d` (alphabetical order):
-> `init.sql` (schema) → `seed.sql` (gaming_lifetime) → `seed_hltb.sql` (how_long_to_beat) → `seed_metacritic_merged.sql` (metacritic_merged)
-> Re-seeding is **only triggered on a truly empty data volume** — use `docker-compose down && docker-compose up --build` to force it.
+> **Fresh DB:** `docker-compose up --build` auto-seeds all tables via `initdb.d` (alphabetical order):
+> `init.sql` (schema) → `seed.sql` (gaming_lifetime) → `seed_hltb.sql` (how_long_to_beat) → `seed_metacritic_merged.sql` (metacritic_merged).
+> Re-seeding only triggers on an empty data volume — use `docker-compose down && docker-compose up --build` to force it.
 
-> **Note** : `country_dev`, `studio`, `editor` were added late to `gaming_lifetime`. To regenerate joined tables with these columns:
-> ```bash
-> # metacritic_merged
-> docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@gaming_db:5432/my_videogames python scripts/build_metacritic_merged.py"
-> # how_long_to_beat (import_hltb.py joins gaming_lifetime to add the 3 columns)
-> docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@gaming_db:5432/my_videogames python scripts/import_hltb.py"
-> ```
-> After running, commit the updated CSVs in `db_data/csv/` so Docker seeding stays in sync.
+### Maintenance workflow
+
+#### Adding new games to gaming_lifetime
+1. Add the new row(s) to `db_data/seed.sql` (follow the existing INSERT format)
+2. Run `seed_database.py` to push changes to the live DB (idempotent — ON CONFLICT DO NOTHING skips existing rows):
+```bash
+docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@gaming_db:5432/my_videogames python scripts/seed_database.py"
+```
+3. Commit `db_data/seed.sql`
+
+#### Re-scraping HLTB (after new games added)
+4. Run the HLTB scraper → replace `db_data/csv/hltb_scrap.csv` in the private data repo
+5. Run `import_hltb.py` (upserts + enriches CSV with country_dev/studio/editor from gaming_lifetime):
+```bash
+docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@gaming_db:5432/my_videogames python scripts/import_hltb.py"
+```
+6. Commit the updated CSV in the private data repo
+
+#### Rebuilding metacritic_merged (after new games added)
+7. Optionally add new scraped CSVs to `db_data/csv/`
+8. Run `build_metacritic_merged.py` (TRUNCATE + rebuild + export `metacritic_merged_local.csv`):
+```bash
+docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@gaming_db:5432/my_videogames python scripts/build_metacritic_merged.py"
+```
+9. Commit the updated `metacritic_merged_local.csv` in the private data repo
+
+#### Syncing Docker seeding after private data CSVs change
+```bash
+docker-compose down && docker-compose up --build
+```
 
 ### Access
 - Streamlit app: http://localhost:8501
 - PostgreSQL: localhost:5432
 
 ## 3. Current Architecture & WIP Goals
-- **Project State**: In active development. Active branch: `refacto/page3-hltb`.
-**Refactoring Directions**
-- Move logic out of `pages/` and into `functions/` modules.
-- refactor of page_3_hltb — **IN PROGRESS** (page_2_metacritic done)
-- dynamic sql system to add new game entries in the future
-- fuzzy matching improvement done (`rapidfuzz`, `build_metacritic_merged.py`)
+- **Project State**: In active development. All 3 pages functional.
+**Completed**
+- Refactor of all 3 pages — logic moved out of `pages/` into `functions/` modules
+- Fuzzy matching (`rapidfuzz`, `build_metacritic_merged.py`)
+- Dynamic SQL system for adding new games (`seed.sql` + idempotent `seed_database.py`)
+**Next**
+- Dynamic SQL form in Streamlit (add new games via UI)
 
 ### Two-container Docker setup
 - **gaming_db**: PostgreSQL 16 Alpine — `init.sql` (schema) + `seed.sql` + `seed_hltb.sql` + `seed_metacritic_merged.sql` all auto-run via `initdb.d` on a fresh volume.

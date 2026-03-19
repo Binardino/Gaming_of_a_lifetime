@@ -46,6 +46,8 @@ services:
     restart: always
     ports:
       - "${STAPP_PORT}:${STAPP_PORT}"
+    volumes:
+      - ./db_data/csv:/app/db_data/csv
 
 volumes:
   db:

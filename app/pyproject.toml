@@ -22,6 +22,7 @@ psycopg2-binary = ">=2.9"
 pyarrow = ">=14,<16"
 rapidfuzz = ">=3.0"
 streamlit = ">=1.25"
+howlongtobeatpy = ">=1.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

@@ -86,6 +86,7 @@ poetry run mypy functions/
 ```bash
 cd app/
 poetry run python scripts/seed_database.py        # seed or update gaming_lifetime (idempotent)
+poetry run python scripts/scrape_hltb.py          # scrape HLTB → writes hltb_scrap.csv (one-shot)
 poetry run python scripts/import_hltb.py          # upsert how_long_to_beat from hltb_scrap.csv
 poetry run python scripts/build_metacritic_merged.py  # rebuild metacritic_merged via fuzzy match
 ```
@@ -105,7 +106,10 @@ docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@g
 3. Commit `db_data/seed.sql`
 
 #### Re-scraping HLTB (after new games added)
-4. Run the HLTB scraper → replace `db_data/csv/hltb_scrap.csv` in the private data repo
+4. Run `scrape_hltb.py` — reads gaming_lifetime from DB, scrapes HLTB for each game, writes `hltb_scrap.csv`:
+```bash
+docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@gaming_db:5432/my_videogames python scripts/scrape_hltb.py"
+```
 5. Run `import_hltb.py` (upserts + enriches CSV with country_dev/studio/editor from gaming_lifetime):
 ```bash
 docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@gaming_db:5432/my_videogames python scripts/import_hltb.py"
@@ -135,11 +139,11 @@ docker-compose down && docker-compose up --build
 - Refactor of all 3 pages — logic moved out of `pages/` into `functions/` modules
 - Fuzzy matching (`rapidfuzz`, `build_metacritic_merged.py`)
 - Dynamic SQL system for adding new games (`seed.sql` + idempotent `seed_database.py`)
+**Completed**
+- HLTB scraper: `app/scripts/scrape_hltb.py` — uses `howlongtobeatpy` package, reads gaming_lifetime,
+  outputs `hltb_scrap.csv` (16 cols) for `import_hltb.py`. Run manually after adding new games.
 **Next**
 - Dynamic SQL form in Streamlit (add new games via UI)
-- HLTB scraper: build `app/scripts/scrape_hltb.py` — either fix `OLD/hltb_scraper_deprecated.py`
-  (replace `search_modifiers.value` bug) or use the `howlongtobeat` pip package (recommended,
-  community-maintained, handles API changes). Feeds into `import_hltb.py` via `hltb_scrap.csv`.
 
 ### Two-container Docker setup
 - **gaming_db**: PostgreSQL 16 Alpine — `init.sql` (schema) + `seed.sql` + `seed_hltb.sql` + `seed_metacritic_merged.sql` all auto-run via `initdb.d` on a fresh volume.

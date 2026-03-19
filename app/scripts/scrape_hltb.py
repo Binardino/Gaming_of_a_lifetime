@@ -136,7 +136,7 @@ def scrape_games(df: pd.DataFrame) -> list:
     return rows
 
 
-def main(full: bool = False) -> None:
+def main(full: bool = False, limit: int = 0) -> None:
     engine = create_engine(DB_URL)
 
     if full:
@@ -151,6 +151,10 @@ def main(full: bool = False) -> None:
     if df_to_scrape.empty:
         print("✅ No new games to scrape — how_long_to_beat is already up to date")
         return
+
+    if limit > 0:
+        print(f"Limit: {limit} game(s) (test mode)")
+        df_to_scrape = df_to_scrape.head(limit)
 
     print(f"Scraping {len(df_to_scrape)} game(s)...")
     new_rows = scrape_games(df_to_scrape)
@@ -180,5 +184,11 @@ if __name__ == "__main__":
         action="store_true",
         help="Re-scrape all games (default: only new games not in how_long_to_beat)",
     )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=0,
+        help="Scrape only the first N games (for testing, e.g. --limit 3)",
+    )
     args = parser.parse_args()
-    main(full=args.full)
+    main(full=args.full, limit=args.limit)

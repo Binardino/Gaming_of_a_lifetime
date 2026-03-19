@@ -167,6 +167,7 @@ def main(full: bool = False, limit: int = 0) -> None:
     else:
         df_out = df_new
 
+    df_out = df_out.drop_duplicates(subset=["game_name", "platform"], keep="first")
     df_out.index = df_out.index + 1  # id starts at 1 (for seed_hltb.sql COPY)
     df_out.to_csv(CSV_PATH, index=True, index_label="id")
 

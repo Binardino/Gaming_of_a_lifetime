@@ -106,10 +106,14 @@ docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@g
 3. Commit `db_data/seed.sql`
 
 #### Re-scraping HLTB (after new games added)
-4. Run `scrape_hltb.py` — reads gaming_lifetime from DB, scrapes HLTB for each game, writes `hltb_scrap.csv`:
+4. Run `scrape_hltb.py` — default mode is **incremental** (only new games not yet in `how_long_to_beat`):
 ```bash
+# Incremental — only scrapes new games (default, fast)
 docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@gaming_db:5432/my_videogames python scripts/scrape_hltb.py"
+# Full re-scrape — all games (~2-3 min for ~250 games)
+docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@gaming_db:5432/my_videogames python scripts/scrape_hltb.py --full"
 ```
+Output CSV is written to `db_data/csv/hltb_scrap.csv` (mounted volume — visible on host).
 5. Run `import_hltb.py` (upserts + enriches CSV with country_dev/studio/editor from gaming_lifetime):
 ```bash
 docker exec py_gaming_app sh -c "DATABASE_URL=postgresql://gaming_pandas:gamer@gaming_db:5432/my_videogames python scripts/import_hltb.py"
@@ -139,9 +143,8 @@ docker-compose down && docker-compose up --build
 - Refactor of all 3 pages — logic moved out of `pages/` into `functions/` modules
 - Fuzzy matching (`rapidfuzz`, `build_metacritic_merged.py`)
 - Dynamic SQL system for adding new games (`seed.sql` + idempotent `seed_database.py`)
-**Completed**
 - HLTB scraper: `app/scripts/scrape_hltb.py` — uses `howlongtobeatpy` package, reads gaming_lifetime,
-  outputs `hltb_scrap.csv` (16 cols) for `import_hltb.py`. Run manually after adding new games.
+  outputs `hltb_scrap.csv` (16 cols) for `import_hltb.py`. Incremental by default (`--full` to re-scrape all).
 **Next**
 - Dynamic SQL form in Streamlit (add new games via UI)
 

@@ -157,7 +157,7 @@ def main(full: bool = False) -> None:
     df_new = pd.DataFrame(new_rows)[CSV_COL_ORDER]
 
     # Incremental: merge with existing CSV so the output is always a full snapshot
-    if not full and os.path.exists(CSV_PATH):
+    if not full and os.path.isfile(CSV_PATH):
         df_existing = pd.read_csv(CSV_PATH)[CSV_COL_ORDER]
         df_out = pd.concat([df_existing, df_new], ignore_index=True)
     else:

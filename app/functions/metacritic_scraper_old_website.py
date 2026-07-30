@@ -77,7 +77,7 @@ class metacritic_data_fetcher:
                             'game_platform'     : game_platform,
                             'game_release_date' : game_release_date,
                             'metascore'         : game_score,
-                            'user _score'       : game_user_score,
+                            'user_score'        : game_user_score,
                             'game_summary'      : game_summary
                         }
                         
@@ -89,7 +89,7 @@ class metacritic_data_fetcher:
                 
                     #check if next page exist
                     next_item = soup.select_one('span.flipper.next')
-                    if next_item.next_element.get('href'):
+                    if next_item and next_item.next_element and next_item.next_element.get('href'):
                         print(next_item.next_element)
                         page +=1
                         time.sleep(1)

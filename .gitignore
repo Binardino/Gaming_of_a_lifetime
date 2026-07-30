@@ -43,3 +43,7 @@ Thumbs.db
 # Logs
 *.log
 .cache/
+
+# md
+back_to_work.md
+sprint_backlog.md

@@ -8,8 +8,6 @@ import os
 sys.path.append("..")
 dir_path = os.path.dirname(os.path.realpath(__file__))
 os.chdir(dir_path)
-from app.functions.metacritic_scraper import *
-
 
 class HLTBRequests_post:
     def create_headers(url):

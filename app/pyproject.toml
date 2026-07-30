@@ -4,6 +4,7 @@ version = "0.3.0"
 description = "Streamlit analytics app for a personal video game lifetime database"
 authors = ["Binardino <langlois.robin@gmail.com>"]
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"

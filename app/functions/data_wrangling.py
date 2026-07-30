@@ -36,7 +36,7 @@ def clean_df_list(df, column):
     # Create a mapping dictionary for individual values to concatenated values
     mapping_dict = {}
     for value in console_list:
-        concat_values = df[df[column].str.contains(value)][column].unique().tolist()
+        concat_values = df[df[column].str.contains(value, na=False, regex=False)][column].unique().tolist()
         mapping_dict[value] = concat_values
     
     return df_console_raw, console_list, mapping_dict

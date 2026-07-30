@@ -30,7 +30,7 @@ def filter_mapping(df           : pd.DataFrame,
     for value in values:
         mapped_values = mapping_dict.get(value, [value])
         for m_value in mapped_values:
-            mask |= df[column].str.contains(m_value, na=False)
+            mask |= df[column].str.contains(m_value, na=False, regex=False)
 
     return df[mask]
 

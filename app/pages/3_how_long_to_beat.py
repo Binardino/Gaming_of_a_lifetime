@@ -57,7 +57,7 @@ HLTB is an crowd sourced database, agregating the time the players took to finis
 
 The available How Long To Beat is up-to-date with data fetching ;
 
-List how long takes a game to be done at various stages. Only the {df_hltb.size}
+List how long takes a game to be done at various stages. Only the {len(df_hltb)} games which matched the HLTB database are displayed.
 
 Compare personal gaming data against the [How Long To Beat](https://howlongtobeat.com/) dataset.
 HLTB is a crowd-sourced database aggregating the time players took to complete a game.

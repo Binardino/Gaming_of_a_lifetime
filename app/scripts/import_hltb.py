@@ -1,6 +1,6 @@
 import pandas as pd
 from sqlalchemy import create_engine
-from functions.db_import_utils import upsert_dataframe
+from db_import_utils import upsert_dataframe
 import os
 
 DB_URL = os.environ["DATABASE_URL"]
